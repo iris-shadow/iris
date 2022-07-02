@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <title>单元格合并</title>
+    </head>
+    <body>
+        <h3>合并步骤</h3>
+        <h4>1. 分析为跨行合并还是夸列合并</h4>
+        <h4>2. 将合并代码写入目标单元格</h4>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;跨行合并时，目标单元格为被合并单元格中最左侧的单元格；跨列合并时，目标单元格为被合并单元格中最上侧的单元格</p>
+        <h4>3. 删除多余单元格</h4>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;根据行列来定位要删除的单元格</p>
+        <br />
+        <table border="1" cellspacing="0" width="500" height="200">
+            <tr>
+                <td></td>
+                <td colspan="2"></td>
+            </tr>
+            <tr>
+                <td rowspan="2"></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </body>
+</html>

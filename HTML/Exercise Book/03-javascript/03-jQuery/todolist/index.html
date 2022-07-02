@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="../jQuery.mini.js"></script>
+        <title>todolist</title>
+        <style>
+            @font-face {
+                font-family: 'iconfont';
+                src: url('font/iconfont.woff2?t=1654936694192') format('woff2'), url('font/iconfont.woff?t=1654936694192') format('woff'), url('font/iconfont.ttf?t=1654936694192') format('truetype');
+            }
+
+            * {
+                padding: 0;
+                margin: 0;
+            }
+
+            .clearfix::after {
+                content: '';
+                display: block;
+                clear: both;
+                visibility: hidden;
+                height: 0;
+            }
+
+            .clearfix {
+                *zoom: 1;
+            }
+
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                background-image: -moz-linear-gradient(180deg, rgb(199, 245, 255), rgb(212, 189, 255));
+                background-image: -webkit-linear-gradient(180deg, rgb(199, 245, 255), rgb(212, 189, 255));
+                background-image: linear-gradient(180deg, rgb(199, 245, 255), rgb(212, 189, 255));
+            }
+
+            .container {
+                width: 600px;
+                background-image: -moz-linear-gradient(45deg, rgb(153, 224, 255), rgb(163, 212, 255));
+
+                background-image: -webkit-linear-gradient(45deg, rgb(153, 224, 255), rgb(163, 212, 255));
+
+                background-image: linear-gradient(45deg, rgb(153, 224, 255), rgb(163, 212, 255));
+                border-radius: 18px;
+                box-shadow: 0 0 28px 0 lightblue;
+            }
+
+            header {
+                padding: 8px 198px;
+            }
+
+            header .logo {
+                float: left;
+                width: 90px;
+                height: 60px;
+                font-size: 0;
+            }
+
+            header .logo a {
+                display: block;
+                width: 100%;
+                height: 100%;
+                text-align: center;
+                color: cornflowerblue;
+                font-family: 'iconfont';
+                line-height: 80px;
+                font-size: 60px;
+            }
+
+            header .logo a svg {
+                width: 100%;
+                height: 100%;
+            }
+
+            header .title {
+                float: right;
+                width: 80px;
+                height: 30px;
+                padding: 0 12px;
+                margin: 15px 0;
+                background-color: lightpink;
+                text-align: center;
+                color: #fff;
+                line-height: 30px;
+                font-size: 20px;
+                font-weight: 900;
+                transform: rotate(2deg);
+                border-radius: 20% 5% 20% 5%/5% 20% 25% 20%;
+            }
+
+            section {
+                width: calc(100% - 80px);
+                height: 320px;
+                padding: 5px 20px;
+                margin: 0 auto;
+                box-shadow: inset 0 -48px 48px rgba(194, 246, 255, 0.262), 0px 0px 16px rgba(164, 163, 255, 0.557);
+                border-radius: 18px;
+            }
+
+            .input {
+                margin: 0 0 18px;
+                padding: 0 36px;
+            }
+
+            .input #typing {
+                outline: none;
+                width: 70%;
+                height: 28px;
+                padding-left: 5px;
+                border: 0;
+                border-bottom: 3px dotted cornflowerblue;
+                background-color: transparent;
+                color: #fff;
+                font-size: 14px;
+                font-weight: 700;
+            }
+
+            .input #typing::placeholder {
+                color: #fff;
+            }
+
+            .input .submit {
+                display: inline-block;
+                width: 18%;
+                height: 28px;
+                border: 2px dotted skyblue;
+                margin-left: 10px;
+                background-color: azure;
+                color: cornflowerblue;
+                line-height: 24px;
+                font-size: 18px;
+                font-weight: 700;
+                transform: rotate(2deg);
+                cursor: pointer;
+            }
+
+            .backlog {
+                overflow: scroll;
+                height: 320px;
+                list-style: none;
+            }
+
+            .backlog .msg {
+                height: 180px;
+                padding: 0;
+                border: 0;
+                margin: 70px;
+                text-align: center;
+                line-height: 90px;
+                font-size: 20px;
+                color: #fff;
+            }
+
+            .backlog li input,
+            .backlog li p {
+                float: left;
+            }
+
+            .backlog li input {
+                margin: 5px;
+            }
+
+            .backlog li p {
+                width: 80%;
+                margin-left: 5px;
+                color: #fff;
+                font-weight: 700;
+            }
+
+            .backlog li a {
+                float: right;
+                width: 20px;
+                height: 22px;
+                margin-right: 8px;
+                text-decoration: none;
+                text-align: center;
+                font-family: 'iconfont';
+                color: #b9a0f8;
+                font-size: 20px;
+            }
+
+            .backlog li a:hover {
+                color: #9e78ff;
+            }
+
+            .backlog li {
+                overflow: hidden;
+                width: (100% - 72px);
+                padding: 0 0 3px;
+                margin: 12px 36px;
+                border-bottom: 1px dashed #b9a0f8;
+            }
+
+            .navigation {
+                margin: 18px 0;
+                font-size: 18px;
+                font-weight: 900;
+                color: cornflowerblue;
+            }
+
+            .navigation .counter {
+                float: left;
+                width: 20%;
+                height: 28px;
+                margin-left: 12px;
+                color: navajowhite;
+            }
+
+            .counter em {
+                font-style: normal;
+            }
+
+            .navigation .options {
+                float: right;
+                width: 70%;
+            }
+
+            .options span {
+                float: left;
+                margin-right: 12px;
+                padding: 2px 3px;
+                text-align: center;
+                border-radius: 3px;
+                cursor: pointer;
+            }
+
+            .options span:last-child {
+                float: right;
+            }
+
+            .options .current {
+                background-color: cornflowerblue;
+                color: #fff;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="container">
+            <header class="clearfix">
+                <h1 class="logo">
+                    todolist
+                    <a href="javascript:void(0);" title="todolist" class="logo">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="200px" height="200.00px" viewBox="0 0 1024 1024" version="1.1">
+                            <path d="M379.733333 386.133333l-157.866666 155.733334-89.6-87.466667L85.333333 501.333333l136.533334 136.533334 204.8-204.8zM379.733333 108.8l-157.866666 155.733333-89.6-87.466666L85.333333 224l136.533334 136.533333L426.666667 155.733333zM379.733333 663.466667l-157.866666 155.733333-89.6-87.466667L85.333333 778.666667l136.533334 136.533333 204.8-204.8z" fill="#3F51B5" />
+                            <path d="M512 469.333333h426.666667v85.333334H512zM512 192h426.666667v85.333333H512zM512 746.666667h426.666667v85.333333H512z" fill="#90CAF9" />
+                        </svg>
+                    </a>
+                </h1>
+                <div class="title">todo-list</div>
+            </header>
+            <div class="input">
+                <input type="text" name="" id="typing" placeholder="Add a new todo..." autofocus />
+                <input type="submit" value="submit" class="submit" />
+            </div>
+            <section>
+                <ul class="backlog clearfix">
+                    <!-- <li>
+                        <input type="checkbox" name="" id="" />
+                        <p>hello</p>
+                        <a href="javascript:void(0);">&#xe631;</a>
+                    </li>
+                    <li>
+                        <input type="checkbox" name="" id="" />
+                        <p>hello</p>
+                        <a href="javascript:void(0);">&#xe631;</a>
+                    </li> -->
+                    <li class="msg"></li>
+                </ul>
+            </section>
+            <footer>
+                <div class="navigation clearfix">
+                    <div class="counter"><em>0</em> item left</div>
+                    <div class="options">
+                        <span class="all current">All</span>
+                        <span class="active">Active</span>
+                        <span class="completed">Completed</span>
+                        <span class="clear-completed">Clear completed</span>
+                    </div>
+                </div>
+            </footer>
+        </div>
+
+        <script>
+            $(function () {
+                var option = 'all';
+                show(option);
+                // 定义获取待办事项的函数
+                function getTodo() {
+                    var todos = localStorage.getItem('todos');
+                    return (todos = todos !== null ? JSON.parse(todos) : []);
+                }
+
+                // 定义存储待办事项的函数
+                function storageTodo() {
+                    // 先获取本地存储
+                    var todos = getTodo();
+                    // 以对象的格式定义当前输入的待办事项
+                    var todo = {
+                        content: $('#typing').val(),
+                        completed: false,
+                    };
+                    // 添加到从本地获取的 todos 中
+                    todos.push(todo);
+                    // 存储到本地存储
+                    localStorage.setItem('todos', JSON.stringify(todos));
+                }
+
+                // 定义显示待办事项到 backlog 元素中的函数
+                function show(option) {
+                    // 先清空 backlog 中原有的待办事项
+                    $('.backlog').empty();
+                    // 获取本地存储
+                    var todos = getTodo();
+                    // 判断是否有未完成的待办事项
+                    var li;
+                    // 本地存储没有待办事项
+                    if (todos == 0) {
+                        li = $('<li class="msg">Congrat, you have no more tasks to do (⁎⁍̴̛ᴗ⁍̴̛⁎)</li>');
+                        // 添加到 backlog 中
+                        $('.backlog').prepend(li);
+                        // 直接退出
+                        return;
+                    } else {
+                        // 记录未完成的待办事项个数
+                        var counter = 0;
+                        $.each(todos, function (index, todo) {
+                            if (todo.completed == false) {
+                                counter += 1;
+                            }
+                        });
+                        // 未完成的个数为 0 且点击了 Active 选项
+                        if (counter == 0 && option == false) {
+                            li = $('<li class="msg">Congrat, you have no more tasks to do (⁎⁍̴̛ᴗ⁍̴̛⁎)</li>');
+                        } else if (todos.length - counter == 0 && option == true) {
+                            li = $('<li class="msg">Snow nothing, reap nothing ･ﾟ･(｡>ω<｡)･ﾟ･</li>');
+                        }
+                        // 添加到 backlog 中
+                        $('.backlog').prepend(li);
+                        // 将为完成的个数添加到 .counter 元素中
+                        $('.counter em').html(counter);
+                    }
+
+                    // 判断待办事项完成与否
+                    var status = option == true ? 'checked' : '';
+                    // 迭代每个待办事项
+                    $.each(todos, function (index, todo) {
+                        // 没有传入参数（显示完成和未完成的待办事项）
+                        if (option == 'all') {
+                            // 根据完成标记来决定待办事项的复选框是否选中
+                            status = todo.completed == true ? 'checked' : '';
+                            // 创建 li 元素
+                            var li = $('<li data-index="' + index + '"><input type="checkbox" id="completed" ' + status + '/><p>' + todo.content + '</p><a href="javascript:void(0);">&#xe631;</a></li>');
+                        } else {
+                            if (todo.completed == option) {
+                                // 创建 li 元素
+                                var li = $('<li data-index="' + index + '"><input type="checkbox" id="completed" ' + status + '/><p>' + todo.content + '</p><a href="javascript:void(0);">&#xe631;</a></li>');
+                            }
+                        }
+                        // 添加到 backlog 中
+                        $('.backlog').prepend(li);
+                        // 为完成的待办事项添加中划线
+                        $('#completed:checked').siblings('p').css('text-decoration', 'line-through');
+                    });
+                }
+
+                // 提交功能
+                $('.submit').on('click', function () {
+                    // 先存储当前待办事项到本地
+                    storageTodo();
+                    // 显示待办事项
+                    show(option);
+                    // 清空输入框并进行聚焦
+                    $('#typing').val('').focus();
+                });
+
+                // 删除功能
+                // 使用事件委托，可为将来添加的元素绑定事件
+                $('.backlog').on('click', 'a', function (event) {
+                    // 取出本地存储的待办事项
+                    var todos = getTodo();
+                    // 获取要删除待办事项的 index
+                    var index = $(this).parent().attr('data-index');
+                    // 删除要删除的待办事项
+                    todos.splice(index, 1);
+                    // 将删除后的待办事项存储到本地
+                    localStorage.setItem('todos', JSON.stringify(todos));
+                    // 重新显示待办事项
+                    show(option);
+                });
+
+                // 标记完成功能
+                $('.backlog').on('change', '#completed', function () {
+                    // 取出本地存储的待办事项
+                    var todos = getTodo();
+                    // 获取要标记待办事项的 index
+                    var index = $(this).parent().attr('data-index');
+                    // 修改要标记的待办事项的 completed 属性值为复选框的选中状态
+                    // prop 获取元素的固有属性
+                    todos[index].completed = $(this).prop('checked');
+                    // 将修改后的待办事项存储到本地
+                    localStorage.setItem('todos', JSON.stringify(todos));
+                    // 重新显示待办事项
+                    show(option);
+                });
+
+                // 查看所有的待办事项
+                $('.all').on('click', function () {
+                    // 修改当前选项的样式
+                    $(this).addClass('current').siblings().removeClass('current');
+                    option = 'all';
+                    show(option);
+                });
+
+                // 查看未完成的待办事项
+                $('.active').on('click', function () {
+                    $(this).addClass('current').siblings().removeClass('current');
+                    option = false;
+                    show(option);
+                });
+
+                // 查看完成的待办事项
+                $('.completed').on('click', function () {
+                    $(this).addClass('current').siblings().removeClass('current');
+                    option = true;
+                    show(true);
+                });
+
+                // 清除完成的待办事项
+                $('.clear-completed').on('click', function () {
+                    $(this).addClass('current').siblings().removeClass('current');
+                    // 取出本地存储的待办事项
+                    var todos = getTodo();
+                    // 迭代待办事项
+                    for (var i = todos.length - 1; i > -1; i--) {
+                        if (todos[i].completed == true) {
+                            todos.splice(i, 1);
+                        }
+                    }
+                    // 完成待办事项后清空后将剩余的的待办事项存储到本地
+                    localStorage.setItem('todos', JSON.stringify(todos));
+                    // 显示提示信息
+                    $('.backlog').empty();
+                    var li = $('<li class="msg">Clear success (✿☯‿☯✿)</li>');
+                    // 添加到 backlog 中
+                    $('.backlog').prepend(li);
+                });
+            });
+        </script>
+    </body>
+</html>

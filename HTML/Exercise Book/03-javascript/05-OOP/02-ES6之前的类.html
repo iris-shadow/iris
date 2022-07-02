@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html alng="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+        <title>ES6之前的类</title>
+    </head>
+
+    <body>
+        <script>
+            function Animal(name, age) {
+                this.name = name;
+                this.age = age;
+            }
+
+            Animal.prototype.bark = function () {
+                console.log('汪汪汪');
+            };
+
+            Dog.prototype = new Animal();
+            Dog.prototype.constructor = Dog;
+
+            function Dog(name, age) {
+                Animal.call(this, name, age);
+            }
+
+            Dog.prototype.sing = function () {
+                console.log('心上的人啊');
+            };
+
+            var shadow = new Dog('夕豆', 1);
+
+            console.log(Animal.prototype);
+            console.log(Dog.prototype);
+        </script>
+    </body>
+</html>

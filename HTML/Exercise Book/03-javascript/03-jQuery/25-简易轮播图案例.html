@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+        <script src="jQuery.mini.js"></script>
+        <title>简易轮播图案例</title>
+        <style>
+            * {
+                padding: 0;
+                margin: 0;
+            }
+
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin-bottom: 1000px;
+            }
+
+            .slider-wrapper {
+                position: relative;
+                width: 600px;
+                height: 500px;
+                box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.2), 0px 0px 15px 2.5px rgba(0, 0, 0, 0.3);
+                padding: 10px;
+            }
+
+            /* 内边框，用于限定显示范围 */
+            .frame {
+                overflow: hidden;
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 600px;
+                height: 500px;
+                margin: 10px;
+            }
+            /* 轮播图 */
+            .slider {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 500%;
+                height: 100%;
+                list-style: none;
+            }
+
+            .slider li {
+                float: left;
+            }
+
+            .slider li img {
+                width: 600px;
+                height: 500px;
+            }
+
+            /* 三角标 */
+            .tail {
+                position: absolute;
+                left: 28px;
+                top: 520px;
+            }
+
+            /* 导航框 */
+            .navigation {
+                overflow: hidden;
+                position: absolute;
+                left: 0px;
+                top: 550px;
+                width: 600px;
+                height: 110px;
+                text-align: center;
+                list-style: none;
+            }
+
+            .navigation li {
+                float: left;
+                margin: 0 35px;
+                height: 100%;
+            }
+
+            .navigation li img {
+                margin: 15px 0;
+                box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.2), 0px 0px 10px 2.5px rgba(0, 0, 0, 0.6);
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="slider-wrapper">
+            <div class="frame">
+                <ul class="slider">
+                    <li><img src="media/images/1_b.jpg" alt="" /></li>
+                    <li><img src="media/images/2_b.jpg" alt="" /></li>
+                    <li><img src="media/images/3_b.jpg" alt="" /></li>
+                    <li><img src="media/images/4_b.jpg" alt="" /></li>
+                </ul>
+            </div>
+
+            <div class="tail"><img src="media/images/bg_arrow.gif" alt="" /></div>
+            <ol class="navigation">
+                <li><img src="media/images/1_s.gif" alt="" /></li>
+                <li><img src="media/images/2_s.gif" alt="" /></li>
+                <li><img src="media/images/3_s.gif" alt="" /></li>
+                <li><img src="media/images/4_s.gif" alt="" /></li>
+            </ol>
+        </div>
+
+        <script>
+            $(function () {
+                // 轮播图的步长
+                var sliderStep = 600;
+                // 三角标的步长
+                var navStep = 150;
+                $('.navigation').on('click', 'li', function () {
+                    // 获取被点击的导航栏的下标
+                    var index = $(this).index();
+                    // 轮播图的位移
+                    var sliderDisplacement = -index * sliderStep;
+                    // 三角标的位移
+                    var tailDisplacement = index * navStep + 28;
+                    // 轮播度做位移动画
+                    $('.slider').animate({ left: sliderDisplacement }, 800);
+                    // 三角标做位移动画
+                    $('.tail').animate({ left: tailDisplacement }, 800);
+                });
+            });
+        </script>
+    </body>
+</html>

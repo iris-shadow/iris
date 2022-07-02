@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html alng="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="jQuery.mini.js"></script>
+        <title>商品汇总案例</title>
+        <style>
+            * {
+                padding: 0;
+                margin: 0;
+            }
+
+            .clearfix::after {
+                content: '';
+                display: block;
+                clear: both;
+                visibility: hidden;
+                height: 0;
+            }
+
+            .clearfix {
+                *zoom: 1;
+            }
+
+            .w {
+                width: 1200px;
+                margin: 20px auto 0;
+            }
+
+            /* 预先声明每个列宽 */
+            .goods-column {
+                width: 500px;
+                text-align: center;
+            }
+
+            .goods-show {
+                width: 526px;
+                margin: 0 10px;
+            }
+
+            .caption .desc-column {
+                width: 155px;
+                margin: 0;
+            }
+
+            .desc-column {
+                width: 155px;
+                height: 22px;
+                text-align: center;
+                margin: 29px 0;
+            }
+
+            .btn-select-all {
+                margin: 6px 10px;
+                line-height: 22px;
+            }
+
+            /* 头部导航栏 */
+            .caption {
+                background-color: #f3f3f3;
+            }
+
+            .caption div {
+                float: left;
+            }
+
+            /* 商品模块 */
+            .goods-item {
+                height: 80px;
+                padding: 10px;
+                border: 1px solid #f1f1f1;
+                border-bottom: 1px solid #aaa;
+                margin-top: 18px;
+            }
+
+            .goods-item > div {
+                float: left;
+            }
+
+            .goods-show .pic {
+                float: left;
+                width: 113px;
+                text-align: center;
+            }
+
+            .goods-show .description {
+                float: left;
+                width: 413px;
+                font-size: 14px;
+                line-height: 22px;
+            }
+
+            .amount {
+                box-sizing: border-box;
+                padding: 0 20px;
+            }
+
+            .univalence,
+            .subtotal {
+                color: coral;
+            }
+
+            .amount input,
+            .amount a {
+                width: 37px;
+                height: 20px;
+                float: left;
+                border: 1px solid #ccc;
+                text-decoration: none;
+                text-align: center;
+                color: #333;
+            }
+
+            .amount input {
+                border-left: 0;
+                border-right: 0;
+                outline: none;
+            }
+
+            .amount a:hover {
+                color: tomato;
+            }
+
+            .operation a {
+                text-decoration: none;
+                color: cornflowerblue;
+            }
+
+            /* 总计模块 */
+            .total {
+                height: 30px;
+                border: 1px solid #f1f1f1;
+                margin-top: 20px;
+                line-height: 28px;
+            }
+
+            .options {
+                float: left;
+            }
+
+            .options .remove,
+            .options .clear {
+                display: inline-block;
+                margin-left: 50px;
+                text-decoration: none;
+                color: #222;
+            }
+
+            .options .remove:hover,
+            .options .clear:hover {
+                color: tomato;
+            }
+
+            .details {
+                float: right;
+            }
+
+            .details span:nth-child(1) {
+                font-size: 14px;
+            }
+
+            .details span em {
+                font-style: normal;
+                color: coral;
+            }
+
+            .details span .total-price {
+                font-size: 18px;
+            }
+            .details .settlement {
+                display: inline-block;
+                width: 66px;
+                margin: 0 28px;
+                background-color: tomato;
+                text-decoration: none;
+                text-align: center;
+                color: #fff;
+                font-weight: 900;
+                border-radius: 5px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="goods-wrapper w">
+            <div class="goods">
+                <!--头部导航栏 -->
+                <div class="caption clearfix">
+                    <div class="select-all"><input type="checkbox" name="" id="" class="btn-select-all" />&nbsp;全选</div>
+                    <div class="goods-column">商品</div>
+                    <div class="desc-column">单价</div>
+                    <div class="desc-column">数量</div>
+                    <div class="desc-column">小计</div>
+                    <div class="desc-column">操作</div>
+                </div>
+
+                <!-- 商品模块 -->
+                <div class="goods-item clearfix">
+                    <div class="select-single"><input type="checkbox" name="" id="" class="btn-select-single" /></div>
+                    <div class="goods-show">
+                        <div class="pic"><img src="media/images/p1.jpg" alt="" /></div>
+                        <div class="description">【5本26.8元】经典儿童文学彩图青少版八十天环游地球中学生语文教学大纲</div>
+                    </div>
+                    <div class="univalence desc-column">¥66.99</div>
+                    <div class="amount desc-column">
+                        <a href="javascript:void(0);" class="decreament">-</a>
+                        <input type="text" name="" id="" class="number" value="1" />
+                        <a href="javascript:void(0);" class="increament">+</a>
+                    </div>
+                    <div class="subtotal desc-column">¥66.99</div>
+                    <div class="operation desc-column"><a href="javascript:void(0);" class="delete">删除</a></div>
+                </div>
+                <div class="goods-item clearfix">
+                    <div class="select-single"><input type="checkbox" name="" id="" class="btn-select-single" /></div>
+                    <div class="goods-show">
+                        <div class="pic"><img src="media/images/p2.jpg" alt="" /></div>
+                        <div class="description">【2000张贴纸】贴纸书 3-6岁 贴画儿童 贴画书全套12册 贴画 贴纸</div>
+                    </div>
+                    <div class="univalence desc-column">¥88.99</div>
+                    <div class="amount desc-column">
+                        <a href="javascript:void(0);" class="decreament">-</a>
+                        <input type="text" name="" id="" class="number" value="1" />
+                        <a href="javascript:void(0);" class="increament">+</a>
+                    </div>
+                    <div class="subtotal desc-column">¥88.99</div>
+                    <div class="operation desc-column"><a href="javascript:void(0);" class="delete">删除</a></div>
+                </div>
+                <div class="goods-item clearfix">
+                    <div class="select-single"><input type="checkbox" name="" id="" class="btn-select-single" /></div>
+                    <div class="goods-show">
+                        <div class="pic"><img src="media/images/p3.jpg" alt="" /></div>
+                        <div class="description">【唐诗三百首+成语故事全2册 一年级课外书 精装注音儿童版 小学生二三年级课外阅读书籍</div>
+                    </div>
+                    <div class="univalence desc-column">¥99.99</div>
+                    <div class="amount desc-column">
+                        <a href="javascript:void(0);" class="decreament">-</a>
+                        <input type="text" name="" id="" class="number" value="1" />
+                        <a href="javascript:void(0);" class="increament">+</a>
+                    </div>
+                    <div class="subtotal desc-column">¥99.99</div>
+                    <div class="operation desc-column"><a href="javascript:void(0);" class="delete">删除</a></div>
+                </div>
+
+                <!-- 总计模块 -->
+                <div class="total">
+                    <div class="options">
+                        <span class="select-all"><input type="checkbox" name="" id="" class="btn-select-all" />&nbsp;全选</span>
+                        <span><a href="javascript:void(0);" class="remove">删除选中的商品</a></span>
+                        <span><a href="javascript:void(0);" class="clear">清空购物车</a></span>
+                    </div>
+                    <div class="details">
+                        <span>已选择 <em class="totality">3</em> 件商品&nbsp;&nbsp;&nbsp;&nbsp;总价：<em class="total-price">¥999</em></span>
+                        <span><a href="javascript:void(0);" class="settlement">去结算</a></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            // 选择模块
+            // 单选按钮状态跟随全选按钮状态
+            $('.btn-select-all').click(function () {
+                $('.btn-select-single').prop('checked', $(this).prop('checked'));
+                // 另一个全选按钮
+                $('.btn-select-all').prop('checked', $(this).prop('checked'));
+                // 变换背景色
+                if ($(this).prop('checked')) {
+                    $('.goods-item').css('backgroundColor', '#f0ffff');
+                } else {
+                    $('.goods-item').css('backgroundColor', '');
+                }
+            });
+            // 单选按钮全部选中时全选按钮选中
+            $('.btn-select-single').click(function () {
+                // 判断选择按钮个数是否等于单选按钮个数
+                if ($('.btn-select-single:checked').length == $('.btn-select-single').length) {
+                    $('.btn-select-all').prop('checked', true);
+                } else {
+                    $('.btn-select-all').prop('checked', false);
+                }
+                // 变换背景色
+                if ($(this).prop('checked')) {
+                    $(this).parents('.goods-item').css('backgroundColor', '#f0ffff');
+                } else {
+                    $(this).parents('.goods-item').css('backgroundColor', '');
+                }
+            });
+
+            // 商品增减模块
+            // 定义计算当个商品总价的函数
+            function subtotalCalc(elem, num) {
+                elem.siblings('input').val(num);
+                // 取出单价
+                var univalence = elem.parent().siblings('.univalence').html();
+                // 计算该商品总价
+                var subtotalPrice = parseInt(num) * parseFloat(univalence.slice(1));
+                // 赋值该商品总价
+                elem.parent()
+                    .siblings('.subtotal')
+                    .html('¥' + subtotalPrice.toFixed(2));
+            }
+
+            // 为每个 .increament 、.decreament、.number 元素绑定事件
+            //.decreament
+            $('.decreament').click(function () {
+                // 取出当前数量
+                var num = $(this).siblings('input').val();
+                // 判断是否合法
+                if (num <= 1) {
+                    num = 1;
+                    $(this).siblings('input').val(num);
+                    return false;
+                }
+                // 商品数量 -1
+                num--;
+                // 计算总价
+                subtotalCalc($(this), num);
+                // 调用总计函数
+                total();
+            });
+            // .increament
+            $('.increament').click(function () {
+                // 取出当前数量
+                var num = $(this).siblings('input').val();
+                // 商品数量 +1
+                num++;
+                // 计算总价
+                subtotalCalc($(this), num);
+                // 调用总计函数
+                total();
+            });
+
+            // .number
+            $('.number').change(function () {
+                // 取出商品数量
+                var num = $(this).val();
+                // 判断是否合法
+                if (num <= 1) {
+                    num = 1;
+                    $(this).val(num);
+                }
+                // 计算总价
+                subtotalCalc($(this), num);
+                // 调用总计函数
+                total();
+            });
+
+            // 总计模块
+            // 取出所有商品数量和小计累加后赋值到 .toality 和 .total-price
+            function total() {
+                // 声明记录商品总数的 totality 和 记录商品总价的 totalPrice
+                var totality = (totalPrice = 0);
+                // 取出所有的 .number 进行累加
+                $('.number').each(function (index, elem) {
+                    totality += parseInt($(elem).val());
+                });
+                // 取出所有的 .subtotal 进行累加
+                $('.subtotal').each(function (index, elem) {
+                    totalPrice += parseFloat($(elem).html().slice(1));
+                });
+
+                // 赋值到 .toality 和 .total-price
+                $('.totality').html(totality);
+                $('.total-price').html('¥' + totalPrice.toFixed(2));
+            }
+            // 调用总计函数
+            total();
+
+            // 删除模块
+            // 删除当前商品
+            $('.delete').click(function () {
+                $(this).parents('.goods-item').remove();
+                // 调用总计函数
+                total();
+            });
+
+            // 删除选中商品
+            $('.remove').click(function () {
+                $('.btn-select-single:checked').parents('.goods-item').remove();
+                // 调用总计函数
+                total();
+            });
+
+            // 清空商品
+            $('.clear').click(function () {
+                $('.goods-item').remove();
+                // 调用总计函数
+                total();
+            });
+        </script>
+    </body>
+</html>

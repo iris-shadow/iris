@@ -1,0 +1,92 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: -webkit-linear-gradient(top, aliceblue, pink);
+    font: normal normal 20px/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 40px;
+    box-shadow: 3px 2px 9px rgba(0, 0, 0, .1);
+}
+
+.navigation .switch {
+    width: 40px;
+    height: 40px;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.navigation .line-one,
+.navigation .line-two {
+    position: absolute;
+    top: calc(50% - 10px);
+    left: 25px;
+    width: 30px;
+    height: 4px;
+    background-color: pink;
+    border-radius: 2px;
+    pointer-events: none;
+    transition: top .3s ease-in-out, transform .3s ease-in-out .4s;
+}
+
+.navigation .line-two {
+    top: calc(50% + 6px);
+}
+
+.navigation .switch:checked~.line-one {
+    top: calc(50% - 2px);
+    background-color: plum;
+    transform: rotate(45deg);
+}
+
+.navigation .switch:checked~.line-two {
+    top: calc(50% - 2px);
+    background-color: plum;
+    transform: rotate(-45deg);
+}
+
+.navigation ul {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 0;
+    overflow: hidden;
+    transition: all .7s ease-in-out;
+}
+
+.navigation .switch:checked~ul {
+    width: 300px
+}
+
+.navigation ul li a {
+    color: #222;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.navigation ul li a:hover {
+    color: plum;
+}

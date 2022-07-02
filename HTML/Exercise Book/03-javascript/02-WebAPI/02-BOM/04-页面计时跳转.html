@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>页面计时跳转</title>
+    </head>
+
+    <body>
+        <div></div>
+        <button>垃圾百度</button>
+        <script>
+            var tips = document.querySelector("div");
+            var button = document.querySelector("button");
+
+            var counter = 5;
+            function skip() {
+                if (counter == 0) {
+                    location.href = "http://www.baidu.com";
+                    tips.innerHTML = "";
+                    counter = 5;
+                } else {
+                    tips.innerHTML = counter + "秒后将自动跳转到垃圾百度";
+                    counter--;
+                }
+            }
+
+            button.addEventListener("click", function () {
+                skip();
+                setInterval(skip, 1000);
+            });
+        </script>
+    </body>
+</html>

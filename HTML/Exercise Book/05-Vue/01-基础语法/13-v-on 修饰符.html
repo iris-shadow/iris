@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script src="../js/vue.js"></script>
+		<title>v-on 修饰符</title>
+	</head>
+
+	<body>
+		<div id="app">
+			<!-- .stop 阻止冒泡（stopPropagation） -->
+			<div @click="bigClick">
+				大按钮
+				<button @click.stop="smallClick">小按钮</button>
+			</div>
+
+			<!-- .prevent 阻止默认事件 -->
+			<form action="baidu">
+				<input type="text" />
+				<br />
+				<input type="submit" @click.prevent="submitClick" />
+			</form>
+
+			<!-- .Keycode|keyAlias 只有特定的键才能触发 -->
+			<input type="text" @keyup.13="onEnter" />
+
+			<br />
+			<!-- .once 事件只触发一次 -->
+			<button @click.once="shuttle">时光机</button>
+		</div>
+
+		<script>
+			const app = new Vue({
+				el: '#app',
+				data: {
+					message: 'Hello Vuejs!',
+				},
+				methods: {
+					bigClick() {
+						console.log('我是大按钮')
+					},
+					smallClick() {
+						console.log('我是小按钮')
+					},
+					submitClick() {
+						console.log('我要提交咯！')
+					},
+					onEnter() {
+						console.log('回车弹起来了')
+					},
+					shuttle() {
+						console.log('回到那年的冬天')
+					},
+				},
+			})
+		</script>
+	</body>
+</html>

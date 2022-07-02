@@ -1,0 +1,44 @@
+{
+  "id": "3457681",
+  "name": "todolist",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "3860934",
+      "name": "代办事项",
+      "font_class": "daibanshixiang",
+      "unicode": "e6a2",
+      "unicode_decimal": 59042
+    },
+    {
+      "icon_id": "1433716",
+      "name": "delete",
+      "font_class": "delete",
+      "unicode": "e631",
+      "unicode_decimal": 58929
+    },
+    {
+      "icon_id": "5994055",
+      "name": "delete",
+      "font_class": "delete1",
+      "unicode": "e62e",
+      "unicode_decimal": 58926
+    },
+    {
+      "icon_id": "13125096",
+      "name": "034-to-do",
+      "font_class": "-to-do",
+      "unicode": "e61a",
+      "unicode_decimal": 58906
+    },
+    {
+      "icon_id": "22453665",
+      "name": "TODO_INFO",
+      "font_class": "TODO_INFO",
+      "unicode": "e9cb",
+      "unicode_decimal": 59851
+    }
+  ]
+}

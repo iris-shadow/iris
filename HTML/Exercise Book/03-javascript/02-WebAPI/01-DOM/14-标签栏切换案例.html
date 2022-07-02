@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>标签栏切换案例</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        .info_wrapper {
+            width: 800px;
+            margin: 100px auto 0;
+        }
+        
+        .tabs {
+            height: 50px;
+            background-color: aliceblue;
+            border: 1px dotted #ccc;
+        }
+        
+        .tabs li {
+            box-sizing: border-box;
+            float: left;
+            width: 20%;
+            height: 100%;
+            border-right: 1px solid #ccc;
+            text-align: center;
+            line-height: 50px;
+            font-size: 18px;
+            font-weight: 700;
+        }
+        
+        .tabs li:last-child {
+            border: 0;
+        }
+        
+        .select {
+            background-color: tomato;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="info_wrapper">
+        <ul class="tabs">
+            <li class="select">首页</li>
+            <li>产品</li>
+            <li>发布</li>
+            <li>资讯</li>
+            <li>关于</li>
+        </ul>
+        <div class="items">
+            <div class="item">
+                <p>欢迎来到首页</p>
+            </div>
+            <div class="item">
+                <p>欢迎来到产品</p>
+            </div>
+            <div class="item">
+                <p>欢迎来到发布</p>
+            </div>
+            <div class="item">
+                <p>欢迎来到资讯</p>
+            </div>
+            <div class=item>
+                <p>欢迎来到关于</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 获取 tabs 和 items
+        var tabs = document.querySelector('.tabs').querySelectorAll('li'),
+            items = document.querySelector('.items').querySelectorAll('.item');
+
+        // 为每个标签绑定事件
+        for (var i = 0; i < tabs.length; i++) {
+            // 为每个标签添加 data-index 自定义属性，用于操作对应的内容标签
+            tabs[i].setAttribute('data-index', i);
+            tabs[i].onclick = function() {
+                // 先将其它标签的选择状态取消（类名赋值为空）
+                for (var i = 0; i < tabs.length; i++) {
+
+                    tabs[i].className = '';
+                }
+                // 在选中的标签上添加 select
+                this.className = 'select';
+
+                // 将所有的内容标签显示模式设置为 none
+                for (var i = 0; i < items.length; i++) {
+                    items[i].style.display = 'none';
+                }
+                // 获取当前标签的 index 以操作对应的 item
+                var index = this.getAttribute('data-index');
+                items[index].style.display = 'block';
+            }
+        }
+    </script>
+</body>
+
+</html>

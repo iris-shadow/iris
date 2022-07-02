@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="jQuery.mini.js"></script>
+        <title>拷贝</title>
+    </head>
+
+    <body>
+        <script>
+            var targetObj = {
+                name: '一叶秋',
+                age: 12,
+                degree: {
+                    school: '清华',
+                    credit: '100',
+                    order: 'one',
+                },
+            };
+
+            var obj = {
+                name: '小冬瓜',
+                gender: 'female',
+                degree: {
+                    school: 'MIT',
+                    credit: '100',
+                },
+            };
+
+            // // 浅拷贝
+            // $.extend(targetObj, obj);
+            // // 修改 targetObj 中复杂对象的值，obj 中的复杂对象也会随着改变
+            // targetObj.degree.school = '北大';
+            // console.log(targetObj, obj);
+
+            // 深拷贝
+            $.extend(true, targetObj, obj);
+            // targetObj 中复杂对象不会被覆盖
+            // 修改 targetObj 中复杂对象的值， obj 中的复杂对象不会受影响
+            targetObj.degree.school = '北大';
+            console.log(targetObj, obj);
+        </script>
+    </body>
+</html>

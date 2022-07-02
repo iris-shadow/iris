@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <title>字体属性</title>
+        <style>
+            body {
+                font-size: 15px;
+            }
+
+            h3 {
+                font-family: 'Hiragino Sans GB';
+                color: darkorange;
+            }
+
+            h4 {
+                font-family: 'Courier New', Courier, monospace;
+            }
+
+            p {
+                font-family: 'Microsoft YaHei';
+                color: cadetblue;
+            }
+
+            div {
+                font: italic lighter 16px/12px 'Hiragino Sans GB';
+            }
+
+            .lighter {
+                font-weight: lighter;
+            }
+
+            .bold {
+                font-weight: bold;
+            }
+
+            .un_italic {
+                font-style: normal;
+            }
+            
+        </style>
+    </head>
+    <body>
+        <h3>字体</h3>
+        <p>一般可在 body 标签中设置整体属性，对于特殊标签再调整</p>
+        <h4>尽量使用浏览器中的常见字体</h4>
+        <h4>多个单词组成的字体名一般将其使用引号引起来</h4>
+        <h4>使用多个字体时，各字体间使用英文逗号隔开</h4>
+        <p>谷歌浏览器的默认字体为微软雅黑（Microsoft YaHei）</p>
+        <h3>文字大小</h3>
+        <p>谷歌浏览器中默认字体大小为 16 像素，不同的浏览器会有不同的默认大小，一般需要明确指定</p>
+        <h3>文字加粗</h3>
+        <h4 class="lighter">font-weight 共有 normal 、 bold 、 bolder 、lighter 属性值， 使用 normal 可去除标题自带的加粗样式</h4>
+        <p class="bold">其中 nomal 等价于 400， bold 等价于 700</p>
+        <h3>字体样式</h3>
+        <em class="un_italic">font-style 中的 normal 属性可使倾斜标签 &lt;em&gt; 或 &lt;i&gt; 中的内容不倾斜</em>
+        <h3>复合属性</h3>
+        <div>可将 font-style 、 font-weight 、 font-size/line-height 、 font-family 四个属性用 font 关键字替代，给属性值时必须按上述关键字出现的顺序给出</div>
+        <p>各属性值之间使用空格隔开，其中 font-style 和 font-weight 为可选值，font-size 和 font-family 为必须值</p>
+    </body>
+</html>

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="jQuery.mini.js"></script>
+        <title>商品计价案例</title>
+        <style>
+            * {
+                padding: 0;
+                margin: 0;
+            }
+
+            input {
+                border: 0;
+                outline: none;
+            }
+
+            em {
+                font-style: normal;
+            }
+
+            .clearfix::after {
+                content: '';
+                display: block;
+                clear: both;
+                visibility: hidden;
+                height: 0;
+            }
+
+            .clearfix {
+                *zoom: 1;
+            }
+
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+            }
+
+            span {
+                float: left;
+                width: 120px;
+                text-align: center;
+            }
+
+            .goods-wrapper {
+                width: 360px;
+            }
+
+            .caption {
+                width: 100%;
+                background-color: #ccc;
+            }
+
+            .good {
+                background-color: rgb(187, 255, 187);
+                margin-top: 10px;
+            }
+
+            .good .num a {
+                float: left;
+                width: 40px;
+                text-decoration: none;
+                text-align: center;
+                color: #222;
+            }
+
+            .good .num a:hover {
+                color: tomato;
+            }
+
+            .good .num input {
+                float: left;
+                width: 38px;
+                border: 1px solid lightblue;
+                text-align: center;
+                line-height: 20px;
+                border-radius: 5px;
+                background-color: lightcyan;
+            }
+
+            .total-wrapper {
+                width: 100%;
+                height: 50px;
+                margin-top: 10px;
+                background-color: lightcyan;
+            }
+
+            .total-wrapper div {
+                float: left;
+                margin-right: 10px;
+                line-height: 50px;
+            }
+
+            .total-wrapper div em {
+                color: tomato;
+            }
+
+            .total-wrapper .settlement {
+                float: right;
+                width: 60px;
+                height: 24px;
+                margin: 13px 5px;
+                background-color: tomato;
+                border-radius: 5px;
+                text-align: center;
+                text-decoration: none;
+                color: #fff;
+                font-size: 18px;
+                font-weight: 900;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="goods-wrapper">
+            <!-- 说明 -->
+            <div class="caption clearfix">
+                <span>单价</span>
+                <span>数量</span>
+                <span>小计</span>
+            </div>
+
+            <!-- 商品详情 -->
+            <div class="good clearfix">
+                <span class="univalence">¥12.60</span>
+                <span class="num">
+                    <a href="javascript:void(0);" class="decreament">-</a>
+                    <input type="text" value="1" />
+                    <a href="javascript:void(0);" class="increament">+</a>
+                </span>
+                <span class="counter">¥12.60</span>
+            </div>
+            <div class="good clearfix">
+                <span class="univalence">¥122.60</span>
+                <span class="num">
+                    <a href="javascript:void(0);" class="decreament">-</a>
+                    <input type="text" value="1" />
+                    <a href="javascript:void(0);" class="increament">+</a>
+                </span>
+                <span class="counter">¥122.60</span>
+            </div>
+            <div class="good clearfix">
+                <span class="univalence">¥9999.99</span>
+                <span class="num">
+                    <a href="javascript:void(0);" class="decreament">-</a>
+                    <input type="text" value="1" />
+                    <a href="javascript:void(0);" class="increament">+</a>
+                </span>
+                <span class="counter">¥9999.99</span>
+            </div>
+
+            <!-- 商品总计 -->
+            <div class="total-wrapper">
+                <div class="total-num">已选 <em>0</em> 件商品</div>
+                <div class="total-price">总价：<em>¥0</em></div>
+                <a href="javascript:void(0);" class="settlement">去支付</a>
+            </div>
+        </div>
+
+        <script>
+            //
+            // 小计模块
+            // 定义进行小计的函数
+            function calculate(element, num) {
+                // 取出商品单价并去除 “¥” 以进行算数运算
+                var univalence = element.parents('.num').siblings('.univalence').html().slice(1);
+                // 小计结果保留 2 位小数
+                var price = (num * univalence).toFixed(2);
+                element
+                    .parents('.num')
+                    .siblings('.counter')
+                    .html('¥' + price);
+            }
+
+            // 为每个 +、- 元素注册事件
+            $('.decreament').click(function () {
+                // 取出商品当前数量
+                var num = $(this).siblings('input').val();
+                // 判断数量值是否合法
+                if (num <= 1) {
+                    $(this).siblings('input').val(1);
+                    return false;
+                }
+                // 合法时将数量 -1 并重新赋值
+                num--;
+                $(this).siblings('input').val(num);
+                // 调用小计函数
+                calculate($(this), num);
+                // 调用统计函数
+                counter();
+            });
+
+            $('.increament').click(function () {
+                // 取出商品当前数量
+                var num = $(this).siblings('input').val();
+                // 数量 +1 并重新赋值
+                num++;
+                $(this).siblings('input').val(num);
+                // 调用小计函数
+
+                calculate($(this), num);
+                // 调用统计函数
+                counter();
+            });
+
+            // 为 input 注册事件
+            $('input').change(function () {
+                // 取出商品数量
+                var num = $(this).val();
+                // 判断输入是否合法，并重新赋值
+                if (num < 1) {
+                    num = 1;
+                    $(this).val(num);
+                }
+                // 调用小计函数
+                calculate($(this), num);
+                // 调用统计函数
+                counter();
+            });
+            //
+
+            //
+            // 总计模块
+            counter();
+            function counter() {
+                // 声明记录商品总数的 numSum
+                var numSum = 0;
+                // 遍历每个商品的数量
+                $('input').each(function (index, elem) {
+                    numSum += parseInt($(elem).val());
+                    // 将所有总数赋值给 total-num em
+                });
+                $('.total-num em').text(numSum);
+
+                // 声明记录商品总价的 priceSum
+                var priceSum = 0;
+                // 遍历每个商品的总价
+                $('.counter').each(function (index, elem) {
+                    priceSum += parseFloat($(elem).text().slice(1));
+                    // 将所有总价赋值给 total-price em
+                    $('.total-price em').text('¥' + priceSum.toFixed(2));
+                });
+            }
+        </script>
+    </body>
+</html>

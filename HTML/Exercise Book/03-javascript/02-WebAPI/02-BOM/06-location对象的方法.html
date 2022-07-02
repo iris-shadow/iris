@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>location 对象的方法</title>
+    </head>
+    <body>
+        <button class="assign">assign</button>
+        <button class="replace">replace</button>
+        <button class="reload">reload</button>
+
+        <script>
+            var assign = document.querySelector(".assign");
+            var replace = document.querySelector(".replace");
+            var reload = document.querySelector(".reload");
+
+            // assign 方法是有历史记录的跳转页面
+            assign.addEventListener("click", function () {
+                location.assign("http://www.baidu.com");
+            });
+
+            // repalce 方法是没有历史记录的跳转页面
+            replace.addEventListener("click", function () {
+                location.replace("http://www.baidu.com");
+            });
+
+            // reload 方法用于刷新页面，reload(true) 可强制刷新页面，reload(false) 或 reload() 为普通刷新
+            reload.addEventListener("click", function () {
+                location.reload();
+            });
+        </script>
+    </body>
+</html>

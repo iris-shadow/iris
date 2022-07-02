@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="jQuery.mini.js"></script>
+        <title>小丑鱼案例</title>
+        <style>
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                background-color: #222;
+            }
+
+            .fish {
+                overflow: hidden;
+                position: relative;
+                border: 10px solid #ccc;
+            }
+
+            .fish img {
+                vertical-align: middle;
+            }
+
+            .fish p {
+                display: none;
+                width: 200px;
+                text-align: center;
+            }
+
+            .introduction1 {
+                position: absolute;
+                top: 30px;
+                color: skyblue;
+            }
+
+            .introduction2 {
+                position: absolute;
+                top: 80px;
+                color: tomato;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="fish">
+            <img src="media/images/fish.jpg" alt="" />
+            <p class="introduction1">海洋世界</p>
+            <p class="introduction2">这是一只小丑鱼</p>
+        </div>
+
+        <script>
+            console.log($('p').scrollLeft(200));
+            $('.fish').mouseenter(function () {
+                // 降低图片透明度
+                $('img').stop().fadeTo(500, 0.3);
+                // 文字淡入
+                $('p').fadeTo(300, 1);
+            });
+            $('.fish').mouseleave(function () {
+                // 恢复图片透明度
+                $('img').stop().fadeTo(1000, 1);
+                // 移动文字并用回调函数恢复到初始位置
+                $('p')
+                    .stop()
+                    .animate({ left: 570 }, 1000, function () {
+                        $('p').css('left', '0').hide();
+                    });
+            });
+        </script>
+    </body>
+</html>

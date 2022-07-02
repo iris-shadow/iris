@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>ES6</title>
+    </head>
+    <body>
+        <script>
+            // console.log(a);
+            // var a = 10;
+
+            // // 使用 let 声明的变量没有变量提升
+            // console.log(x);
+            // let x;
+
+            // 使用 let 声明的变量具有块级作用域和暂时性死区
+            // var temp = 'iris';
+            // if (true) {
+            //     console.log(temp);
+            //     let temp = '一叶秋';
+            // }
+
+            // let arr = [];
+
+            // for (let i = 0; i < 2; i++) {
+            //     arr[i] = function () {
+            //         console.log(i);
+            //     };
+            // }
+
+            // arr[0]();
+            // arr[1]();
+
+            // // 关键字 const 用于声明常量，必须进行初始化
+            // const PI = 3.14;
+
+            // // const 声明的常量地址不可被更改。基本数据类型不可重新赋值，复杂数据类型中的基本数据类型可被重新赋值
+            // const arr = ['一叶秋', '李淳罡'];
+
+            // arr[0] = '王仙芝';
+
+            // console.log(arr);
+
+            //// 解构赋值 ////
+
+            // // 数组解构
+            // let arr = [1, 2, 3];
+
+            // let [x, y, z] = arr;
+            // console.log(x, y, z);
+
+            // // 对象解构
+            // let person = {
+            //     name: '一叶秋',
+            //     gender: 'male',
+            // };
+
+            // let { name, gender } = person;
+            // let { name: myName, gender: myGender } = person;
+            // console.log(name, gender);
+            // console.log(myName, myGender);
+
+            //// 箭头函数 ////
+
+            // // 在箭头函数中，若函数体中的语句只有一句，且该语句作为返回值，则 “{}” 可省略
+            // const sum = (a, b) => a + b;
+
+            // console.log(sum(1, 2));
+
+            // // 在箭头函数中，若形参只有一个，则 “()” 可省略
+            // const func = (x) => {
+            //     console.log(x);
+            // };
+
+            // func('一叶秋');
+
+            // 箭头函数中没有 this 指向，若在其中使用 this 关键字，this 会指向其定义位置的上下文的 this
+            // const iris = {
+            //     name: 'iris',
+            // };
+
+            // function fn() {
+            //     return () => {
+            //         console.log(this);
+            //     };
+            // }
+
+            // const resFn = fn.call(iris);
+
+            // resFn();
+
+            // // 箭头函数中的 this 指向的是定义时的 this，而不是执行时的 this
+            // uName = '一叶秋';
+
+            // var obj = {
+            //     uName: 'iris',
+            //     intriduce: () => {
+            //         console.log(this.uName);
+            //     },
+            // };
+
+            // obj.intriduce.call(this);
+
+            //// 剩余参数 ////
+
+            // function old() {
+            //     let total = 0;
+            //     for (let i = 0; i < arguments.length; i++) {
+            //         total += arguments[i];
+            //     }
+            //     console.log(a);
+            //     console.log(arguments);
+            //     return total;
+            // }
+
+            // console.log(old(1, 1, 2, 3));
+
+            // let sum = (...rest) => {
+            //     let total = 0;
+            //     rest.forEach((item) => {
+            //         total += item;
+            //     });
+            //     return total;
+            // };
+
+            // console.log(sum(1, 2, 3, 4));
+
+            //// 解构和剩余参数 ////
+            // let arr = ['王仙芝', '一叶秋', '李淳罡'];
+
+            // let [low, ...height] = arr;
+
+            // console.log(low);
+            // console.log(height);
+
+            //// 扩展运算符 ////
+
+            // let arr = ['一叶秋', '李淳罡', '王仙芝'];
+
+            // console.log(...arr);
+            // console.log('一叶秋', '李淳罡', '王仙芝');
+
+            // // 数组的合并
+            // let arr1 = ['一叶秋', '李淳罡'];
+            // let arr2 = ['王仙芝', '剑九黄'];
+
+            // let arr3 = [...arr1, ...arr2];
+
+            // console.log(arr3);
+
+            // // 等价于
+            // arr1.push(...arr2);
+            // console.log(arr1);
+
+            // // 将伪数组转为真正的数组(也可以加获取的标签元素集合转换为真正的数组)
+            // function sum() {
+            //     arguments = [...arguments];
+            //     let total = 0;
+            //     arguments.forEach((element) => {
+            //         total += element;
+            //     });
+            //     return total;
+            // }
+
+            // console.log(sum(1, 2, 3, 4));
+
+            //// Array 方法 ////
+
+            // // Array.from() 可将一个伪数组转换为真正的数组
+            // let arrayLike = {
+            //     0: '一叶秋',
+            //     1: '李淳罡',
+            //     2: '王仙芝',
+            //     length: 3,
+            // };
+
+            // let arr1 = Array.from(arrayLike);
+            // console.log(arr1);
+
+            // let arr2 = Array.from(arrayLike, (item) => item + '木马牛');
+            // console.log(arr2);
+
+            // // arr.find() 查找数组中满足条件的元素，找不到时返回 undefined
+            // let animals = [
+            //     {
+            //         id: 1,
+            //         name: '妞妞',
+            //     },
+            //     {
+            //         id: 2,
+            //         name: '可可',
+            //     },
+            // ];
+
+            // let target = animals.find((item) => item.id == 1);
+            // console.log(target);
+
+            // // arr.findIndex() 查找符合筛选条件的元素在数组中的下标
+            // let dogs = ['妞妞', '可可', '牛奶', '冬瓜'];
+
+            // let settle = dogs.findIndex((item, index) => item == '冬瓜');
+            // console.log(settle);
+
+            // // arr.includes() 判断数组中是否包含给定元素
+            // let cats = ['西瓜', '姜泥', '红豆', '青鸟'];
+            // console.log(cats.includes('姜泥'));
+
+            //// 模版字符串 ////
+
+            // // 模版字符串可以解析变量
+            // let nickname = 'iris';
+            // let str = `My name is ${nickname}`;
+            // console.log(str);
+
+            // // 模版字符串支持换行
+            // let sentence = `            每当我错过一个女孩，
+            // 我就往山上搬一块砖，
+            // 于是，
+            // 世界上就有了长城。`;
+            // console.log(sentence);
+
+            // // 模版字符串可以调用函数（接收函数返回值）
+            // let sum = (...rest) => {
+            //     let total = 0;
+            //     rest.forEach((item) => {
+            //         total += item;
+            //     });
+
+            //     return total;
+            // };
+
+            // let anwser = `1 + 2 + 3 = ${sum(1, 2, 3)}`;
+
+            // console.log(anwser);
+
+            // startsWith() 判断字符串是否以指定字符开始
+            // endsWith() 判断字符串是否以指定字符结尾
+
+            // let greet = 'hello world！';
+            // console.log(greet.startsWith('he'));
+            // console.log(greet.endsWith('!'));
+
+            // // repeat() 将指定字符重复 n 次
+            // let characters = 'iris '.repeat(12);
+            // console.log(characters);
+
+            //// 数据结构 set ////
+
+            // // set 具有 size 属性，表示其元素个数
+            // let s1 = new Set();
+            // console.log(s1.size);
+
+            // // set 具有去重的属性
+            // let arr = [1, 2, 3, 4, 4, 3, 2, 1];
+            // let s2 = new Set(arr);
+            // console.log(s2);
+            // console.log([...s2]);
+
+            // set 中的方法
+            let s3 = new Set();
+
+            s3.add('a').add('b').add('c');
+            console.log(s3);
+
+            let isHas = s3.has('b');
+            console.log(isHas);
+
+            let result = s3.delete('c');
+            console.log(result);
+            console.log(s3);
+
+            s3.clear();
+            console.log(s3);
+
+            // 遍历
+            let s4 = new Set(['a', 'b', 'c', 'd']);
+            s4.forEach((item) => {
+                console.log(item);
+            });
+        </script>
+    </body>
+</html>

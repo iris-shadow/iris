@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>伪元素选择器</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+        
+        @font-face {
+            font-family: "iconfont";
+            src: url('fonts/iconfont.woff2?t=1638257464659') format('woff2'), url('fonts/iconfont.woff?t=1638257464659') format('woff'), url('fonts/iconfont.ttf?t=1638257464659') format('truetype');
+        }
+        
+        .iconfont {
+            font-family: "iconfont" !important;
+            font-size: 16px;
+            font-style: normal;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        .nav {
+            position: relative;
+            left: 62px;
+            width: 200px;
+            height: 28px;
+            border-radius: 5px;
+            background-color: aquamarine;
+        }
+        
+        .nav::after {
+            position: absolute;
+            top: -2px;
+            right: 20px;
+            content: "\e6ec";
+            font-family: "iconfont";
+            font-size: 30px;
+        }
+        
+        .nav:hover::after {
+            color: coral;
+        }
+        
+        section {
+            position: relative;
+            top: 20px;
+            left: -30px;
+            width: 600px;
+            height: 250px;
+        }
+        
+        video {
+            width: 600px;
+        }
+        
+        section::after {
+            position: absolute;
+            left: 92px;
+            display: none;
+            width: 416px;
+            height: 250px;
+            background-color: rgb(0, 0, 0, .3);
+            text-align: center;
+            line-height: 250px;
+            font-family: "iconfont";
+            content: "\e600";
+            font-size: 50px;
+            color: white;
+        }
+        
+        section:hover::after {
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="nav"></div>
+    <section>
+        <video src="../media/mi.mp4" poster="../images/mi.jpg"></video>
+    </section>
+</body>
+
+</html>

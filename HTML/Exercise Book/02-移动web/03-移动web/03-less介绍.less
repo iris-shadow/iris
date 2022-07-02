@@ -1,0 +1,16 @@
+@color: cornflowerblue;
+@border: 10px;
+@baseFont: 20px;
+
+div {
+    width: 50% + 5;
+    height: (100rem / @baseFont);
+    border: @border solid tomato;
+    background-color: @color;
+    a {
+        color: red;
+        &:hover {
+            color: white;
+        }
+    }
+}

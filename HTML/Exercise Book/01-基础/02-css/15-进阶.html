@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>进阶</title>
+    <style>
+        input {
+            display: inline-block;
+            width: 220px;
+        }
+        
+        ul,
+        .pic p,
+        .page-id button,
+        .page-id input {
+            margin: 0px;
+            padding: 0px;
+            vertical-align: bottom;
+        }
+        
+        .clearfix:before,
+        .clearfix:after {
+            content: "";
+            display: table;
+        }
+        
+        .clearfix:after {
+            clear: both;
+        }
+        
+        .clear {
+            *zoom: 1;
+        }
+        
+        .blank {
+            border: 2px solid darkturquoise;
+        }
+        
+        .blank img {
+            width: 200px;
+            border: 1px solid coral;
+        }
+        
+        .row {
+            width: 710px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            border: 1px solid skyblue;
+        }
+        
+        .rows {
+            width: 300px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            margin-top: 20px;
+            border: 1px solid orange;
+        }
+        
+        .goods {
+            display: inline-block;
+            border: 2px dotted skyblue;
+        }
+        
+        .goods ul li {
+            list-style: none;
+            float: left;
+            width: 128px;
+            height: 128px;
+            margin: 5px 0px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            margin-left: -1px;
+        }
+        
+        .goods ul li:hover {
+            border-color: tomato;
+            position: relative;
+        }
+        
+        .pic {
+            width: 200px;
+            height: 100px;
+            padding: 5px;
+            border: 2px solid coral;
+            border-radius: 8px;
+            background-color: rgba(0, 0, 0, .1);
+            color: hotpink;
+        }
+        
+        .pic img {
+            height: 100%;
+            float: left;
+            margin-right: 5px;
+        }
+        
+        .pic span {
+            display: inline-block;
+            height: 100%;
+            width: 105px;
+        }
+        
+        .page-id {
+            text-align: center;
+        }
+        
+        .page-id ul li {
+            display: inline-block;
+            width: 26px;
+            height: 26px;
+            border: 1px solid #ccc;
+            background-color: #f7f7f7;
+        }
+        
+        .page-id ul li a {
+            color: #000;
+            text-decoration: none;
+            font-size: 14px;
+            text-align: center;
+            line-height: 26px;
+        }
+        
+        .page-id ul .prev,
+        .page-id ul .next {
+            width: 66px;
+        }
+        
+        .page-id ul .current,
+        .page-id ul .ellipsis {
+            border: 0px;
+            background-color: #fff;
+        }
+        
+        .page-id input {
+            width: 30px;
+            height: 26px;
+            background-color: #f7f7f7;
+            border: 1px solid #ccc;
+            outline: none;
+        }
+        
+        .page-id button {
+            width: 56px;
+            height: 28px;
+            border: 1px solid #ccc;
+            background-color: #f7f7f7;
+            cursor: pointer;
+        }
+        
+        .price {
+            width: 200px;
+            height: 68px;
+            margin: 0px auto;
+            border: 2px solid coral;
+            border-radius: 20px;
+            background-color: #fff;
+            line-height: 68px;
+            text-align: center;
+        }
+        
+        .price .surprise {
+            position: relative;
+            float: left;
+            width: 120px;
+            height: 68px;
+            background-color: skyblue;
+            border-top-left-radius: 18px;
+            border-bottom-left-radius: 18px;
+            font-size: 50px;
+            font-weight: 700;
+            color: #fff;
+        }
+        
+        i {
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            width: 0px;
+            height: 0px;
+            /* border-top: 40px;
+            border-right: 20px;
+            border-bottom: 40px;
+            border-left: 20px; */
+            border-width: 68px 34px 0px 0px;
+            border-style: solid;
+            border-color: transparent #fff transparent transparent;
+            margin-left: 200px;
+        }
+        
+        .price .original {
+            text-decoration: line-through;
+            font-size: 20px;
+            color: #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>鼠标样式</h3>
+    <p>代码： cursor:</p>
+    <ul>
+        <li style="cursor: text">text</li>
+        <li style="cursor: move">move</li>
+        <li style="cursor: pointer">pointer</li>
+        <li style="cursor: not-allowed">not-allowed</li>
+    </ul>
+
+    <h3>用户界面</h3>
+    <input type="text" value="在光标定位到表单时，其外边框有蓝色线条" />
+    <input style="outline: none;" type="text" value="取消代码：outline: none|0px;" />
+    <textarea style="display: block; width:600px; resize: none; outline: none;">在文本域标签使用样式代码： resize: none; 可取消其拖动属性；同样可以使用 outline: none 取消其外边框蓝色线条</textarea>
+    <textarea>
+        
+        要注意在 &lt;textarea&gt;标签中不能有换行，换行会占用其内容
+    </textarea>
+
+    <h3>vertical-align</h3>
+    <p>只适用于行内块和行内元素，可设置其与文字的对齐方式：vertical-align: top|middle|baseline|bottom;</p>
+    <strong>请留言：</strong><textarea style="vertical-align: middle;"></textarea>
+
+    <h3>图片底部空白解决方案</h3>
+    <div class="blank">
+        <img src="./images/sad.png" alt=""> <span>jiejue方案：1.使用 vertical-align 属性设置除基线以外的值；2.将 img 转换为块级元素，其不再有 vertical-align 属性</span>
+    </div>
+
+    <h3>文字溢出显示省略号</h3>
+    <div class="row">单行显示步骤：1.强制内容一行显示-&gt;white-space: nowrap; 2.隐藏溢出的文字-&gt;overflow: hidden; 3.使用省略号代替溢出部分->text-overflow: ellipsis;</div>
+
+    <div class="rows">多行显示：overflow: hidden; text-overflow: ellipsis; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;</div>
+
+    <h3>布局- margin 负值 和 border 显示</h3>
+    <div class="goods clearfix">
+        <ul>
+            <li>使用 margin-left: -n 可使元素边框合并，从而避免加粗中间边框</li>
+            <li>使用 margin 负值后，若要在鼠标经过时变换边框颜色，此时中间边框可能会被隐藏不能显示</li>
+            <li>解决方案：</li>
+            <li>1. 在 li 元素没有定位时，可使用 position: relative 来提高显示层级（占据位置）</li>
+            <li>2. 在 li 元素存在定位时，使用 z-index: m 来提高显示层级</li>
+        </ul>
+    </div>
+
+    <h3>布局-文字围绕浮动元素</h3>
+    <div class="pic">
+        <img src="./images/Snipaste_2021-11-18_21-01-01.png" alt="">
+        <span>打针只是一瞬间，温柔融化心尖尖</span>
+    </div>
+
+    <h3>布局-行内块运用</h3>
+    <div class="page-id">
+        <ul>
+            <li class="prev"><a href="#">&lt;&lt;上一页</a></li>
+            <li><a href="#">1</a></li>
+            <li class="current"><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li class="ellipsis"><a href="#">...</a></li>
+            <li><a href="#">9</a></li>
+            <li class="next"><a href="#">&gt;&gt;下一页</a></li>
+            到第
+            <input type="text" /> 页
+            <button>确定</button>
+        </ul>
+    </div>
+
+    <h3>三角形加强</h3>
+    <div class="price">
+        <span class="surprise">¥1
+            <i></i>
+        </span>
+        <span class="original">$9999</span>
+        <span></span>
+
+    </div>
+</body>
+
+</html>

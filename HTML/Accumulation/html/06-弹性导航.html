@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/06-弹性导航.css">
+    <title>弹性导航</title>
+</head>
+
+<body>
+    <div class="nav-wrap">
+        <nav>
+            <!-- 单选框，设置 id 用于出发动画 -->
+            <input type="radio" name="tab" id="home" checked>
+            <input type="radio" name="tab" id="comment">
+            <input type="radio" name="tab" id="envelope">
+            <input type="radio" name="tab" id="heart">
+            <input type="radio" name="tab" id="user">
+            <!-- label -->
+            <label for="home" class="home">
+                <a href="#"><i class="fa fa-home"></i>Home</a>
+            </label>
+            <label for="comment" class="comment">
+                <a href="#"><i class="fa fa-comment"></i>Comment</a>
+            </label>
+            <label for="envelope" class="envelope">
+                <a href="#"><i class="fa fa-envelope"></i>Envelope</a>
+            </label>
+            <label for="heart" class="heart">
+                <a href="#"><i class="fa fa-heart"></i>Heart</a>
+            </label>
+            <label for="user" class="user">
+                <a href="#"><i class="fa fa-user"></i>User</a>
+            </label>
+            <!-- 用于制作动画的 selected -->
+            <div class="selected"></div>
+        </nav>
+    </div>
+</body>
+
+</html>

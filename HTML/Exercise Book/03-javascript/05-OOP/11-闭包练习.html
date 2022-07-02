@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width" />
+        <title>闭包练习</title>
+    </head>
+
+    <body>
+        <script>
+            // 在 for 循环内使用定时器输出 0、1、2、3、4、5
+
+            for (var i = 0; i < 6; i++) {
+                (function (index) {
+                    setTimeout(function () {
+                        console.log(index);
+                    }, i * 1000);
+                })(i);
+            }
+        </script>
+    </body>
+</html>

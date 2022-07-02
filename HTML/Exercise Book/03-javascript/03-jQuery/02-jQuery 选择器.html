@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="jQuery.mini.js"></script>
+        <title>jQuery 选择器</title>
+    </head>
+
+    <body>
+        <ul>
+            <li>朕可是太高冷</li>
+            <li class="second">朕可是太高冷</li>
+            <li>朕可是太高冷</li>
+            <li>朕可是太高冷</li>
+            <li>朕可是太高冷</li>
+        </ul>
+
+        <script>
+            //
+            // 基本选择器，类似于 css 的选择器
+            // 选中元素后会进行隐式迭代，将每个元素进行相同的操作；注册事件时也会给每个元素绑定事件
+            $('ul li').css('color', 'skyblue');
+
+            // 筛选选择器
+            $('ul li:first').css('backgroundColor', 'tomato');
+            $('ul li:eq(3)').css('fontSize', '18px');
+
+            // 父子代选择器
+            $('.second').parent().css('border', '1px solid #ccc'); // 最近一级的父元素
+            $('ul').children('li').css('fontWeight', '700'); // 最近一级的子元素，相当于子代选择器
+            // $('ul').find(''); // 所有的子元素，相当于后代选择器
+
+            // 兄弟选择器
+            $('ul li').eq(3).siblings().css('color', 'lightblue'); // 除了自己之外的所有兄弟元素
+            $('ul li:eq(3)').nextAll().css('textAlign', 'center');
+            $('ul li:eq(3)').prevAll().css('textAlign', 'right');
+        </script>
+    </body>
+</html>

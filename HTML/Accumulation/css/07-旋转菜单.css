@@ -1,0 +1,162 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: -webkit-linear-gradient(top, #8ffff9, #fa9ab9);
+}
+
+.menu-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 80px;
+    height: 80px;
+}
+
+.menu-wrap .menu .trigger {
+    position: relative;
+    z-index: 1;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    opacity: 0;
+}
+
+.menu-wrap .menu .trigger-switch::before,
+.menu-wrap .menu .trigger-switch::after,
+.menu-wrap .menu .trigger-switch {
+    margin: auto;
+    display: block;
+    position: absolute;
+    top: 37.5px;
+    left: 20px;
+    z-index: 0;
+    width: 40px;
+    height: 5px;
+    background-color: #fff;
+    border-radius: 2.5px;
+    transition: top .3s ease-in-out, transform .3s ease-in-out .3s;
+}
+
+.menu-wrap .menu .trigger-switch::before {
+    content: '';
+    top: -10px;
+    left: 0;
+}
+
+.menu-wrap .menu .trigger-switch::after {
+    content: '';
+    top: 10px;
+    left: 0;
+}
+
+.menu-wrap .menu .trigger:checked~.trigger-switch {
+    background-color: transparent;
+}
+
+.menu-wrap .menu .trigger:checked~.trigger-switch::before {
+    top: 0px;
+    transform: rotate(-45deg);
+}
+
+.menu-wrap .menu .trigger:checked~.trigger-switch::after {
+    top: 0px;
+    transform: rotate(45deg);
+}
+
+.menu-wrap .menu .menu-items li {
+    opacity: 0;
+}
+
+.menu-wrap .menu .menu-items li {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    width: 80px;
+    height: 80px;
+    background-color: rgba(255, 255, 255, .2);
+    text-align: center;
+    line-height: 80px;
+    border-radius: 50%;
+    transition: all .8s;
+}
+
+.menu-items li a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    color: rgba(255, 255, 255, .7);
+    font-size: 40px;
+    border-radius: 50%;
+}
+
+.menu-wrap .menu .trigger:checked~.menu-items li {
+    opacity: 1;
+}
+
+.menu-wrap .menu .trigger:checked~.menu-items li:nth-child(1) {
+    transform: translateX(110px);
+}
+
+.menu-wrap .menu .trigger:checked~.menu-items li:nth-child(2) {
+    transform: rotate(60deg) translateX(110px);
+}
+
+.menu-wrap .menu .trigger:checked~.menu-items li:nth-child(3) {
+    transform: rotate(120deg) translateX(110px);
+}
+
+.menu-wrap .menu .trigger:checked~.menu-items li:nth-child(4) {
+    transform: rotate(180deg) translateX(110px);
+}
+
+.menu-wrap .menu .trigger:checked~.menu-items li:nth-child(5) {
+    transform: rotate(240deg) translateX(110px);
+}
+
+.menu-wrap .menu .trigger:checked~.menu-items li:nth-child(6) {
+    transform: rotate(300deg) translateX(110px);
+}
+
+.menu-wrap .menu .menu-items li:nth-child(2) a {
+    transform: rotate(-60deg);
+}
+
+.menu-wrap .menu .menu-items li:nth-child(3) a {
+    transform: rotate(-120deg);
+}
+
+.menu-wrap .menu .menu-items li:nth-child(4) a {
+    transform: rotate(-180deg);
+}
+
+.menu-wrap .menu .menu-items li:nth-child(5) a {
+    transform: rotate(-240deg);
+}
+
+.menu-wrap .menu .menu-items li:nth-child(6) a {
+    transform: rotate(-270deg);
+}
+
+.menu-wrap .menu .menu-items li a:hover {
+    color: #fff;
+    font-size: 45px;
+    background-color: rgaba(255, 255, 255, .4);
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, .1), inset 2px 2px 10px rgba(255, 255, 255, .3), inset -2px -2px 6px rgba(0, 0, 0, .1);
+}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>消灭星星案例</title>
+        <style>
+            * {
+                padding: 0;
+                margin: 0;
+            }
+
+            body {
+                height: 100vh;
+                background-color: #000;
+            }
+
+            img {
+                position: absolute;
+            }
+        </style>
+    </head>
+
+    <body>
+        <script>
+            console.log(document.body.offsetWidth, document.body.offsetHeight);
+            setInterval(function () {
+                // 随机生成一个宽度值
+                var width = parseInt(Math.random() * 131 + 20);
+
+                // 创建一个 img 元素
+                var star = document.createElement('img');
+
+                // 声明 src
+                star.src = '../media/images/star.gif';
+                // 声明 width
+                star.style.width = width + 'px';
+
+                // 随机生成一个 left
+                var left = parseInt(Math.random() * (document.body.offsetWidth - width));
+                // 随机生成一个 top
+                var top = parseInt(Math.random() * (document.body.offsetHeight - width));
+
+                // 声明 left、top
+                star.style.left = left + 'px';
+                star.style.top = top + 'px';
+
+                // 给 star 加上事件委托
+                document.body.addEventListener('click', function (event) {
+                    document.body.removeChild(event.target);
+                });
+
+                document.body.appendChild(star);
+            }, 1000);
+        </script>
+    </body>
+</html>

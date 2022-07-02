@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script src="../js/vue.js"></script>
+		<title>computed</title>
+	</head>
+
+	<body>
+		<div id="app">
+			<h2>总吨位：{{totalWeight}}</h2>
+		</div>
+
+		<script>
+			const app = new Vue({
+				el: '#app',
+				data: {
+					message: 'Hello Vuejs!',
+					bigPotatos: [
+						{ id: 100, name: '傻妞', weight: 3 },
+						{ id: 101, name: '二哈', weight: 5 },
+						{ id: 102, name: '可可', weight: 1 },
+						{ id: 103, name: '扁担', weight: 36 },
+					],
+				},
+
+				// 计算属性，在重复使用时，性能比 methods 高，因为其具有缓存
+				computed: {
+					totalWeight: function () {
+						let sum = 0
+						this.bigPotatos.forEach(item => {
+							sum += item.weight
+						})
+						return sum
+					},
+				},
+			})
+		</script>
+	</body>
+</html>

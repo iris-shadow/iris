@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>表单案例</title>
+</head>
+
+<body>
+    <h4>每当我错过一个女孩，我就往山上般一块砖，于是世界上就有了长城</h4>
+    <table width="600">
+        <!-- 性别 -->
+        <tr>
+            <td>性别：</td>
+            <td>
+                </label> <input id="male" type="radio" name="gender" checked="checked"/> <label for="male">男 <img src="images/man.jpg" />
+                <input id="female" type="radio" name="gender"/> <label for="female">女 <img src="images/women.jpg" /></label> 
+            </td>
+        </tr>
+        <!-- 生日 -->
+        <tr>
+            <td>生日：</td>
+            <td>
+                <select>
+                    <option>--请选择年--</option>
+                    <option>1999</option>
+                    <option>2000</option>
+                </select>
+                <select>
+                    <option>--请选择月--</option>
+                    <option>11</option>
+                    <option>12</option>
+                </select>
+                <select>
+                    <option>--请选择日--</option>
+                    <option>18</option>
+                    <option>19</option>
+                </select>
+            </td>
+        </tr>
+        <!-- 所在地区 -->
+        <tr>
+            <td><label for="addr">所在地区：</label></td>
+            <td>
+                <input id="addr" type="text"/>
+            </td>
+        </tr>
+        <!-- 婚姻状况 -->
+        <tr>
+            <td>婚姻状况：</td>
+            <td>
+                <input id="married" type="radio" name="marry" checked="checked"/> <label for="married">已婚</label>
+                <input id="unmarried" type="radio" name="marry"/> <label for="unmarried">未婚</label>
+                <input id="divorce" type="radio" name="marry"/> <label for="divorce">离婚</label>
+            </td>
+        </tr>
+        <!-- 学历 -->
+        <tr>
+            <td>学历：</td>
+            <td>
+                <select>
+                    <option>幼儿园</option>
+                    <option selected="selected">小学</option>
+                    <option>初中</option>
+                    <option>高中</option>
+                    <option>本科</option>
+                    <option>研究生</option>
+                    <option>博士</option>
+                    <option>博士后</option>
+                    <option>院士</option>
+                </select>
+            </td>
+        </tr>
+        <!-- 喜欢类型 -->
+        <tr>
+            <td>喜欢类型：</td>
+            <td>
+                <input id="sweet" type="checkbox" name="type"/> <label for="sweet">甜蜜的</label>
+                <input id="cute" type="checkbox" name="type"/> <label for="cute">可爱的</label>
+                <input id="fresh" type="checkbox" name="type"/> <label for="fresh">小鲜肉</label>
+                <input id="bacon" type="checkbox" name="type"/> <label for="bacon">老腊肉</label>
+                <input id="all" type="checkbox" name="type" checked="checked"/> <label for="all">都喜欢</label>
+            </td>
+        </tr>
+        <!-- 个人介绍 -->
+        <tr>
+            <td><label for="introduce">个人介绍：</label></td>
+            <td><textarea id="introduce"></textarea></td>
+        </tr>
+        <!-- 注册 -->
+        <tr>
+            <td rowspan="6"></td>
+            <td><input type="submit" value="立即注册"/></td>
+        </tr>
+        <!-- 条款同意 -->
+        <tr>
+            <td><input type="checkbox" checked="checked"/> 我同意注册条款和会员加入标准</td>
+        </tr>
+        <!-- 会员登录 -->
+        <tr>
+            <td>我是会员，<a href="http:www.baidu.com">立即登录</a></td>
+        </tr>
+        <!-- 空行 -->
+        <tr>
+            <td><br /></td>
+        </tr>
+        <!-- 承诺 -->
+        <tr>
+            <td><strong>我承诺：</strong></td>
+        </tr>
+        <tr>
+            <td>
+                <ul>
+                    <li>年满18岁、单身</li>
+                    <li>抱着严谨的态度</li>
+                    <li>真诚寻找另一半</li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

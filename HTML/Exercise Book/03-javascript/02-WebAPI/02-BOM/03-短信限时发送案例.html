@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>短信限时发送案例</title>
+    </head>
+
+    <body>
+        <input type="tel" name="telphone" id="telphone" /><button>发送</button>
+
+        <script>
+            var button = document.querySelector("button");
+            // 剩余秒数
+            var counter = 10;
+
+            // 定义限时操作的函数
+            function limit() {
+                // 剩余秒数为 0 时取消按钮禁用，改变按钮内容
+                if (counter == 0) {
+                    clearInterval(timer);
+                    button.disabled = false;
+                    button.innerHTML = "发送";
+                    counter = 10;
+                } else {
+                    // 动态显示剩余秒数
+                    button.innerHTML = "还剩" + counter + "秒可再次点击";
+                    counter--;
+                }
+            }
+
+            button.addEventListener("click", function () {
+                // 点击之后禁用按钮
+                button.disabled = true;
+                // 调用计时器
+                timer = setInterval(limit, 1000);
+            });
+        </script>
+    </body>
+</html>

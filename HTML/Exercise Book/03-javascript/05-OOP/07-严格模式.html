@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>严格模式</title>
+    </head>
+
+    <body>
+        <script>
+            // 使用严格模式
+            'use strict';
+
+            //// 严格模式下的 this 指向 ////
+
+            // 1. 全局作用域的函数中 this 不再是 window，而是 undefined
+            function func() {
+                console.log(this);
+            }
+
+            func();
+
+            // 2. 构造函数必须要进行实例化后，使用实例进行调用
+            function Dog(name) {
+                this.name = name;
+                this.say = function () {
+                    console.log('非严格模式下才能使用构造函数本身调用');
+                };
+            }
+
+            // Dog();
+            var shadow = new Dog('夕豆');
+            shadow.say();
+
+            // 3. 定时器的 this 仍然指向 window 对象
+            // 4. 事件、对象还是指向调用者
+
+            //// 严格模式下的函数变化 ////
+
+            // 1. 存在多个参数时，参数名不能相通
+
+            // function sum(param, param) {
+            //     console.log(param + param);
+            // }
+
+            function sum(param1, param2) {
+                console.log(param1 + param2);
+            }
+
+            sum(1, 2);
+
+            // 2. 不能在非函数的代码块内声明函数（块级作用域，if、for 等的 ”{}“ 内）
+        </script>
+    </body>
+</html>

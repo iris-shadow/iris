@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>递归</title>
+    </head>
+
+    <body>
+        <script>
+            // // 阶乘
+            // function recursion(n) {
+            //     if (n == 1) {
+            //         return 1;
+            //     }
+
+            //     return n-- * recursion(n);
+            // }
+
+            // console.log(recursion(5));
+
+            // // 斐波那契
+            // // 1 1 2 3 5 8 13 21 44
+            // function fibonacci(n) {
+            //     if (n == 1 || n == 2) {
+            //         return 1;
+            //     } else {
+            //         return fibonacci(n - 1) + fibonacci(n - 2);
+            //     }
+            // }
+
+            // console.log(fibonacci(4));
+
+            // function fibonacci(n) {
+            //     function fib(n, v1, v2) {
+            //         if (n == 1) return v1;
+            //         if (n == 2) return v2;
+            //         else return fib(n - 1, v2, v1 + v2);
+            //     }
+            //     return fib(n, 1, 1);
+            // }
+            // console.log(fibonacci(3));
+
+            // 根据产品 id 获取对应的产品
+            var products = [
+                {
+                    id: 1,
+                    name: '动物',
+                    items: [
+                        {
+                            id: 11,
+                            name: '猫咪',
+                            items: [
+                                {
+                                    id: 111,
+                                    name: '冬瓜',
+                                },
+                                {
+                                    id: 112,
+                                    name: '妞妞',
+                                },
+                            ],
+                        },
+                        {
+                            id: 12,
+                            name: '狗狗',
+                            items: [
+                                {
+                                    id: 121,
+                                    name: '夕豆',
+                                },
+                                {
+                                    id: 122,
+                                    name: '牛奶',
+                                },
+                            ],
+                        },
+                    ],
+                },
+                {
+                    id: 2,
+                    name: '水果',
+                    items: [
+                        {
+                            id: 21,
+                            name: '苹果',
+                            items: [
+                                {
+                                    id: 211,
+                                    name: '青苹果',
+                                },
+                                {
+                                    id: 212,
+                                    name: '红苹果',
+                                },
+                            ],
+                        },
+                        {
+                            id: 22,
+                            name: '橘子',
+                            items: [
+                                {
+                                    id: 221,
+                                    name: '青橘子',
+                                },
+                                {
+                                    id: 222,
+                                    name: '红橘子',
+                                },
+                            ],
+                        },
+                    ],
+                },
+            ];
+
+            var product;
+            function getProducts(data, id) {
+                data.forEach(function (elem) {
+                    if (elem.id == id) {
+                        product = elem;
+                    } else if (elem.items && elem.items.length > 0) {
+                        product = getProducts(elem.items, id);
+                    }
+                });
+                return product;
+            }
+
+            console.log(getProducts(products, 1));
+            console.log(getProducts(products, 22));
+            console.log(getProducts(products, 222));
+        </script>
+    </body>
+</html>

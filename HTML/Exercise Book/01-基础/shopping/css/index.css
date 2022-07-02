@@ -1,0 +1,163 @@
+/* main 专有部分 */
+
+.main {
+    height: 455px;
+    margin-top: 10px;
+}
+
+
+/* 轮播图模块 */
+
+.focus {
+    position: relative;
+    float: left;
+    width: 721px;
+    height: 455px;
+    margin-left: 220px;
+}
+
+
+/* 轮播图导航按钮 */
+
+.focus .promo_nav {
+    position: absolute;
+    left: 50%;
+    bottom: 18px;
+    margin-left: -36px;
+    width: 64px;
+    height: 12px;
+    border-radius: 6px;
+    background-color: rgba(255, 255, 255, 0.33);
+}
+
+.focus .promo_nav ul li {
+    float: left;
+    width: 8px;
+    height: 8px;
+    border-radius: 4px;
+    margin: 2px 4px;
+    background-color: #fff;
+}
+
+.focus .promo_nav ul .selected {
+    background-color: #c81623;
+}
+
+
+/* 轮播图前进后退按钮 */
+
+.focus .prev,
+.next {
+    position: absolute;
+    top: 50%;
+    width: 20px;
+    height: 30px;
+    margin-top: -15px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    background-color: rgba(255, 255, 255, 0.33);
+    line-height: 30px;
+    text-align: center;
+    font-family: "icomoon";
+    font-size: 16px;
+}
+
+.focus .next {
+    right: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+
+/* 快报模块 */
+
+.newsflash {
+    float: right;
+    width: 250px;
+    height: 455px;
+}
+
+
+/* 新闻模块 */
+
+.newsflash .news {
+    width: 250px;
+    height: 165px;
+    border: 1px solid #e4e4e4;
+}
+
+.newsflash .news .news_hd {
+    height: 33px;
+    padding: 0px 15px;
+    border-bottom: 1px dotted #e4e4e4;
+    line-height: 33px;
+}
+
+.newsflash .news .news_hd h5 {
+    font-size: 14px;
+}
+
+.newsflash .news .news_hd a::after {
+    font-family: "icomoon";
+    content: "\e920";
+}
+
+.newsflash .news .news_bd {
+    padding: 6px 15px;
+}
+
+.newsflash .news .news_bd ul li {
+    height: 24px;
+    line-height: 24px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+
+/* 生活服务模块 */
+
+.newsflash .life_service {
+    width: 250px;
+    height: 209px;
+    overflow: hidden;
+    border: 1px solid #e4e4e4;
+    border-top: 0px;
+}
+
+.newsflash .life_service ul {
+    width: 252px;
+}
+
+.newsflash .life_service ul li {
+    position: relative;
+    float: left;
+    width: 63px;
+    height: 72px;
+    border-right: 1px solid #e4e4e4;
+    border-bottom: 1px solid #e4e4e4;
+    text-align: center;
+}
+
+.newsflash .life_service ul li img {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+
+.newsflash .life_service ul li a i {
+    display: inline-block;
+    width: 20px;
+    height: 25px;
+    margin-top: 12px;
+    background-color: tomato;
+}
+
+
+/* 砍价模块 */
+
+.newsflash .bargain {
+    margin-top: 5px;
+}

@@ -1,0 +1,74 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: radial-gradient(circle at center, #555, #000);
+}
+
+.button-wrap a {
+    display: block;
+    position: relative;
+    width: 140px;
+    height: 40px;
+    margin-bottom: 40px;
+    color: plum;
+    text-align: center;
+    line-height: 40px;
+    font-weight: 700;
+    font-size: 20px;
+    /* 取到当前元素自定义属性值并乘以角度 */
+    filter: hue-rotate(calc(var(--i) * 60deg));
+    transition: all .2s ease-in-out .3s;
+}
+
+.button-wrap a:last-child {
+    margin-bottom: 0;
+}
+
+.button-wrap a::before,
+.button-wrap a::after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 2px solid plum;
+    transition: all .2s ease-in-out;
+}
+
+.button-wrap a::before {
+    top: 0;
+    left: 0;
+    border-right: 0;
+    border-bottom: 0;
+}
+
+.button-wrap a::after {
+    right: 0;
+    bottom: 0;
+    border-top: 0;
+    border-left: 0;
+}
+
+.button-wrap a:hover {
+    /* 下投影， 1px 是投影与元素间的距离 */
+    -webkit-box-reflect: below 1px linear-gradient(transparent, rgba(0, 0, 0, .3));
+    background-color: plum;
+    color: #fff;
+    box-shadow: 0 0 40px plum;
+}
+
+.button-wrap a:hover::before,
+.button-wrap a:hover::after {
+    width: 138px;
+    height: 38px;
+}

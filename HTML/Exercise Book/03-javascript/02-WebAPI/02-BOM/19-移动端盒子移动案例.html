@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>移动端盒子移动案例</title>
+        <style>
+            .box {
+                position: absolute;
+                width: 200px;
+                height: 200px;
+                background-color: cornflowerblue;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="box"></div>
+
+        <script>
+            var box = document.querySelector(".box");
+
+            // event.touches 获取到所有触摸屏幕手指信息的一个列表
+            // event.targetTouches 获取触摸当前 DOM 元素的所有手指信息的一个列表
+            // event.changeTaches 获取手指离开屏幕状态的信息
+
+            // 声明记录手指坐标的 touchX 和 touchY
+            var touchX = 0;
+            var touchY = 0;
+
+            // 声明记录盒子原始坐标的 originX 和 originY
+            var originX = 0;
+            var originY = 0;
+
+            // touchstart 事件，手指触摸时触发
+            box.addEventListener("touchstart", function (event) {
+                // 获取手指按下时的坐标
+                touchX = event.targetTouches[0].pageX;
+                touchY = event.targetTouches[0].pageY;
+                // 获取盒子原始坐标
+                originX = this.offsetLeft;
+                originY = this.offsetTop;
+            });
+
+            // touchmove 事件，手指拖动时触发
+            box.addEventListener("touchmove", function (event) {
+                // 盒子的移动的坐标 = 盒子原始坐标 + 手指移动坐标
+                this.style.left = originX + event.targetTouches[0].pageX - touchX + "px";
+                this.style.top = originY + event.targetTouches[0].pageY - touchY + "px";
+
+                // 手指滑动时会有滑动屏幕的默认事件发生，使用 event.preventDefault() 阻止
+                event.preventDefault();
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,37 @@
+{
+  "id": "2971213",
+  "name": "banner-slider",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "轮播图",
+  "glyphs": [
+    {
+      "icon_id": "5387571",
+      "name": "箭头_列表向右",
+      "font_class": "jiantou_liebiaoxiangyou",
+      "unicode": "eb03",
+      "unicode_decimal": 60163
+    },
+    {
+      "icon_id": "5387574",
+      "name": "箭头_列表向左",
+      "font_class": "jiantou_liebiaoxiangzuo",
+      "unicode": "eb04",
+      "unicode_decimal": 60164
+    },
+    {
+      "icon_id": "5387932",
+      "name": "箭头_页面_向右_o",
+      "font_class": "jiantou_yemian_xiangyou_o",
+      "unicode": "eb93",
+      "unicode_decimal": 60307
+    },
+    {
+      "icon_id": "5387935",
+      "name": "箭头_页面_向左_o",
+      "font_class": "jiantou_yemian_xiangzuo_o",
+      "unicode": "eb94",
+      "unicode_decimal": 60308
+    }
+  ]
+}

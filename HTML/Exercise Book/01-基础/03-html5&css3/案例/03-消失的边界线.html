@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>消失的边界线</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+        
+        li {
+            list-style: none;
+        }
+        
+        .clearfix::before,
+        .clearfix::after {
+            content: "";
+            display: table;
+        }
+        
+        .clearfix::after {
+            clear: both;
+        }
+        
+        .clear {
+            *zoom: 1;
+        }
+        
+        .sheet {
+            width: 304px;
+            margin: 50px auto 0px;
+            border-radius: 5px;
+            background-color: skyblue;
+        }
+        
+        .sheet ul li {
+            float: left;
+            width: 100px;
+            height: 30px;
+            border-right: 2px solid tomato;
+            margin-bottom: 10px;
+            text-align: center;
+            line-height: 30px;
+        }
+        
+        .sheet ul li:nth-child(3n) {
+            border-right: 0px;
+        }
+        
+        .sheet ul li:last-of-type {
+            margin-bottom: 0px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="sheet clearfix">
+        <ul>
+            <li>每</li>
+            <li>当</li>
+            <li>我</li>
+            <li>错</li>
+            <li>过</li>
+            <li>一</li>
+            <li>个</li>
+        </ul>
+    </div>
+</body>
+
+</html>

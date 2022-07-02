@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>阴阳师</title>
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+            box-sizing: border-box;
+        }
+        
+        div[class^=cartoon] {
+            position: absolute;
+            left: -200px;
+            bottom: 0px;
+            background-repeat: no-repeat;
+        }
+        
+        .cartoon01 {
+            width: 154px;
+            height: 121px;
+            background-image: url(./images/cartoon01.png);
+            animation: play 15s linear infinite, walk-cartoon01 .5s steps(2) infinite;
+        }
+        
+        .cartoon02 {
+            width: 167px;
+            height: 176px;
+            background-image: url(./images/cartoon02.png);
+            animation: play 15s linear 2s infinite, walk-cartoon02 .5s steps(2) infinite;
+        }
+        
+        .cartoon03 {
+            width: 161px;
+            height: 149px;
+            background-image: url(./images/cartoon03.png);
+            animation: play 15s linear 4s infinite, walk-cartoon03 .5s steps(2) infinite;
+        }
+        
+        .cartoon04 {
+            width: 171px;
+            height: 157px;
+            background-image: url(./images/cartoon04.png);
+            animation: play 15s linear 6s infinite, walk-cartoon04 .5s steps(2) infinite;
+        }
+        
+        div[class^=cartoon]:hover {
+            animation-play-state: paused;
+        }
+        
+        @keyframes play {
+            from {
+                transform: translateX(-200px);
+            }
+            to {
+                transform: translateX(1920px);
+            }
+        }
+        
+        @keyframes walk-cartoon01 {
+            from {
+                background-position: 0px 0px;
+            }
+            to {
+                background-position: -308px 0px;
+            }
+        }
+        
+        @keyframes walk-cartoon02 {
+            from {
+                background-position: 0px 0px;
+            }
+            to {
+                background-position: -334px 0px;
+            }
+        }
+        
+        @keyframes walk-cartoon03 {
+            from {
+                background-position: 0px 0px;
+            }
+            to {
+                background-position: -322px 0px;
+            }
+        }
+        
+        @keyframes walk-cartoon04 {
+            from {
+                background-position: 0px 0px;
+            }
+            to {
+                background-position: -342px 0px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cartoon01"></div>
+    <div class="cartoon02"></div>
+    <div class="cartoon03"></div>
+    <div class="cartoon04"></div>
+</body>
+
+</html>

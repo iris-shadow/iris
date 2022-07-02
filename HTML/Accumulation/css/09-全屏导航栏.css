@@ -1,0 +1,142 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+/* 初始界面 */
+
+.nav-wrap .poster {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    line-height: 80px;
+    letter-spacing: 15px;
+    font-size: 30px;
+}
+
+
+/* 导航按钮 */
+
+.nav-wrap .switch {
+    position: absolute;
+    z-index: 2;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(200deg, #ec77ab, #7873f5);
+    text-align: center;
+    line-height: 50px;
+    color: #fff;
+    font-size: 20px;
+    border-radius: 50%;
+}
+
+.nav-wrap input {
+    display: none;
+}
+
+.nav-wrap input:checked~.switch {
+    background: #fff;
+}
+
+.nav-wrap input:checked~.switch i::before {
+    content: "\f00d";
+    color: #ec77ab;
+}
+
+
+/* 导航栏 */
+
+
+/* fixed 定位以浏览器的可视区域为基点 */
+
+
+/* .nav-wrap .nav {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(200deg, #ec77ab, #7873f5);
+    clip-path: circle(25px at calc(100% - 45px) 45px);
+    transition: all .6s ease-in-out;
+}
+
+.nav-wrap .nav ul {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+} */
+
+.nav-wrap .nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(200deg, #ec77ab, #7873f5);
+    clip-path: circle(25px at calc(100% - 45px) 45px);
+    transition: all .6s ease-in-out;
+}
+
+.nav-wrap input:checked~.nav {
+    clip-path: circle(75%);
+}
+
+.nav-wrap .nav ul li {
+    margin: 30px 0;
+    text-align: center;
+}
+
+.nav-wrap .nav ul li a {
+    box-sizing: border-box;
+    position: relative;
+    z-index: 1;
+    padding: 5px 50px;
+    color: #fff;
+    line-height: 50px;
+    font-weight: 500;
+    font-size: 30px;
+}
+
+
+/* ::after 做悬浮效果 */
+
+.nav-wrap .nav ul li a::after {
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background-color: #fff;
+    border-radius: 25px;
+    transform: scaleY(0);
+    transition: transform .3s ease-in-out;
+}
+
+.nav-wrap .nav ul li a:hover {
+    color: #ec77ab;
+}
+
+.nav-wrap .nav ul li a:hover::after {
+    transform: scaleY(1);
+}

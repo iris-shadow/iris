@@ -1,0 +1,47 @@
+h3 {
+    color: cadetblue;
+}
+
+h4 {
+    color: darkgoldenrod;
+    font-weight: nomal;
+}
+
+p {
+    color: darkseagreen;
+    text-indent: 2em;
+    line-height: 26px;
+}
+
+body {
+    color: #65c9e2;
+}
+
+a {
+    text-decoration: none;
+    color: lightpink;
+}
+
+.center {
+    text-align: center;
+}
+
+.right {
+    text-align: right;
+}
+
+.left {
+    text-align: left;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+.overline {
+    text-decoration: overline;
+}
+
+.line_through {
+    text-decoration: line-through;
+}

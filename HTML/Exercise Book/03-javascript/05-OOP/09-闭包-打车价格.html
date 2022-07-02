@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>闭包-打车价格</title>
+    </head>
+
+    <body>
+        <script>
+            // 起步价为 7 元，超过 3 公里，每公里加收 3 元。遇到堵车的情况总价上加收 6 元
+
+            // function price(isCrowded, mileage) {
+            //     var start = 7;
+            //     var step = 3;
+            //     var total = 0;
+            //     if (mileage <= 3) {
+            //         total = start;
+            //     } else {
+            //         total = start + (mileage - 3) * 3;
+            //     }
+
+            //     return isCrowded ? total + 6 : total;
+            // }
+
+            var calculate = (function () {
+                var initiatePrice = 7;
+                var step = 3;
+                var total = 0;
+
+                return {
+                    normal: function (mileage) {
+                        if (mileage <= 3) {
+                            total = 7;
+                        } else {
+                            total = initiatePrice + (mileage - 3) * 3;
+                        }
+                        return total;
+                    },
+                    congested: function (isCrowded) {
+                        return isCrowded ? total + 6 : total;
+                    },
+                };
+            })();
+
+            console.log(calculate.normal(3));
+            console.log(calculate.congested(true));
+
+            console.log(calculate.normal(5));
+            console.log(calculate.congested(false));
+        </script>
+    </body>
+</html>

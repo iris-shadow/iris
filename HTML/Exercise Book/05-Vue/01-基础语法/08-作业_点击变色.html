@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script src="../js/vue.js"></script>
+		<title>作业_点击变色</title>
+		<style>
+			.active {
+				color: cornflowerblue;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="app">
+			<ul>
+				<li v-for="(item, index) in movies" :class="{active: currentIndex == index}" @click="click(index)">{{item}}</li>
+			</ul>
+		</div>
+
+		<script>
+			// 思路分析
+			/*
+        1. 将数组元素遍历到标签内，同时遍历出对应的序号
+        2. 利用 v-bind 动态绑定元素的颜色样式（类名之后使用 当前序号 == 点击序号 所产生的布尔值来决定是否更换）
+        3. 绑定点击事件更换当前标签的序号
+      */
+
+			const app = new Vue({
+				el: '#app',
+				data: {
+					message: 'Hello Vuejs!',
+					movies: ['山楂树之恋', '山海情', '平凡的世界', '剑雨'],
+					currentIndex: 0,
+				},
+				methods: {
+					click: function (index) {
+						this.currentIndex = index
+					},
+				},
+			})
+		</script>
+	</body>
+</html>

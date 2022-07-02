@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta cahrset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+        <title>搜索框焦点案例</title>
+    </head>
+    <body>
+        <input type="text" />
+
+        <script>
+            var search = document.querySelector("input");
+            document.addEventListener("keyup", function (event) {
+                if (event.keyCode === 83) {
+                    search.focus();
+                }
+            });
+        </script>
+    </body>
+</html>

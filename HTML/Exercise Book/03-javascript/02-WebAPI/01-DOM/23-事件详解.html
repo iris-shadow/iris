@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>事件详解</title>
+</head>
+
+<body>
+    <button>onclick</button>
+    <button>addEventListen</button>
+    <button>attachEvent</button>
+
+    <script>
+        var btns = document.querySelectorAll('button');
+
+        // 传统方式
+        btns[0].onclick = function() {
+            alert('我是传统方式哦！')
+        }
+        btns[0].onclick = function() {
+            alert('我才是传统方式哦！')
+                // 点击一次后删除事件
+            btns[0].onclick = null;
+        }
+
+        // 监听方式
+        function addEvent1() {
+            alert('我是监听方式哦！');
+        }
+
+        function addEvent2() {
+            alert('我也是监听方式哦！');
+            // 点击一次后删除事件
+            btns[1].removeEventListener('click', addEvent2);
+        }
+        btns[1].addEventListener('click', addEvent1);
+        btns[1].addEventListener('click', addEvent2);
+
+
+        // IE独有
+        function attachEvent() {
+            alert('我弹不出来哦！')
+                // 点击一次后删除事件
+            btns.detachEvent('onclick', attachEvent);
+        }
+        btns[2].attachEvent('onclick', attachEvent);
+    </script>
+</body>
+
+</html>

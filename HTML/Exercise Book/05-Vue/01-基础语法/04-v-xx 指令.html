@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script src="../js/vue.js"></script>
+		<title>v-xx 指令</title>
+		<style>
+			[v-cloak] {
+				display: none;
+				color: #6495ed;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="app">
+			<!-- v-once： mustache 的内容后续不再会响应 -->
+			<h2 v-cloak>{{message}}</h2>
+			<h2 v-cloak v-once>{{message}}</h2>
+
+			<!-- v-html="attr": 不仅会渲染内容还会解析 html 标签 -->
+			<h2 v-html="link"></h2>
+
+			<!-- v-text="attr": 类似于 mustache 语法，没有 mustache 灵活(会重写标签内容) -->
+			<h2 v-text="text"></h2>
+
+			<!-- v-cloak: 防止加载 Vue 实例出现卡顿情况，显示出不友好的用户界面 -->
+			<h2 v-cloak>{{technic}}</h2>
+		</div>
+
+		<script>
+			setTimeout(() => {
+				const app = new Vue({
+					el: '#app',
+					data: {
+						message: 'Hello iris!',
+						content: '今天天气好晴朗',
+						link: '<a href="http://www.baidu.com">百度零下</a>',
+						text: '处处好风光',
+						technic: '闻香识女人',
+					},
+				})
+			}, 1000)
+		</script>
+	</body>
+</html>

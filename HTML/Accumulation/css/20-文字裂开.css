@@ -1,0 +1,107 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: #222;
+}
+
+
+/* 大容器，采用定位居中。原作者采用 flex 布局，但会切到文字 */
+
+.breach-wrapper {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+}
+
+
+/* hover 时，虚化 item 。此处有技巧，hover 父元素，先统一改变子元素样式，再利用层叠性单独修改其中的子元素，呈现不同的状态*/
+
+.breach-wrapper:hover .item {
+    filter: blur(8px);
+    transform: scale(.8);
+}
+
+
+/* 使用浮动使子元素横向排列 */
+
+.item {
+    float: left;
+    position: relative;
+    width: 33.333%;
+    text-align: center;
+    color: #fff;
+    /* 此处给的行高是将 item 撑高，因为子元素 .font-big 给了 absolute 脱标造成 item 不能检测到其高度而随之变化 */
+    line-height: 8vw;
+    transition: all .8s ease-in-out;
+}
+
+
+/* 单独修改当前鼠标 hover 的 item 样式 */
+
+.breach-wrapper .item:hover {
+    filter: blur(0px);
+    transform: scale(1);
+}
+
+
+/* 大字的样式 */
+
+.item .font-big {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    font-weight: 700;
+    font-size: 8vw;
+    transition: top .8s ease-in-out, opacity .8s ease-in-out;
+}
+
+
+/* 小字的样式 */
+
+.item .font-small a {
+    text-decoration: none;
+    color: #fff;
+    /* 先将小字隐藏 */
+    opacity: 0;
+    transition: opacity .9s ease-in-out;
+}
+
+
+/* hover 时再显示小字，使用 opacity 的过渡效果较 display: none / visibility: hidden 两种都好 */
+
+.item:hover a {
+    opacity: 1;
+}
+
+
+/* 对大字进行裁剪 */
+
+.item .font-big:nth-child(1) {
+    clip-path: polygon(100% 0%, 100% 50%, 0% 50%, 0% 0%);
+    opacity: 1;
+}
+
+
+/* hover 时改变大字的位置和不透明度 */
+
+.item:hover .font-big:nth-child(1) {
+    top: -40px;
+    opacity: .5;
+}
+
+.item .font-big:nth-child(2) {
+    clip-path: polygon(100% 50%, 100% 100%, 0% 100%, 0% 50%);
+    opacity: 1;
+}
+
+.item:hover .font-big:nth-child(2) {
+    top: 40px;
+    opacity: .5;
+}

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>三种创建元素的方法比较</title>
+</head>
+
+<body>
+    <button>write添加</button>
+    <div class="containerOne">containerOne</div>
+    <div class="containerTwo">containerTwo</div>
+</body>
+
+<script>
+    var containerOne = document.querySelector('.containerOne');
+    var containerTwo = document.querySelector('.containerTwo');
+
+    // document.write 方式
+    // document.write('<a href="#">百度</a>');
+
+    // document.write 是直接将内容写入页面的内容流，若等页面加载完毕再执行此语句，会导致页面重绘
+    // var btnWrite = document.querySelector('button');
+    // btnWrite.onclick = function() {
+    //     document.write('<a href="#">百度</a>');
+    // }
+
+    // 封装一个测试用时的函数
+    function timer(func) {
+        startTime = +new Date();
+        func();
+        endTime = +new Date();
+        totalTime = endTime - startTime;
+        var result = func.name + '用时：' + totalTime + 'ms';
+        return result;
+    }
+
+    // innerHTML + Array 方式
+    function wayOne() {
+        var arr = [];
+        for (var i = 0; i < 1000; i++) {
+            arr.push('<a href="#">百度</a>');
+        }
+        containerOne.innerHTML = arr.join('');
+        console.log(1);
+    }
+
+    // innerHTML + str 拼接方式
+    function wayTwo() {
+        for (var i = 0; i < 1000; i++) {
+            containerOne.innerHTML += '<a href="#">百度</a>';
+        }
+    }
+
+    // document.createElement 方式
+    function wayThree() {
+        for (var i = 0; i < 1000; i++) {
+            var a = document.createElement('a');
+            a.href = '#';
+            a.innerHTML = '百度';
+            containerTwo.appendChild(a);
+        }
+    }
+
+    console.log(timer(wayOne));
+    console.log(timer(wayTwo));
+    console.log(timer(wayThree));
+</script>
+
+</html>

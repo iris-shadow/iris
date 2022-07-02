@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="jQuery.mini.js"></script>
+        <title>全选案例</title>
+        <style>
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+            }
+            .checkall-wrapper {
+                width: 100px;
+                height: 30px;
+                border: 1px solid pink;
+                text-align: center;
+                color: skyblue;
+                font-size: 18px;
+                font-weight: 700;
+                border-radius: 5px;
+            }
+
+            .item-wrapper {
+                width: 100px;
+                height: 25px;
+                border: 1px solid palegreen;
+                margin: 10px 0;
+                text-align: center;
+                color: lightblue;
+                border-radius: 3px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="check-wrapper">
+            <div class="checkall-wrapper"><input type="checkbox" name="" id="" class="checkall" /> 全选</div>
+            <div class="items-wrapper">
+                <div class="item-wrapper"><input type="checkbox" name="" id="" class="item" /> 妞妞</div>
+                <div class="item-wrapper"><input type="checkbox" name="" id="" class="item" /> 可可</div>
+                <div class="item-wrapper"><input type="checkbox" name="" id="" class="item" /> 牛奶</div>
+            </div>
+            <div class="checkall-wrapper"><input type="checkbox" name="" id="" class="checkall" /> 全选</div>
+        </div>
+
+        <script>
+            // // 点击其中一个全选按钮时，另外一个全选按钮和其它项目按钮跟随该全选按钮的状态
+            // $('.checkall').change(function () {
+            //     $('.item, .checkall').prop('checked', $(this).prop('checked'));
+            // });
+
+            // // 当其它项目按钮全选中时，另外两个全选按钮改为选中状态
+            // $('.item').change(function () {
+            //     if ($('.item:checked').length === $('.item').length) {
+            //         $('.checkall').prop('checked', true);
+            //     } else {
+            //         $('.checkall').prop('checked', false);
+            //     }
+            // });
+
+            // 原生 js 实现
+            // 项目按钮状态跟随全选按钮状态
+            var checkalls = document.querySelectorAll('.checkall');
+            var items = document.querySelectorAll('.item');
+
+            for (var i = 0; i < checkalls.length; i++) {
+                checkalls[i].addEventListener('change', function () {
+                    // 项目按钮状态跟随全选按钮状态
+                    for (var i = 0; i < items.length; i++) {
+                        items[i].checked = this.checked;
+                    }
+                    // 另外一个全选按钮状态跟随变化的全选按钮状态
+                    for (var i = 0; i < checkalls.length; i++) {
+                        checkalls[i].checked = this.checked;
+                    }
+                });
+            }
+
+            // 项目按钮全部选中时，两个全选按钮改为选中
+            // 声明一个变量假定全选按钮已经被选中
+            var checkallStatus = true;
+            for (var i = 0; i < items.length; i++) {
+                items[i].addEventListener('change', function () {
+                    // 依次判断是否有项目未选中
+                    for (var i = 0; i < items.length; i++) {
+                        if (!items[i].checked) {
+                            // 若存在项目未选中， 把全选按钮的假定状态修改为 false
+                            checkallStatus = false;
+                            break;
+                        }
+                    }
+                    for (var i = 0; i < checkalls.length; i++) {
+                        checkalls[i].checked = checkallStatus;
+                    }
+                    // 修改完全选按钮的状态后复位其假定状态
+                    checkallStatus = true;
+                });
+            }
+        </script>
+    </body>
+</html>

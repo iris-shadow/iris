@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script src="../js/vue.js"></script>
+		<title>computed 的 set & get</title>
+	</head>
+
+	<body>
+		<div id="app">
+			<h2>{{fullName}}</h2>
+		</div>
+
+		<script>
+			alert(111)
+			const app = new Vue({
+				el: '#app',
+				data: {
+					message: 'Hello Vuejs!',
+					firstName: 'iris',
+					lastName: 'shadow',
+				},
+
+				// 完整的 computed 包含 set 和 get 方法
+				computed: {
+					fullName: {
+						set: function (newValue) {
+							;[this.firstName, this.lastName] = [...newValue.split(' ')]
+						},
+						get: function () {
+							return this.firstName + ' ' + this.lastName
+						},
+					},
+				},
+			})
+		</script>
+	</body>
+</html>

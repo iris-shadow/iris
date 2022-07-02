@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="jQuery.mini.js"></script>
+        <title>电梯导航案例</title>
+        <style>
+            * {
+                padding: 0;
+                margin: 0;
+            }
+
+            .header,
+            .footer {
+                width: 1080px;
+                height: 660px;
+                margin: 20px auto 0;
+                background-color: yellowgreen;
+            }
+
+            .recommend {
+                width: 1080px;
+                height: 180px;
+                margin: 20px auto 0;
+                background-color: lightblue;
+            }
+            .special-area {
+                width: 1080px;
+                margin: 20px auto 0;
+            }
+
+            .special-area .title {
+                height: 22px;
+                background-color: cornflowerblue;
+                color: tomato;
+                text-align: center;
+            }
+
+            .special-area .content {
+                height: 180px;
+                background-color: skyblue;
+            }
+
+            .elevator {
+                display: none;
+                position: fixed;
+                top: 200px;
+                left: 0;
+                width: 130px;
+                background-color: skyblue;
+                padding: 0 20px;
+                list-style: none;
+            }
+
+            .elevator li {
+                width: 100%;
+                height: 25px;
+                border-bottom: 1px solid cornflowerblue;
+                margin: 10px 0;
+                text-align: center;
+                line-height: 25px;
+                color: #fff;
+                font-size: 20px;
+                font-weight: 700;
+                cursor: pointer;
+            }
+
+            .elevator .current {
+                color: tomato;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="header"></div>
+        <div class="recommend">推荐</div>
+        <div class="special-area">
+            <div class="title">手机、电子</div>
+            <div class="content"></div>
+        </div>
+        <div class="special-area">
+            <div class="title">衣服、袜子</div>
+            <div class="content"></div>
+        </div>
+        <div class="special-area">
+            <div class="title">汽车、房子</div>
+            <div class="content"></div>
+        </div>
+        <div class="special-area">
+            <div class="title">黄金、银子</div>
+            <div class="content"></div>
+        </div>
+        <ul class="elevator">
+            <li class="current">手机、电子</li>
+            <li>衣服、袜子</li>
+            <li>汽车、房子</li>
+            <li>黄金、银子</li>
+        </ul>
+        <div class="footer"></div>
+
+        <script>
+            // 设置一个互斥锁，当跨多个 .elevotar li 元素做点击时，禁用页面滚动事件
+            var clock = true;
+            $(window).scroll(function () {
+                // 页面滚动到 .recommend 元素时显示 .elevator 元素
+                if ($('.recommend').offset().top <= $(document).scrollTop()) {
+                    $('.elevator').stop().fadeIn(300);
+                } else {
+                    $('.elevator').stop().fadeOut(500);
+                }
+
+                if (clock) {
+                    // 页面滚动时根据内容使 .elevator 做相应的跟随
+                    $('.special-area').each(function (index, elem) {
+                        if ($(document).scrollTop() >= $(elem).offset().top) {
+                            $('.elevator li').eq(index).addClass('current').siblings().removeClass('current');
+                        }
+                    });
+                }
+            });
+
+            // 点击 .elvator 时跳转到对应的内容区域
+            $('.elevator li').click(function () {
+                clock = false;
+                $(this).addClass('current').siblings().removeClass('current');
+                var index = $(this).index();
+                // 注意只能对元素进行赋值滚动，不能使用 document
+                $('html, body')
+                    .stop()
+                    .animate({ scrollTop: $('.special-area').eq(index).offset().top }, function () {
+                        clock = true;
+                    });
+            });
+        </script>
+    </body>
+</html>

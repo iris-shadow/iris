@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html alng="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>client</title>
+        <style>
+            .response {
+                width: 300px;
+                height: 200px;
+                border: 1px solid cornflowerblue;
+            }
+        </style>
+    </head>
+
+    <body>
+        <button>点击发送 GET 请求</button>
+        <button>点击发送 POST 请求</button>
+        <div class="response"></div>
+
+        <script>
+            const btns = document.getElementsByTagName('button');
+            const responseText = document.getElementsByClassName('response')[0];
+
+            // getBtn 绑定事件
+            btns[0].addEventListener('click', () => {
+                // 1. 实例化对象
+                const xhr = new XMLHttpRequest();
+
+                // 2. 初始化
+                xhr.open('GET', 'http://127.0.0.1:8000/server');
+
+                // 3. 发送
+                xhr.send();
+
+                // 4. 绑定事件，处理服务端返回的结果
+                xhr.onreadystatechange = () => {
+                    // 服务端发来的数据接收完毕
+                    if (xhr.readyState == 4) {
+                        // 成功接收
+                        if (xhr.status >= 200 && xhr.status < 300) {
+                            // 状态码
+                            console.log(xhr.status);
+                            // 状态字符串
+                            console.log(xhr.statusText);
+                            // 所有响应头
+                            console.log(xhr.getAllResponseHeaders());
+                            // 响应体
+                            console.log(xhr.response);
+                            responseText.innerHTML = xhr.response;
+                        }
+                    }
+                };
+            });
+
+            // postBtn 绑定事件
+            btns[1].addEventListener('click', () => {
+                // 1. 实例化对象
+                const xhr = new XMLHttpRequest();
+
+                // 2. 初始化
+                // 为了解决 IE 缓存问题，能实时获取服务器的数据，而不是加载缓存中的数据，可在 open 的 url 中加入时间戳参数
+                xhr.open('POST', 'http://127.0.0.1:8000/server?t=' + Date.now());
+                // 设置请求头
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                xhr.setRequestHeader('name', 'iris');
+                // // 自动设置响应体的数据类型
+                // xhr.responseType = 'json';
+
+                // 3. 发送
+                xhr.send('一剑开天门');
+
+                // 4. 绑定事件，处理接收的数据
+                xhr.onreadystatechange = () => {
+                    if (xhr.readyState == 4) {
+                        if (xhr.status >= 200 && xhr.status < 300) {
+                            // 状态码
+                            console.log(xhr.status);
+                            // 状态字符串
+                            console.log(xhr.statusText);
+                            // 所有响应头
+                            console.log(xhr.getAllResponseHeaders());
+                            // 响应体
+                            // 手动将响应体从 json 类型转为 js 可处理的类型
+                            let str = JSON.parse(xhr.response);
+                            console.log(str);
+                            responseText.innerHTML = str.name;
+                        }
+                    }
+                };
+            });
+        </script>
+    </body>
+</html>

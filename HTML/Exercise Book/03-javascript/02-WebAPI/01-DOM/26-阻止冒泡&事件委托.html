@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=1.0">
+    <title>阻止冒泡&事件委托</title>
+    <style>
+        .father {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200px;
+            height: 100px;
+            background-color: tomato;
+            border-radius: 100px;
+        }
+        
+        .son {
+            width: 160px;
+            height: 80px;
+            background-color: cornflowerblue;
+            border-radius: 80px;
+            margin: 10px 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li>知否知否，点我应有弹框在手👋</li>
+        <li>知否知否，点我应有弹框在手👋</li>
+        <li>知否知否，点我应有弹框在手👋</li>
+        <li>知否知否，点我应有弹框在手👋</li>
+        <li>知否知否，点我应有弹框在手👋</li>
+        <li>知否知否，点我应有弹框在手👋</li>
+    </ul>
+
+    <div class="father">
+        <div class="son"></div>
+    </div>
+
+    <script>
+        // 阻止事件冒泡
+        var father = document.querySelector('.father'),
+            son = document.querySelector('.son');
+
+        father.addEventListener('click', function(event) {
+            alert("I'm father.");
+            // 阻止冒泡，只能阻止当前事件，对其它注册事件无效。不兼容 IE678
+            event.stopPropagation();
+            // IE678 中使用 window.event.cancelBubble() 阻止冒泡
+
+        });
+        son.addEventListener('click', function(event) {
+            alert("I'm son.");
+        });
+        document.addEventListener('click', function(event) {
+            alert("I'm document.");
+        });
+
+        // 事件委托
+        var ul = document.querySelector('ul');
+        ul.addEventListener('click', function(event) {
+            for (var i = 0; i < ul.children.length; i++) {
+                ul.children[i].style.backgroundColor = '';
+            }
+            event.target.style.backgroundColor = 'aliceblue';
+        })
+    </script>
+</body>
+
+</html>

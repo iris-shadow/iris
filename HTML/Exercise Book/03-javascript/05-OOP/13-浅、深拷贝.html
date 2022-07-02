@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>浅、深拷贝</title>
+    </head>
+
+    <body>
+        <script>
+            var shadow = {
+                id: 1,
+                name: '夕豆',
+                age: 0.5,
+                hobbies: ['打篮球', '洗澡', '喝水', '蹦迪'],
+                info: {
+                    addr: '云深不知处',
+                    email: 'shadow@iris.com',
+                },
+            };
+
+            // 递归实现深拷贝
+            function deepCopy(target, origin) {
+                for (var k in origin) {
+                    item = origin[k];
+                    if (item instanceof Array) {
+                        // 数组的拷贝
+                        // 数组也属于对象，所以其应在对象之前进行判断和拷贝
+                        target[k] = [];
+                        deepCopy(target[k], item);
+                    } else if (item instanceof Object) {
+                        // 对象的拷贝
+                        target[k] = {};
+                        deepCopy(target[k], item);
+                    } else {
+                        // 基本数据类型的拷贝
+                        target[k] = item;
+                    }
+                }
+            }
+
+            var shadow_0 = {};
+
+            deepCopy(shadow_0, shadow);
+            shadow_0.id = 2;
+            console.log(shadow_0);
+            console.log(shadow);
+        </script>
+    </body>
+</html>

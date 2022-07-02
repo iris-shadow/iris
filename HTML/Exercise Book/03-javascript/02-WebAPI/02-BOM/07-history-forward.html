@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>history-forward</title>
+    </head>
+    <body>
+        <a href="./07-history-back.html" target="_self">前进页面</a>
+        <button>前进</button>
+
+        <script>
+            var button = document.querySelector("button");
+            button.addEventListener("click", function () {
+                history.forward();
+                // go 方法的参数为 n 表示前进 n 步，为 -n 表示后退 n 步
+                // history.go(1);
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>获取鼠标在盒子中的坐标案例</title>
+
+        <style>
+            .navgation {
+                width: 300px;
+                height: 300px;
+                border: 1px solid rebeccapurple;
+                margin: 100px;
+                background-color: tomato;
+                cursor: move;
+            }
+
+            .info {
+                width: 260px;
+                height: 30px;
+                margin: 135px auto 0;
+                background-color: cornflowerblue;
+                line-height: 30px;
+                color: #fff;
+                font-size: 12px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="navgation">
+            <div class="info"></div>
+        </div>
+
+        <script>
+            var navgation = document.querySelector(".navgation");
+            var info = document.querySelector(".info");
+
+            navgation.addEventListener("mousemove", function (event) {
+                var x = event.pageX - this.offsetLeft;
+                var y = event.pageY - this.offsetTop;
+                info.innerHTML = "鼠标在盒子中的坐标信息：（" + x + "px，" + y + "px)";
+            });
+        </script>
+    </body>
+</html>

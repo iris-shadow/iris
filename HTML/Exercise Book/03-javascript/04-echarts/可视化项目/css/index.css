@@ -1,0 +1,599 @@
+body {
+    background: url(../imgs/bg.jpg) no-repeat 0 0 / cover;
+    /* line-height: 1.15; */
+}
+
+.viewport {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1920px;
+    min-width: 1024px;
+    min-height: 780px;
+    padding: 1.1rem 0.25rem 0;
+    /* 当界面大于 1920px 时，界面居中显示 */
+    margin: 0 auto;
+    background: url(../imgs/logo.png) no-repeat 0 0 / contain;
+}
+
+/* 所有列平分 3 分 */
+.column {
+    flex: 3;
+    position: relative;
+}
+.column:nth-child(2) {
+    /* 层叠上方的 3 份，第二列分 4 份 */
+    flex: 4;
+    margin: 0.4rem 0.25rem 0;
+}
+
+/**/
+/* 第一列 */
+/**/
+
+/* 设备概览 */
+.overview {
+    height: 1.375rem;
+}
+
+.overview ul {
+    display: flex;
+    justify-content: space-between;
+}
+
+.overview ul li h4 {
+    margin: 0 0 0.1rem 0.06rem;
+    color: #fff;
+    font-size: 0.35rem;
+}
+
+.overview ul li span {
+    color: #4c9bfd;
+    font-size: 0.2rem;
+}
+
+/* 设备监控 */
+.monitor {
+    height: 6rem;
+}
+
+/* 重新设定 inner 样式 */
+.monitor .inner {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding: 0.3rem 0;
+}
+
+/* 标签栏 */
+.monitor .inner .tabs {
+    display: flex;
+    padding: 0 0.45rem;
+    margin-bottom: 0.225rem;
+}
+
+.monitor .inner .tabs a {
+    padding: 0 0.3375rem;
+    color: #1950c4;
+    font-size: 0.225rem;
+}
+
+.monitor .inner .tabs a:first-child {
+    padding-left: 0;
+    border-right: 0.025rem solid #00f2f1;
+}
+
+.monitor .inner .tabs a.active {
+    color: #fff;
+}
+
+/* 设备信息 */
+.monitor .inner .content {
+    display: none;
+    position: relative;
+    flex: 1;
+}
+
+.monitor .content .marquee-wrapper {
+    overflow: hidden;
+    position: absolute;
+    top: 0.5rem;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+/* 采用 css 动画，重复向上滚动 50%，要确保内容长度能够覆盖显示的区域 */
+.monitor .content .marquee {
+    animation: slide 15s linear infinite;
+}
+
+.monitor .content .marquee:hover {
+    animation-play-state: paused;
+}
+
+.monitor .content .caption,
+.monitor .content .marquee li {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.15rem 0.45rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #68d8fe;
+    line-height: 1.05;
+    font-size: 0.175rem;
+}
+
+.monitor .content .marquee li {
+    background: none;
+    color: #61a8ff;
+    font-size: 0.15rem;
+}
+
+/* 每个 span 的长度 */
+.monitor .content .caption span:first-child,
+.monitor .content .caption span:last-child,
+.monitor .content .marquee li span:nth-of-type(1),
+.monitor .content .marquee li span:nth-of-type(3) {
+    width: 1rem;
+}
+
+.monitor .content .caption span:nth-child(2),
+.monitor .content .marquee span:nth-of-type(2) {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 2.5rem;
+}
+
+/* 监控记录前的装饰元素 */
+.monitor .content .marquee li .icon-dot {
+    position: absolute;
+    left: 0.2rem;
+    opacity: 0;
+}
+
+.monitor .content .marquee li:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #68d8fe;
+}
+
+.monitor .content .marquee li:hover .icon-dot {
+    opacity: 1;
+}
+
+/* 监控记录的滚动动画 */
+@keyframes slide {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-50%);
+    }
+}
+
+/* 点位分布统计 */
+.point {
+    height: 4.25rem;
+}
+
+.point .graph {
+    display: flex;
+    justify-content: space-between;
+}
+
+.point .graph .pie {
+    width: 3.9rem;
+    height: 3rem;
+    margin-left: -0.125rem;
+    /* background-color: #fff; */
+}
+
+.point .graph .data,
+.users .graph .data {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 2.1rem;
+    padding: 0.45rem 0.375rem;
+    background: url(../imgs/dataBg.png) no-repeat 0 0 / cover;
+}
+
+.point .graph .data .item h4,
+.users .graph .data .item h4 {
+    margin-bottom: 0.15rem;
+    color: #fff;
+    font-size: 0.35rem;
+}
+
+.point .graph .data .item span,
+.users .graph .data .item span {
+    display: block;
+    color: #4c9bfd;
+    font-size: 0.2rem;
+}
+
+/**/
+/* 第二列 */
+/**/
+
+/* 地图 */
+.iris {
+    display: flex;
+    flex-direction: column;
+    height: 7.225rem;
+    margin-bottom: 0.25rem;
+}
+
+.iris h3 {
+    padding: 0.2rem 0;
+    color: #fff;
+    line-height: 1;
+    font-size: 0.25rem;
+}
+
+.iris .geo {
+    flex: 1;
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* 全国用户总量统计 */
+.users {
+    height: 4.25rem;
+}
+
+.users .graph {
+    display: flex;
+}
+
+.users .graph .bar {
+    width: 7.35rem;
+    height: 3rem;
+    /* background-color: #fff; */
+}
+
+/**/
+/* 第三列 */
+/**/
+
+/* order */
+.order {
+    height: 1.875rem;
+}
+
+.order .tabs {
+    display: flex;
+    margin-bottom: 0.25rem;
+}
+
+.order .tabs a {
+    height: 0.225rem;
+    padding: 0 0.225rem;
+    border-right: 0.025rem solid #00f2f1;
+    line-height: 1;
+    color: #1950c4;
+    font-size: 0.225rem;
+}
+
+.order .tabs a:first-child {
+    padding-left: 0;
+}
+
+.order .tabs a:last-child {
+    border: 0;
+}
+
+.order .tabs a.active {
+    color: #fff;
+    font-size: 0.25rem;
+}
+
+.order .data {
+    display: flex;
+}
+
+.order .data .item {
+    display: flex;
+    width: 50%;
+}
+
+.order .data .item h4 {
+    margin-bottom: 0.125rem;
+    color: #fff;
+    font-size: 0.35rem;
+}
+
+.order .data .item {
+    display: block;
+    color: #4c9bfd;
+    font-size: 0.2rem;
+}
+
+/* 销售额统计 */
+.statistic {
+    height: 3.1rem;
+}
+
+.statistic .caption {
+    display: flex;
+}
+
+.statistic .caption h3 {
+    height: 0.225rem;
+    padding-right: 0.225rem;
+    border-right: 0.025rem solid #00f2f1;
+    line-height: 1;
+    margin-bottom: 0;
+}
+
+.statistic .caption .tabs a {
+    float: left;
+    padding: 0.05rem;
+    font-size: 0.2rem;
+    margin: -0.0375rem 0 0 0.2625rem;
+    color: #0bace6;
+    line-height: 1;
+    border-radius: 0.0375rem;
+}
+
+.statistic .caption .tabs a.active {
+    background-color: #4c9bfd;
+    color: #fff;
+}
+
+.statistic .inner {
+    display: flex;
+    flex-direction: column;
+}
+
+.statistic .inner .graph {
+    position: relative;
+    flex: 1;
+    padding-top: 0.1875rem;
+}
+
+.statistic .inner .graph .unit {
+    position: absolute;
+    top: 0.225rem;
+    left: 0.525rem;
+    color: #4996f5;
+    font-size: 0.175rem;
+}
+
+.statistic .inner .graph .line {
+    width: 100%;
+    height: 100%;
+}
+
+/* 渠道分布 & 一季度销售进度 */
+.complex {
+    display: flex;
+}
+
+.complex .channel,
+.season {
+    flex: 1;
+    height: 2.9rem;
+}
+
+.complex .channel {
+    flex: 1;
+    margin-right: 0.25rem;
+}
+
+.complex .channel h3 {
+    margin-bottom: 0;
+}
+
+.channel .graph .radar {
+    height: 2.1rem;
+}
+
+.complex .season h3 {
+    margin-bottom: 0rem;
+}
+
+.season .inner {
+    color: #fff;
+
+    display: flex;
+    flex-direction: column;
+    margin: 0 -0.075rem;
+}
+
+.season .inner .graph {
+    flex: 1;
+    padding-top: 0.225rem;
+}
+
+.schedule {
+    position: relative;
+}
+
+.schedule .gauge {
+    height: 1.05rem;
+}
+
+.schedule .rate {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -30%);
+    color: #fff;
+    font-size: 0.375rem;
+}
+
+.schedule .rate small {
+    font-size: 50%;
+}
+
+.season .inner .graph .data {
+    display: flex;
+    justify-content: space-between;
+}
+
+.season .inner .graph .data .item {
+    width: 50%;
+}
+
+.season .inner .graph .data .item h4 {
+    margin-bottom: 0.125rem;
+    color: #fff;
+    font-size: 0.3rem;
+}
+
+@media screen and (max-width: 1600px) {
+    .season .inner .graph .data .item span {
+        transform: scale(0.9);
+    }
+}
+
+.season .inner .graph .data .item span {
+    overflow: hidden;
+    display: block;
+    width: 100%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: #4c9bfd;
+    font-size: 0.175rem;
+}
+
+/* 排行榜 */
+.ranking {
+    height: 3.5rem;
+    color: #fff;
+}
+
+.ranking .inner {
+    display: flex;
+}
+
+.ranking .icon-up {
+    color: #dc3c33;
+}
+
+.ranking .icon-down {
+    color: #36be90;
+}
+
+.ranking i[class$='-up'],
+.ranking i[class$='-down'] {
+    display: inline-block;
+    transform: scale(0.8);
+}
+
+.hot-list {
+    display: flex;
+    flex-direction: column;
+    width: 2.1rem;
+    font-size: 0.175rem;
+    vertical-align: middle;
+}
+
+.hot-list h3 {
+    margin-bottom: 0.15rem;
+}
+
+.hot-list .data {
+    flex: 1;
+    padding-left: 0.15rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    color: #4c9bfd;
+    font-size: 0.175rem;
+}
+
+.hot-list .data li {
+    overflow: hidden;
+}
+
+.hot-list .data li i[class^='icon-'] {
+    margin-right: 0.15rem;
+    font-size: 0.45rem;
+    vertical-align: middle;
+}
+
+.hot-cakes {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.hot-cakes h3 {
+    margin-bottom: 0.175rem;
+}
+
+.hot-cakes h3 .recent {
+    float: right;
+    padding: 0 0.15rem;
+    margin-top: 0.0625rem;
+    color: #0bace6;
+    font-size: 0.175rem;
+}
+
+.hot-cakes .data {
+    flex: 1;
+    display: flex;
+}
+
+.hot-cakes .data ul {
+    flex: 1;
+    margin-bottom: 0.175rem;
+    line-height: 1;
+}
+
+.hot-cakes .data ul li {
+    display: flex;
+    justify-content: space-between;
+}
+
+@media screen and (max-width: 1600px) {
+    .ranking .hot-cakes .data .province li {
+        padding: 0.125rem 0.15rem;
+    }
+}
+
+.hot-cakes .data .province {
+    font-size: 0.175rem;
+}
+
+.hot-cakes .data .province li {
+    padding: 0.15rem;
+    color: #4995f4;
+}
+
+.hot-cakes .data .province li.active {
+    background-color: rgba(10, 67, 188, 0.2);
+    color: #a3c6f2;
+}
+
+.hot-cakes .data .detail {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background-color: rgba(10, 67, 188, 0.2);
+    font-size: 0.15rem;
+}
+
+.hot-cakes .data .detail li {
+    padding: 0.125rem 0.175rem;
+    color: #52ffff;
+}
+
+@media screen and (max-width: 1600px) {
+    .ranking .hot-cakes .data .detail li {
+        padding: 0.0625rem 0.15rem;
+    }
+}
+
+.hot-cakes .data span {
+    overflow: hidden;
+    display: block;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+@media screen and (max-width: 1600px) {
+    .ranking .hot-cakes .data span {
+        transform: scale(0.9);
+    }
+}

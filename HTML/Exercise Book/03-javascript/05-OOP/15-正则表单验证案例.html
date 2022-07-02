@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <html lang="zh-CN">
+        <head>
+            <meta charset="UTF-8" />
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <link rel="stylesheet" href="fonts/font_15/iconfont.css" />
+            <title>正则表单验证案例</title>
+            <style>
+                * {
+                    padding: 0;
+                    margin: 0;
+                }
+
+                i {
+                    font-style: normal;
+                }
+
+                body {
+                    display: flex;
+                    justify-content: center;
+                    align-items: flex-start;
+                    height: 100vh;
+                }
+
+                table {
+                    width: 500px;
+                    margin-top: 200px;
+                }
+
+                table tr {
+                    height: 26px;
+                }
+
+                table tr td:nth-child(1) {
+                    width: 15%;
+                    text-align: center;
+                }
+                table tr td:nth-child(2) {
+                    width: 45%;
+                }
+                table tr td:nth-child(3) {
+                    width: 40%;
+                    color: #666;
+                }
+
+                label {
+                    display: block;
+                    text-align: center;
+                }
+
+                input {
+                    outline: none;
+                    width: 100%;
+                }
+
+                td i {
+                    display: none;
+                    margin-left: 10px;
+                    vertical-align: middle;
+                }
+
+                span {
+                    margin-left: 6px;
+                    line-height: 22px;
+                    font-size: 10px;
+                }
+
+                table tr td.correct {
+                    color: green;
+                }
+
+                table tr td.error {
+                    color: red;
+                }
+            </style>
+        </head>
+
+        <body>
+            <div class="container">
+                <table>
+                    <tr>
+                        <td><label for="name">用户名：</label></td>
+                        <td><input type="text" id="name" /></td>
+                        <td><i class="iconfont icon-correct"></i><span class="tip">支持 16 位由数字、字母或-_组成的字符</span></td>
+                    </tr>
+                    <tr>
+                        <td><label for="password">密&nbsp;&nbsp;&nbsp;&nbsp;码：</label></td>
+                        <td><input type="password" id="password" /></td>
+                        <td><i class="iconfont icon-correct"></i><span class="tip">支持 16 位由数字、字母或-_组成的字符</span></td>
+                    </tr>
+                    <tr>
+                        <td><label for="qq">Q&nbsp;&nbsp;&nbsp;&nbsp;Q：</label></td>
+                        <td><input type="text" id="qq" /></td>
+                        <td><i class="iconfont icon-correct"></i><span class="tip">支持 5-10 位数字</span></td>
+                    </tr>
+                </table>
+
+                <script>
+                    var uName = document.querySelector('#name');
+                    var password = document.querySelector('#password');
+                    var qq = document.querySelector('#qq');
+
+                    var correctTip = '格式输入正确';
+                    var errorTip = '格式输入有误，请重新输入';
+
+                    // 用户名的正则
+                    var nameReg = /^[a-zA-Z-_][a-zA-z-_\d]{5,15}$/;
+                    // 密码的正则
+                    var pwdReg = /^[\d\w]{6,16}$/;
+                    // qq 的正则
+                    var qqReg = /^[1-9][\d]{4,9}$/;
+
+                    function identify(elem, regexp) {
+                        // 注册输入框失去焦点事件
+                        elem.addEventListener('blur', function () {
+                            // 显示提示图标
+                            this.parentNode.nextElementSibling.children[0].style.display = 'inline';
+                            // 判断输入值是否符合对应的正则
+                            if (regexp.test(this.value)) {
+                                // 更换提示符
+                                this.parentNode.nextElementSibling.children[0].classList.replace('icon-error', 'icon-correct');
+                                // 更换提示信息的文字颜色
+                                this.parentNode.nextElementSibling.classList.add('correct');
+                                this.parentNode.nextElementSibling.classList.remove('error');
+                                // 更换提示文字
+                                this.parentNode.nextElementSibling.children[1].innerHTML = correctTip;
+                            } else {
+                                this.parentNode.nextElementSibling.children[0].classList.replace('icon-correct', 'icon-error');
+                                this.parentNode.nextElementSibling.classList.add('error');
+                                this.parentNode.nextElementSibling.classList.remove('correct');
+                                this.parentNode.nextElementSibling.children[1].innerHTML = errorTip;
+                            }
+                        });
+                    }
+
+                    // 为用户名输入绑定失去焦点的事件
+                    identify(uName, nameReg);
+                    identify(password, pwdReg);
+                    identify(qq, qqReg);
+                </script>
+            </div>
+        </body>
+    </html>
+</html>

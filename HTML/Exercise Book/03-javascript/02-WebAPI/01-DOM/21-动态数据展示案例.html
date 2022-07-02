@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+        <title>动态数据展示案例</title>
+        <style>
+            .data {
+                position: absolute;
+                top: 100px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 800px;
+                border-collapse: collapse;
+            }
+
+            .data .data_head {
+                background-color: gainsboro;
+            }
+
+            th,
+            td {
+                border: 1px solid #bbb;
+                text-align: center;
+                line-height: 22px;
+            }
+
+            th {
+                font-weight: 700;
+            }
+        </style>
+    </head>
+
+    <body>
+        <table class="data">
+            <thead class="data_head">
+                <tr>
+                    <th>姓名</th>
+                    <th>科目</th>
+                    <th>分数</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody class="data_body"></tbody>
+        </table>
+
+        <script>
+            // 数据准备
+            var rows = [
+                {
+                    name: '诸葛铁锤',
+                    subject: 'javascript',
+                    score: 9,
+                },
+                {
+                    name: '杜籽藤',
+                    subject: 'javascript',
+                    score: 82,
+                },
+                {
+                    name: '史珍香',
+                    subject: 'javascript',
+                    score: 91,
+                },
+                {
+                    name: '范统',
+                    subject: 'javascript',
+                    score: 100,
+                },
+                {
+                    name: '范建',
+                    subject: 'javascript',
+                    score: 100,
+                },
+            ];
+
+            // 获取相应的元素
+            var dataBody = document.querySelector('.data_body');
+
+            // 采用 for 循环创建对应数目的元素
+            for (var i = 0; i < rows.length; i++) {
+                // 创建 tr 元素
+                var tr = document.createElement('tr');
+
+                // 创建 td 元素填充对呀内容
+                for (var k in rows[i]) {
+                    var td = document.createElement('td');
+                    td.innerHTML = rows[i][k];
+                    tr.appendChild(td);
+                }
+
+                // 将 tr 添加进 dataBody 元素中
+                dataBody.appendChild(tr);
+
+                // 向 tr 中添加删除链接
+                var td = document.createElement('td');
+                td.innerHTML = '<a href="javascript:;">删除</a>';
+                tr.appendChild(td);
+            }
+
+            // 为删除链接注册事件
+            var deleteLinks = document.querySelectorAll('a');
+            console.log(deleteLinks);
+            for (var i = 0; i < deleteLinks.length; i++) {
+                deleteLinks[i].onclick = function () {
+                    dataBody.removeChild(this.parentNode.parentNode);
+                };
+            }
+        </script>
+    </body>
+</html>

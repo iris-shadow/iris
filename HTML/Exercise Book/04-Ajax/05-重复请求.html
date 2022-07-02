@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>取消请求</title>
+        <style>
+            .content {
+                width: 300px;
+                height: 300px;
+                border: 1px solid cornflowerblue;
+            }
+        </style>
+    </head>
+
+    <body>
+        <button>发送请求</button>
+        <div class="content"></div>
+
+        <script>
+            const btns = document.getElementsByTagName('button');
+            const content = document.getElementsByClassName('content')[0];
+
+            // 设定标识符，看是否正在向服务器发送请求
+            let isSending = false;
+
+            // 实例化对象
+            const xhr = new XMLHttpRequest();
+
+            // 发送按钮绑定事件
+            btns[0].addEventListener('click', () => {
+                // 若前一个请求未完成就进行下一个请求时，取消前一个请求
+                if (isSending) xhr.abort();
+                // 将标识符修改为 true
+                isSending = true;
+                // 初始化
+                xhr.open('GET', 'http://127.0.0.1:8000/cancel');
+                xhr.send();
+            });
+
+            xhr.addEventListener('readystatechange', () => {
+                if (xhr.readyState === 4) {
+                    // 当接受完服务器发送过来的数据时，将标识符改为 false。不能在状态码的条件里修改，因为请求可能失败，则不会及时修改标识符
+                    isSending = false;
+
+                    if (xhr.status >= 200 && xhr.status < 300) {
+                        content.innerHTML = xhr.response;
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>

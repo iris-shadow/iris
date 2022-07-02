@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="zh-CN">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>替换类名以多样式修改</title>
+    <style>
+        .first {
+            width: 200px;
+            height: 150px;
+            background-color: tomato;
+            text-align: center;
+            line-height: 150px;
+            color: #fff;
+            font-size: 22px;
+            cursor: pointer;
+        }
+        
+        .two {
+            margin-top: 100px;
+            margin-left: 100px;
+            background-color: cornflowerblue;
+            font-size: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="first">杜籽藤</div>
+
+    <script>
+        var div = document.querySelector('.first');
+        div.onclick = function() {
+            this.className += ' two';
+        }
+    </script>
+</body>
+
+</html>

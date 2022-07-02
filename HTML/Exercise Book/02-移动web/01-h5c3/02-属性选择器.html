@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>css3 练习</title>
+    <style>
+        button {
+            cursor: pointer;
+        }
+        
+        button[disabled] {
+            cursor: default;
+        }
+        
+        button[class^="t"] {
+            color: pink;
+        }
+        
+        button[disabled$="d"] {
+            color: tomato;
+        }
+        
+        button[class*="o"] {
+            color: cornflowerblue;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="one">按钮1</button>
+    <button class="two">按钮2</button>
+    <button class="three">按钮3</button>
+    <button disabled="disabled">按钮4</button>
+</body>
+
+</html>

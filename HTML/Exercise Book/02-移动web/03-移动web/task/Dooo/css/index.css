@@ -1,0 +1,333 @@
+.clearfix::after {
+    content: "";
+    display: block;
+    visibility: hidden;
+    clear: both;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+
+/*点击高亮我们需要清除清除  设置为transparent 完成透明*/
+
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+/*在移动端浏览器默认的外观在iOS上加上这个属性才能给按钮和输入框自定义样式*/
+
+input {
+    -webkit-appearance: none;
+}
+
+
+/*禁用长按页面时的弹出菜单*/
+
+img,
+a {
+    -webkit-touch-callout: none;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+}
+
+ul {
+    list-style: none;
+}
+
+i {
+    font-style: normal;
+}
+
+body {
+    overflow-x: hidden;
+    background: url(../images/bg.jpeg) no-repeat;
+    background-size: contain;
+}
+
+
+/* nav module */
+
+nav .back {
+    float: left;
+    margin: .4831rem 0 .7246rem .4831rem;
+}
+
+nav .back span {
+    display: block;
+    width: .2899rem;
+    height: .2899rem;
+    border-left: .0483rem solid #fff;
+    border-bottom: .0483rem solid #fff;
+    transform: rotate(45deg);
+}
+
+nav .menu {
+    float: right;
+    margin: .4831rem .4831rem .7246rem 0;
+}
+
+nav .menu span {
+    float: right;
+    display: block;
+    width: .1691rem;
+    height: .1691rem;
+    border-radius: .0845rem;
+    margin-left: .1208rem;
+    background-color: #fff;
+}
+
+
+/* shop module */
+
+.shop-wrap {
+    width: 9.058rem;
+    height: 2.4879rem;
+    border-radius: .1208rem;
+    margin: 0 auto;
+    background-color: #fff;
+}
+
+.shop {
+    float: left;
+    display: flex;
+    justify-content: space-between;
+}
+
+.shop h1 {
+    font-size: 0rem;
+}
+
+.shop h1 a {
+    display: block;
+    width: 1.0145rem;
+    height: 1.0145rem;
+    border: .0242rem solid #ccc;
+    border-radius: .0667rem;
+    margin: .5556rem 0 0 .3623rem;
+    text-align: center;
+    font-size: .3382rem;
+    line-height: 1.0145rem;
+    font-weight: 700;
+    color: #2f2e29;
+}
+
+.shop .introduce {
+    margin: .6522rem 0 0 .2415rem;
+}
+
+.shop .title {
+    font-size: .3382rem;
+    color: #363636;
+}
+
+.shop .desc {
+    font-size: .2899rem;
+    color: #b8b8b8;
+}
+
+.operate {
+    float: right;
+}
+
+.operate .coupon {
+    display: block;
+    margin: .4106rem .7729rem 0 0;
+    text-align: right;
+    font-size: .3382rem;
+    color: #424242;
+}
+
+.operate .subscribe {
+    box-sizing: border-box;
+    position: relative;
+    display: block;
+    width: 1.4493rem;
+    height: .6039rem;
+    padding-left: .5556rem;
+    border-radius: .3019rem;
+    margin: .6039rem .6039rem 0 0;
+    background-color: #fddf00;
+    font-size: .2415rem;
+    line-height: .6039rem;
+}
+
+.operate .subscribe::before {
+    content: "";
+    position: absolute;
+    top: .1691rem;
+    left: .2415rem;
+    display: block;
+    width: .2415rem;
+    height: .2415rem;
+    background: url(../images/关注图标.png) no-repeat;
+    background-size: .2415rem .2415rem;
+}
+
+
+/* header module */
+
+.tags {
+    box-sizing: border-box;
+    height: 2.0531rem;
+    padding: 18px .2415rem;
+    margin-top: .6039rem;
+    background-color: #fff;
+}
+
+.tags li {
+    float: left;
+}
+
+.tags li:nth-child(2) {
+    margin: 0 .3623rem;
+}
+
+.tags li a {
+    display: block;
+    width: 2.7778rem;
+    height: 1.2077rem;
+    border-radius: .1208rem;
+    background-color: #fddf00;
+    text-align: center;
+    line-height: 1.2077rem;
+    font-size: .3623rem;
+    color: #33333e;
+}
+
+.tags .selected {
+    background-color: cornflowerblue;
+    color: #fff;
+}
+
+
+/* recommend module */
+
+.recommend-wrap {
+    background-color: #fff;
+}
+
+.recommend {
+    padding: 0 .5314rem;
+}
+
+.recommend>.title {
+    margin-bottom: .6039rem;
+    font-size: .5314rem;
+    color: 292929;
+}
+
+.recommend .title span {
+    font-size: .314rem;
+    color: #afafaf;
+}
+
+.container .items1 {
+    display: flex;
+}
+
+.container .items1 li {
+    flex: 33.33%;
+    height: 4.1063rem;
+    border: 1px solid #f3f3f3;
+    border-radius: .1208rem;
+    margin-bottom: .2415rem;
+}
+
+.container .items1 li:nth-child(2) {
+    margin: 0 .2415rem;
+}
+
+.container li .goods-img {
+    overflow: hidden;
+    height: 1.9324rem;
+    background-color: #f9f9fb;
+}
+
+.container .items2 li .goods-img {
+    height: 3.1159rem;
+}
+
+.container li .goods-img img {
+    display: block;
+    width: 1.6908rem;
+    height: 1.4493rem;
+    margin: .2415rem auto 0;
+}
+
+.container .items2 li .goods-img img {
+    width: 3.3816rem;
+    height: 2.4155rem;
+}
+
+.container .items1 li .goods-detail {
+    padding: 8px;
+}
+
+.container .items2 li .goods-detail {
+    padding: .3382rem;
+}
+
+.goods-detail .mark {
+    width: .3623rem;
+    height: .3623rem;
+    border-radius: .1812rem;
+    background-image: -webkit-linear-gradient(left, #59ffee, #cafffa);
+}
+
+.goods-detail .title {
+    margin: .0725rem 0;
+    font-size: .314rem;
+    line-height: .4348rem;
+    font-weight: 400;
+    color: #3a3a3a;
+}
+
+.goods-detail .price {
+    float: left;
+    font-size: .3382rem;
+    font-weight: bold;
+    color: #fddf00;
+}
+
+.goods-detail .price i {
+    margin-right: .0483rem;
+    font-size: .2415rem;
+}
+
+.goods-detail .cart {
+    display: block;
+    float: right;
+    width: .6039rem;
+    height: .4831rem;
+    background: url(../images/产品购物车.png) no-repeat;
+    background-size: 100%;
+}
+
+.container .items2 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: #fff;
+}
+
+.container .items2 li {
+    height: 5.1932rem;
+    border: 1px solid #f3f3f3;
+    border-radius: .1208rem;
+    margin-bottom: .3623rem;
+}
+
+.container .items2 li:nth-child(odd) {
+    margin-right: .3623rem;
+}

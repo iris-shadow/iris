@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>背景</title>
+    <style>
+        body {
+            /* background-image: url(01-案例/images/bg.jpg);
+            background-repeat: no-repeat;
+            background-attachment: fixed; */
+            background: url(./01-案例/images/bg.jpg) no-repeat fixed center 20px;
+        }
+
+        .exam1 {
+            width: 1000px;
+            height: 50px;
+            /* background-color: cornflowerblue;
+            background-image: url(./images/logo.png);
+            background-repeat: repeat-x; */
+            background: rgba(104, 196, 224, 0.342) url(./images/logo.png) repeat-x;
+        }
+
+        .exam2 {
+            width: 600px;
+            height: 60px;
+            /* background-color: salmon; */
+            background-image: url(./images/logo.png);
+            background-repeat: no-repeat;
+            background-position: center 3px;
+            background-color: rgba(104, 196, 224, 0.342);
+        }
+    </style>
+</head>
+
+<body>
+    <h3>背景图片</h3>
+    <h4>语法：background-image: none|url(path)</h4>
+    <p>适用于小的装饰图片（logo，图标），大型图片（背景）。非常便于控制位置</p>
+    <div class="exam1"></div>
+
+    <h3>背景平铺</h3>
+    <h4>语法：background-repeat: repeat|no-repeat|repeat-y|repeat-x;</h4>
+    <p>默认属性值为 repeat。背景颜色和背景图可以共同存在，背景颜色在下方</p>
+
+    <h3>背景位置</h3>
+    <h4>语法：background-position: 两个方位名词（水平，垂直方向）|精确单位</h4>
+    <p>使用方位名词时，两个方向的先后顺序不固定，程序会自动判定第一个为哪个方向，剩下的即为第二个方向；省略一个参数时，第二个参数默认居中对齐。使用精确单位时，第一个必须为水平方向，第二个为垂直方向，不能颠倒。只有一个参数时，该参数是水平方向，省略的为垂直方向，默认居中；两种单位可以混合使用，混合时也有顺序关系。
+    </p>
+    <div class="exam2"></div>
+
+    <h3>背景固定</h3>
+    <h4>语法：background-attachment: scroll|fixed</h4>
+    <p>默认值为 scroll</p>
+
+    <h3>背景复合属性</h3>
+    <h4>语法：background: color url() repeat attachment position</h4>
+    <p>属性值没有顺序要求，但上述顺序为约定的顺序</p>
+
+    <h3>透明背景色</h3>
+    <h4>语法：background-color: rgba(r, g, b, a) ，a 的取值为 0~1</h4>
+    <p>此属性设置的是背景色，不会对内容有影响。其中 a 的取值为小数时，可省略 0， 如 0.3 可简写为 .3</p>
+
+</body>
+
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>换肤案例</title>
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        .clearfix::after {
+            content: "";
+            display: block;
+            clear: both;
+            visibility: hidden;
+        }
+        
+        .clearfix {
+            *zoom: 1;
+        }
+        
+        body {
+            width: 100%;
+            height: 100vh;
+            background: url(images/1.jpg) center center no-repeat;
+        }
+        
+        .nav_wrapper .nav {
+            position: fixed;
+            top: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            border: 5px solid #fff;
+        }
+        
+        .nav li {
+            box-sizing: border-box;
+            float: left;
+            width: 25%;
+            cursor: pointer;
+            border-right: 2.5px solid #fff;
+            border-left: 2.5px solid #fff;
+        }
+        
+        .nav li img {
+            width: 100%;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="nav_wrapper">
+        <ul class="nav clearfix">
+            <li><img src="images/1.jpg" alt=""></li>
+            <li><img src="images/2.jpg" alt=""></li>
+            <li><img src="images/3.jpg" alt=""></li>
+            <li><img src="images/4.jpg" alt=""></li>
+        </ul>
+    </div>
+
+    <script>
+        var imgs = document.querySelectorAll('img');
+
+        for (var i = 0; i < imgs.length; i++) {
+            imgs[i].onclick = function() {
+                document.body.style.backgroundImage = 'url(' + this.src + ')';
+            }
+        }
+    </script>
+</body>
+
+</html>

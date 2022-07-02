@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Comaptible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimumu-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>二维码关闭案例</title>
+    <style>
+        .qr-code-wrap {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .qr-code-wrap .qr-code {
+            width: 160px;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+        
+        .qr-code .title {
+            margin: 0;
+            margin-bottom: 10px;
+            color: #ee4e2a;
+            text-align: center;
+            font-size: 18px;
+        }
+        
+        .qr-code-wrap button {
+            position: absolute;
+            top: -2px;
+            left: -21px;
+            border: 1px solid #eee;
+            background-color: #fff;
+            color: #ccc;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="qr-code-wrap">
+        <div class="qr-code">
+            <p class="title">手机淘宝</p>
+            <img src="media/images/qr-code.png" alt="手机淘宝" class="qr">
+        </div>
+        <button>x</button>
+    </div>
+
+    <script>
+        var qrBox = document.querySelector('.qr-code-wrap'),
+            closeBtn = document.querySelector('button');
+
+        closeBtn.onclick = function() {
+            qrBox.style.display = 'none';
+        }
+    </script>
+</body>
+
+</html>

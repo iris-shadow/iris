@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-COmaptible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>WebAPI</title>
+</head>
+
+<body>
+    <div id="tag1"></div>
+    <div class="tag2"></div>
+    <section class="tag2"></section>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+    <ul id="second">
+        <li>11</li>
+        <li>22</li>
+        <li>33</li>
+    </ul>
+
+    <p class="time"></p>
+
+    <button id="shabi">傻逼</button>
+
+    <p class="text">
+        hello
+        <span>  world</span>
+    </p>
+
+    <p><button id="beast">beast</button> <button id="beauty">beauty</button></p>
+    <img id="picture" src="media/images/beast.gif" alt="野兽" title="野兽" style="width: 200px; height: 100px;">
+    <script>
+        // //
+        // // 通过元素 id 获取
+        // var tag1 = document.getElementById('tag1');
+        // console.log(tag1);
+
+        // //
+        // // 通过元素名称获取
+        // var tags = document.getElementsByTagName('div');
+        // console.log(tags); // 以伪数组形式存取
+
+        // //
+        // // 通过类名获取
+        // var tag2 = document.getElementsByClassName('tag2');
+        // console.log(tag2);
+
+        // // 
+        // // 直接查询选择器（h5 新增）
+        // var li = document.querySelector('li');
+        // console.log(li); // 返回文档中查找到的第一个标签
+        // var lis = document.querySelectorAll('li');
+        // console.log(lis); // 返回文档中所有查找到的标签
+
+        // // 
+        // // 查找指定位置的标签
+        // var li_parent = document.querySelector('#second');
+        // var second_lis = li_parent.querySelector('li');
+        // console.log(second_lis);
+
+        // // 
+        // // 获取 body 元素
+        // var body = document.body;
+        // console.log(body);
+
+        // //
+        // // 获取 html 元素
+        // var html = document.documentElement;
+        // console.log(html);
+
+        // //
+        // // 点击 button 触发事件
+        // var button = document.getElementById('shabi');
+        // button.onclick = function() {
+        //     alert('You are so shallow!');
+        // }
+
+        // //
+        // // 实现 p 元素里的内容显示当前系统时间
+        // // 定义获取时间的函数
+        // function timer() {
+        //     var date = new Date();
+        //     var week = ['日', '一', '二', '三', '四', '五', '六'];
+        //     var Year = date.getFullYear();
+        //     var Month = date.getMonth() + 1;
+        //     Month = Month < 10 ? '0' + Month : Month
+        //     var Dates = date.getDate();
+        //     Dates = Dates < 10 ? '0' + Dates : Dates;
+        //     var Day = date.getDay();
+        //     var hour = date.getHours();
+        //     hour = hour < 10 ? '0' + hour : hour;
+        //     var minute = date.getMinutes();
+        //     minute = minute < 10 ? '0' + minute : minute;
+        //     var second = date.getSeconds();
+        //     second = second < 10 ? '0' + second : second;
+        //     return '今天是： ' + Year + '年\t' + Month + '月\t' + Dates + '日\t周' + week[Day] + '\t' + hour + '时\t' + minute + '分\t' + second + '秒';
+        // }
+        // //
+        // // 获取事件源
+        // var time = document.querySelector('.time');
+        // time.innerText = timer();
+
+        // // 
+        // // innerText 
+        // var innerText = document.querySelector('.text');
+        // console.log(innerText.innerText); // hello world
+        // innerText.innerText = '<strong>hello</strong> world'; // <strong>hello</strong> world
+        // //
+        // // innerHTML
+        // var innerHTML = document.querySelector('.text');
+        // innerHTML.innerHTML = '<strong>hello</strong> world';
+        // console.log(innerHTML);
+        // // <p class="text">
+        // // <strong>hello</strong>
+        // // " world"
+        // // </p>
+
+        //
+        // 旋转不同的按钮时更换 images 中的图片
+        var beast = document.getElementById('beast');
+        var beauty = document.getElementById('beauty');
+        var picture = document.getElementById('picture');
+        console.log(beast);
+
+        beast.onclick = function() {
+            picture.src = 'media/images/beast.gif';
+            picture.alt = 'beast';
+            picture.title = 'beast';
+        }
+        beauty.onclick = function() {
+            picture.src = 'media/images/beauty.jpg';
+            picture.alt = 'beauty';
+            picture.title = 'beauty';
+        }
+    </script>
+</body>
+
+</html>

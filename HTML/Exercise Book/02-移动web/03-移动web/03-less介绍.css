@@ -1,0 +1,12 @@
+div {
+  width: 55%;
+  height: 5rem;
+  border: 10px solid tomato;
+  background-color: cornflowerblue;
+}
+div a {
+  color: red;
+}
+div a:hover {
+  color: white;
+}

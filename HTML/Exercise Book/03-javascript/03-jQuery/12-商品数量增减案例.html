@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="jQuery.mini.js"></script>
+        <title>商品数量增减案例</title>
+        <style>
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+            }
+
+            .counter-wrapper {
+                width: 350px;
+                height: 26px;
+            }
+
+            .counter {
+                float: left;
+                border: 1px solid skyblue;
+                margin-right: 10px;
+            }
+
+            .counter a {
+                display: inline-block;
+                width: 30px;
+                text-decoration: none;
+                text-align: center;
+                color: #222;
+            }
+
+            .counter a:hover {
+                color: tomato;
+            }
+
+            .counter input {
+                width: 30px;
+                text-align: center;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="counter-wrapper">
+            <div class="counter">
+                <a href="javascript:void(0);" class="decreament"> - </a>
+                <input type="text" class="num" value="1" />
+                <a href="javascript:void(0);" class="increament"> + </a>
+            </div>
+            <div class="counter">
+                <a href="javascript:void(0);" class="decreament"> - </a>
+                <input type="text" class="num" value="1" />
+                <a href="javascript:void(0);" class="increament"> + </a>
+            </div>
+            <div class="counter">
+                <a href="javascript:void(0);" class="decreament"> - </a>
+                <input type="text" class="num" value="1" />
+                <a href="javascript:void(0);" class="increament"> + </a>
+            </div>
+        </div>
+
+        <script>
+            // 为每个 +、- 元素注册事件
+            $('.increament').click(function () {
+                // 取出 input 元素中的当前值
+                var originNum = $(this).siblings('input').val();
+                // 将数量 +1
+                originNum++;
+                $(this).siblings('input').val(originNum);
+            });
+            $('.decreament').click(function () {
+                // 取出 input 元素中的当前值
+                var originNum = $(this).siblings('input').val();
+                // 将数量 -1
+                if (originNum == 1) {
+                    return false;
+                }
+                originNum--;
+                $(this).siblings('input').val(originNum);
+            });
+        </script>
+    </body>
+</html>

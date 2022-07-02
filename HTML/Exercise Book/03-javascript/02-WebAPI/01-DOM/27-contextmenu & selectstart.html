@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html alng="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maimum-scale=1.0, user-scalable=0">
+    <title>contextmenu & selectstart</title>
+</head>
+
+<body>
+    <p>每当我错过一个孩，我就往山上搬一块砖，于是这个世界上就有了长城</p>
+    <script>
+        var p = document.querySelector('p');
+        // 阻止上下文（鼠标右键）
+        document.addEventListener('contextmenu', function(event) {
+            event.preventDefault();
+        })
+
+        // 阻止选中
+        p.addEventListener('selectstart', function(event) {
+            event.preventDefault();
+        })
+    </script>
+</body>
+
+</html>

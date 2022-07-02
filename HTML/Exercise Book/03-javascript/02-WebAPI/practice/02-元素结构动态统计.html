@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta cahrset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content=" IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>元素结构动态统计</title>
+    <style>
+        .structure {
+            padding: 0;
+            width: 300px;
+        }
+        
+        .counter {
+            width: 300px;
+        }
+        
+        .counter p {
+            margin: 3px 0;
+            color: coral;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="structure">
+        <li>hello</li>
+        <li>world</li>
+        你好 世界
+    </ul>
+    <div class="counter">
+        <p>children 显示的节点数： </p>
+        <p>childNodes 显示的节点数：</p>
+        <p>nodeType 为 1 的节点数：</p>
+    </div>
+
+    <script>
+        var structure = document.querySelector('.structure');
+        var counter = document.querySelector('.counter');
+
+        structure.onclick = function() {
+            // children
+            var children = this.children;
+            counter.children[0].innerHTML = 'children 显示的节点数：' + children.length;
+
+            // childNodes 
+            var childNodes = this.childNodes;
+            counter.children[1].innerHTML = 'chilNodes 显示的节点数：' + childNodes.length;
+
+            // child of nodeType is one
+            var nodeTypeOne = 0;
+            for (var i = 0; i < childNodes.length; i++) {
+                if (childNodes[i].nodeType === 1) {
+                    nodeTypeOne += 1;
+                }
+            }
+            counter.children[2].innerHTML = 'nodeType 为 1 的节点数：' + nodeTypeOne;
+        }
+    </script>
+</body>
+
+</html>

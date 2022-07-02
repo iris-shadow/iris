@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>模态框拖拽案例</title>
+        <style>
+            * {
+                padding: 0;
+                margin: 0;
+            }
+
+            body {
+                background-color: #f1f1f1;
+            }
+
+            .tips {
+                text-align: center;
+            }
+
+            .enter {
+                text-decoration: none;
+                color: #333;
+                font-weight: 700;
+                font-size: 22px;
+            }
+
+            .login {
+                display: none;
+                position: absolute;
+                z-index: 2;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 500px;
+                height: 300px;
+                background-color: #fff;
+                text-align: center;
+                border-radius: 10px;
+                box-shadow: 0 0 15px 5px rgba(237, 109, 82, 0.3);
+            }
+
+            .title {
+                height: 60px;
+                line-height: 60px;
+                font-weight: 900;
+                font-size: 20px;
+                color: tomato;
+                cursor: move;
+            }
+
+            div[class$="Wrapper"] {
+                height: 70px;
+                line-height: 70px;
+            }
+
+            div[class$="Wrapper"] label {
+                display: inline-block;
+                width: 100px;
+                text-align: center;
+                font-weight: 700;
+                font-size: 14px;
+                color: #333;
+            }
+
+            #uName,
+            #uPassword {
+                width: 150px;
+                height: 20px;
+                border: 1px solid #ccc;
+                padding-left: 5px;
+                border-radius: 5px;
+            }
+
+            input[type="submit"] {
+                width: 100px;
+                height: 30px;
+                border: 2px solid lightblue;
+                background-color: #fff;
+                color: skyblue;
+                line-height: 26px;
+                font-weight: 700;
+                font-size: 20px;
+                border-radius: 15px;
+                cursor: pointer;
+            }
+
+            .close {
+                position: absolute;
+                top: -20px;
+                right: -20px;
+                width: 40px;
+                height: 40px;
+                background-color: #fff;
+                font-size: 22px;
+                color: tomato;
+                border-radius: 50%;
+                box-shadow: 0 0 15px 5px rgba(237, 109, 82, 0.3);
+                cursor: pointer;
+            }
+
+            .mask {
+                display: none;
+                position: fixed;
+                top: 0;
+                width: 100vw;
+                height: 100vh;
+                background-color: rgba(0, 0, 0, 0.2);
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="tips">
+            <a class="enter" href="javascript:void(0);">点击登录</a>
+        </div>
+        <div class="login">
+            <form action="javascript:void(0);">
+                <div class="title">登录会员</div>
+                <div class="uNameWrapper">
+                    <label for="uName">用户名： </label>
+                    <input type="text" id="uName" placeholder="请输入用户名" />
+                </div>
+                <div class="uPasswordWrapper">
+                    <label for="uPassword">密码： </label>
+                    <input type="password" id="uPassword" placeholder="请输入密码" />
+                </div>
+                <div class="sumbitWrapper">
+                    <input type="submit" value="登录" />
+                </div>
+                <button class="close">X</button>
+            </form>
+        </div>
+        <div class="mask"></div>
+
+        <script>
+            var enter = document.querySelector(".enter");
+            var login = document.querySelector(".login");
+            var title = document.querySelector(".title");
+            var close = document.querySelector(".close");
+            var mask = document.querySelector(".mask");
+
+            // 点击提示文字弹出模态框和遮罩
+            enter.addEventListener("click", function () {
+                login.style.display = "block";
+                mask.style.display = "block";
+            });
+
+            // 点击关闭按钮关闭模态框和遮罩
+            close.addEventListener("click", function () {
+                login.style.display = "none";
+                mask.style.display = "none";
+            });
+
+            // 模态框移动
+            title.addEventListener("mousedown", function (event) {
+                // 获取鼠标在 login 盒子中的坐标
+                var x = event.pageX - login.offsetLeft;
+                var y = event.pageY - login.offsetTop;
+
+                // 鼠标移动
+                function move(event) {
+                    // 将鼠标距离页面的坐标与鼠标在 login 盒子里的坐标对应相减后赋值给 login 盒子的 top 和 left
+                    login.style.top = event.pageY - y + "px";
+                    login.style.left = event.pageX - x + "px";
+                }
+                document.addEventListener("mousemove", move);
+
+                // 鼠标松开
+                document.addEventListener("mouseup", function () {
+                    document.removeEventListener("mousemove", move);
+                });
+            });
+        </script>
+    </body>
+</html>

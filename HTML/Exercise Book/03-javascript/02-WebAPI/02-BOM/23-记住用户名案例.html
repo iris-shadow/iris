@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>用户名记住案例</title>
+    </head>
+
+    <body>
+        <input type="text" id="uName" />
+        <span> <input type="checkbox" name="isStorage" id="isStorage" /> 记住我 </span>
+
+        <script>
+            var ipt = document.querySelector("#uName");
+            var isStorage = document.querySelector("#isStorage");
+
+            // 判断是否能通过 ipt 的 id 获取对应的值
+            if (localStorage.getItem(ipt.id)) {
+                ipt.value = localStorage.getItem(ipt.id);
+                // 将复选框设为选中状态
+                isStorage.checked = true;
+            }
+
+            // 复选框状态发生改变
+            isStorage.addEventListener("change", function () {
+                // 选中时将数据存储
+                if (this.checked) {
+                    localStorage.setItem(ipt.id, ipt.value);
+                } else {
+                    localStorage.removeItem(ipt.id);
+                }
+            });
+        </script>
+    </body>
+</html>

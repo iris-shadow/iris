@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="./jQuery.mini.js"></script>
+        <title>jQuery 中的 Ajax</title>
+        <style>
+            .navigation {
+                list-style: none;
+                display: flex;
+                justify-content: space-around;
+                width: 300px;
+                padding: 0;
+                margin: 100px auto 0;
+            }
+
+            .navigation li {
+                padding: 10px 20px;
+                background-color: cornflowerblue;
+                text-align: center;
+                border-radius: 15px;
+            }
+
+            .navigation li a {
+                text-decoration: none;
+                color: #fff;
+            }
+        </style>
+    </head>
+    <body>
+        <ul class="navigation">
+            <li><a href="javascript:;">GET</a></li>
+            <li><a href="javascript:;">POST</a></li>
+            <li><a href="javascript:void(0);">Ajax</a></li>
+        </ul>
+
+        <script>
+            // get 请求
+            $('.navigation li')
+                .eq(0)
+                .on('click', () => {
+                    $.get('http://127.0.0.1:8000/jquery-server', { name: 'iris', age: '22' }, (data) => {
+                        console.log(data);
+                    });
+                });
+
+            // post 请求
+            $('.navigation li')
+                .eq(1)
+                .on('click', () => {
+                    $.post(
+                        'http:127.0.0.1:8000/jQuery-server',
+                        { name: 'iris', gender: 'male' },
+                        (data) => {
+                            console.log(data);
+                        },
+                        'json'
+                    );
+                });
+
+            // 通用请求
+            $('.navigation li')
+                .eq(2)
+                .on('click', () => {
+                    $.ajax({
+                        type: 'GET',
+                        url: 'http://127.0.0.1:8000/jQuery-server',
+                        data: { name: 'iris', skill: 'cry' },
+                        timeout: 1000,
+                        success: (data) => {
+                            console.log(data);
+                        },
+                        error: () => {
+                            console.log('给你机会，你不中用啊！');
+                        },
+                        dataType: 'json',
+                    });
+                });
+        </script>
+    </body>
+</html>

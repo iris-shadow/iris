@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>移动端返回顶部及延时解决案例</title>
+        <style>
+            @font-face {
+                font-family: "iconfont";
+                src: url("../fonts/font_backtop/iconfont.ttf?t=1653716229579") format("truetype");
+            }
+
+            * {
+                padding: 0;
+                margin: 0;
+            }
+
+            body {
+                overflow-x: hidden;
+                min-width: 320px;
+                max-width: 540px;
+                text-align: center;
+                color: tomato;
+                font-weight: 700;
+                font-size: 20px;
+            }
+
+            nav {
+                width: 100%;
+                height: 100px;
+                background-color: cornflowerblue;
+            }
+
+            header {
+                width: 100%;
+                height: 180px;
+                background-color: lavender;
+            }
+
+            main {
+                width: 100%;
+                height: 600px;
+            }
+
+            main aside {
+                float: left;
+                width: 30%;
+                height: 100%;
+                background-color: lawngreen;
+            }
+
+            main section {
+                float: left;
+                width: 70%;
+                height: 100%;
+                background-color: lightblue;
+            }
+
+            footer {
+                width: 100%;
+                height: 300px;
+                background-color: honeydew;
+            }
+
+            .rocket {
+                display: none;
+                position: absolute;
+                top: 600px;
+                right: 10px;
+                font-family: "iconfont";
+                font-size: 30px;
+                color: whitesmoke;
+            }
+        </style>
+    </head>
+
+    <body>
+        <nav>导航栏</nav>
+        <header>头部</header>
+        <main>
+            <aside>侧边栏</aside>
+            <section>主体部分</section>
+        </main>
+        <footer>页脚</footer>
+        <div class="rocket">&#xe633;</div>
+
+        <script>
+            var main = document.querySelector("main");
+            var rocket = document.querySelector(".rocket");
+
+            // 当滑动到 main 元素时，显示小火箭
+            window.addEventListener("scroll", function () {
+                if (window.pageYOffset >= main.offsetTop) {
+                    rocket.style.display = "block";
+                } else {
+                    rocket.style.display = "none";
+                }
+            });
+
+            // 定义缓动函数
+            function inching(obj, destination, callback) {
+                // 预先清除定时器
+                clearInterval(obj.timer);
+                // 添加定时器
+                obj.timer = setInterval(function () {
+                    // 判断是否达到终点
+                    if (obj.pageYOffset == destination) {
+                        // 清除定时器
+                        clearInterval(obj.timer);
+                        // 执行回调函数
+                        callback && callback();
+                    }
+                    // 计算缓动步长
+                    var step = (destination - obj.pageYOffset) / 10;
+                    // 根据步长正负进行不同的取整
+                    step = step > 0 ? Math.ceil(step) : Math.floor(step);
+                    obj.scroll(0, obj.pageYOffset + step);
+                }, 5);
+            }
+
+            // 因为智能机刚面世时，可以浏览 pc 的网页版，有的文字较小，可双手进行缩放，故在手指触摸时（click），会等待 300ms 检测是否有移动，导致了延时
+            // 下列程序为测试 click 事件是否有 300ms 延时（2022-5-28 测试无延时，不知收否为测试程序的错误）
+            var start = null;
+            var end = null;
+            rocket.addEventListener("touchstart", function () {
+                start = +Date.now();
+            });
+
+            rocket.addEventListener("click", function () {
+                var end = Date.now();
+                console.log(end - start);
+                // inching(window, 0);
+            });
+
+            // 解决 click 事件有延时 300ms 的方案
+            // 1. 在视口标签处禁用页面缩放 user-scalable = 0 / no
+            // 2. 使用 touchstart 事件封装一个类似 click 的事件
+            function click(obj, callback, callbackArgs) {
+                // 记录是否移动
+                var isMove = false;
+                // 记录触摸的时间戳
+                var startTime = 0;
+
+                // 使用 touchstart 事件记录触摸屏幕的时间戳
+                obj.addEventListener("touchstart", function () {
+                    startTime = Date.now();
+                });
+
+                // 使用 touchmove 事件监测手指是否移动
+                obj.addEventListener("touchmove", function () {
+                    isMove = true;
+                });
+
+                // 使用 touchend 事件记录手指离开的时间戳，并判断是否执行回调函数
+                obj.addEventListener("touchend", function () {
+                    var endTime = Date.now();
+                    if (!isMove && endTime - startTime < 150) {
+                        callback && callback(callbackArgs[0], callbackArgs[1]);
+                    }
+
+                    // 重置是否移动的标志
+                    isMove = false;
+
+                    // 测试自己封装的点击事件用时
+                    end = Date.now();
+                    console.log("myself", end - start);
+                });
+            }
+
+            // 给 rocket 添加点击事件
+            click(rocket, inching, [window, 0]);
+        </script>
+    </body>
+</html>

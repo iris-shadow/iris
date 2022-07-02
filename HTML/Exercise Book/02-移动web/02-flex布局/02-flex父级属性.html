@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flex 父级属性</title>
+    <style>
+        div[class^=parent] {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-content: center;
+            /* align-items: center; */
+            flex-wrap: wrap;
+            width: 1000px;
+            height: 300px;
+            margin-top: 50px;
+            background-color: pink;
+        }
+        
+        span[class^=son] {
+            width: 150px;
+            height: 50px;
+            margin: 5px;
+            background-color: tomato;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="parent">
+        <span class="son1">1</span>
+        <span class="son2">2</span>
+        <span class="son3">3</span>
+        <span class="son3">4</span>
+        <span class="son3">5</span>
+        <span class="son3">6</span>
+    </div>
+</body>
+
+</html>

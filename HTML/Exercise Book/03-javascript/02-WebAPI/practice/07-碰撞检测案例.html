@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>碰撞检测案例</title>
+        <style>
+            .big-wrapper {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 600px;
+                height: 600px;
+                border: 5px solid tomato;
+            }
+
+            .warning {
+                width: 588px;
+                height: 588px;
+                border: 1px solid red;
+                margin: 5px 0 0 5px;
+            }
+
+            .small {
+                position: absolute;
+                top: 5px;
+                left: 260px;
+                width: 80px;
+                height: 80px;
+                background-color: cornflowerblue;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="big-wrapper">
+            <div class="warning"></div>
+            <div class="small"></div>
+        </div>
+
+        <script>
+            var bigWrapper = document.querySelector(".big-wrapper");
+            var small = document.querySelector(".small");
+
+            //
+            // 随机生成一个在 （big-wrapper 元素宽高 - samll 宽高）范围内的值赋给 samll 的 top、left 值
+            // 求取范围值
+            var limitX = bigWrapper.clientWidth - small.offsetWidth;
+            var limitY = bigWrapper.clientHeight - small.offsetHeight;
+
+            // 随机生成 x y 并赋值给 samll 的 left 和 top
+            function evaluation() {
+                var x = parseInt(Math.random() * (limitX + 1));
+                var y = parseInt(Math.random() * (limitY + 1));
+                small.style.top = y + "px";
+                small.style.left = x + "px";
+            }
+
+            // 动态检测 small 是否将要碰撞到 big-wrapper
+            function detection() {
+                // 上下边框检测
+                if (small.offsetTop >= limitY) {
+                    console.log("警告⚠️ ： 将要碰到底部边框！");
+                    small.style.top = limitY - 5 + "px";
+                } else if (small.offsetTop <= 0) {
+                    console.log("警告⚠️ ： 将要碰到顶部边框！");
+                    small.style.top = 5 + "px";
+                }
+
+                // 左右边框检测
+                if (small.offsetLeft >= limitX) {
+                    console.log("警告⚠️ ： 将要碰到右侧边框！");
+                    small.style.left = limitX - 5 + "px";
+                } else if (small.offsetLeft <= 0) {
+                    console.log("警告⚠️ ： 将要碰到左侧边框！");
+                    small.style.left = 5 + "px";
+                }
+            }
+
+            setInterval(evaluation, 300);
+            // 检测函数的调用间隔时长必须小于赋值 top left 的间隔时长
+            setInterval(detection, 5);
+        </script>
+    </body>
+</html>

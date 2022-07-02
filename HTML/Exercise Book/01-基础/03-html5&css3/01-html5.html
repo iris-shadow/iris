@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>新增html标签</title>
+    <style>
+        video {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>新增 html 标签</h3>
+    <ul>
+        <li>&lt;header&gt;&lt;/header&gt; 头部标签</li>
+        <li>&lt;nav&gt;&lt;/nav&gt; 导航标签</li>
+        <li>&lt;article&gt;&lt;/article&gt; 内容标签</li>
+        <li>&lt;section&gt;&lt;/section&gt; 定义文档某个区域</li>
+        <li>&lt;aside&gt;&lt;/aside&gt; 侧边栏标签</li>
+        <li>&lt;footer&gt;&lt;/footer&gt; 尾部标签</li>
+    </ul>
+    <p>新增的标签主要针对搜索引擎；只支持 IE9+ 的浏览器，在 IE9 浏览器中需将其转换为块级元素；大多数用于移动端</p>
+
+    <h3>视频标签</h3>
+    <video src="./media/mi.mp4" autoplay="autoplay" controls="controls" poster="./images/mi.jpg" loop="loop" muted="muted"></video>
+
+    <h3>音频标签</h3>
+    <audio src="./media/music.mp3" autoplay="autopaly" controls="controls" loop="loop"></audio>
+
+    <h3>新增表单类型</h3>
+    <form>
+        <ul>
+            <li>搜索：<input type="search" /></li>
+            <li>数字：<input type="number" /></li>
+            <li>号码：<input type="tel" /></li>
+            <li>邮箱：<input type="email" /></li>
+            <li>颜色：<input type="color" /></li>
+            <li>网址：<input type="url" /></li>
+            <li>时间：<input type="time" /></li>
+            <li>日期：<input type="date" /></li>
+            <li>月份：<input type="month" /></li>
+            <li>周：<input type="week" /></li>
+            <li><input type="submit" value="提交" /></li>
+        </ul>
+    </form>
+
+    <h3>表单新增属性</h3>
+    <p>required：存在此属性时，输入内容不能为空；placehoder：提示文本；autofoucs：页面加载时，自动将光标定位到此输入框；autocomplete：自动填充历史提交成功的内容；multiple：主要针对 text="file" 的表单进行文件多选</p>
+    <form>
+        <ul>
+            <li>搜索：<input type="search" name="catch" required="required" placeholder="滚" autofocus="autofoucs" autocomplete="off" /></li>
+            <li>文件：<input type="file" multiple="multiple" /></li>
+            <li><input type="submit" value="确定" /></li>
+        </ul>
+    </form>
+</body>
+
+</html>

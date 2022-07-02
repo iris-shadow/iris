@@ -1,0 +1,107 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: linear-gradient(200deg, #b5aee4, #505285);
+}
+
+.sand-clock {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    width: 100px;
+    height: 185px;
+    animation: rotate 3s linear infinite;
+}
+
+.sand-clock::before {
+    content: "";
+    position: absolute;
+    z-index: 2;
+    top: 82px;
+    width: 4px;
+    height: 0px;
+    background-color: #cabbe9;
+    animation: connect 3s linear infinite;
+}
+
+.sand-clock .top,
+.sand-clock .down {
+    overflow: hidden;
+    width: 70px;
+    height: 70px;
+    border-width: 4px 4px 8px 8px;
+    border-style: solid;
+    border-color: #dcdcdc;
+    border-radius: 50% 100% 50% 30%;
+}
+
+.sand-clock .top {
+    transform: rotate(-45deg);
+}
+
+.sand-clock .down {
+    transform: rotate(135deg);
+}
+
+.top::before,
+.down::before {
+    content: "";
+    display: block;
+    width: inherit;
+    height: inherit;
+    background-color: #cabbe9;
+    animation: 3s linear infinite;
+}
+
+.top::before {
+    border-radius: 0 100% 0 0;
+    animation-name: drop-sand;
+}
+
+.down::before {
+    border-radius: 0 0 0 25%;
+    transform: translate(50px, -50px);
+    animation-name: fill-sand;
+}
+
+@keyframes drop-sand {
+    to {
+        transform: translate(-50px, 50px);
+    }
+}
+
+@keyframes fill-sand {
+    to {
+        transform: translate(0px, 0px);
+    }
+}
+
+@keyframes connect {
+    10%,
+    90% {
+        height: 90px;
+    }
+    100% {
+        height: 0px;
+    }
+}
+
+@keyframes rotate {
+    0%,
+    90% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(180deg);
+    }
+}

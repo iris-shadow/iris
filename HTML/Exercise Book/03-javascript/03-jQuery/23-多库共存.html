@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="jQuery.mini.js"></script>
+        <title>多库共存</title>
+    </head>
+    <body>
+        <script>
+            // $ 的简单封装
+            $(function () {
+                function $(elem) {
+                    return document.querySelector(elem);
+                }
+
+                // console.log($('div'));
+                // $.each();
+
+                // 为了防止其它库中也含有 “$” 造成与 jQuery 冲突，可采用以下方法解决
+                // 1. 将 $ 使用 jQuery 代替
+                jQuery.each();
+
+                // 2. 使用 var jQ = $.noConflict()
+                var jQ = jQuery.noConflict();
+                jQ.each();
+            });
+        </script>
+
+        <div></div>
+    </body>
+</html>

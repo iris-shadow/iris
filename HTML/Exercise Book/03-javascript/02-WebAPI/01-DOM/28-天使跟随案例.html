@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html alng="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>天使跟随案例</title>
+    <style>
+        img {
+            position: absolute;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+
+<body>
+    <img src="images/angel.gif" alt="">
+
+    <script>
+        var angel = document.querySelector('img');
+
+        document.addEventListener('mousemove', function(event) {
+            angel.style.left = event.pageX + 'px';
+            angel.style.top = event.pageY + 'px';
+        })
+    </script>
+</body>
+
+</html>

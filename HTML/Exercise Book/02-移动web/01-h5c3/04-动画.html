@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @keyframes move {
+            0% {
+                transform: translate(0px, 0px);
+            }
+            80% {
+                transform: translate(1200px, 0px);
+            }
+            90% {
+                transform: translate(1200px, 200px);
+            }
+            95% {
+                transform: translate(0px, 200px);
+            }
+            100% {
+                transform: translate(0px, 0px);
+            }
+        }
+        
+        @keyframes click {
+            from {
+                width: 0px;
+            }
+            to {
+                width: 180px;
+            }
+        }
+        
+        .animation {
+            width: 100px;
+            height: 100px;
+            background-color: tomato;
+            animation-name: move;
+            animation-duration: 4s;
+        }
+        
+        p {
+            overflow: hidden;
+            background-color: cornflowerblue;
+            white-space: nowrap;
+            font-size: 20px;
+            color: #fff;
+            animation: click 5s steps(9) forwards;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 动画 -->
+    <div class="animation"></div>
+    <p>内心宁静、眼里有光</p>
+</body>
+
+</html>

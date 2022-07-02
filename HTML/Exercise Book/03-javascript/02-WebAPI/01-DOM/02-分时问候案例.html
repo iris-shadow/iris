@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>分时问候</title>
+    <style>
+        .picture {
+            width: 200px;
+            height: 150px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="greeting">
+        <img src="media/images/morning.gif" alt="早上好" class="picture">
+        <p class="speak">早上好</p>
+    </div>
+
+    <script>
+        var greeting = document.getElementById('greeting'),
+            picture = greeting.querySelector('.picture'),
+            speak = greeting.querySelector('.speak');
+
+        var date = new Date();
+        var hour = date.getHours();
+        if (hour < 12) {
+            picture.src = 'media/images/morning.gif';
+            speak.innerHTML = '早上好，打工人！';
+        } else if (hour < 18) {
+            picture.src = 'media/images/forenoon.gif';
+            speak.innerHTML = '上午好，打工人！';
+        } else {
+            picture.src = 'media/images/night.gif';
+            speak.innerHTML = '晚上好，打工人！';
+        }
+    </script>
+</body>
+
+</html>

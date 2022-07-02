@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta cahrset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>轮播图案例</title>
+        <script src="../js/aniamte.js"></script>
+        <script src="../js/slider.js"></script>
+        <style>
+            /* 声明字体 */
+            @font-face {
+                font-family: "iconfont";
+                src: url("../fonts/banner-slider-fonts/iconfont.woff2?t=1653529577603") format("woff2"), url("../fonts/banner-slider-fonts/iconfont.woff?t=1653529577603") format("woff"), url("../fonts/banner-slider-fonts/iconfont.ttf?t=1653529577603") format("truetype");
+            }
+
+            * {
+                padding: 0;
+                margin: 0;
+            }
+
+            ul,
+            ol {
+                list-style: none;
+            }
+
+            body {
+                overflow: hidden;
+            }
+
+            .clearfix::after {
+                content: "";
+                display: block;
+                visibility: hidden;
+                height: 0;
+                clear: both;
+            }
+
+            .clearfix {
+                *zoom: 1;
+            }
+
+            .focus {
+                overflow: hidden;
+                position: absolute;
+                top: 100px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 590px;
+                height: 470px;
+            }
+
+            .slider {
+                position: absolute;
+                width: 2360px;
+            }
+
+            .slider li {
+                float: left;
+            }
+
+            .slider li img {
+                width: 590px;
+                height: 470px;
+            }
+
+            .arrow-left,
+            .arrow-right {
+                display: none;
+                position: absolute;
+                z-index: 2;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 30px;
+                height: 36px;
+                border: 0;
+                background-color: rgba(0, 0, 0, 0.15);
+                text-align: center;
+                font-family: "iconfont";
+                line-height: 36px;
+                color: #f5f5f5;
+                font-weight: 900;
+                font-size: 30px;
+            }
+
+            .arrow-left {
+                left: 0;
+                border-top-right-radius: 18px;
+                border-bottom-right-radius: 18px;
+            }
+
+            .arrow-right {
+                right: 0;
+                border-top-left-radius: 18px;
+                border-bottom-left-radius: 18px;
+            }
+
+            .arrow-left:hover,
+            .arrow-right:hover {
+                background-color: rgba(0, 0, 0, 0.25);
+                color: #fff;
+            }
+            .dots {
+                position: absolute;
+                z-index: 2;
+                left: 100px;
+                bottom: 15px;
+            }
+
+            .dots li {
+                float: left;
+                margin: 0 5px;
+                width: 10px;
+                height: 10px;
+                background-color: rgba(255, 255, 255, 0.3);
+                border-radius: 50%;
+            }
+
+            .dots .current-dot {
+                background-color: #fff;
+                box-shadow: 0 0 5px 2px lightblue;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="focus">
+            <!-- 左右箭头 -->
+            <button class="arrow-left">&#xeb04;</button>
+            <button class="arrow-right">&#xeb03;</button>
+
+            <!-- 小圆点 -->
+            <ol class="dots"></ol>
+
+            <!-- 轮播图 -->
+            <ul class="slider clearfix">
+                <li><img src="../media/images/slider1.webp" alt="" /></li>
+                <li><img src="../media/images/slider2.webp" alt="" /></li>
+                <li><img src="../media/images/slider3.webp" alt="" /></li>
+                <li><img src="../media/images/slider4.webp" alt="" /></li>
+            </ul>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件对象</title>
+    <style>
+        body {
+            height: 3000px;
+        }
+        
+        div {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100px;
+            height: 50px;
+            border-radius: 50px;
+            background-color: skyblue;
+        }
+        
+        ul {
+            width: 200px;
+            background-color: aliceblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+
+    <a href="http://www.baidu.com" target="_blank">百度</a>
+    <script>
+        // 事件对象 event
+        var div = document.querySelector('div');
+        div.addEventListener('click', function(event) {
+            // IE678 的兼容性处理
+            var e = event || window.event;
+            console.log(e);
+        })
+
+        // // e.target 指向出发事件的对象  this 和 e.currentTaget 指向的是绑定事件的对象
+        var ul = document.querySelector('ul');
+        // // 使用传统注册事件方式兼容 IE
+        // ul.onclick = function(e) {
+        //     var e = e || window.event;
+        //     // IE 中不认识 e.taget 而使用 e.srcElement
+        //     target = e.target || e.srcElement;
+        //     console.log('e.taget -> ', target);
+
+        //     // this 和 e.currentTaget
+        //     console.log('this -> ', this);
+        //     console.log('e.currentTaget -> ', e.currentTarget);
+        // }
+
+        // 监听方式注册事件
+        function click(e) {
+            var e = e || window.event;
+            // IE 中不认识 e.taget 而使用 e.srcElement
+            target = e.target || e.srcElement;
+            console.log('e.taget -> ', target);
+
+            // this 和 e.currentTaget
+            console.log('this -> ', this);
+            console.log('e.currentTaget -> ', e.currentTarget);
+        }
+
+        ul.addEventListener('click', click);
+
+        // // 传统事件阻止事件默认行为
+        var a = document.querySelector('a');
+        // a.onclick = function(event) {
+        //     // preventDefault() 方法，不兼容 IE678
+        //     // event.preventDefault(); 
+
+        //     // IE 中使用 event.returnValue 属性
+        //     // event.returnValue;
+
+        //     // return 仅限于传统注册事件的方式
+        //     return false;
+        // }
+
+        // 监听事件发生阻止事件的默认行为 
+        a.addEventListener('click', function(event) {
+            // 监听事件方式使用此语句不生效
+            // return false;
+
+            // 应使用 event.preventDefault();
+            event.preventDefault();
+        });
+
+        // clientX/Y、pageX/Y， screenX/Y
+        document.addEventListener('click', function(event) {
+            console.log('client -> ', event.clientX, event.clientY);
+            console.log('page -> ', event.pageX, event.pageY);
+            console.log('screen -> ', event.screenX, screenY);
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>practice</title>
+    <style>
+        body {
+            background-color: #fff;
+        }
+        
+        li {
+            list-style: none;
+        }
+        
+        video {
+            width: 381px;
+            height: 290px;
+        }
+        
+        audio {
+            vertical-align: middle;
+        }
+        
+        header,
+        footer {
+            height: 50px;
+            background-color: cornflowerblue;
+            text-align: center;
+            line-height: 50px;
+        }
+        
+        nav {
+            height: 40px;
+            margin: 20px 0px;
+            background-color: tomato;
+            text-align: center;
+            line-height: 40px;
+        }
+        
+        section {
+            height: 400px;
+            padding: 5px;
+            margin-bottom: 20px;
+            background-color: #f1f1f1;
+            text-align: center;
+        }
+        
+        aside {
+            float: left;
+            width: 30%;
+            height: 344px;
+            border: 1px solid #ddd;
+        }
+        
+        article {
+            float: right;
+            width: 68%;
+            height: 344px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        
+        article form ul li {
+            padding: 5px;
+        }
+        
+        article form ul li label {
+            display: inline-block;
+            width: 100px;
+            text-align: right;
+        }
+        
+        article form ul li input[type="submit"] {
+            margin-left: 120px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>我是 header</header>
+    <nav>我是 nav</nav>
+    <section>
+        <p>我是 section</p>
+        <aside>
+            <p>垃圾11即将发布</p>
+            <video controls="controls" poster="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/1061cd8d46977b5291d481d0cd44105e.jpg?thumb=1&w=400&h=400">
+                <source src="./media/mi.mp4" type="video/mp4" />
+                您的浏览器真垃圾，消费不起这个 mv ～
+            </video>
+        </aside>
+        <article>
+            <p>我是 article</p>
+            <form action="" autocomplete="on">
+                <ul>
+                    <li><label for="username">用户名：</label><input type="text" name="username" id="username" required placeholder="请输入用户名" autofocus="autofocus" autocomplete="on"></li>
+                    <li><label for="password">密码：</label><input type="password" name="password" id="password"></li>
+                    <li><label for="tel">手机号：</label><input type="tel" name="tel" id="tel"></li>
+                    <li><label for="birthday">生日：</label><input type="date" name="birthday" id="birthday"></li>
+                    <li><label for="spare-tire">备胎：</label><input type="number" name="spare-tire" id="spare-tire"></li>
+                    <li><input type="submit" value="免费注册"></li>
+                </ul>
+            </form>
+        </article>
+    </section>
+    <footer>
+        我是 footer
+        <audio controls="controls">
+            <source src="./media/陆虎-雪落下的声音.mp3" type="audio/mp3" />
+        </audio>
+    </footer>
+</body>
+
+</html>

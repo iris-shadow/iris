@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>复合选择器</title>
+    <style>
+        .test li a {
+            color: darkgoldenrod;
+        }
+
+        div>p {
+            color: navajowhite;
+        }
+
+        a:link {
+            color: #222;
+            text-decoration: none;
+        }
+
+        a:visited {
+            color: skyblue;
+        }
+
+        a:hover {
+            color: paleturquoise;
+        }
+
+        a:active {
+            color: salmon;
+        }
+
+        input:focus {
+            background-color: lavender;
+            color: deepskyblue;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>复合选择器</h2>
+    <h3>后代选择器</h3>
+    <h4>格式：元素1 元素2[ 元素3 ...]</h4>
+    <ol class="test">
+        <li>元素的个数不限制，但要有包含关系</li>
+        <li>元素类型可以是基础选择器中的任意类型，如：.nav ol li 表示选择带有 .nav 类选择器下的 &lt;ol&gt;&lt;/ol&gt; 中的 &lt;li&gt;&lt;/li&gt;</li>
+        标签
+        <li>复合选择器的作用效果只会作用到最后一个元素上 <a href="#">小娃娃，你可懂了？</a></li>
+    </ol>
+
+    <h3>子选择器</h3>
+    <h4>格式：父级标签>子级标签</h4>
+    <div>
+        <p>子选择器的作用范围只能作用于有相邻父子级关系的子标签中</p>
+        <h5>
+            <p>若中间跨过第三个标签，则不会作用到该子标签</p>
+        </h5>
+    </div>
+
+    <h3>并集选择器</h3>
+    <h4>格式：<br /> 元素1, <br />元素2, <br />.类名 子元素</h4>
+    <p>并集选择器中的元素可为任何形式的选择器，常用于集体选择器的设置。各个选择器之间使用英文逗号隔开，每个选择器独占一行</p>
+
+    <h3>伪类选择器</h3>
+    <h4>注意事项</h4>
+    <ol>
+        <li>链接伪类选择器尽量按照 LVHA 的顺序书写以确保其生效</li>
+        <li>当链接地址为空链接（#）时，其样式默认为 visited 状态</li>
+        <li>实际开发中可以先给 &lt;a&gt;&lt;/a&gt; 一个默认样式（如设置 颜色、无下划线），当鼠标经过时（a:kink {color: #...; text-decoration:
+            underline;}）给一个样式（如设置颜色、添加下划线）</li>
+    </ol>
+    <ul>
+        <li><a href="l" title="百度" target="_blank">a:link 选择未被点击的标签</a></li>
+        <li><a href="l" title="百度" target="_blank">a:hover 选择鼠标经过的标签</a></li>
+        <li><a href="l" title="百度" target="_blank">a:active 选择鼠标按下还未弹起的标签</a></li>
+        <li><a href="l" title="百度" target="_blank">a:visited 选择被点击后的标签</a></li>
+    </ul>
+    <h4>焦点伪类选择器</h4>
+    <p>选取获得焦点（光标）的表单元素</p>
+    <input type="text" /> <input type="text" /> <input type="text" />
+</body>
+
+</html>

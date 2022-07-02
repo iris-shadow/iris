@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>技巧</title>
+    <style>
+        @font-face {
+            font-family: "iconfont";
+            /* Project id  */
+            src: url('fonts/iconfont.ttf?t=1638020216838') format('truetype');
+        }
+        
+        .font {
+            font-family: "iconfont";
+        }
+        
+        span {
+            display: inline-block;
+            background: url(./images/abcd.jpg) no-repeat;
+        }
+        
+        a {
+            text-decoration: none;
+        }
+        
+        .clearfix:before,
+        .clearfix:after {
+            content: "";
+            display: table;
+        }
+        
+        .clearfix:after {
+            clear: both;
+        }
+        
+        .clearfix {
+            *zoom: 1;
+        }
+        
+        .login {
+            width: 58px;
+            height: 56px;
+            margin: 10px auto 0px;
+            background: url(./images/sprites.png) no-repeat -183px 0px;
+        }
+        
+        .i {
+            width: 64px;
+            height: 106px;
+            background-position: -324px -140px;
+        }
+        
+        .r {
+            width: 114px;
+            height: 111px;
+            background-position: -137px -413px;
+        }
+        
+        .s {
+            width: 111px;
+            height: 116px;
+            background-position: -256px -413px;
+        }
+        
+        .func {
+            width: 200px;
+            margin-top: 20px;
+            text-align: center;
+            background-color: rgba(0, 0, 0, .1);
+        }
+        
+        .clock-in,
+        .pay,
+        .search {
+            float: left;
+            width: 50px;
+            color: skyblue;
+        }
+        
+        .clock-in p,
+        .pay p,
+        .search p {
+            margin: 0px;
+            padding: 0px;
+            font-size: 8px;
+            color: #333;
+        }
+        
+        .code {
+            display: inline-block;
+            margin-top: 20px;
+        }
+        
+        .rectangle {
+            position: relative;
+            display: none;
+            width: 200px;
+            height: 72px;
+            background-color: rgba(0, 0, 0, .1);
+            border-radius: 20px;
+        }
+        
+        .triangle {
+            position: absolute;
+            left: 20px;
+            top: -24px;
+            width: 0px;
+            height: 0px;
+            border: 12px solid transparent;
+            border-bottom-color: rgba(0, 0, 0, .1);
+        }
+        
+        .code:hover .rectangle {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>精灵图</h3>
+    <p>精灵图技术是为了减少浏览器与服务器之间的频繁请求，降低服务器的压力。适用于小、碎的背景图。主要借助背景位置：background-position 来实现</p>
+    <div class="login"></div>
+    <span class="i"></span>
+    <span class="r"></span>
+    <span class="i"></span>
+    <span class="s"></span>
+
+    <h3>字体图标</h3>
+    <p>字体图标虽然看起来像图标，但其本质是文字。具有以下特点：</p>
+    <ul>
+        <li>轻量级：字体图标比一系列的图标要小，一旦字体加载就会被渲染出来，减少了服务器的压力</li>
+        <li>灵活性：本质其实是字体，可随意更改颜色、透明效果、阴影，旋转等</li>
+        <li>兼容性：几乎支持所以浏览器</li>
+    </ul>
+    <p>但字体图标不能替代精灵图，只适合比较简单的图标。对部分图标进行优化</p>
+    <a href="https://icomoon.io" title="icomoon字库" target="_blank">incomoon字库</a>
+    <br />
+    <a href="https://www.iconfont.cn" title="阿里confont字库" target="_blank">阿里iconfont字库</a>
+
+    <div class="func clearfix">
+        <div class="clock-in">
+            <span class="font">&#xfaa8;</span>
+            <p>打卡签到</p>
+        </div>
+        <div class="pay">
+            <span class="font">&#xfaa9;</span>
+            <p>生活缴费</p>
+        </div>
+        <div class="search">
+            <span class="font">&#xff3b;</span>
+            <p>搜索</p>
+        </div>
+    </div>
+
+    <div class="code">
+        <h3>css三角</h3>
+        <div class="rectangle"> <span class="triangle"></span>代码：width: 0px; height: 0px; border: npx solid transparent; border-left-color: skyblue;</div>
+    </div>
+
+
+</body>
+
+</html>

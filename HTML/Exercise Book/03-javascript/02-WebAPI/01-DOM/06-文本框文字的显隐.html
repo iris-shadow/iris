@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta cahrset="zh-CN">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>文本框文字的显隐</title>
+    <style>
+        input {
+            color: #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" value="买阿里巴巴">
+
+    <script>
+        var input = document.querySelector('input');
+        input.onfocus = function() {
+            if (this.value === '买阿里巴巴') {
+                this.value = '';
+                this.style.color = '#222';
+            }
+
+
+        }
+        input.onblur = function() {
+            if (this.value === '') {
+                this.value = '买阿里巴巴';
+                this.style.color = '#ccc';
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>文本属性</title>
+    <link rel="stylesheet" href="./03-style.css" />
+</head>
+
+<body>
+    <h3>文本颜色</h3>
+    <h4>文本颜色使用 color 关键字设置，有如下几种设置方式：</h4>
+    <ul>
+        <li>color: value</li>
+        <li>color: #六位十六进制数（rgb）</li>
+        <li>color: rgb(0~255, 0~255, 0~255)</li>
+        <li>color: rgb(0~100%, 0~100%, 0~100%)</li>
+    </ul>
+
+    <h3>文本对齐</h3>
+    <h4>使用 text-align 关键字设置，属性值有：</h4>
+    <ul>
+        <li class="center">center</li>
+        <li class="left">left</li>
+        <li class="right">right</li>
+    </ul>
+
+    <h3>文本装饰</h3>
+    <h4>关键字：text-decoration 属性值：none 、 underline 、 overline 、 line-through</h4>
+    <a href="#">可使用 none 属性值去除 &lt;a&gt; 标签中自带的下划线样式</a>
+    <span class="underline">下划线</span> <span class="overline">上划线</span> <span class="line_through">删除线</span>
+
+    <h3>文本缩进</h3>
+    <p>关键字：text-indent 属性值单位：绝对缩进单位 -> px；相对缩进单位 -> em（相对于当前元素的字体大小）小娃娃，你可懂了？</p>
+
+    <h3>行间距</h3>
+    <h4>关键字： line-height 单位：px</h4>
+    <p>行间距由 上间距、文本高度、下间距 三部分组成。测量时，选取相邻两行中上一行的最下沿到下一行的最下沿间的距离</p>
+
+    <h3>css 样式引入方式</h3>
+    <h4>内部（内嵌）方式</h4>
+    <p>将 css 部分集中写入到 &lt;style&gt; 标签中，实现了结构和样式的部分分离</p>
+    <h4>行内样式</h4>
+    <p style="color: purple;">格式：在要修改样式的标签中添加属性 style，如 &lt;p style="color: purple"&gt;&lt;/p&gt;</p>
+    <p>适用于修改简单样式</p>
+    <h4>外部方式</h4>
+    <p>步骤如下：</p>
+    <ol>
+        <li>建立相应的 css 文件，写入样式代码，不用再写 &lt;style&gt;&lt;/style&gt; 标签</li>
+        <li>在 html 文件的 &lt;head&gt;&lt;/head&gt; 标签中写入 &lt;link rel="stylesheet" href="css 文件路径"&gt;</li>
+    </ol>
+</body>
+
+</html>

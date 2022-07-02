@@ -1,0 +1,52 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: -webkit-linear-gradient(top, aliceblue, skyblue);
+}
+
+.nav-wrap ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-wrap ul li a {
+    display: block;
+    width: 1em;
+    margin: 0 30px;
+    color: #333;
+    text-align: center;
+    font-size: 40px;
+}
+
+
+/* 将文字竖着显示 */
+
+.nav-wrap ul li:nth-child(n + 4) a {
+    width: 2em;
+}
+
+.nav-wrap ul:hover li a {
+    opacity: .3;
+    filter: blur(1px);
+}
+
+.nav-wrap ul li:hover a {
+    opacity: 1;
+    filter: blur(0);
+}

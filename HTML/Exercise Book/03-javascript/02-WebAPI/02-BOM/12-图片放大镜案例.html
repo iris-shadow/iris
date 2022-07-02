@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>图片放大镜案例</title>
+        <style>
+            .mini-wrapper {
+                position: relative;
+                width: 450px;
+                height: 450px;
+                border: 1px solid #ccc;
+                cursor: move;
+            }
+
+            .navigation {
+                display: none;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 300px;
+                height: 300px;
+                border: 1px solid #ccc;
+                background-color: #fceeb4;
+                opacity: 0.5;
+            }
+
+            .maxi-wrapper {
+                display: none;
+                overflow: hidden;
+                position: absolute;
+                top: 0;
+                left: 470px;
+                width: 500px;
+                height: 500px;
+                border: 1px solid #ccc;
+            }
+
+            .maxi-wrapper img {
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="mini-wrapper">
+            <img src="../media/images/mini.jpeg" alt="" />
+            <div class="navigation"></div>
+            <div class="maxi-wrapper">
+                <img src="../media/images/maxi.jpeg" alt="" class="maxi-picture" />
+            </div>
+        </div>
+
+        <script>
+            var miniWrapper = document.querySelector(".mini-wrapper");
+            var maxiWrapper = document.querySelector(".maxi-wrapper");
+            var maxiPicture = document.querySelector(".maxi-picture");
+            var navigation = document.querySelector(".navigation");
+
+            // 鼠标进入小图容器盒子
+            miniWrapper.addEventListener("mousemove", function (event) {
+                // 显示导航遮罩和大图容器
+                navigation.style.display = "block";
+                maxiWrapper.style.display = "block";
+
+                // 获取鼠标坐标
+                var mouseX = event.pageX;
+                var mouseY = event.pageY;
+
+                // 获取小图容器距离页面的距离
+                var miniX = this.offsetLeft;
+                var miniY = this.offsetTop;
+
+                // 获取导航元素的宽高
+                var navWidth = navigation.offsetWidth;
+                var navHeight = navigation.offsetHeight;
+
+                // 将鼠标在小图容器里的坐标做调整确保鼠标一直位于导航元素的中心
+                var navX = mouseX - miniX - navWidth / 2;
+                var navY = mouseY - miniY - navHeight / 2;
+
+                // 计算限制位移（导航元素不能超出小图容器） -2 表示前去导航元素的 border 宽度
+                var miniLimitX = miniWrapper.offsetWidth - navigation.offsetWidth - 2;
+                var miniLimitY = miniWrapper.offsetHeight - navigation.offsetHeight - 2;
+
+                // 判断是 left 否超出
+                if (navX > miniLimitX) {
+                    navX = miniLimitX;
+                } else if (navX < 0) {
+                    navX = 0;
+                }
+
+                // 判断 top 是否超出
+                if (navY > miniLimitY) {
+                    navY = miniLimitY;
+                } else if (navY < 0) {
+                    navY = 0;
+                }
+
+                // 将调整后的坐标赋值给导航元素的 top 和 left
+                navigation.style.top = navY + "px";
+                navigation.style.left = navX + "px";
+
+                // 导航元素的移动距离 / 导航元素的限制距离 = 大图的移动距离 / 大图的限制距离
+                // 求去哇大图的限制距离
+                var maxiLimitX = maxiPicture.offsetWidth - maxiWrapper.offsetWidth;
+                var maxilimitY = maxiPicture.offsetHeight - maxiWrapper.offsetHeight;
+
+                // 给大图 maxiPicture 赋值相应的 top 和 left
+                maxiPicture.style.top = -(navY / miniLimitY) * maxilimitY + "px";
+                maxiPicture.style.left = -(navX / miniLimitX) * maxiLimitX + "px";
+            });
+
+            // 离开时隐藏
+            miniWrapper.addEventListener("mouseout", function () {
+                navigation.style.display = "none";
+                maxiWrapper.style.display = "none";
+            });
+        </script>
+    </body>
+</html>

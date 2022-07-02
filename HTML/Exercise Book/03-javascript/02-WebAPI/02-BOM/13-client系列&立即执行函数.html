@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>client系列&立即执行函数</title>
+        <style>
+            a {
+                display: block;
+                width: 100px;
+                height: 30px;
+                border: 10px solid tomato;
+                text-decoration: none;
+                text-align: center;
+                line-height: 30px;
+                color: cornflowerblue;
+                font-size: 20px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <a href="http://www.baidu.com">垃圾百度</a>
+
+        <script>
+            var a = document.querySelector("a");
+
+            //
+            // clientWidth 获取元素可视区的宽度，只包含 padding 和 content ，不含 border
+            console.log(a.clientWidth);
+
+            //
+            // 立即执行函数，在定义完成后立即执行。其最大的作用是划分一个独立的作用域，避免标识符的冲突
+            // 其写法有两种： 1. (function(){...}()) 2. (function () {...})()
+
+            // 1.
+            (function () {
+                console.log("立即执行函数写法一");
+            })();
+
+            // 2.
+            (function () {
+                console.log("立即执行函数写法二");
+            })();
+
+            //
+            // pageshow 和 load 事件
+            // 在火狐浏览器中，在跳转链接、刷新等操作时，浏览器会将当前页面保存在内存中，重新返回时不会触发 load 事件，可用 pageshow 代替
+            window.addEventListener("load", function () {
+                alert("我是 load 事件。");
+            });
+
+            window.addEventListener("pageshow", function () {
+                alert("我是 pageshow 事件");
+            });
+        </script>
+    </body>
+</html>

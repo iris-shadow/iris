@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta cahrset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>offset 系列</title>
+        <style>
+            .father {
+                /* position: relative; */
+                width: 200px;
+                height: 200px;
+                padding: 20px;
+                border: 10px solid cornflowerblue;
+                margin: 120px;
+                background-color: lavender;
+            }
+
+            .son {
+                width: 80px;
+                height: 80px;
+                margin-left: 60px;
+                background-color: tomato;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="father" style="width: 200px">
+            <div class="son"></div>
+        </div>
+
+        <script>
+            var father = document.querySelector(".father");
+            var son = document.querySelector(".son");
+
+            // offsetTop 动态获取元素到带有定位的父元素的顶部距离
+            console.log(son.offsetTop);
+
+            // offsetLeft 动态获取元素到带有定位的父元素的左边距离
+            console.log(son.offsetLeft);
+
+            // offsetWidth 获取元素的宽度，包括 padding、border 的宽度
+            console.log(father.offsetWidth);
+            console.log(father.offsetHeight);
+
+            // offsetParent 获取最近的带有定位的父元素，没有时返回 body；区别于 element.parentNote 返回的是亲的父级元素
+            console.log(son.offsetParent);
+            console.log(son.parentNode);
+
+            // offset 系列是只读属性，不可赋值，常用于动态获取元素的相应值
+            // style 是可读属性（行内样式），可以赋值，也可以获取
+            console.log(father.style.width);
+        </script>
+    </body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html alng="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=1.0" />
+        <script src="jQuery.mini.js"></script>
+        <title>评论发布&删除案例</title>
+        <style>
+            * {
+                padding: 0;
+                margin: 0;
+            }
+
+            /* .clearfix::after {
+                content: "";
+                display: block;
+                clear: both;
+                visibility: hidden;
+                height: 0;
+            }
+
+            .clearfix {
+                *zoom: 1;
+            } */
+
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+            }
+
+            .comment-wrapper {
+                width: 600px;
+            }
+
+            .caption {
+                width: 100%;
+                height: 36px;
+                background-color: turquoise;
+                text-align: center;
+                line-height: 36px;
+                color: #fff;
+                font-size: 20px;
+                font-weight: 700;
+            }
+
+            .type-area {
+                outline: none;
+                resize: none;
+                width: calc(100% - 2px);
+                border: 1px solid turquoise;
+                border-top: 0;
+            }
+
+            .release {
+                float: right;
+                width: 60px;
+                height: 36px;
+                border: 1px solid turquoise;
+                margin: 20px 0;
+                text-decoration: none;
+                text-align: center;
+                color: skyblue;
+                line-height: 34px;
+                font-size: 20px;
+                font-weight: 900;
+                border-radius: 8px;
+            }
+
+            .comments li {
+                display: none;
+                overflow: hidden;
+                width: 100%;
+                margin-top: 20px;
+                list-style: none;
+                line-height: 29px;
+            }
+
+            .comments li div {
+                float: left;
+                width: calc(90% - 2px);
+                border: 1px dashed skyblue;
+            }
+
+            .comments li a {
+                float: right;
+                width: calc(10% - 5px);
+                border: 1px solid skyblue;
+                text-decoration: none;
+                text-align: center;
+                color: cornflowerblue;
+                border-radius: 3px;
+            }
+
+            .comments li a:hover {
+                color: tomato;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="comment-wrapper">
+            <div class="caption">评论下吧 (⁎⁍̴̛ᴗ⁍̴̛⁎)</div>
+            <textarea name="" id="" cols="30" rows="10" class="type-area"></textarea>
+            <div><a href="javascript:void(0);" class="release">发布</a></div>
+            <ul class="comments"></ul>
+        </div>
+
+        <script>
+            // 点击 .release 元素时创建新标签生成评论
+            $('.release').on('click', function () {
+                // 创建 li 元素
+                var li = $('<li></li>');
+                // 创建包裹评论的 div 元素
+                var div = $('<div></div>');
+                div.html($('.type-area').val());
+                // 创建删除元素 a
+                var a = $('<a href="javascript:void(0);">删除</a>');
+                // 将评论和删除按钮添加进 li 元素
+                li.append(div, a);
+                // 将 li 元素添加到 .comments 元素中
+                $('.comments').prepend(li);
+                // 使 li 元素做滑下动画显示效果
+                $('.comments li').eq(0).slideDown();
+            });
+
+            // 点击 “删除” （.comments 中的 a 元素）时，删除当前的评论
+            // 使用事件委托的方式进行
+            $('.comments').on('click', 'a', function () {
+                $(this)
+                    .parent()
+                    .slideUp(function () {
+                        $(this).remove();
+                    });
+            });
+        </script>
+    </body>
+</html>

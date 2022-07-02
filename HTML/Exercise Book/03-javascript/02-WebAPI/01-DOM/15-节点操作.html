@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>节点操作</title>
+</head>
+
+<body>
+    <div class="parent_one">
+        <div class="parent_two">
+            <div class="child0"></div>world
+            <!-- hello -->
+            <div class="child1"></div>
+            <div class="child2"></div>
+            <div class="child3"></div>
+        </div>
+    </div>
+
+    <script>
+        // 获取父节点
+        var child01 = document.querySelector('.child0');
+        var parent = child01.parentNode;
+        console.log(parent); // 获取离其最近的一个父级元素
+
+        // 获取子节点
+        var children = parent.childNodes;
+        console.log(children); // 获取到的子节点中包含文本（空格、换行等）
+        // NodeList [#text "
+        //     ", <div class="child">, #text "
+        //     ", <div class="child">, #text "
+        //     ", <div class="child">, #text "
+        //     ", <div class="child">, #text "
+        // "] (9)
+
+        // 判断子节点的节点类型来进行筛选
+        var children_filter = [];
+        for (var i = 0; i < children.length; i++) {
+            if (children[i].nodeType == 1) {
+                children_filter.push(children[i]);
+            }
+        }
+        console.log(children_filter);
+
+        // 也可以使用 children 来获取元素节点（非标准，但浏览器都支持）
+        var childrenElements = parent.children;
+        console.log(childrenElements);
+
+        // 获取第一个子节点
+        var firstElement0 = parent.firstChild;
+        console.log(firstElement0); // 获取到的第一个子元素可能为文本类型
+        var firstElement1 = parent.firstElementChild;
+        console.log(firstElement1); // 存在兼容性问题
+        // 解决方案
+        var firstChild2 = parent.children[0];
+        console.log(firstChild2);
+
+        // 获取最后一个子节点
+        var lastChild3 = parent.lastChild;
+        console.log(lastChild3); // 同样获取到的第一个节点可能是文本类型
+        var lastChild4 = parent.lastElementChild;
+        console.log(lastChild4); // 存在兼容性问题
+        // 解决方案
+        var lastChild5 = parent.children[parent.children.length - 1];
+        console.log(lastChild5);
+
+        // 获取兄弟节点
+        var nextSibling = firstChild2.nextSibling;
+        console.log(nextSibling);
+        var previousSibling = lastChild5.previousSibling;
+        console.log(previousSibling);
+        // 以上两种方式获取到的兄弟节点可能是文本节点
+
+        var nextElementSibling = firstChild2.nextElementSibling;
+        console.log(nextElementSibling);
+        var previousElementSibling = firstChild2.previousElementSibling;
+        console.log(previousElementSibling);
+        // 以上两种方式存在兼容性问题
+
+        // 解决方案：封装一个获取元素节点的函数
+        function getNextElementSibling(element) {
+            var currentElement = element;
+            while (currentElement = currentElement.nextSibling) {
+                if (currentElement.nodeType === 1) {
+                    return currentElement;
+                }
+            }
+            return null;
+        }
+
+        var nextSibling1 = getNextElementSibling(nextSibling);
+        console.log(nextSibling1);
+    </script>
+</body>
+
+</html>

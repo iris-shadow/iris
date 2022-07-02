@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>表格生成案例</title>
+    <style>
+        input[type=submit] {
+            float: right;
+        }
+        
+        .dataBase {
+            width: 600px;
+            border-collapse: collapse;
+            margin-top: 10px;
+            text-align: center;
+        }
+        
+        .dataBase thead tr th:first-child,
+        .dataBase tbody tr th:first-child {
+            width: 150px;
+        }
+        
+        .dataBase .dbHead {
+            background-color: lavender;
+        }
+        
+        .dataBase .dbBody {
+            background-color: aliceblue;
+        }
+        
+        .dataBase th {
+            height: 30px;
+            border: 1px solid #ccc;
+            line-height: 30px;
+            color: tomato;
+            font-weight: 700;
+            font-size: 16px;
+        }
+        
+        .dataBase td {
+            height: 25px;
+            border: 1px solid #ccc;
+            line-height: 25px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="register_wrapper">
+        <form action="javascript:;" class="register">
+            <table>
+                <tr>
+                    <td> <label for="userName">请输入姓名：</label></td>
+                    <td><input type="text" id="userName"></td>
+                </tr>
+                <tr>
+                    <td><label for="email">请输入邮箱：</label></td>
+                    <td><input type="email" id="email"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="submit" id="submit"></td>
+                </tr>
+            </table>
+        </form>
+        <table class="dataBase">
+            <thead class="dbHead">
+                <tr>
+                    <th>姓名</th>
+                    <th>邮箱</th>
+                </tr>
+            </thead>
+            <tbody class="dbBody">
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        var btnRegister = document.querySelector('#submit'),
+            userName = document.querySelector('#userName'),
+            email = document.querySelector('#email'),
+            dbBody = document.querySelector('.dbBody');
+
+        btnRegister.onclick = function() {
+
+            if (userName.value === '' || email.value === '') {
+                alert('请填写完整消息！');
+            } else {
+                // 创建元素 tr 元素
+                var tr = document.createElement('tr');
+
+                // 创建 td 元素用于保存用户姓名
+                var tdUserName = document.createElement('td');
+                tdUserName.innerHTML = userName.value;
+                tr.appendChild(tdUserName);
+
+                // 创建 td 元素用于保存邮箱
+                var tdEmail = document.createElement('td');
+                tdEmail.innerHTML = email.value;
+                tr.appendChild(tdEmail);
+
+                // 将 tr 元素添加到 dbBody 中
+                dbBody.appendChild(tr);
+            }
+        }
+    </script>
+</body>
+
+</html>

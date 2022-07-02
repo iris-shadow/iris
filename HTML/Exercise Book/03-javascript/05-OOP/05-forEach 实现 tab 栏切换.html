@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+        <title>forEach 实现 tab 栏切换</title>
+        <style>
+            * {
+                padding: 0;
+                margin: 0;
+            }
+
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+            }
+
+            .container {
+                width: 600px;
+            }
+
+            .navigation {
+                list-style: none;
+                position: relative;
+                height: 118px;
+            }
+
+            .navigation li {
+                float: left;
+                width: 33.33%;
+            }
+
+            .navigation li .tab {
+                height: 28px;
+                background-color: tomato;
+                text-align: center;
+                color: #fff;
+            }
+
+            .navigation li .item {
+                display: none;
+                padding: 10px;
+                border: 5px solid tomato;
+                border-top: 0;
+            }
+
+            .navigation li .item div span {
+                display: inline-block !important;
+                width: 50%;
+                text-align: center;
+                color: tomato;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="container">
+            <ul class="navigation">
+                <li>
+                    <div class="tab">木马牛</div>
+                    <div class="item">
+                        <div><span>李淳罡</span><span>王仙芝</span></div>
+                        <div><span>李淳罡</span><span>王仙芝</span></div>
+                        <div><span>李淳罡</span><span>王仙芝</span></div>
+                    </div>
+                </li>
+                <li>
+                    <div class="tab">木马牛</div>
+                    <div class="item">
+                        <div><span>李淳罡</span><span>王仙芝</span></div>
+                        <div><span>李淳罡</span><span>王仙芝</span></div>
+                        <div><span>李淳罡</span><span>王仙芝</span></div>
+                    </div>
+                </li>
+                <li>
+                    <div class="tab">木马牛</div>
+                    <div class="item">
+                        <div><span>李淳罡</span><span>王仙芝</span></div>
+                        <div><span>李淳罡</span><span>王仙芝</span></div>
+                        <div><span>李淳罡</span><span>王仙芝</span></div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <script>
+            var tabs = document.querySelectorAll('.navigation li');
+
+            // 绑定事件
+            tabs.forEach(function (elem, index) {
+                elem.addEventListener('mouseenter', function () {
+                    tabs.forEach(function (elem) {
+                        elem.children[1].style.display = 'none';
+                    });
+                    this.children[1].style.display = 'block';
+                });
+
+                elem.addEventListener('mouseleave', function () {
+                    this.children[1].style.display = 'none';
+                });
+            });
+        </script>
+    </body>
+</html>

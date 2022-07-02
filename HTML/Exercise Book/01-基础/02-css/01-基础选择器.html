@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>基础选择器</title>
+    <style>
+        h3 {
+            color: cadetblue;
+        }
+
+        h4 {
+            color: darkgoldenrod;
+        }
+
+        p {
+            color: cyan;
+        }
+
+        .green {
+            color: rgb(159, 199, 86)
+        }
+
+        .cadetblue {
+            color: cadetblue;
+        }
+
+        .cornflowerblue {
+            color: cornflowerblue;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            font-size: 12;
+        }
+
+        .b_cornflowerblue {
+            background-color: cornflowerblue;
+        }
+
+        .b_darkorange {
+            background-color: darkorange;
+        }
+
+        #id {
+            color: darkseagreen;
+        }
+
+        * {
+            color: khaki;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>基础选择器</h3>
+    <h4>标签选择器</h4>
+    <p>标签选择器只能选择同一类标签</p>
+    <p>不能差异化选择</p>
+    <h4>类选择器</h4>
+    <ul>
+        <li class="green">类选择器用于一个或多个标签</li>
+        <li class="cadetblue">样式点定义，结构类调用</li>
+        <li class="cornflowerblue">多类类名选择器有利于提高代码的复用性，便于后期维护</li>
+    </ul>
+    <h4>类选择器之盒子案例</h4>
+    <div class="box b_cornflowerblue">矢车菊蓝</div>
+    <div class="box b_darkorange">深橙色</div>
+    <div class="box b_cornflowerblue">矢车菊蓝</div>
+    <h4>id 选择器</h4>
+    <p id="id">id 选择器只能使用一次，使用 # 定义，好比人类的身份证，一般用于页面唯一性的元素上，常和 javascript 搭配使用；类选择器好比人名，同一个可以被多个人使用。</p>
+    <h4>通配符选择器</h4>
+    <p class="cornflowerblue">通配符选择器会选择页面中所有的元素，包括 body、html 标签，使用 * 定义。在特殊场景中用于去除元素的某些属性。</p>
+</body>
+
+</html>

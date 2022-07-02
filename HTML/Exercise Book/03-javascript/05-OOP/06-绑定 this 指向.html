@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>绑定 this 指向</title>
+    </head>
+
+    <body>
+        <button>submit</button>
+        <button>submit</button>
+        <button>submit</button>
+
+        <script>
+            // call
+
+            var iris = {
+                name: 'iris',
+            };
+
+            function pointTo() {
+                console.log('调用者是:', this);
+            }
+
+            pointTo.call(iris);
+
+            // apply 传入的参数必须是数组形式
+
+            var arr = [1, 2, 3, 4, 9, 8, 7, 6, 5];
+
+            var maxValue = Math.max.apply(Math, arr);
+            console.log(maxValue);
+
+            // bind 只进行绑定，不会调用
+            var newPointTo = pointTo.bind(iris);
+            // 返回的是原函数的拷贝
+            newPointTo();
+
+            var btns = document.querySelectorAll('button');
+
+            // bind 的应用
+            btns.forEach(function (elem) {
+                elem.addEventListener('click', function () {
+                    this.disabled = true;
+                    setTimeout(
+                        function () {
+                            this.disabled = false;
+                        }.bind(this),
+                        3000
+                    );
+                });
+            });
+        </script>
+    </body>
+</html>

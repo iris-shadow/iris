@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>旋转木马</title>
+    <style>
+        body {
+            perspective: 1000px;
+        }
+        
+        @keyframes wheel {
+            from {
+                transform: rotateY(0deg);
+            }
+            to {
+                transform: rotateY(360deg);
+            }
+        }
+        
+        section {
+            position: relative;
+            width: 200px;
+            margin: 100px auto 0px;
+            transform-style: preserve-3d;
+            animation: wheel 8s linear infinite;
+        }
+        
+        section div {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 200px;
+            height: 200px;
+        }
+        
+        section div img {
+            width: 200px;
+        }
+        
+        div:nth-child(1) {
+            transform: rotateY(0deg) translateZ(300px);
+        }
+        
+        div:nth-child(2) {
+            transform: rotateY(60deg) translateZ(300px);
+        }
+        
+        div:nth-child(3) {
+            transform: rotateY(120deg) translateZ(300px);
+        }
+        
+        div:nth-child(4) {
+            transform: rotateY(180deg) translateZ(300px);
+        }
+        
+        div:nth-child(5) {
+            transform: rotateY(240deg) translateZ(300px);
+        }
+        
+        div:nth-child(6) {
+            transform: rotateY(300deg) translateZ(300px);
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <div><img src="../images/0101.JPG" alt=""></div>
+        <div><img src="../images/0102.JPG" alt=""></div>
+        <div><img src="../images/0103.JPG" alt=""></div>
+        <div><img src="../images/0104.JPG" alt=""></div>
+        <div><img src="../images/0105.JPG" alt=""></div>
+        <div><img src="../images/0106.JPG" alt=""></div>
+    </section>
+</body>
+
+</html>

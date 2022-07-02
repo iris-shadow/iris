@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatibale" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>页码放大案例</title>
+    <style>
+        .clearfix:after {
+            visibility: hidden;
+            clear: both;
+            display: block;
+            content: ".";
+            height: 0px;
+        }
+        
+        .clearfix {
+            *zoom: 1;
+        }
+        
+        div {
+            width: 500px;
+            margin: 100px auto;
+        }
+        
+        ul {
+            display: inline-block;
+            padding: 5px 10px;
+            border: 2px solid #ddd;
+        }
+        
+        li {
+            float: left;
+            list-style: none;
+            width: 30px;
+            height: 30px;
+            border: 1px solid tomato;
+            border-radius: 50%;
+            margin: 0px 10px;
+            transition: all .4s;
+            text-align: center;
+            line-height: 30px;
+        }
+        
+        li:hover {
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <ul class="clearfix">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+        </ul>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+        <title>this 指向</title>
+    </head>
+
+    <body>
+        <button>唱歌</button>
+        <script>
+            var btn = document.querySelector('button');
+
+            // 定义类
+            // 全局变量
+            var instance;
+            class Dog {
+                // 构造函数
+                constructor(name, age) {
+                    this.name = name;
+                    this.age = age;
+                    // 将 this 的地址给变量 instance
+                    instance = this;
+                    this.btn = btn;
+                    // 将 button 按钮添加进 this 中
+                    this.btn.onclick = this.sing;
+                }
+
+                // 方法
+                // 不需要使用关键字 function 声明
+                bark() {
+                    console.log(this.name + '正在汪汪汪(⁎⁍̴̛ᴗ⁍̴̛⁎)');
+                }
+
+                sing() {
+                    // 当使用 this.btn.onclick 调用 sing 方法时，此时的 this 指向的是 button 而不是 对象本身
+                    console.log(instance.name + '正在唱歌(⁎⁍̴̛ᴗ⁍̴̛⁎)');
+                }
+            }
+
+            var shadow = new Dog('夕豆', 1);
+
+            shadow.bark();
+            shadow.btn.onclick();
+        </script>
+    </body>
+</html>

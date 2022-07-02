@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>密码长度验证</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        
+        .pwd-wrap .pwd {
+            width: 500px;
+        }
+        
+        .pwd-wrap #pwd {
+            width: 200px;
+            border: 1px solid cornflowerblue;
+        }
+        
+        .msg {
+            display: inline-block;
+            padding-left: 20px;
+            background: url(media/images/msg.png) left center no-repeat;
+            color: #666;
+            font-size: 12px;
+        }
+        
+        .right {
+            background-image: url(media/images/right.png);
+            color: green;
+        }
+        
+        .wrong {
+            background-image: url(media/images/wrong.png);
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="pwd-wrap">
+        <div class="pwd">
+            <input type="password" name="pwd" id="pwd">
+            <p class="msg">请输入6～16位由数字、字母、_ 的密码串</p>
+        </div>
+    </div>
+
+    <script>
+        var pwd = document.querySelector('#pwd'),
+            msg = document.querySelector('.msg');
+        pwd.onblur = function() {
+            if (this.value.length < 6 || this.value.length > 16) {
+                msg.className = 'msg wrong';
+                msg.innerHTML = '密码输入不合法';
+            } else {
+                msg.className = 'msg right';
+                msg.innerHTML = '密码输入合法';
+            }
+        }
+    </script>
+</body>
+
+</html>

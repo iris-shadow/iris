@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="jQuery.mini.js"></script>
+        <title>链式&class</title>
+        <style>
+            .current {
+                background-color: azure;
+            }
+        </style>
+    </head>
+
+    <body>
+        <ul>
+            <li>可可</li>
+            <li>妞妞</li>
+            <li>希豆</li>
+            <li>牛奶</li>
+        </ul>
+
+        <script>
+            $(function () {
+                // 链式编程
+                $('ul li').eq(2).css('color', 'tomato').siblings().css('color', 'skyblue');
+
+                // class 操作
+                // $('ul li').eq(2).addClass('current');
+                // $('ul li').eq(2).removeClass('current');
+                $('ul li').eq(2).toggleClass('current');
+            });
+        </script>
+    </body>
+</html>

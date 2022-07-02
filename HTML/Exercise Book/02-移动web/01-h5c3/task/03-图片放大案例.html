@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>图片放大案例</title>
+    <style>
+        div {
+            overflow: hidden;
+            width: 200px;
+            height: 200px;
+            margin: 100px auto;
+        }
+        
+        div img {
+            width: 200px;
+            height: 200px;
+            transition: all 0.3s;
+        }
+        
+        div:hover img {
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <a href="#"><img src="../images/scale.jpg" alt="白日梦"></a>
+    </div>
+</body>
+
+</html>

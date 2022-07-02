@@ -1,0 +1,83 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: linear-gradient(200deg, #eef1f5, #e6e9f0);
+}
+
+.nav-wrap {
+    height: 100px;
+}
+
+
+/* 使用 flex 布局，水平居中，垂直方向上由子元素的 position 做调整，便于后期动画的制作 */
+
+.nav {
+    display: flex;
+    justify-content: space-around;
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    background-color: #b7a1eb;
+    border-radius: 20px;
+    list-style: none;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, .3), inset 5px 5px 20px rgba(255, 255, 255, .7), inset -3px -3px 10px rgba(0, 0, 0, .5);
+}
+
+
+/* 给一个 padding 值，让盒子间有距离 */
+
+.nav li {
+    width: 130px;
+    height: 100%;
+    padding: 0 10px;
+}
+
+.nav li:hover {
+    background-color: #a38bdb;
+}
+
+.nav li .link {
+    position: relative;
+    /* 相对定位不会脱标，宽高属性也不能直接设置生效 */
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    text-align: center;
+    color: #fff;
+}
+
+.nav li .link .fa {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    /* 继承父级的宽度才能达到水平居中的效果 */
+    width: 100%;
+    font-size: 32px;
+    transition: transform .6s ease;
+}
+
+.nav li:hover .fa {
+    transform: translateY(-98%);
+}
+
+.nav li .link span {
+    display: block;
+    position: absolute;
+    bottom: -22px;
+    /* 继承父级的宽度才能达到水平居中的效果 */
+    width: 100%;
+    transition: all .6s ease;
+}
+
+.nav li:hover span {
+    bottom: 18px;
+}

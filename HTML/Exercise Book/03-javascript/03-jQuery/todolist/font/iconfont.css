@@ -1,0 +1,35 @@
+@font-face {
+  font-family: "iconfont"; /* Project id 3457681 */
+  src: url('iconfont.woff2?t=1654937342068') format('woff2'),
+       url('iconfont.woff?t=1654937342068') format('woff'),
+       url('iconfont.ttf?t=1654937342068') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-daibanshixiang:before {
+  content: "\e6a2";
+}
+
+.icon-delete:before {
+  content: "\e631";
+}
+
+.icon-delete1:before {
+  content: "\e62e";
+}
+
+.icon--to-do:before {
+  content: "\e61a";
+}
+
+.icon-TODO_INFO:before {
+  content: "\e9cb";
+}
+

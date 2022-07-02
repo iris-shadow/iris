@@ -1,0 +1,287 @@
+    /* section 模块 */
+    
+    section {
+        height: 455px;
+    }
+    /* 轮播图部分 */
+    
+    .foucs {
+        position: relative;
+        float: left;
+        width: 721px;
+        height: 455px;
+        margin-left: 220px;
+    }
+    /* 轮播图导航圆点 */
+    
+    .foucs ul {
+        position: absolute;
+        left: 50%;
+        bottom: 10px;
+        margin-left: -45px;
+        background-color: rgba(255, 255, 255, .2);
+        border-radius: 7px;
+    }
+    
+    .foucs ul li {
+        float: left;
+        width: 8px;
+        height: 8px;
+        margin: 3px 5px;
+        border-radius: 4px;
+        background-color: #fff;
+    }
+    
+    .foucs ul .selected {
+        background-color: #c81623;
+    }
+    /* 轮播图导航按钮 */
+    
+    .promo_nav {
+        position: absolute;
+        top: 80%;
+        right: 0px;
+    }
+    
+    .promo_nav button {
+        width: 28px;
+        height: 28px;
+        margin-right: 12px;
+        border-radius: 8px;
+        background-color: rgba(255, 255, 255, .2);
+        font-family: 'icomoon';
+        color: #fff;
+    }
+    /* 新闻模块 */
+    
+    article {
+        float: right;
+        width: 250px;
+        height: 455px;
+    }
+    
+    article .news {
+        width: 250px;
+        height: 165px;
+        border: solid 1px #e4e4e4;
+    }
+    
+    article .news .news_head {
+        height: 33px;
+        border-bottom: dotted 1px #e4e4e4;
+        padding: 0px 15px;
+        line-height: 33px;
+    }
+    
+    article .news .news_head h5 {
+        font-size: 14px;
+    }
+    
+    article .news .news_head a::after {
+        font-family: 'icomoon';
+        content: '\e920';
+    }
+    
+    article .news .news_body {
+        padding: 3px 15px;
+    }
+    
+    article .news .news_body ul li {
+        height: 24px;
+        line-height: 24px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+    /* 生活部分 */
+    
+    article .life_service {
+        position: relative;
+        width: 250px;
+        height: 209px;
+        border: 1px solid #e4e4e4;
+        border-top: 0px;
+    }
+    
+    article .life_service li a img {
+        position: absolute;
+        top: 0px;
+        right: 125px;
+    }
+    
+    article .life_service li {
+        width: 62px;
+        height: 72px;
+        float: left;
+        border-right: 1px solid #e4e4e4;
+        border-bottom: 1px solid #e4e4e4;
+        text-align: center;
+    }
+    
+    article .life_service li:nth-child(4n) {
+        border-right: 0px;
+    }
+    
+    article .life_service li a i {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        margin: 12px 0px 0px 10px;
+    }
+    
+    article .life_service li a .phone_bill {
+        background: url(../images/sprite1.png) no-repeat -20px -14px;
+    }
+    
+    article .life_service li a .passenger_ticket {
+        background: url(../images/sprite1.png) no-repeat -82px -16px;
+    }
+    
+    article .life_service li a .movie_ticket {
+        background: url(../images/sprite1.png) no-repeat -141px -16px;
+    }
+    
+    article .life_service li a .game {
+        background: url(../images/sprite1.png) no-repeat -206px -16px;
+    }
+    
+    article .life_service li a .lottery {
+        background: url(../images/sprite1.png) no-repeat -18px -86px;
+    }
+    
+    article .life_service li a .fuel_card {
+        background: url(../images/sprite1.png) no-repeat -80px -85px;
+    }
+    
+    article .life_service li a .hotel {
+        background: url(../images/sprite1.png) no-repeat -144px -85px;
+    }
+    
+    article .life_service li a .train_ticket {
+        background: url(../images/sprite1.png) no-repeat -209px -85px;
+    }
+    
+    article .life_service li a .crowdfounding {
+        background: url(../images/sprite1.png) no-repeat -18px -158px;
+    }
+    
+    article .life_service li a .financial_management {
+        background: url(../images/sprite1.png) no-repeat -80px -156px;
+    }
+    
+    article .life_service li a .gift_card {
+        background: url(../images/sprite1.png) no-repeat -144px -156px;
+    }
+    
+    article .life_service li a .white_bar {
+        background: url(../images/sprite1.png) no-repeat -210px -158px;
+    }
+    /* 砍价部分 */
+    
+    article .bargain {
+        width: 250px;
+        height: 75px;
+        margin-top: 5px;
+    }
+    /* 推荐模块 */
+    
+    .recommend {
+        height: 163px;
+        margin-top: 10px;
+        background-color: #ebebeb;
+    }
+    
+    .recommend ul {
+        padding: 10px 0px;
+    }
+    
+    .recommend ul li {
+        float: left;
+        width: 250px;
+        height: 143px;
+        float: left;
+        padding: 12px 20px;
+        border-left: 1px solid #ddd;
+    }
+    
+    .recommend .today_rd {
+        float: left;
+        width: 200px;
+        height: 163px;
+        background-color: #5c5251;
+        text-align: center;
+        font-family: 'icomoon';
+        font-size: 60px;
+        color: #fff;
+    }
+    
+    .recommend .today_rd p {
+        text-align: center;
+        font-size: 20px;
+        color: #fff;
+    }
+    
+    .recommend ul li a h5 {
+        float: right;
+        width: 120px;
+        height: 120px;
+    }
+    
+    .recommend ul li a h4 {
+        float: left;
+        margin-bottom: 12px;
+        font-size: 16px;
+        color: black;
+    }
+    
+    .recommend ul li a p,
+    .recommend ul li a i {
+        float: left;
+        font-size: 14px;
+    }
+    
+    .recommend ul li a i {
+        width: 60px;
+        height: 18px;
+        margin-top: 15px;
+        border-radius: 9px;
+        text-align: center;
+        line-height: 18px;
+        color: #fff;
+    }
+    
+    .color_1 {
+        background-color: #00a0e8;
+        color: #fff;
+    }
+    
+    .color_2 {
+        background-color: #5fb200;
+        color: #fff;
+    }
+    
+    .color_3 {
+        background-color: #e2162f;
+        color: #fff;
+    }
+    
+    .color_4 {
+        background-color: #0085fb;
+        color: #fff;
+    }
+    
+    .recommend ul .rd_1 {
+        background: url(../upload/rd_1.png) no-repeat;
+    }
+    
+    .recommend ul .rd_2 {
+        background: url(../upload/rd_2.png) no-repeat;
+    }
+    
+    .recommend ul .rd_3 {
+        background: url(../upload/rd_3.png) no-repeat;
+    }
+    
+    .recommend ul .rd_4 {
+        background: url(../upload/rd_4.png) no-repeat;
+    }

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="./jQuery.mini.js"></script>
+        <title>跨域请求</title>
+        <style>
+            .tip {
+                width: 200px;
+                padding: 0;
+                margin: 0;
+            }
+        </style>
+    </head>
+
+    <body>
+        <label for="uName">用户名：</label><input type="text" />
+        <div class="tip"></div>
+
+        <script>
+            const tip = document.getElementsByClassName('tip')[0];
+
+            $('input').on('blur', () => {
+                $.getJSON('http://127.0.0.1:8000/jQuery-jsonp?callback=?', (data) => {
+                    tip.style.color = '#f00';
+                    tip.innerHTML = data.msg;
+                });
+            });
+        </script>
+    </body>
+</html>

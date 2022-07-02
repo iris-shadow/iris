@@ -1,0 +1,61 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.05), #eef1f1);
+}
+
+.ripple-wrapper {
+    display: flex;
+    justify-content: space-around;
+}
+
+/* 水柱外框 */
+.ripple {
+    overflow: hidden;
+    position: relative;
+    width: 40px;
+    height: 200px;
+    margin: 0 20px;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.05), #eef1f1);
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    box-shadow: /* 外 左、上阴影 */ -5px -5px 7.5px rgba(255, 255, 255), /* 外 右、下阴影 */ 8px 8px 20px rgba(0, 0, 0, 0.2), /* 外边框阴影 */ 0 0 0 2px rgba(255, 255, 255), /* 内 右、下阴影 */ inset -5px -5px 7.5px rgba(255, 255, 255, 0.5), /* 内 左、上阴影 */ inset 5px 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.ripple::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40px;
+    height: 40px;
+    background-color: #eef1f1;
+    transform: translateY(160px);
+    border-radius: 50%;
+    box-shadow: 0 90px 0 75px lightskyblue, inset 5px 5px 15px rgba(0, 0, 0, 0.2);
+    filter: hue-rotate(0deg);
+    animation: spring 1.8s infinite;
+    animation-delay: calc(var(--d) * 0.15s);
+}
+
+@keyframes spring {
+    0% {
+        transform: translateY(160px);
+        filter: hue-rotate(0deg);
+    }
+    50% {
+        transform: translateY(0px);
+        filter: hue-rotate(180deg);
+    }
+    100% {
+        transform: translateY(160px);
+        filter: hue-rotate(360deg);
+    }
+}

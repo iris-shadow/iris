@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="jQuery.mini.js"></script>
+        <title>事件</title>
+        <style>
+            .edge-one {
+                width: 360px;
+                height: 100px;
+                background-color: lightblue;
+            }
+
+            .suspension {
+                background-color: skyblue;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="edge-one">on 注册事件-优势 1</div>
+        <ul class="edge-two">
+            <li>on 注册事件-优势 2</li>
+            <li>on 注册事件-优势 2</li>
+        </ul>
+
+        <script>
+            // on 注册事件 优势 1 ： 可以采用对象的方式注册多个事件。事件处理程序相同时可使用一个处理程序
+            // $('.edge-one').on({
+            //     mouseenter: function () {
+            //         $('.edge-one').css('backgroundColor', 'skyblue');
+            //     },
+            //     mouseleave: function () {
+            //         $('.edge-one').css('backgroundColor', 'lightblue');
+            //     },
+            //     click: function () {
+            //         $('.edge-one').css('backgroundColor', 'cornflowerblue');
+            //     },
+            // });
+
+            // 可用一个处理程序完成鼠标进入和离开的事件
+            $('.edge-one').on('mouseenter mouseleave', function () {
+                $('.edge-one').toggleClass('suspension');
+            });
+
+            // on 注册事件 优势 2 ： 可以为新添加元素注册事件
+            // $('.edge-two li').click(function () {
+            //     alert('搞咩呀？');
+            // });
+
+            $('.edge-two').on('click', function () {
+                alert('搞咩呀？');
+            });
+
+            var li = $('<li>后来的我</li>');
+            $('.edge-two').append(li);
+        </script>
+    </body>
+</html>

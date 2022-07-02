@@ -1,0 +1,120 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    overflow: hidden;
+}
+
+#extend {
+    display: none;
+}
+
+.trigger {
+    position: absolute;
+    left: 70px;
+    width: 100%;
+    height: 45px;
+    padding-left: 20px;
+    border: 1px solid #d9dee4;
+    background-color: #ededed;
+    cursor: pointer;
+    transition: all 0.6s ease-in-out;
+}
+
+.trigger i {
+    color: #5a738e;
+    line-height: 43px;
+    font-size: 30px;
+}
+
+.nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 70px;
+    height: 100vh;
+    background-color: #2e3f52;
+    list-style: none;
+    transition: all 0.6s ease-in-out;
+}
+
+.nav li {
+    width: 100%;
+    height: 70px;
+    margin-bottom: 10px;
+}
+
+.nav li:first-child {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav li:first-child img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.nav li:first-child span {
+    display: none;
+    padding-left: 10px;
+    color: #fff;
+    white-space: nowrap;
+}
+
+.nav li a {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: center;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    text-align: center;
+    color: #d1d1d1;
+}
+
+.nav li a:hover {
+    background-color: #35495d;
+    color: #fff;
+}
+
+.nav li a i {
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+.nav li a span {
+    font-size: 12px;
+}
+
+#extend:checked + .trigger {
+    left: 200px;
+}
+
+#extend:checked ~ .nav {
+    width: 200px;
+}
+
+#extend:checked ~ .nav li:first-child span {
+    display: block;
+}
+
+#extend:checked ~ .nav li a {
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+#extend:checked ~ .nav li a i {
+    margin: 0 15px 0 30px;
+    line-height: 70px;
+    font-size: 18px;
+}
+
+#extend:checked ~ .nav li a span {
+    line-height: 70px;
+    font-size: 14px;
+}

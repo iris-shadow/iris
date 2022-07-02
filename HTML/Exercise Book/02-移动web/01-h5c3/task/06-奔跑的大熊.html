@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>奔跑的大熊</title>
+    <style>
+        body {
+            background-color: rgba(110, 220, 255, 0.333);
+        }
+        
+        .mountain1 {
+            height: 336px;
+            background: url(../images/bg1.png);
+            animation: move-bg 10s linear infinite;
+        }
+        
+        .mountain2 {
+            width: 100%;
+            height: 569px;
+            background: url(../images/bg2.png);
+            animation: move-bg 10s linear infinite;
+        }
+        
+        .bear {
+            position: absolute;
+            width: 200px;
+            height: 100px;
+            background-image: url(../images/bear.png);
+            animation: bear .5s steps(8) infinite, move-bear 3s ease-out forwards;
+        }
+        
+        @keyframes bear {
+            from {
+                background-position: 0px 0px;
+            }
+            to {
+                background-position: -1600px 0px;
+            }
+        }
+        
+        @keyframes move-bear {
+            from {
+                top: 500px;
+                left: 0px;
+            }
+            to {
+                top: 500px;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+        
+        @keyframes move-bg {
+            from {
+                background-position: 0px 0px;
+            }
+            to {
+                background-position: -3840px 0px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mountain1">
+        <div class="mountain2">
+            <div class="bear"></div>
+        </div>
+
+    </div>
+</body>
+
+</html>

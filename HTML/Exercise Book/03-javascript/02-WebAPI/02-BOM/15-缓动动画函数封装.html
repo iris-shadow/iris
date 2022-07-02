@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>缓动动画函数封装</title>
+        <style>
+            button {
+                position: absolute;
+                left: calc(50% - 50px);
+                width: 180px;
+                height: 30px;
+                font-size: 18px;
+            }
+
+            .box-one,
+            .box-two {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 200px;
+                height: 200px;
+                background-color: cornflowerblue;
+                color: #fff;
+                font-weight: 900;
+                font-size: 26px;
+            }
+
+            .box-two {
+                top: 220px;
+                background-color: tomato;
+            }
+        </style>
+    </head>
+
+    <body>
+        <button>点击启动1号盒子</button>
+        <div class="box-one">1号盒子</div>
+        <div class="box-two">2号盒子</div>
+
+        <script>
+            var trigger = document.querySelector("button");
+            var boxOne = document.querySelector(".box-one");
+            var boxTwo = document.querySelector(".box-two");
+
+            // 封装缓动函数
+            function inching(Element, endPosition) {
+                // 在元素中添加定时器属性，避免大规模调用该函数时，使用 var timer = setInterval() 的方式而造成内存的消耗
+                // 先做一步清除定时器的操作，防止重复点击造成元素的无限移动
+                clearInterval(Element.timer);
+                Element.timer = setInterval(function () {
+                    // 判断是否到达指定的结束位置
+                    if (Element.offsetLeft >= endPosition) {
+                        clearInterval(Element.timer);
+                    }
+                    // 每隔 30ms 移动 1px
+                    Element.style.left = Element.offsetLeft + 1 + "px";
+                }, 5);
+            }
+
+            // 点击 trigger 调用缓动函数
+            trigger.addEventListener("click", function () {
+                inching(boxOne, 300);
+            });
+
+            inching(boxTwo, 300);
+        </script>
+    </body>
+</html>

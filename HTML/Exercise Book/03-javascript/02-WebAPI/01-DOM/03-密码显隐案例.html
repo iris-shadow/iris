@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Comaptible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>密码显隐案例</title>
+    <style>
+        .register-wrap {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 305px;
+            height: 50px;
+            line-height: 50px;
+        }
+        
+        #pwd {
+            outline: none;
+            width: 200px;
+            padding: 0 10px;
+            border: 0;
+            border-bottom: 1px solid cornflowerblue;
+            font-size: 18px;
+        }
+        
+        .register-wrap .eye {
+            position: absolute;
+            top: 15px;
+            right: 2px;
+            width: 24px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<div class="register-wrap">
+    <div class="pwd-wrap">
+        <label for="pwd">密码：</label>
+        <input type="password" name="pwd" id="pwd">
+        <img class="eye" src="media/images/close.png" alt="显示" title="显示">
+    </div>
+
+    <script>
+        var pwd = document.querySelector('#pwd'),
+            eye = document.querySelector('.eye');
+        console.log(pwd, eye);
+        var flag = 1;
+        eye.onclick = function() {
+            if (flag) {
+                pwd.type = 'text';
+                eye.src = 'media/images/open.png';
+                flag = 0;
+                return;
+            }
+            pwd.type = 'password';
+            this.src = 'media/images/close.png';
+            flag = 1;
+        }
+    </script>
+</div>
+
+</html>

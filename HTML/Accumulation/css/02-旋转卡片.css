@@ -1,0 +1,71 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    perspective: 460px;
+    height: 100vh;
+    background-image: -webkit-linear-gradient(top, aliceblue, pink);
+    color: #fff;
+    font: normal normal 18px/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.card-wrap {
+    perspective: 400px;
+}
+
+.card {
+    position: relative;
+    width: 300px;
+    height: 400px;
+    border: 1px dotted cornsilk;
+    border-radius: 30px;
+    margin: 100px auto 0;
+    background-color: rgba(180, 180, 180, 0.1);
+    cursor: pointer;
+    box-shadow: 3px 2px 12px rgba(0, 0, 0, 0.2);
+    transform-style: preserve-3d;
+    text-align: center;
+    animation: rotate-reverse 1.8s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+}
+
+.card-wrap:hover .card {
+    animation: rotate 1.8s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+}
+
+.front,
+.back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+}
+
+.back {
+    transform: rotateY(180deg);
+}
+
+@keyframes rotate {
+    from {
+        transform: rotateY(0deg);
+    }
+    to {
+        transform: rotateY(180deg);
+    }
+}
+
+@keyframes rotate-reverse {
+    from {
+        transform: rotateY(180deg);
+    }
+    to {
+        transform: rotate(0deg);
+    }
+}

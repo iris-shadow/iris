@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>商品查找案例</title>
+        <style>
+            * {
+                padding: 0;
+                margin: 0;
+            }
+
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+            }
+
+            .container {
+                width: 680px;
+            }
+
+            .header {
+                display: flex;
+                align-items: center;
+                padding: 2px 10px;
+                border: 1px solid #ccc;
+                border-radius: 8px;
+            }
+
+            .header select {
+                flex: 1;
+                outline: none;
+                margin-right: 10px;
+            }
+
+            .header .mode-price,
+            .header .mode-name {
+                flex: 8;
+            }
+
+            input[type='submit'] {
+                flex: 1;
+                padding: 5px;
+                border: 0;
+                margin-left: 10px;
+                background-color: tomato;
+                color: #fff;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+
+            .header label {
+                margin-left: 10px;
+            }
+
+            .header input[type='text'] {
+                outline: none;
+                width: 120px;
+                padding: 1px 5px;
+                border: 1px solid #ccc;
+                margin: 0 5px;
+                font: inherit;
+                font-size: 14px;
+                border-radius: 5px;
+            }
+
+            .main table {
+                width: 100%;
+                margin-top: 10px;
+                text-align: center;
+                border-collapse: collapse;
+            }
+
+            .main table th,
+            .main table td {
+                border: 1px solid #ccc;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="header">
+                <select name="" id="">
+                    <option value="" disabled selected>--查询条件--</option>
+                    <option value="">价格</option>
+                    <option value="">名称</option>
+                </select>
+                <div class="mode-price"><label for="exceed">高于：</label><input type="text" id="exceed" /> <label for="under">低于：</label><input type="text" id="under" /></div>
+                <div class="mode-name" style="display: none"><label for="name">商品名：</label><input type="text" id="name" /></div>
+                <div><input type="submit" id="submit" value="查询" /></div>
+            </div>
+            <div class="main">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>产品名称</th>
+                            <th>价格</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+
+        <script>
+            // 查询方式
+            var select = document.querySelector('select');
+            // 最低价格
+            var exceed = document.querySelector('#exceed');
+            // 最高价格
+            var under = document.querySelector('#under');
+            // 商品名称
+            var goodsName = document.querySelector('#name');
+            // 商品容器
+            var goods = document.querySelector('tbody');
+            // 查询按钮
+            var submit = document.querySelector('#submit');
+            // 价格查询
+            var modePrice = document.querySelector('.mode-price');
+            // 商品名称查询
+            var modeName = document.querySelector('.mode-name');
+
+            // 商品
+            var data = [
+                {
+                    id: 1,
+                    name: '小米',
+                    price: 0.999,
+                },
+                {
+                    id: 2,
+                    name: 'oppo',
+                    price: 1.999,
+                },
+                {
+                    id: 3,
+                    name: '荣耀',
+                    price: 1299,
+                },
+                {
+                    id: 4,
+                    name: '华为',
+                    price: 1999,
+                },
+            ];
+
+            // 记录查询方式
+            var mode = 'price';
+            // 确定查询方式
+            select.addEventListener('change', function () {
+                mode = this.children[1].selected == true ? 'price' : 'name';
+                if (mode == 'price') {
+                    modeName.style.display = 'none';
+                    modePrice.style.display = 'block';
+                } else {
+                    modePrice.style.display = 'none';
+                    modeName.style.display = 'block';
+                }
+            });
+
+            // 渲染数据
+            function fill(info) {
+                // 先清空原有数据
+                goods.innerHTML = '';
+                // 渲染指定的数据
+                info.forEach(function (value) {
+                    goods.insertAdjacentHTML('beforeend', '<tr><td>' + value.id + '</td><td>' + value.name + '</td><td>' + value.price + '</td></tr>');
+                });
+            }
+
+            // 页面开始加载时渲染 data 中的数据
+            fill(data);
+
+            // 按价格查询
+            function searchPrice() {
+                var result = data.filter(function (elem) {
+                    if (elem.price >= parseFloat(exceed.value) && elem.price <= parseFloat(under.value)) {
+                        return elem;
+                    }
+                });
+                // 渲染数据
+                fill(result);
+            }
+
+            // 按商品名称查询
+            function searchName() {
+                var result = [];
+                data.some(function (elem) {
+                    if (elem.name == goodsName.value) {
+                        // 将查找到的商品添加进 reslut
+                        result.push(elem);
+                        // 退出循环
+                        return true;
+                    }
+                });
+                // 渲染数据
+                fill(result);
+            }
+
+            // 搜索事件
+            submit.addEventListener('click', function () {
+                mode == 'price' ? searchPrice() : searchName();
+            });
+        </script>
+    </body>
+</html>

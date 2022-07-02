@@ -1,0 +1,78 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+input {
+    outline: none;
+    border: 0;
+    background: none;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    font-size: 16px;
+    background-color: aliceblue;
+}
+
+input:-webkit-autofill {
+    -webkit-text-fill-color: #fff;
+    transition: all 43200s ease-in-out 0s;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.register {
+    width: 600px;
+    height: 300px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+    background-image: -webkit-linear-gradient(top, #74d3fb, #ffc1fa);
+    color: azure;
+    text-align: center;
+}
+
+.register label {
+    display: inline-block;
+    width: 100px;
+    text-align: center;
+    color: #fff;
+}
+
+.register input {
+    width: 300px;
+    height: 30px;
+    border-bottom: 2px solid #fff;
+    margin-top: 30px;
+    color: #fff;
+    line-height: 28px;
+    font-size: 18px;
+}
+
+.register input::placeholder {
+    color: antiquewhite;
+    font-size: 13px;
+}
+
+.register input[type="text"] {
+    margin-top: 15px;
+}
+
+.register input[type="submit"] {
+    width: 200px;
+    height: 36px;
+    border: 2px solid #fff;
+    border-radius: 15px;
+    margin-top: 50px;
+    line-height: 32px;
+    cursor: pointer;
+    transition: background-image 0.5s ease-in-out 0.3s;
+}

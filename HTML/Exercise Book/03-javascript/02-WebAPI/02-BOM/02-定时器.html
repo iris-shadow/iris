@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>定时器</title>
+        <style>
+            body {
+                overflow: hidden;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+            }
+
+            i {
+                font-style: normal;
+            }
+
+            .timer {
+                height: 50px;
+                padding: 0 10px;
+                background-color: #222;
+                line-height: 50px;
+                color: #fff;
+                font-weight: 900;
+                font-size: 22px;
+                border-radius: 8px;
+            }
+
+            .timer span {
+                display: inline-block;
+                width: 30px;
+                height: 100%;
+                text-align: center;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="timer">
+            <span class="hour">H</span>
+            <i>:</i>
+            <span class="minute">M</span>
+            <i>:</i>
+            <span class="second">S</span>
+        </div>
+        <button>暂停</button>
+
+        <script>
+            var hour = document.querySelector(".hour"),
+                minute = document.querySelector(".minute"),
+                second = document.querySelector(".second"),
+                clearButton = document.querySelector("button");
+
+            // 定时器 setInterval
+            // 定义一个获取预设时间和现在时间的时间差的函数，注意浏览器的在传入预设时间时的格式为 2022-05-22T15:15:00 格式，其中 “T” 代表后面的内容为 Time
+            // 2022-05-22T15:15:00Z 中的 “Z” 代表时区 Zone 获取的是格林尼治时间，不加 “Z” 代表获取的是当前时区的时间
+            function counter() {
+                var now = +new Date();
+                var preinstall = "2022-05-22T15:43:00";
+                var residue = (new Date(preinstall) - now) / 1000;
+                var h = parseInt(residue / 60 / 60) % 24;
+                h = h < 10 ? "0" + h : h;
+                var m = parseInt(residue / 60) % 60;
+                m = m < 10 ? "0" + m : m;
+                var s = parseInt(residue % 60);
+                s = s < 10 ? "0" + s : s;
+
+                hour.innerHTML = h;
+                minute.innerHTML = m;
+                second.innerHTML = s;
+            }
+            counter();
+            var timer = setInterval(counter, 1000);
+
+            // 利用按钮清除定时器
+            // 定义一个清除定时器的函数
+            function btnClearTimer() {
+                clearInterval(timer);
+            }
+            // 给按钮注册事件
+            clearButton.addEventListener("click", btnClearTimer);
+
+            // 使用 setTimeout 定时器清除 setInterval 定时器
+            function sttCleartimer() {
+                clearInterval(timer);
+            }
+
+            setTimeout(sttCleartimer, 10000);
+        </script>
+    </body>
+</html>

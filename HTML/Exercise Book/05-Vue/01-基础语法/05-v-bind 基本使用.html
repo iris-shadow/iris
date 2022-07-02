@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script src="../js/vue.js"></script>
+		<title>v-bind 基本使用</title>
+	</head>
+
+	<body>
+		<div id="app">
+			<!-- v-bind 动态绑定元素属性中的内容 语法糖可省略 v-bind，直接使用 :-->
+			<img v-bind:src="imgUrl" alt="" />
+		</div>
+
+		<script>
+			const app = new Vue({
+				el: '#app',
+				data: {
+					message: 'Hello Vuejs!',
+					imgUrl: 'https://pics5.baidu.com/feed/9358d109b3de9c828d95807b0e251d031bd843fb.jpeg?token=43ab338cbfb93d50b18ee734f7decc6f',
+				},
+			})
+		</script>
+	</body>
+</html>

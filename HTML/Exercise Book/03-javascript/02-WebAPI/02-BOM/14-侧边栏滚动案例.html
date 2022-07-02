@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+        <title>侧边栏滚动案例</title>
+        <style>
+            .w {
+                width: 1200px;
+                margin: 0 auto 10px;
+            }
+
+            .nav {
+                height: 200px;
+                background-color: cornflowerblue;
+            }
+
+            .banner {
+                height: 400px;
+                background-color: tomato;
+            }
+
+            .main {
+                height: 1000px;
+                background-color: skyblue;
+            }
+
+            .service {
+                height: 300px;
+                background-color: lavender;
+            }
+
+            .sidebar {
+                position: absolute;
+                top: 300px;
+                right: 40px;
+                width: 60px;
+                height: 200px;
+                background-color: lightblue;
+            }
+
+            .rocket {
+                display: none;
+                width: 100%;
+                height: 50px;
+                margin-top: 100px;
+                background-color: gold;
+                text-align: center;
+                line-height: 50px;
+                color: #fff;
+                font-weight: 900;
+                font-size: 20px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="nav w"></div>
+        <div class="banner w"></div>
+        <div class="main w"></div>
+        <div class="service w"></div>
+        <div class="sidebar">
+            <div class="rocket">Soar</div>
+        </div>
+
+        <script>
+            // // window.pageXOffset、window.pageYOffset 具有兼容性的问题，可封装一个获取页面被”卷“去头部的高度值
+            // function getScroll() {
+            //     // 使用到对象创建和 || 的短路
+            //     return {
+            //         left: window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0,
+            //         top: window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0,
+            //     };
+            // }
+
+            // window.addEventListener("scroll", function () {
+            //     console.log("left -> ", getScroll().left, "top -> ", (scrollTop = getScroll().top));
+            // });
+
+            var banner = document.querySelector(".banner");
+            var main = document.querySelector(".main");
+            var sidebar = document.querySelector(".sidebar");
+            var rocket = document.querySelector(".rocket");
+
+            //
+            // 1. 当页面的 banner 元素顶部接触到浏览器顶部时，将 sidebar 的定位模式改为 fixed
+            // 获取 banner 到浏览器顶部的距离
+            var bannerTop = banner.offsetTop;
+            // 获取 sidebar 到浏览器顶部的距离
+            var sidebarTop = sidebar.offsetTop;
+            // sidebarTop - bannerTop 即为 sidebar 改为固定定位模式的 top 值
+            var sidebarFiexdTop = sidebarTop - bannerTop;
+
+            //
+            // 2. 当页面的 main 元素顶部接触到浏览器时，显示 rocket 元素
+            // 获取 main 到浏览器顶部的距离
+            var mainTop = main.offsetTop;
+
+            // 注册事件
+            document.addEventListener("scroll", function () {
+                //
+                // 1. 当页面的 banner 元素顶部接触到浏览器顶部时，将 sidebar 的定位模式改为 fixed
+                // window.pageXOffset 获取页面被“卷”去头部的高度值
+                if (window.pageYOffset >= bannerTop) {
+                    sidebar.style.position = "fixed";
+                    sidebar.style.top = sidebarFiexdTop + "px";
+                } else {
+                    sidebar.style.position = "absolute";
+                    sidebar.style.top = "300px";
+                }
+
+                //
+                // 2. 当页面的 main 元素顶部接触到浏览器时，显示 rocket 元素
+                if (window.pageYOffset >= mainTop) {
+                    rocket.style.display = "block";
+                } else {
+                    rocket.style.display = "none";
+                }
+            });
+
+            // 使用缓动函数来使页面回到顶部
+            function inching(obj, destination, callback) {
+                // 预先清除定时器
+                clearInterval(obj.timer);
+                // 给对象加上缓动功能的定时器
+                obj.timer = setInterval(function () {
+                    // 判断是否达到指定位置
+                    if (window.pageYOffset === destination) {
+                        // 清除定时器
+                        clearInterval(obj.timer);
+                        // 执行回调函数
+                        callback && callback();
+                    }
+                    // 缓动公式：(destination - currentOffset) / 10
+                    var step = (destination - window.pageYOffset) / 10;
+                    // 判断步长的正负，进行不同的取整
+                    step = step > 0 ? Math.ceil(step) : Math.floor(step);
+                    // 给对象加上步长值
+                    obj.scroll(0, obj.pageYOffset + step);
+                }, 15);
+            }
+
+            rocket.addEventListener("click", function () {
+                inching(window, 0);
+            });
+        </script>
+    </body>
+</html>

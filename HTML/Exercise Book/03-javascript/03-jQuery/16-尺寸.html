@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="jQuery.mini.js"></script>
+        <style>
+            .one {
+                position: relative;
+                width: 500px;
+                height: 300px;
+                padding: 10px;
+                border: 15px solid greenyellow;
+                margin: 20px;
+                background-color: cornflowerblue;
+                margin-bottom: 1000px;
+            }
+
+            .two {
+                position: absolute;
+                top: 15px;
+                left: 15px;
+                width: 100px;
+                height: 100px;
+                background-color: tomato;
+            }
+        </style>
+        <title>尺寸</title>
+    </head>
+
+    <body>
+        <div class="one">
+            <div class="two"></div>
+        </div>
+
+        <script>
+            // 元素偏移值，相对于 document 而言，与父元素无关
+            console.log($('.two').offset());
+            // 可进行赋值
+            $('.two').offset({
+                top: 55,
+                left: 63,
+            });
+            // 元素偏移，相对于带有定位的父级元素而言，不支持赋值操作
+            console.log($('.two').position());
+
+            // 元素宽度，包含 content
+            console.log($('.one').width());
+            // 可进行赋值
+            $('.one').width(600);
+
+            // 元素宽度，包含 content、padding
+            console.log($('.one').innerWidth());
+
+            // 元素宽度，包含 content、padding、border
+            console.log($('.one').outerWidth());
+
+            // 元素宽度，包含 content、padding、border、margin
+            console.log($('.one').outerWidth(true));
+
+            // 元素卷去部分
+            $(document).scrollTop(100);
+            console.log($(document).scrollTop());
+            $(window).scroll(function () {
+                console.log($('html').scrollTop(), $('html').scrollLeft());
+            });
+        </script>
+    </body>
+</html>

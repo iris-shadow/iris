@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN>">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>demo1</title>
+    </head>
+
+    <body>
+        <script>
+            // //
+            // // 数组筛选 要求把原数组中的 0 去除，其余元素添加到新数组中
+            // var arr1 = [1, 0, 3, 2, 0, 7, 0, 9];
+
+            // var filterArr = [];
+            // for (var i = 0; i < arr1.length; i++) {
+            //     if (arr1[i] != 0) {
+            //         filterArr[filterArr.length] = arr1[i];
+            //     }
+            // }
+            // console.log('filterArr->', filterArr);
+            // //
+
+            // //
+            // // 数组翻转
+            // var arr2 = [1, 3, 5, 7, 9];
+
+            // var reverseArr = [];
+            // for (var i = arr2.length - 1; i > -1; i--) {
+            //     reverseArr[reverseArr.length] = arr2[i];
+            // }
+            // console.log('reverseArr->', reverseArr);
+            // //
+
+            // //
+            // // 冒泡排序
+            // var bubbleArr = [4, 7, 3, 2, 9, 8, 6, 0, 1, 5];
+            // // 外层循环控制比对次数
+            // for (var i = 0; i < bubbleArr.length; i++) {
+            //     // 记录是否排序完成
+            //     var isComplete = false;
+            //     // 内层循环控制每次比对的次数
+            //     for (var j = 0; j < bubbleArr.length - i - 1; j++) {
+            //         if (bubbleArr[j] > bubbleArr[j + 1]) {
+            //             // 若进行了比较，说明还没排序完成
+            //             isComplete = true;
+            //             var temp = bubbleArr[j + 1];
+            //             bubbleArr[j + 1] = bubbleArr[j];
+            //             bubbleArr[j] = temp;
+            //         }
+            //     }
+            //     // 若没有进行比较了，说明排序完成，退出循环
+            //     if (!isComplete) {
+            //         break;
+            //     }
+            // }
+
+            // console.log(bubbleArr);
+            // //
+
+            // //
+            // // 数组去重，利用 indexOf 判断元素是否存在新数组中
+            // var originalArr = ['1', 'w', 0, 4, 'a', 'w', 'c', 4, '1', 0];
+            // var newArr = [];
+
+            // for (var i = 0; i < originalArr.length; i++) {
+            //     if (newArr.indexOf(originalArr[i]) == -1) {
+            //         newArr.push(originalArr[i]);
+            //     }
+            // }
+            // console.log(newArr);
+            // //
+
+            //
+            //判断一个字符串 'abcoefoxyozzopp' 中出现次数最多的字符，并统计其次数
+            var str = 'abaasdffggghhjjkkgfddsssss3444343';
+            // 使用对象记录字符及其出现次数
+            var record = {};
+
+            // 统计
+            for (var i = 0; i < str.length; i++) {
+                if (record[str[i]]) {
+                    record[str[i]] += 1;
+                } else {
+                    record[str[i]] = 1;
+                }
+            }
+
+            // 先假定第一个字符次数最多
+            var maxTimes = record[str[0]];
+            var char = str[0];
+
+            // 筛选最多次数
+            // 当字符串中出现两个及以上相同次数的字符时有 bug
+            for (var k in record) {
+                if (record[k] > maxTimes) {
+                    char = k;
+                    maxTimes = record[k];
+                }
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>浏览器本地存储</title>
+    </head>
+
+    <body>
+        <input type="text" id="content" placeholder="Add new todo..." />
+        <div class="operation">
+            <button class="set">添加</button>
+            <button class="get">获取</button>
+            <button class="remove">删除</button>
+            <button class="clear">清除</button>
+        </div>
+
+        <script>
+            var ipt = document.querySelector("#content");
+            var set = document.querySelector(".set");
+            var get = document.querySelector(".get");
+            var remove = document.querySelector(".remove");
+            var clear = document.querySelector(".clear");
+
+            // localStorage 可以永久存储内容到浏览器（只能通过 remove 和 clear 清除），可在多个页面上（同一个浏览器）共享数据
+            // sessionStorage 的生命周期是关闭浏览器，可以在同一个页面上共享数据
+
+            // 存储数据
+            set.addEventListener("click", function () {
+                localStorage.setItem("TODO1", ipt.value);
+                localStorage.setItem("TODO2", ipt.value);
+            });
+
+            // 获取数据
+            get.addEventListener("click", function () {
+                console.log(localStorage.getItem("TODO"));
+            });
+
+            // 删除单个数据
+            remove.addEventListener("click", function () {
+                localStorage.removeItem("TODO");
+            });
+
+            // 清除数据
+            clear.addEventListener("click", function () {
+                localStorage.clear();
+            });
+        </script>
+    </body>
+</html>

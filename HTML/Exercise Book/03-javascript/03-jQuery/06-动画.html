@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charsest="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="jQuery.mini.js"></script>
+        <title>动画</title>
+        <style>
+            .example {
+                display: none;
+                width: 300px;
+                height: 200px;
+                background-color: skyblue;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="sh-wrapper">
+            <button>显示</button>
+            <button>隐藏</button>
+        </div>
+        <div class="slide-wrapper">
+            <button>下滑</button>
+            <button>上滑</button>
+            <button>切换</button>
+        </div>
+        <div class="fade-wrapper">
+            <button>淡入</button>
+            <button>淡出</button>
+            <button>切换</button>
+            <button>调整</button>
+        </div>
+        <div class="toggle"><button>Toggle</button></div>
+        <div class="animate"><button>Animate</button></div>
+        <div class="example"></div>
+
+        <script>
+            //
+            // hide()
+            $('.sh-wrapper button:first').click(function () {
+                $('.example').stop().show(1000);
+            });
+            // show()
+            $('.sh-wrapper button:last').click(function () {
+                $('.example').stop().hide(1000);
+            });
+            //
+
+            //
+            // slideDown()
+            $('.slide-wrapper button')
+                .eq(0)
+                .click(function () {
+                    $('.example').stop().slideDown(1000, 'linear');
+                });
+            // slideUp()
+            $('.slide-wrapper button')
+                .eq(1)
+                .click(function () {
+                    $('.example').stop().slideUp(1000, 'swing');
+                });
+            // slideToggle()
+            $('.slide-wrapper button')
+                .eq(2)
+                .click(function () {
+                    $('.example').stop().slideToggle(1000, 'linear');
+                });
+            //
+
+            //
+            // fadeIn()
+            $('.fade-wrapper button:eq(0)').click(function () {
+                $('.example').stop().fadeIn(2000, 'linear');
+            });
+            // fadeOut()
+            $('.fade-wrapper button:eq(1)').click(function () {
+                $('.example').stop().fadeOut(2000, 'linear');
+            });
+            // fadeToggle()
+            $('.fade-wrapper button:eq(2)').click(function () {
+                $('.example').stop().fadeToggle(2000, 'swing');
+            });
+            // fadeTo()
+            $('.fade-wrapper button:eq(3)').click(function () {
+                $('.example').stop().fadeTo(2000, 0.5);
+            });
+            //
+
+            //
+            // hover 事件，相当于 mouseenter 和 mouseleave 的组合。若只写一个函数，则鼠标进入和鼠标出去都会触发
+            $('.toggle button').hover(
+                function () {
+                    $('.example').css('backgroundColor', 'tomato');
+                },
+                function () {
+                    $('.example').css('backgroundColor', 'skyblue');
+                }
+            );
+            //
+
+            //
+            // animate()
+            $('.animate button').click(function () {
+                $('.example').animate({ width: 400, height: 300 }, 2000, function () {
+                    $(this).css('transform', 'rotate(15deg)');
+                });
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="zh-CN" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>开机动画案例</title>
+        <style>
+            body {
+                overflow: hidden;
+            }
+            .ad-wrapper {
+                position: absolute;
+                right: 0;
+                bottom: 0;
+                width: 322px;
+                height: 345px;
+            }
+
+            .helper {
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+
+            .helper .close-helper {
+                display: block;
+                position: absolute;
+                top: 0;
+                right: 10px;
+                width: 20px;
+                height: 20px;
+                cursor: pointer;
+            }
+
+            .weather {
+                position: absolute;
+                top: 244px;
+                left: 0;
+            }
+
+            .weather .close-weather {
+                display: block;
+                position: absolute;
+                top: 0;
+                right: 3px;
+                width: 20px;
+                height: 20px;
+                cursor: pointer;
+            }
+        </style>
+        <script src="../js/aniamte.js"></script>
+    </head>
+
+    <body>
+        <div class="ad-wrapper">
+            <div class="helper"><img src="../media/images/helper.jpg" alt="" /><span class="close-helper"></span></div>
+            <div class="weather"><img src="../media/images/weather.jpg" alt="" /><span class="close-weather"></span></div>
+        </div>
+        <script>
+            var helper = document.querySelector(".helper");
+            var weather = document.querySelector(".weather");
+            var closeHelper = document.querySelector(".close-helper");
+            var closeWeather = document.querySelector(".close-weather");
+
+            // 定义一个向下的缓动函数
+            function slip(element, endPoint, callback, callbackArgs) {
+                // 预先清除定时器
+                clearInterval(element.timer);
+                // 给对象添加定时器
+                element.timer = setInterval(function () {
+                    // 缓动动画公式 (endPoint - currentPoint) / 10
+                    var step = (endPoint - element.offsetTop) / 10;
+                    // 判断 step 正负后做不同的取整操作
+                    step = step > 0 ? Math.ceil(step) : Math.floor(step);
+                    // 判断是否到达结束点
+                    if (element.offsetTop === endPoint) {
+                        clearInterval(element.timer);
+                        // 判断是否存在回掉函数
+                        if (callback) {
+                            callback(callbackArgs[0], callbackArgs[1]);
+                        }
+                    }
+                    // 给对象添加缓动效果
+                    element.style.top = element.offsetTop + step + "px";
+                }, 15);
+            }
+
+            // // 调用方式一
+            // closeHelper.addEventListener("click", function () {
+            //     slip(weather, 345);
+            //     slip(helper, 101, inching, [helper, 322]);
+            // });
+
+            // 调用方式二
+            closeWeather.addEventListener("click", function () {
+                slip(weather, 345);
+                slip(helper, 101);
+            });
+            closeHelper.addEventListener("click", function () {
+                inching(helper, 345);
+            });
+        </script>
+    </body>
+</html>

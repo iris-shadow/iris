@@ -1,0 +1,23 @@
+{
+  "id": "3480472",
+  "name": "register_icon",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "37283",
+      "name": "天猫提示-正确",
+      "font_class": "zhengque",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "12148932",
+      "name": "错误",
+      "font_class": "cuowu",
+      "unicode": "e7fa",
+      "unicode_decimal": 59386
+    }
+  ]
+}

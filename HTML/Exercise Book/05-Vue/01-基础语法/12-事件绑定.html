@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script src="../js/vue.js"></script>
+		<title>事件绑定</title>
+	</head>
+
+	<body>
+		<div id="app">
+			<!-- 1. 当不需要传入参数时，方法加或不加 “()” 都能生效 -->
+			<button v-on:click="btn1Click">按钮1</button>
+			<button v-on:click="btn1Click()">按钮1</button>
+
+			<!-- 2. 当方法中需要参数，但在调用时没有传入参数，Vue 内部会将事件对象作为参数传入 -->
+			<button @click="btn2Click">按钮2</button>
+			<button @click="btn2Click($event)">按钮2</button>
+
+			<!-- 3. 当方法需要传入除了事件对象之外的参数时，在调用时传入事件对象需要使用 “$event” 手动传入（必须是 “$event” ，不能为其它诸如 “$e“ 的形式） -->
+			<button @click="btn3Click($event, 'hello')">按钮3</button>
+			<!-- <button @click="btn3Click($e, 'hello')">按钮3</button> -->
+		</div>
+
+		<script>
+			const app = new Vue({
+				el: '#app',
+				data: {
+					message: 'Hello Vuejs!',
+				},
+				methods: {
+					btn1Click() {
+						console.log('平僧法号尼姑')
+					},
+					btn2Click(args) {
+						// 调用时没有传入参数，args 被 Vue 替换为 event 事件对象
+						console.log(args)
+						console.log('现在流的泪是当初恋爱时脑子进的水')
+					},
+					// btn3Click(event, greeting) {
+					// 	console.log(event, greeting)
+					// },
+					// 其实不需要在声明时使用形参接收调用时传入的 $event 也可以直接在内部使用 event（原生 js 也可以）
+					btn3Click() {
+						console.log(event)
+					},
+				},
+			})
+
+			// const btn = document.getElementsByTagName('button')[0]
+			// btn.onclick = function () {
+			// 	console.log('平僧法号尼姑')
+			// 	console.log(event)
+			// }
+		</script>
+	</body>
+</html>

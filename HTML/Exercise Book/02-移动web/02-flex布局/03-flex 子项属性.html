@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="zh-CN">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flex 子项属性</title>
+    <style>
+        body {
+            max-width: 1200px;
+            min-width: 680px;
+        }
+        
+        section {
+            display: flex;
+            width: 1000px;
+            height: 200px;
+            margin: 100px auto 0px;
+            background-color: aliceblue;
+            ;
+        }
+        
+        section span:nth-child(1),
+        section span:nth-child(3) {
+            width: 200px;
+            height: 150px;
+            background-color: cornflowerblue;
+        }
+        /* section span:nth-child(3) {
+            order: -1;
+        } */
+        
+        section span:nth-child(2) {
+            flex: 1;
+            align-self: flex-end;
+            height: 150px;
+            background-color: tomato;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+    </section>
+</body>
+
+</html>

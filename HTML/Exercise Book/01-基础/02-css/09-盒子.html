@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>盒子</title>
+    <style>
+        div {
+            /* border-width: 5px;
+            border-style: solid;
+            border-color: darkcyan; */
+            border: 2px solid darkcyan;
+            background-color: rgba(200, 255, 255, .15);
+            padding: 5px 10px 15px 20px;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid darkorange;
+            border-collapse: collapse;
+        }
+
+        .litter1 {
+            width: 600px;
+            margin: 10px auto;
+        }
+
+        .circle {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background-color: coral;
+        }
+
+        .retangle {
+            width: 200px;
+            height: 30px;
+            border-radius: 15px;
+            background-color: darkseagreen;
+        }
+
+        .difference {
+            width: 200px;
+            height: 100px;
+            border-radius: 5px 10px 15px 20px;
+            background-color: antiquewhite;
+        }
+
+        .shadow1 {
+            width: 400px;
+            height: 170px;
+            margin: 0px auto;
+        }
+
+        .shadow1:hover {
+            box-shadow: 5px 10px 20px 10px rgba(0, 0, 0, .3);
+        }
+
+        .shadow2 {
+            width: 360px;
+            height: 120px;
+            margin: 0px auto;
+            text-shadow: 3px 3px 5px rgba(0, 0, 0, .5);
+        }
+    </style>
+</head>
+
+<body>
+    <h3>边框</h3>
+    <div>
+        <p>border-width -> 设置边框的宽度；border-style -> 设置边框的样式，属性值有 solid（实线）、dotted（点线）、dashed（虚线）；boeder-color -> 设置边框的颜色
+        </p>
+        <p>border-collapse -> 合并相邻的边框，常在表格单元格间使用</p>
+        <p>在给盒子添加边框宽高时，添加的部分会往外扩展，增大盒子</p>
+    </div>
+
+    <h3>内边距</h3>
+    <p>语法：padding-left|right|top|bottom|: ...px;</p>
+    <p>复合边距</p>
+    <div>
+        <table>
+            <tr>
+                <th>值的个数</th>
+                <th>描述</th>
+            </tr>
+            <tr>
+                <td>padding: 5px;</td>
+                <td>上下左右的内边距均为 5px</td>
+            </tr>
+            <tr>
+                <td>padding: 5px 10px;</td>
+                <td>上下内边距为 5px ，左右内边距为 10px</td>
+            </tr>
+            <tr>
+                <td>padding: 5px 10px 15px;</td>
+                <td>上内边距为 5px ， 左右内边距为 10px ， 下内边距为 15px</td>
+            </tr>
+            <tr>
+                <td>padding: 5px 10px 15px 20px</td>
+                <td>上内边距为 5px ， 右内边距为 10px ， 下内边距为 15px ，左内边距为 20px</td>
+            </tr>
+        </table>
+    </div>
+    <p>内边距也会撑大盒子的大小。但未给盒子本身指定宽高时，则 padding 的值不会撑开盒子</p>
+
+    <h3>外边距</h3>
+    <div class="litter1">
+        <p>语法同 padding</p>
+        <p>利用外边距可实现盒子在浏览器中居中对齐，但必须满足两个条件：</p>
+        <ul>
+            <li>盒子设置了宽度</li>
+            <li>盒子的左右外边距设置为 auto （margin-left: auto; margin-right: auto; | margin: auto; | margin: 0 auto;）</li>
+        </ul>
+        <p>将行内块元素居中对齐，可在其父元素中添加 text-align: center 属性</p>
+        <p>相邻外边距在垂直方向上会发生合并的现象。解决方案：尽量只给一个盒子添加外边距</p>
+        <p>当嵌套元素的上外边距都有值时，父元素会发生塌陷。解决方案：</p>
+        <ul>
+            <li>为父元素定义上外边框/内边距</li>
+            <li>为父元素添加 overflow:hidden</li>
+        </ul>
+        <h4>清除内外边距</h4>
+        <p>网页元素很多都有不同的内外边距，而且不同的浏览器默认值不同，在布局前要清楚所有元素的内外边距： * {margin: 0px; padding: 0px;}</p>
+        <p>行内元素为了照顾兼容性，尽量只设定左右内外边距，不要设定上下内外边距（不起作用）。但转换为块级元素就可以了</p>
+    </div>
+
+    <h3>圆</h3>
+    <p>在正方形盒子中添加样式 border-radius: 宽度的一半|50%;</p>
+    <div class="circle"></div>
+
+    <h3>圆角矩形</h3>
+    <p>在矩形盒子中添加样式 border-radius: 高度的一半;</p>
+    <div class="retangle"></div>
+
+    <h3>任意圆角</h3>
+    <p>格式： border-radius: apx bpx cpx dpx; 分别作用于从左上角顺时针旋转的圆角。属性值给两个时，作用于两对角线角。也可以单独设置：border-top-left-radius: apx;</p>
+    <div class="difference"></div>
+
+    <h3>盒子阴影</h3>
+    <div class="shadow1">
+        <table>
+            <tr>
+                <th>值</th>
+                <th>描述</th>
+            </tr>
+            <tr>
+                <td>h-shadow</td>
+                <td>必须值。水平阴影的位置，允许负值。</td>
+            </tr>
+            <tr>
+                <td>v-shadow</td>
+                <td>必须值。垂直阴影的位置，允许负值。</td>
+            </tr>
+            <tr>
+                <td>blur</td>
+                <td>可选值。模糊距离。</td>
+            </tr>
+            <tr>
+                <td>spread</td>
+                <td>可选值。阴影的尺寸。</td>
+            </tr>
+            <tr>
+                <td>color</td>
+                <td>可选值。阴影的颜色。</td>
+            </tr>
+            <tr>
+                <td>inset</td>
+                <td>可选值。将外部阴影（outset）改为内部阴影。</td>
+            </tr>
+        </table>
+    </div>
+    <p>注意：默认为外阴影（outset）效果，但不能写上这个单词。否则会失效；阴影不占用空间，不影响其它盒子的排列。</p>
+
+    <div class="shadow2">
+        <table>
+            <tr>
+                <th>值</th>
+                <th>描述</th>
+            </tr>
+            <tr>
+                <td>h-shadow</td>
+                <td>必须值。水平阴影的位置，允许负值。</td>
+            </tr>
+            <tr>
+                <td>v-shadow</td>
+                <td>必须值。垂直阴影的位置，允许负值。</td>
+            </tr>
+            <tr>
+                <td>blur</td>
+                <td>可选值。模糊距离。</td>
+            </tr>
+            <tr>
+                <td>color</td>
+                <td>可选值。阴影的颜色。</td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>

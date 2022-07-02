@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta cahrset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>响应式布局</title>
+    <style>
+        .clearfix::after {
+            content: "";
+            display: block;
+            visibility: hidden;
+            clear: both;
+        }
+        
+        .clear {
+            *zoom: 1;
+        }
+        
+        a {
+            text-decoration: none;
+        }
+        
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            width: 883.75px;
+            height: 150px;
+            margin: 20px auto 0;
+        }
+        
+        .nav li {
+            float: left;
+            width: 93.75px;
+            text-align: center;
+        }
+        
+        @media screen and (max-width: 992px) {
+            .container {
+                width: 100%;
+            }
+            .nav li {
+                width: 33.33%;
+            }
+        }
+        
+        .nav {
+            background-color: aliceblue;
+            padding: 3px 0;
+        }
+        
+        .nav li a {
+            color: tomato;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="nav">
+            <ul class="clearfix">
+                <li>
+                    <a href="#">妞妞</a>
+                </li>
+                <li>
+                    <a href="#">阿黄</a>
+                </li>
+                <li>
+                    <a href="#">阿欢</a>
+                </li>
+                <li>
+                    <a href="#">二狗</a>
+                </li>
+                <li>
+                    <a href="#">葛冬</a>
+                </li>
+                <li>
+                    <a href="#">牛奶</a>
+                </li>
+                <li>
+                    <a href="#">夕豆</a>
+                </li>
+                <li>
+                    <a href="#">素素</a>
+                </li>
+                <li>
+                    <a href="#">二娃</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>

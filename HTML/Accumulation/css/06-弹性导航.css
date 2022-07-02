@@ -1,0 +1,100 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    background-image: linear-gradient(200deg, #a8edea, #fed6e3)
+}
+
+.nav-wrap {
+    width: 60vw;
+    height: 60px;
+    background-color: #fff;
+    border-radius: 60px;
+    box-shadow: 3px 5px 15px rgba(0, 0, 0, .1);
+}
+
+.nav-wrap nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.nav-wrap nav input {
+    display: none;
+}
+
+
+/* 注意设置显示层级，将 label 和 selected 提到同一层级 */
+
+.nav-wrap nav label {
+    position: relative;
+    z-index: 1;
+    flex: 20%;
+}
+
+
+/* 将 a 元素降一个显示层级，否则选不中 label 标签，也就出发不了 input 元素 */
+
+.nav-wrap nav a {
+    position: relative;
+    z-index: -1;
+    color: #333;
+    font-weight: 600;
+    font-size: 20px;
+    transition: color .8s;
+}
+
+.nav-wrap nav a i {
+    margin-right: 7px;
+    font-size: 25px;
+}
+
+.nav-wrap nav .selected {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 20%;
+    height: 100%;
+    background-image: linear-gradient(to left, #f09819, #ff5858);
+    border-radius: 60px;
+    transition: all .6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.nav-wrap nav #home:checked~label.home a,
+.nav-wrap nav #comment:checked~label.comment a,
+.nav-wrap nav #envelope:checked~label.envelope a,
+.nav-wrap nav #heart:checked~label.heart a,
+.nav-wrap nav #user:checked~label.user a {
+    color: #fff;
+}
+
+.nav-wrap nav #comment:checked~.selected {
+    left: 20%;
+}
+
+.nav-wrap nav #envelope:checked~.selected {
+    left: 40%;
+}
+
+.nav-wrap nav #heart:checked~.selected {
+    left: 60%;
+}
+
+.nav-wrap nav #user:checked~.selected {
+    left: 80%;
+}

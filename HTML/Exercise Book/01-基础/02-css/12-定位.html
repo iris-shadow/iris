@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>定位</title>
+    <style>
+        body {
+            margin: 0px;
+            padding: 0px;
+        }
+        
+        .w {
+            width: 1000px;
+            margin: 10px auto;
+        }
+        
+        .box-relative {
+            position: relative;
+            top: 20px;
+            left: 100px;
+            width: 200px;
+            height: 50px;
+            background-color: coral;
+            font-size: 14px;
+            color: #fff;
+        }
+        
+        .box-re {
+            width: 200px;
+            height: 50px;
+            background-color: skyblue;
+        }
+        
+        .father {
+            position: absolute;
+        }
+        
+        .box-absolute {
+            position: absolute;
+            left: 180px;
+            top: 20px;
+            width: 200px;
+            height: 50px;
+            background-color: skyblue;
+            font-size: 14px;
+            color: #fff;
+        }
+        
+        .box-abs {
+            width: 200px;
+            height: 50px;
+            background-color: coral;
+        }
+        
+        .fixed {
+            position: fixed;
+            top: 300px;
+            right: 50%;
+            width: 50px;
+            height: 120px;
+            background-color: coral;
+            margin-right: 508px;
+            font-size: 14px;
+            color: #fff;
+        }
+        
+        .sticky {
+            position: sticky;
+            top: 5px;
+            width: 600px;
+            height: 50px;
+            background-color: rgba(255, 222, 173, 0.5);
+            margin-top: 100px;
+            border-radius: 25px;
+            line-height: 50px;
+            text-align: center;
+            color: darkorange;
+        }
+        
+        .center {
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            margin-left: 10px;
+            margin-top: -5px;
+            width: 50px;
+            height: 30px;
+            border-radius: 15px;
+            background-color: rgba(0, 0, 0, 0.1);
+            text-align: center;
+            line-height: 30px;
+            color: darkorange;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="w">
+        <div class="sticky">定位</div>
+        <h3>静态定位</h3>
+        <p>静态定位是定位模式的默认模式，相当于标准流</p>
+
+        <h3>相对定位</h3>
+        <p>以原有位置为原点，进行四个方向的相对偏移</p>
+        <div class="box-relative">偏移后，原有位置任然保留，下方的盒子不会向上占位</div>
+        <div class="box-re"></div>
+
+        <h3>绝对定位</h3>
+        <p>以含有定位的父级元素的位置来进行参考定位，如果没有父级元素或父级元素没有定位，则以浏览器为参考来进行定位</p>
+        <div class="father">
+            <div class="box-absolute">绝对定位会脱离标准流，原有位置会被下方盒子占有</div>
+        </div>
+        <div class="box-abs"></div>
+
+        <h3>固定定位</h3>
+        <p>以浏览器的可视窗口为参考点，与父元素无关。固定到版心步骤：</p>
+        <div class="fixed">固定定位也会脱离标准流，不占有位置</div>
+        <ol>
+            <li>将要设定为固定模式的盒子距离浏览器的水平距离设置为浏览器的 50%</li>
+            <li>利用盒子的 margin 设置水平距离为版心的 50% </li>
+        </ol>
+
+        <h3>粘性定位</h3>
+        <p>粘性定位可视为相对定位（占有空间）和绝对定位（以浏览器的可视化窗口为参考点）的混合体</p>
+
+        <h3>定位的叠放次序</h3>
+        <p>可使用 z-index: n; 来指定次序。注意，只有定位的盒子才有 z-index 属性；如果属性值相同，则后来者居上</p>
+
+        <h3>绝对/固定定位盒子局中</h3>
+        <p>加了定位的绝对/固定定位不能通过 margin: auto 来实现居中。可使用下列算法：</p>
+        <ol>
+            <li>将 left 设为父级容器的 50% </li>
+            <li>再将 margin 设为自身高度的 50%</li>
+        </ol>
+        <div class="center">嘿嘿</div>
+
+        <h3>定位&浮动</h3>
+        <p>浮动的盒子会压住下方标准流的盒子，但不会压住盒子内的内容（浮动最初设计就是为了实现文字环绕效果）；而绝对/固定定位会压住下方标准流的盒子包括其内容</p>
+    </div>
+</body>
+
+</html>

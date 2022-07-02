@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Comaptible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>语法基础</title>
+    <script>
+        // var userName = prompt('Please enter your name ');
+        // alert(userName);
+        // var age = 10;
+        // console.log(age);
+        // var userAge = 11,
+        //     userQQ = 11111,
+        //     temp;
+        // temp = userAge, userAge = userQQ, userQQ = temp;
+        // console.log('userAge => ' + userAge, 'userQQ => ' + userQQ);
+
+        // Number
+        // var bin = 0b10101,
+        //     oct = 0o10,
+        //     hex = 0xa;
+        // console.log(bin, oct, hex)
+        // console.log(-Number.MAX_VALUE * 2);
+        // var answer = isNaN(bin);
+        // console.log(answer);
+
+        // String
+        // alert('酷热难耐，火热的太阳底下，我挺拔的身姿，成为了最独特的风景。\n我审视四周，这里，是我的舞台，我就是天地间的王者。\n这一刻，我豪气冲天，终于大喊一声：“收破烂了～”')
+        // console.log(12 + '12');
+
+        // Boolean
+        // var flag = false;
+        // var unknown = undefined;
+        // var empty = null;
+        // console.log(unknown + '未知的', unknown + 1, empty + 0, empty + '空的');
+
+        // 类型判断
+        // var age = 12;
+        // console.log(typeof(age));
+        // console.log(undefined);
+        // console.log('simple');
+        // console.log(12);
+
+        // 类型转换
+        // console.log(age.toString());
+        // console.log(age + '');
+
+        // var age = prompt('Please enter your age: ')
+        // console.log(parseInt(age));
+        // console.log(parseFloat(age));
+        // console.log(Number(age));
+        // console.log(age - 1);
+
+        // var birthday = prompt('Please enter your birthday:');
+        // age = 2022 - birthday;
+        // alert('You are ' + age + ' years old.');
+
+        // var num1 = parseFloat(prompt('Please enter the first number:'));
+        // var num2 = parseFloat(prompt('Please enter the second number:'));
+        // var result = num1 + num2;
+        // alert('The result is ' + result + '.');
+
+        // 比较
+        // var age = 10;
+        // console.log(age++);
+        // console.log(age);
+
+        // var height = 3;
+        // console.log(height-- - --height);
+
+        // var a = 10;
+        // console.log(a == '10');
+        // console.log(a != '10');
+        // console.log(a === '10');
+        // console.log(a !== '10');
+
+        // 逻辑短路
+        // console.log('a' && 8 && 1 && null && 'final');
+        // console.log('' || 0 || null || 3 || undefined || 1);
+
+        // 循环结构
+        // var year = parseInt(prompt('输入一个年份：'));
+        // if (year % 4 === 0 && year % 100 !== 0 || year % 400 === 0) {
+        //     alert(year + ' 是闰年！');
+        // } else {
+        //     alert(year + ' 不是闰年');
+        // }
+
+        // 三元表达式
+        // var re = 5 > 3 ? 'yes' : 'no';
+        // console.log(re);
+
+        // var num = prompt('输入一个数字：')
+        // var num_alter = num < 10 && num.length == 1 ? '0' + num : num;
+        // console.log(num_alter);
+
+        // switch 
+        // var fruit = prompt('请输入水果名：');
+        // switch (fruit) {
+        //     case '苹果':
+        //         alert('$999/kg');
+        //         break;
+        //     case '西瓜':
+        //         alert('$0.1/kg');
+        //         break;
+        //     default:
+        //         alert('没有此水果！');
+        // }
+
+        // for 循环
+        // var number = parseFloat(prompt('请输入班级人数：'));
+        // var sum = 0;
+        // for (var i = 1; i <= number; i++) {
+        //     sum += parseFloat(prompt('请输入第' + i + '个学生的成绩：'));
+        // }
+        // alert('总分数为： ' + sum);
+
+        // 一行打印多颗星星
+        // for (var colum = 10; colum > 0; colum--) {
+        //     var pentagon = '';
+        //     for (var row = 0; row < colum; row++) {
+        //         pentagon += '✭';
+        //     }
+        //     console.log(pentagon);
+        // }
+
+        // 99乘法表
+        // for (var row = 1; row < 10; row++) {
+        //     var str = '';
+        //     for (var colum = 1; colum < row + 1; colum++) {
+        //         str += colum + '*' + row + '=' + row * colum + '\t';
+        //     }
+        //     console.log(str);
+        // }
+
+        // 天坑
+        // var initial_name = 'admin';
+        // var initial_pwd = 'symbol';
+        // var name = prompt('请输入用户名：');
+        // var pwd = prompt('请输入密码：');
+        // while (name != initial_name && pwd != initial_pwd) {
+        //     name = prompt('请输入用户名：');
+        //     pwd = prompt('请输入密码：');
+        // }
+        // alert('登录成功！');
+
+        // automatic teller machine
+        // var account = 10;
+        // while (true) {
+        //     switch (choice) {
+        //         case '1':
+        //             {
+        //                 var add = parseFloat(prompt('请输入您的存款数目：'));
+        //                 account += add;
+        //                 alert('您的账户余额为：' + account);
+        //                 break;
+        //             }
+        //         case '2':
+        //             {
+        //                 var sub = parseFloat(prompt('请输入您的取款数目：'));
+        //                 account -= sub;
+        //                 alert('您的账户余额为：' + account);
+        //                 break;
+        //             }
+        //         case '3':
+        //             alert('您的账户余额为：' + account);
+        //             break;
+
+        //     }
+        //     var choice = prompt('请输入您要进行的操作：\n1. 存钱\n2. 取钱\n3. 显示余额\n4. 退出');
+        //     if (choice === '4') {
+        //         alert('正在退出 (⁎⁍̴̛ᴗ⁍̴̛⁎)');
+        //         break;
+        //     }
+        // }
+
+        // 数组翻转
+        // var arr = ['red', 'blue', 'purplue', 'green', 'yellow', 'white'];
+        // var arr_reverse = [];
+        // for (var i = arr.length - 1; i > -1; i--) {
+        //     arr_reverse[arr_reverse.length] = arr[i];
+        // }
+        // console.log(arr)
+        // console.log(arr_reverse);
+
+        // 🫧排序
+        // var arr = [0, 3, 2, 5, 6, 1, 4];
+        // for (var i = 1; i < arr.length; i++) {
+        //     var flag = 1;
+        //     for (var j = 0; j < arr.length - i; j++) {
+        //         if (arr[j] > arr[j + 1]) {
+        //             var temp = arr[j];
+        //             arr[j] = arr[j + 1];
+        //             arr[j + 1] = temp;
+        //             flag = 0;
+        //         }
+        //     }
+        //     if (flag) {
+        //         break;
+        //     }
+        //     console.log(i); // 次数检测
+        // }
+        // console.log(arr);
+
+        // 
+        // 函数求数组中的最大值
+        // var arr = [1, 0, 99, 2, 3, 5, 7, 4, 8, 9];
+
+        // function maxValue(arr) {
+        //     var max = arr[0];
+        //     for (var i = 1; i < arr.length; i++) {
+        //         if (arr[i] > max) {
+        //             max = arr[i];
+        //         }
+        //     }
+        //     return max;
+        // }
+
+        // var result = maxValue(arr);
+        // console.log(result);
+        //
+
+        //
+        // 函数第二种声明方式
+        //
+        // var func_name = function(args) {
+        //     console.log(args);
+        // }
+
+        // func_name('声明函数的第二种方式');
+        //
+
+        //
+        // 预解析
+        //
+
+        // 变量提升
+        // console.log(alteration01); // ReferenceError: Can't find variable: alteration01
+
+        // console.log(alteration02); // undefined
+        // var alteration02 = 9;
+
+        // 函数提升
+        // func_name01(); // 01打印 。。。。
+        // function func_name01() {
+        //     console.log('01打印 。。。。');
+        // }
+
+        // func_name02(); // TypeError: func_name02 is not a function. (In 'func_name02()', 'func_name02' is undefined)
+        // var func_name02 = function() {
+        //     console.log('02打印 。。。。');
+        // }
+
+        // 预解析经典案例
+        // func_name();
+        // console.log(c);
+        // console.log(b);
+        // console.log(a);
+
+        // function func_name() {
+        //     var a = b = c = 9;
+        //     console.log(a);
+        //     console.log(b);
+        //     console.log(c);
+        // }
+        // 相当于执行以下代码
+        // function func_name() {
+        //     var a;
+        //     a = b = c = 9; // c, b 在函数内部未声明而直接进行赋值，属于全局变量
+        //     console.log(a);
+        //     console.log(b);
+        //     console.log(c);
+        // }
+        // func_name();
+        // console.log(c);
+        // console.log(b);
+        // console.log(a);
+
+        //
+        // 预解析完毕
+        //
+
+        //
+        // 对象
+        //
+
+        //
+        // 创建一个对象
+        // var person = {
+        //     name: '张三疯',
+        //     gender: '男',
+        //     age: '17',
+        //     height: '176',
+        //     battle: function() {
+        //         console.log('一剑开天门！！！');
+        //     }
+        // }
+
+        // console.log(person.name);
+        // person.battle();
+
+        // var person = new Object();
+        // person.name = '张三疯';
+        // person.gender = '男';
+        // person.age = '17';
+        // person.height = '176';
+        // person.battle = function() {
+        //     console.log('一贱开舔门！！！');
+        // }
+
+        // console.log(person.name);
+        // person.battle();
+
+        //
+        // 构造函数
+        // function Hero(name, type, blood) {
+        //     this.name = name;
+        //     this.type = type;
+        //     this.blood = blood;
+        //     this.kill = function(kill) {
+        //         console.log('我累了，毁灭吧 ～ ' + kill);
+        //     };
+        // }
+
+        // var Abaddon = new Hero('魔王', '毁灭者', '♾️');
+        // console.log(Abaddon.name);
+        // console.log(Abaddon.type);
+        // console.log(Abaddon.blood);
+        // Abaddon.kill('世界');
+
+        // for (var key in Abaddon) {
+        //     if (typeof(Abaddon[key]) == 'function') {
+        //         Abaddon[key]('世界');
+        //     } else {
+        //         console.log(Abaddon[key]);
+        //     }
+        // }
+
+        //
+        // 内置对象
+        // 封装一个类似 Math 的自定义对象
+        // var myMath = {
+        //     PI: 3.141592653589793,
+        //     max: function() {
+        //         max = arguments[0];
+        //         for (var i = 1; i < arguments.length; i++) {
+        //             if (arguments[i] > max) {
+        //                 max = arguments[i]
+        //             }
+        //         }
+        //         return max;
+        //     },
+        //     min: function() {
+        //         min = arguments[0];
+        //         for (var i = 1; i < arguments.length; i++) {
+        //             if (arguments[i] > min) {
+        //                 max = arguments[i]
+        //             }
+        //         }
+        //         return min;
+        //     }
+        // }
+        // console.log(myMath.PI);
+        // console.log(myMath.max(1, 3, 8, 0, 6, 2, 9));
+        // console.log(myMath.min(1, 3, 8, 0, 6, 2, 9));
+
+        //  
+        // 返回当前时间 格式：Y年M月D日 h时m分s秒
+        // function getNow() {
+        //     date = new Date();
+        //     var week = ['日', '一', '二', '三', '四', '五', '六'],
+        //         Years = date.getFullYear(),
+        //         Months = date.getMonth(),
+        //         Dates = date.getDate(),
+        //         days = week[date.getDay()],
+        //         hours = date.getHours() < 10 ? '0' + date.getHours() : date.getHours(),
+        //         minutes = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes(),
+        //         seconds = date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds();
+        //     return Years + ' 年 ' + Months + ' 月 ' + Dates + ' 日 ' + '周 ' + days + '\t\t' + hours + ' 时 ' + minutes + ' 分 ' + seconds + ' 秒';
+        // }
+
+        // console.log(getNow());
+
+        //
+        // 获取时间戳
+        // 方式一
+        // var date = new Date();
+        // console.log(date.valueOf());
+        // console.log(date.getTime());
+        // 方式2
+        // var time = +new Date();
+        // console.log(time);
+        // 方式三
+        // console.log(Date.now());
+
+        // var arr = new Array('张三疯', '李淳罡', '邓太阿');
+        // var length;
+        // var result;
+        // //
+        // // 添加操作 
+        // // push 数组末尾追加，操作后返回新数组长度
+        // length = arr.push('王仙芝', '剑九黄');
+        // console.log(arr, length); // ["张三疯", "李淳罡", "邓太阿", "王仙芝", "剑九黄"] (5)
+        // // unshift 数组开头添加，操作后返回新数组长度
+        // length = arr.unshift('呵呵姑娘');
+        // console.log(arr, length); // ["呵呵姑娘", "张三疯", "李淳罡", "邓太阿", "王仙芝", "剑九黄"] (6)
+
+        // //
+        // // 删除操作
+        // // pop 删除数组的最后一个元素，一次只能删除一个元素，返回值为被删除的元素
+        // result = arr.pop()
+        // console.log(arr, result); // ["呵呵姑娘", "张三疯", "李淳罡", "邓太阿", "王仙芝"] (5) "剑九黄"
+        // //
+        // // shift 删除数组的第一个元素，一次只能删除一个元素，返回值为被删除的元素
+        // result = arr.shift();
+        // console.log(arr, result); // ["张三疯", "李淳罡", "邓太阿", "王仙芝"] (4) "呵呵姑娘"
+
+        // //
+        // // 元素下标查找
+        // // indexOf(element) 从左往右查找，返回第一个满足条件的元素下标，若不存在满足条件的下标则返回 -1
+        // var index;
+        // arr = ["张三疯", "李淳罡", "邓太阿", '李淳罡', "王仙芝"]
+        // index = arr.indexOf('李淳罡');
+        // console.log(index); // 1
+        // index = arr.indexOf('姜泥');
+        // console.log(index); // -1
+        // // lastIndexOf(element) 从右往左查找，返回第一个满足条件的元素下标， 若不存在满足条件的下标则返回 -1
+        // index = arr.lastIndexOf('李淳罡');
+        // console.log(index); // 3
+        // index = arr.lastIndexOf('姜泥');
+        // console.log(index); // -1
+        // //
+        // // 翻转数组
+        // console.log(arr.reverse()); // ["王仙芝", "邓太阿", "李淳罡", "张三疯"] (4)
+
+        // //
+        // // 数组排序
+        // var arr01 = [0, 3, 2, 5];
+        // var arr02 = [3, 27, 0, 12, 11];
+        // console.log(arr01.sort()); // [0, 2, 3, 5] (4)
+        // console.log(arr02.sort()); // [0, 11, 12, 27, 3] (5) sort() 只能排序元素的第一位
+        // //
+        // // 使用 comparefunction 进行解决
+        // // 升序
+        // var ascend = function(a, b) {
+        //     return a - b;
+        // }
+
+        // //
+        // // 降序
+        // var decline = function(a, b) {
+        //     return b - a;
+        // }
+        // console.log(arr02.sort(ascend)); // [0, 3, 11, 12, 27] (5)
+        // console.log(arr02.sort(decline)); // [27, 12, 11, 3, 0] (5)
+
+        // //
+        // // 数组转换为字符串
+        // var arr03 = [1, 'hello', 3, 'world'];
+        // //
+        // // 方式一
+        // console.log(arr03.toString()); // 1,hello,3,world
+        // // 
+        // // 方式二 默认使用 “,” 分隔
+        // console.log(arr03.join('&')); // 1&hello&3&world
+
+
+        // //
+        // // 简单 & 复杂数据类型
+        // //
+        // // 
+        // // 字符串操作
+        // // indexOf('element'[,起始位置])
+        // //
+        // var str = 'go bananas, apples and oranges';
+        // var index = str.indexOf('a', 5);
+        // console.log(index);
+        // //
+        // // 查找一个字符串中某个元素出现的次数
+        // //
+        // function queryCharacter(str, element, index) {
+        //     var counter = 0;
+        //     var index = str.indexOf(element, index);
+        //     while (index != -1) {
+        //         counter++;
+        //         index = str.indexOf(element, index + 1)
+        //     }
+        //     return counter;
+        // }
+
+        // var result = queryCharacter('go bananas, apples and oranges', 'a', 5);
+        // console.log(result);
+
+        // // 
+        // // 获取字符串指定位置的字符
+        // //str.charAt(index)
+        // //str[index] // H5新增
+        // //
+        // var str = 'simple';
+        // console.log(str.charAt(1));
+        // console.log(str[3]);
+        // //
+        // // 获取指定位置字符的 ASCII 编码
+        // //charCodeAt(index)
+        // //
+        // console.log(str.charCodeAt(4));
+
+        // // 
+        // // 查找一个字符串中最多的字符
+        // //
+        // function count(str) {
+        //     var counter = {}; // 声明一个对象用于计数字符串中出现字符的个数
+        //     for (var i = 0; i < str.length; i++) {
+        //         var sign = str.charAt(i);
+        //         if (counter[sign]) {
+        //             counter[sign]++;
+        //         } else {
+        //             counter[sign] = 1;
+        //         }
+        //     }
+        //     return counter;
+        // }
+
+        // var str = 'When you charges your iphone';
+        // console.log(count(str));
+
+        // 
+        // 字符串 拼接
+        // str.concat('another_atr') 
+        //
+        var str = 'hello';
+        str = str.concat(' world!');
+        console.log(str); // hello world!
+        //
+        // 字符串截取
+        // str.substr(起始位置，截取个数)
+        // slice(开始位置，结束位置) 不包含结束位置
+        // substring(开始位置，结束位置) 不包含结束位置，和 slice 基本相同，但不接受负数
+        // 
+        var substr;
+        substr = str.substr(-3, 2);
+        console.log(substr); // ld
+        substr = str.slice(-2, -1);
+        console.log(substr); // d
+        substr = str.substring(0, 2);
+        console.log(substr); // he
+
+        //
+        // 字符串替换
+        // str.repalce('要被替换的字符', '用来替换的字符')
+        //
+        var str_replaced = str.replace('ll', 'o');
+        console.log(str_replaced); // heoo world!
+
+        //
+        // 字符串转换为数组
+        // str.split('指定用于分隔的字符（必须是存在于字符串中的分隔符）')
+        // 
+        var str = '李淳罡,邓太阿,剑九黄';
+        var arr = str.split(',');
+        console.log(arr); // ["李淳罡", "邓太阿", "剑九黄"] (3)
+
+        console.log(typeof null);
+        console.log(typeof undefined);
+    </script>
+
+</head>
+
+<body>
+</body>
+
+</html>

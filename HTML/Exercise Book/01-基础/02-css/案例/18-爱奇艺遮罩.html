@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>爱奇艺遮罩</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+        
+        .aqy {
+            position: relative;
+            width: 316px;
+            height: 250px;
+            margin: 100px auto 0px;
+            /* background-color: skyblue; */
+        }
+        
+        .aqy img {
+            width: 100%;
+            height: 178px;
+        }
+        
+        .mask {
+            display: none;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            height: 178px;
+            background: rgba(0, 0, 0, .3);
+        }
+        
+        .mask img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+        }
+        
+        .aqy:hover .mask {
+            display: block;
+        }
+        
+        .info {
+            display: block;
+            width: 316px;
+            height: 56px;
+            padding: 8px 0px;
+            background-color: #21232a;
+            text-decoration: none;
+            color: #fff;
+        }
+        
+        .info img {
+            float: left;
+            width: 56px;
+            height: 56px;
+        }
+        
+        .info .description {
+            float: left;
+        }
+        
+        .info .description h4 {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        .info .description p {
+            font-size: 12px;
+        }
+        
+        .info:hover .description h4 {
+            color: greenyellow;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="aqy">
+        <img src="./images/aqy" />
+        <div class="mask">
+            <img src="images/play.png" alt="播放" title="播放">
+        </div>
+        <a class="info" href="#">
+            <img src="./images/hot_1.png" />
+            <div class="description">
+                <h4>国王排名</h4>
+                <p>更新至7集</p>
+            </div>
+        </a>
+    </div>
+</body>
+
+</html>

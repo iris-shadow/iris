@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+        <script src="jQuery.mini.js"></script>
+        <title>元素内容获取</title>
+    </head>
+
+    <body>
+        <div><span>今天天气好晴朗</span></div>
+        <input type="text" value="Please enter your name" />
+
+        <script>
+            // html() 相当于原生 js 的 innerHTML
+            // console.log($('div').html());
+            // $('div').html('处处好风光呀好风光！');
+
+            //text() 相当于原生 js 的 innerText
+            console.log($('div').text());
+            $('div').text('处处好风光呀好风光！');
+
+            // val() 相当于原生 js 的 value
+            console.log($('input').val());
+            $('input').val('Please enter your password');
+        </script>
+    </body>
+</html>

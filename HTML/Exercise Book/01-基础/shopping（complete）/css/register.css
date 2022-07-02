@@ -1,0 +1,208 @@
+/* 版心 */
+
+.w {
+    width: 1200px;
+    margin: 0px auto;
+}
+
+
+/* 标记色 */
+
+.red {
+    color: #c81623;
+}
+
+
+/* header 模块 */
+
+header {
+    height: 84px;
+    padding: 16px 0px 10px 0px;
+    border-bottom: 2px solid #b1191a;
+}
+
+
+/* logo 部分 */
+
+header .logo h1 a {
+    display: block;
+    width: 171px;
+    height: 61px;
+    background: url(../images/logo.png) no-repeat;
+    text-indent: -999px;
+}
+
+
+/* 注册模块 */
+
+.registerarea {
+    height: 480px;
+    border: 1px solid #dfdfdf;
+    margin-top: 20px;
+}
+
+
+/* 注册区域标题 */
+
+.registerarea h3 {
+    height: 42px;
+    padding: 12px 10px;
+    border-bottom: 1px solid #dfdfdf;
+    background-color: #ececec;
+    font-size: 18px;
+    font-weight: normal;
+    line-height: 18px;
+}
+
+
+/* 标题登录 */
+
+.registerarea h3 .logoin {
+    float: right;
+    font-size: 14px;
+}
+
+
+/* 注册表单部分 */
+
+.registerarea .rg_form {
+    width: 600px;
+    margin: 53px auto 0px;
+}
+
+.registerarea .rg_form ul li {
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+
+/* label 标签 */
+
+.registerarea .rg_form ul li label {
+    display: inline-block;
+    width: 90px;
+    text-align: right;
+}
+
+
+/* text 输入文本框 */
+
+.registerarea .rg_form ul li .ipt {
+    width: 240px;
+    height: 35px;
+    border: 1px solid #ccc;
+}
+
+
+/* 错误、对勾 icon */
+
+.registerarea .rg_form ul li .error .error_icon,
+.registerarea .rg_form ul li .success .success_icon {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin: 0px 8px;
+    vertical-align: middle;
+}
+
+.registerarea .rg_form ul li .error .error_icon {
+    background: url(../images/error_icon.png) no-repeat;
+}
+
+.registerarea .rg_form ul li .success .success_icon {
+    background: url(../images/success_icon.png);
+}
+
+
+/* 错误、对勾文字颜色 */
+
+.registerarea .rg_form ul li .error {
+    color: red;
+}
+
+.registerarea .rg_form ul li .success {
+    color: green;
+}
+
+
+/* 安全程度部分 */
+
+.registerarea .rg_form ul .degree_security {
+    padding-left: 149px;
+    margin-top: -10px;
+    color: #bdbdbd;
+}
+
+.registerarea .rg_form ul .degree_security em {
+    padding: 0px 12px;
+    color: #fff;
+}
+
+
+/* 方框颜色 */
+
+.registerarea .rg_form ul .degree_security .weak {
+    background-color: #de1111;
+}
+
+.registerarea .rg_form ul .degree_security .middle {
+    background-color: #f79100;
+}
+
+.registerarea .rg_form ul .degree_security .strong {
+    background-color: #40b83f;
+}
+
+
+/* 用户协议部分 */
+
+.registerarea .rg_form ul .protocol {
+    padding-left: 90px;
+    font-size: 12px;
+}
+
+.registerarea .rg_form ul .protocol a {
+    color: #1ba1e6;
+}
+
+.registerarea .rg_form ul .submit {
+    display: inline-block;
+    width: 200px;
+    height: 35px;
+    margin-left: 110px;
+    background-color: #c81623;
+    text-align: center;
+    line-height: 35px;
+    font-size: 14px;
+    color: #fff;
+    cursor: pointer;
+}
+
+
+/* 版权部分 */
+
+footer .copyright {
+    margin-top: 20px;
+}
+
+footer .copyright ul {
+    padding: 0px auto;
+}
+
+footer .copyright ul li {
+    float: left;
+    padding: 0px 14px;
+}
+
+footer .copyright ul li:nth-child(even) {
+    width: 2px;
+    height: 12px;
+    padding: 0px;
+    margin-top: 3px;
+    background-color: #ccc;
+}
+
+footer .copyright p {
+    padding-top: 30px;
+    text-align: center;
+}

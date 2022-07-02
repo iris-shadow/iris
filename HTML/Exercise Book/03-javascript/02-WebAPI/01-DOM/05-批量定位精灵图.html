@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta cahrset="zh-CN">
+    <meta http-equiv="X-UA-Comapatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>批量定位精灵图案例</title>
+    <style>
+        .sprite-wrap {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .sprite {
+            width: 176px;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        
+        .sprite li {
+            float: left;
+            width: 24px;
+            height: 24px;
+            margin: 10px;
+            background: url(media/images/sprite.png) no-repeat;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="sprite-wrap">
+        <ul class="sprite">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <script>
+        var step = 44;
+        var lis = document.querySelectorAll('li');
+        console.log(lis);
+        for (var i = 0; i < lis.length; i++) {
+            var positionY = i * step;
+            lis[i].style.backgroundPosition = '0 -' + positionY + 'px';
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>ES5新增方法</title>
+    </head>
+
+    <body>
+        <script>
+            //
+            // 数组
+            //
+
+            // // 除了 some 方法中的 return true 会终止迭代，其余的 forEach、 filter 方法内部使用 return 也不会终止迭代
+
+            // arr = [1, 2, 3, 4, 5];
+
+            // // 循环
+            // arr.forEach(function (value, index) {
+            //     console.log(value, index);
+            // });
+
+            // // 筛选。返回一个满足筛选条件的新数组
+            // var filteredArr = arr.filter(function (value) {
+            //     return value > 3;
+            // });
+
+            // console.log(filteredArr);
+
+            // // 查找是否存在满足条件的元素
+            // var isExist = arr.some(function (value) {
+            //     return value == 2;
+            // });
+
+            // console.log(isExist);
+
+            //
+            // 字符串
+            //
+
+            // var str = '  sipm le ';
+
+            // // trim 去除字符串两边的空格
+            // newStr = str.trim();
+            // console.log(newStr);
+
+            //
+            // 对象
+            //
+
+            var iris = {
+                id: 1218,
+                name: '鸢尾',
+                age: 2,
+                addr: '一剑开天门',
+            };
+
+            // // keys 获取对象的所有属性名并以数组形式返回
+            // var keys = Object.keys(iris);
+            // console.log(keys);
+
+            // defineProperty 定义对象的属性及属性的特性，在特性配置完成后，不可再次配置
+            Object.defineProperty(iris, 'addr', {
+                value: '天那边',
+                // 是否可重写
+                writable: false,
+                // 是否可迭代
+                enumerable: false,
+                // 是否可配置
+                configurable: false,
+            });
+
+            // addr 属性不可重写
+            iris.addr = '一剑开天门';
+            console.log(iris);
+
+            // addr 属性不可迭代
+            keys = Object.keys(iris);
+            console.log(keys);
+
+            // addr 属性不可配置
+            delete iris.addr;
+            console.log(iris);
+        </script>
+    </body>
+</html>

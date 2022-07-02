@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>字母大小写转换</title>
+        <style>
+            #letter {
+                width: 200px;
+                color: tomato;
+                letter-spacing: 2px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div>
+            <label for="letter">请输入字母：</label>
+            <input type="text" id="letter" />
+        </div>
+
+        <script>
+            var letter = document.querySelector("#letter");
+
+            function convertFont(event) {
+                var temp = this.value;
+                this.value = temp.toUpperCase();
+            }
+            letter.addEventListener("keyup", convertFont);
+        </script>
+    </body>
+</html>

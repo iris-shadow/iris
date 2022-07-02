@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html alng="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>闭包获取点击元素的序号</title>
+    </head>
+
+    <body>
+        <ul>
+            <li>李淳罡</li>
+            <li>邓太阿</li>
+            <li>王仙芝</li>
+            <li>剑九黄</li>
+        </ul>
+
+        <script>
+            var names = document.querySelectorAll('li');
+
+            // 多次生成立即函数，index 一直在被引用，会造成内存泄漏
+            names.forEach(function (elem, index) {
+                (function (index) {
+                    elem.addEventListener('click', function () {
+                        console.log(index);
+                    });
+                })(index);
+            });
+        </script>
+    </body>
+</html>

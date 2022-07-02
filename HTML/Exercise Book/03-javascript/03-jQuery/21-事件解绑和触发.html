@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="jQuery.mini.js"></script>
+        <title>事件解绑和触发</title>
+        <style>
+            div {
+                width: 200px;
+                height: 200px;
+                background-color: skyblue;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div></div>
+        <ul>
+            <li>今天天气好晴朗</li>
+            <li>今天天气好晴朗</li>
+            <li>今天天气好晴朗</li>
+        </ul>
+        <input type="text" value="Enter the password of you bank card" />
+        <script>
+            // 事件解绑
+            $('div').on({
+                click: function () {
+                    console.log('div 被点击了！');
+                },
+                mouseenter: function () {
+                    console.log('鼠标经过了 div！');
+                },
+            });
+            // 要解绑单个事件类型时传入需要解绑的事件类型；不传入时解绑所有事件
+            // $('div').off('click');
+            $('div').off();
+
+            // 委托事件解绑
+            $('ul').on('click', 'li', function () {
+                console.log($(this).index());
+            });
+
+            // 解绑
+            $('ul').off('click', 'li');
+
+            // 事件触发
+            $('input').on('focus', function () {
+                $(this).val('你的银行卡余额已清空！');
+            });
+
+            // 事件触发方式 1
+            // $('input').focus();
+            // 事件触发方式 2
+            // $('input').trigger('focus');
+            // 事件触发方式 3 ，该方式不会触发事件的默认行为，如 input 的光标闪烁
+            $('input').triggerHandler('focus');
+        </script>
+    </body>
+</html>

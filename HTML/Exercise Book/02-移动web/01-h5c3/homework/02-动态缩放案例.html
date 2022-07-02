@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="zh-CN">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动态缩放案例</title>
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+            box-sizing: border-box;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        a {
+            text-decoration: none;
+        }
+        
+        img {
+            vertical-align: middle;
+        }
+        
+        .clearfix::after {
+            content: ".";
+            visibility: hidden;
+            display: block;
+            height: 0px;
+        }
+        
+        .clearfix {
+            *zoom: 1;
+        }
+        
+        .square {
+            width: 640px;
+            height: 430px;
+            margin: 100px auto 0px;
+            padding: 10px;
+            background-color: #ddd;
+        }
+        
+        li {
+            float: left;
+            margin: 0px 10px 10px 0px;
+            transition: all 2s;
+        }
+        
+        li:nth-child(3n) {
+            margin-right: 0px;
+        }
+        
+        li:nth-child(n+3) {
+            margin-bottom: 0px;
+        }
+        
+        img {
+            width: 200px;
+            height: 200px;
+        }
+        
+        li:hover {
+            transform: scale(0.5);
+            opacity: 0.2;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="square">
+        <ul class="clearfix">
+            <li>
+                <a href="#"><img src="./images/1.jpg" alt=""></a>
+            </li>
+            <li>
+                <a href="#"><img src="./images/2.jpg" alt=""></a>
+            </li>
+            <li>
+                <a href="#"><img src="./images/3.jpg" alt=""></a>
+            </li>
+            <li>
+                <a href="#"><img src="./images/4.jpg" alt=""></a>
+            </li>
+            <li>
+                <a href="#"><img src="./images/5.jpg" alt=""></a>
+            </li>
+            <li>
+                <a href="#"><img src="./images/6.jpg" alt=""></a>
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html>

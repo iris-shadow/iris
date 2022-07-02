@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="jQuery.mini.js"></script>
+        <title>元素操作</title>
+    </head>
+
+    <body>
+        <ul>
+            <li>原创 li</li>
+        </ul>
+        <div class="origin-div">原创 div</div>
+
+        <script>
+            // 创建元素
+            var liRe = $("<li>向后添加的 li</li>");
+            var liPre = $("<li>向前添加的 li</li>");
+            var divRe = $("<div>向后添加的 div</div>");
+            var divPre = $("<div>向前添加的 div</div>");
+
+            // 添加元素
+            // 内部添加
+            $("ul").append(liRe);
+            $("ul").prepend(liPre);
+
+            // 外部添加
+            $(".origin-div").after(divRe);
+            $(".origin-div").before(divPre);
+
+            // 删除元素
+            // 删除自身
+            // $('ul').remove();
+            // 清空内部子元素
+            // $('ul').empty();
+            // empty() 等价于 html('')
+            $("ul").html("");
+        </script>
+    </body>
+</html>

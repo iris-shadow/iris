@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+        <script src="jQuery.mini.js"></script>
+        <script src="js/jquery.cycle.all.js"></script>
+        <title>cycle_all 插件</title>
+        <style>
+            * {
+                padding: 0;
+                margin: 0;
+            }
+            #goods {
+                list-style: none;
+                width: 500px;
+                height: 300px;
+            }
+
+            #goods div:nth-child(1) {
+                float: left;
+            }
+
+            #goods div:nth-child(1) img {
+                width: 300px;
+                height: 300px;
+                vertical-align: middle;
+            }
+
+            #goods .title {
+                float: right;
+                width: 200px;
+                height: 90px;
+                background-color: #222;
+                text-align: center;
+                color: #fff;
+                font-size: 22px;
+            }
+
+            #goods .desc {
+                float: right;
+                width: 200px;
+                height: 210px;
+                text-align: center;
+                background-color: greenyellow;
+                color: #222;
+            }
+        </style>
+    </head>
+
+    <body>
+        <ul id="goods">
+            <li>
+                <div><img src="media/images/lenovopad.jpg" alt="" /></div>
+                <div class="title">lenovopad</div>
+                <div class="desc">垃圾平板</div>
+            </li>
+            <li>
+                <div><img src="media/images/ipadair.png" alt="" /></div>
+                <div class="title">ipadair</div>
+                <div class="desc">垃圾平板</div>
+            </li>
+            <li>
+                <div><img src="media/images/note3.jpg" alt="" /></div>
+                <div class="title">note3</div>
+                <div class="desc">垃圾平板</div>
+            </li>
+        </ul>
+
+        <script>
+            $(function () {
+                $('#goods').cycle();
+            });
+        </script>
+    </body>
+</html>

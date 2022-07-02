@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>快递单号查询案例</title>
+        <style>
+            .query-wrapper {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 360px;
+                height: 100px;
+            }
+            .enlarge {
+                display: none;
+                width: 100%;
+                height: 50px;
+                background-color: aliceblue;
+                color: tomato;
+                line-height: 50px;
+                letter-spacing: 3px;
+                font-weight: 700;
+                font-size: 22px;
+                box-shadow: 3px 3px 4.5px rgba(0, 0, 0, 0.2), inset 3px 3px 4.5px rgba(255, 255, 255, 0.5);
+            }
+            .enlarge::before {
+                content: "";
+                position: absolute;
+                top: 50px;
+                left: 20px;
+                display: block;
+                width: 0;
+                height: 0;
+                border: 16px solid;
+                border-color: aliceblue transparent transparent;
+            }
+            .query {
+                position: absolute;
+                top: 70px;
+                width: 100%;
+                height: 26px;
+                line-height: 26px;
+                border: 1px solid #333;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="query-wrapper">
+            <div class="enlarge"></div>
+            <input type="text" class="query" />
+        </div>
+
+        <script>
+            var enlarge = document.querySelector(".enlarge");
+            var query = document.querySelector(".query");
+
+            query.addEventListener("keyup", function () {
+                if (this.value === "") {
+                    enlarge.style.display = "none";
+                } else {
+                    enlarge.style.display = "block";
+                    enlarge.innerHTML = this.value;
+                }
+            });
+
+            query.addEventListener("focus", function () {
+                if (this.value !== "") {
+                    enlarge.style.display = "block";
+                }
+            });
+
+            query.addEventListener("blur", function () {
+                enlarge.style.display = "none";
+            });
+        </script>
+    </body>
+</html>

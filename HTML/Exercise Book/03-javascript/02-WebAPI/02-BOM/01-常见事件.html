@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta cahrset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>常见事件</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: tomato;
+            text-align: center;
+            line-height: 200px;
+        }
+
+        .tips {
+            font-weight: 900;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <script>
+        // DOMContentLoad 该事件在 DOM 元素加载完毕后就可进行与浏览器的交互
+        window.addEventListener('DOMContentLoaded', function () {
+            alert('DOMContentLoaded 事件');
+        })
+
+        // Load 该事件在页面元素、图片等加载完毕后才可进行与浏览器的交互
+        window.addEventListener('load', function () {
+            var button = document.querySelector('button');
+            button.addEventListener('click', function () {
+                alert('load 事件');
+            })
+        })
+
+        // resize 事件  浏览器大小改变后出发该事件
+        window.addEventListener('resize', function () {
+            var div = document.querySelector('div');
+            // window.innerWidth 用于获取浏览器的宽度
+            if (window.innerWidth < 800) {
+                div.style.display = 'none';
+            } else {
+                div.style.display = 'block';
+            }
+        })
+    </script>
+
+    <div><button class="tips">点我提示操作</button></div>
+</body>
+
+</html>

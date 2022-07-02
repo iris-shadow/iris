@@ -1,0 +1,67 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.load_wrapper .load {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    width: 200px;
+    height: 200px;
+    transform: rotate(45deg);
+}
+
+.load span {
+    --c: red;
+    background-color: var(--c);
+    animation: glitter 2s infinite;
+    animation-delay: var(--d);
+}
+
+.load span:nth-child(7) {
+    --c: cornflowerblue;
+    --d: 0s;
+}
+
+.load span:nth-child(4),
+.load span:nth-child(8) {
+    --c: greenyellow;
+    --d: .2s;
+}
+
+.load span:nth-child(1),
+.load span:nth-child(5),
+.load span:nth-child(9) {
+    --c: cyan;
+    --d: .4s;
+}
+
+.load span:nth-child(2),
+.load span:nth-child(6) {
+    --c: coral;
+    --d: .6s;
+}
+
+.load span:nth-child(3) {
+    --c: pink;
+    --d: .8s;
+}
+
+@keyframes glitter {
+    0%,
+    100% {
+        transform: scale(0);
+    }
+    40%,
+    80% {
+        transform: scale(1);
+    }
+}

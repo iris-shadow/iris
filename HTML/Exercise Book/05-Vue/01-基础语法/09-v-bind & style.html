@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script src="../js/vue.js"></script>
+		<title>Document</title>
+	</head>
+
+	<body>
+		<div id="app">
+			<!-- 对象语法 -->
+			<h2 :style="getStyle()" v-cloak>上课浪费时间</h2>
+
+			<!-- 数组语法 -->
+			<h2 :style="[color1, fontSize1]" v-cloak>上课浪费时间</h2>
+		</div>
+
+		<script>
+			const app = new Vue({
+				el: '#app',
+				data: {
+					message: 'Hello Vuejs!',
+
+					// 传入对象
+					textAlign: 'center',
+					color: 'cornflowerblue',
+					fontSize: 128,
+
+					// 传入数组
+					color1: { color: 'tomato' },
+					fontSize1: { fontSize: '128px' },
+				},
+				methods: {
+					getStyle: function () {
+						return { textAlign: this.textAlign, color: this.color, fontSize: this.fontSize + 'px' }
+					},
+				},
+			})
+		</script>
+	</body>
+</html>

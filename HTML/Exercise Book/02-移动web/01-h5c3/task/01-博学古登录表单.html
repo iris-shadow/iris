@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-cale=1.0" />
+    <title>登录表单</title>
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+            box-sizing: border-box;
+        }
+        
+        li {
+            list-style: none;
+        }
+        
+        a {
+            text-decoration: none;
+        }
+        
+        input {
+            outline: none;
+            border: 0px;
+        }
+        
+        body {
+            background-color: #e2e2e2;
+            font-size: 12px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        
+        .login {
+            width: 400px;
+            height: 400px;
+            padding: 0px 50px;
+            border-radius: 5px;
+            margin: 100px auto;
+            background-color: #5670a8;
+        }
+        
+        .login .logo h1 {
+            padding: 50px 0px;
+            text-align: center;
+            color: #fff;
+        }
+        
+        form input {
+            width: 300px;
+            padding: 15px 10px;
+        }
+        
+        form input[type=email] {
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            border-bottom: 1px solid #e2e2e2;
+            background-color: #fff;
+        }
+        
+        form input[type=password] {
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+            background-color: #fff;
+        }
+        
+        form input[type=submit] {
+            padding: 10px 5px;
+            border-radius: 5px;
+            margin-top: 18px;
+            cursor: pointer;
+            background-color: #e0e0e0;
+        }
+        
+        .forget-password {
+            text-align: center;
+            margin-top: 50px;
+        }
+        
+        .forget-password a {
+            color: #fff;
+        }
+    </style>
+
+</head>
+
+<body>
+    <section class="login">
+        <div class="logo">
+            <h1>博学谷</h1>
+        </div>
+        <form action="">
+            <input type="email" name="email" id="email" placeholder="Email" autofocus="autofocus"> <br />
+            <input type="password" name="password" id="password" placeholder="Password"> <br />
+            <input type="submit" value="登录">
+        </form>
+        <div class="forget-password"><a href="#">忘记密码</a></div>
+    </section>
+</body>
+
+</html>

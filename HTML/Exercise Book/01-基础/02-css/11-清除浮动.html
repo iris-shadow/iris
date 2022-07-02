@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>清除浮动</title>
+    <style>
+        .temp_1 li {
+            list-style: none;
+        }
+        
+        .father {
+            background-color: orange;
+            border: darkturquoise solid 2px;
+        }
+        
+        .father div {
+            /* background-color:; */
+            width: 600px;
+            /* height: 200px; */
+            float: left;
+        }
+        
+        .clearfix:before,
+        .clearfix:after {
+            content: "";
+            display: table;
+        }
+        
+        .clearfix:after {
+            clear: both;
+        }
+        
+        .clearfix {
+            *zoom: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="father">
+        <div>
+            <h3>清除浮动的本质</h3>
+            <p>清除浮动元素脱离标准流造成的影响</p>
+        </div>
+        <div>
+            <h3>清除浮动的策略</h3>
+            <p>闭合浮动，只让盒子在父盒子内部影响，不影响父盒子外面的其它盒子</p>
+        </div>
+        <br style="clear:both" />
+    </div>
+    <h3>额外标签法</h3>
+    <p>也称隔墙法，在最后一个浮动的子元素后面添加一个额外的块级标签并清除浮动（clear: both|left|right;）。W3C推荐，但在实际开发中不常见</p>
+    <h3>overflow</h3>
+    <p>在父元素中添加属性 overflow: hidden|auto|scroll 可清除浮动。优点：代码简洁；缺点：无法显示溢出的部分</p>
+    <h3>:after伪元素</h3>
+    <p>在父元素中添加如下的类选择器：</p>
+    <ul class="temp_1">
+        <li>.clearfix:after {</li>
+        <li>content="";</li>
+        <li>display: block;</li>
+        <li>height: 0;</li>
+        <li>clear: both;</li>
+        <li>visibility: hidden;</li>
+        <li>}</li>
+        <li>.clearfix {</li>
+        <li>/* IE6 、 7 专有 */</li>
+        <li>*zoom: 1;</li>
+        <li>}</li>
+    </ul>
+    <p>相当于额外标签法的升级版。优点：没有增加标签，结构更简单；缺点：要照顾低版本浏览器。</p>
+    <h3>双伪元素清除浮动</h3>
+    <p>在父元素中添加如下的类选择器：</p>
+    <ul class="temp_1">
+        <li>.clearfix:before, </li>
+        <li>.clearfix:after {</li>
+        <li>content: "";</li>
+        <li>display: table;</li>
+        <li>}</li>
+        <li>.clearfix:after {</li>
+        <li>clear: both;</li>
+        <li>}</li>
+        <li>.clearfix {</li>
+        <li>*zoom:1;</li>
+        <li>}</li>
+    </ul>
+</body>
+
+</html>

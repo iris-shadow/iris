@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script src="../js/vue.js"></script>
+		<title>Vue 列表展示</title>
+	</head>
+
+	<body>
+		<div class="display">
+			<ul>
+				<li v-for="item in movies">{{item}}</li>
+			</ul>
+		</div>
+
+		<script>
+			const display = new Vue({
+				el: ".display",
+				data: {
+					message: "Hello Vuejs",
+					movies: ["剑雨", "功夫", "山楂树", "山海情"],
+				},
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>侧边栏舒展案例</title>
+        <style>
+            .sidebar {
+                position: absolute;
+                z-index: 1;
+                top: 50%;
+                right: 0;
+                transform: translateY(-50%);
+                width: 100px;
+                height: 50px;
+                background-color: skyblue;
+                text-align: center;
+                line-height: 50px;
+                color: #fff;
+                font-weight: 900;
+                font-size: 20px;
+            }
+
+            .detail {
+                display: none;
+                position: absolute;
+                z-index: -1;
+                top: 0;
+                left: 0px;
+                width: 300px;
+                height: 100%;
+                background-color: lightblue;
+                text-align: center;
+                line-height: 50px;
+                color: #fff;
+                font-weight: 900;
+                font-size: 20px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="sidebar">
+            小熊 🐻
+            <div class="detail">🐼 🐻 🐼 🐻 🐼</div>
+        </div>
+
+        <script>
+            var sidebar = document.querySelector(".sidebar");
+            var detail = document.querySelector(".detail");
+
+            //
+            // 封装缓动动画函数
+            function inching(Element, endPoint, backCall) {
+                // 预先清除定时器的
+                clearInterval(Element.timer);
+                // 给对象添加定时器
+                Element.timer = setInterval(function () {
+                    // 缓动公式 step = (endPoint - currentPoint) / 10 ，可以实现来回移动
+                    var step = (endPoint - Element.offsetLeft) / 10;
+                    // 判断 step 正负后进行取整，使之准确达到结束点
+                    step = step > 0 ? Math.ceil(step) : Math.floor(step);
+                    // 判断是否到达结束点
+                    if (Element.offsetLeft === endPoint) {
+                        // 清除定时器
+                        clearInterval(Element.timer);
+                        // 判断是否含有回调函数
+                        if (backCall) {
+                            backCall();
+                        }
+                    }
+                    // 给对象的 left 加上 step
+                    Element.style.left = Element.offsetLeft + step + "px";
+                }, 15);
+            }
+
+            //
+            // 鼠标滑入时显示子元素
+            sidebar.addEventListener("mouseenter", function () {
+                // 显示子元素
+                this.children[0].style.display = "block";
+                // 调用缓动函数
+                inching(this.children[0], -300, function () {
+                    sidebar.children[0].style.backgroundColor = "skyblue";
+                });
+            });
+
+            //
+            // 鼠标滑开时隐藏子元素
+            sidebar.addEventListener("mouseleave", function () {
+                // 调用缓动函数
+                inching(this.children[0], 0, function () {
+                    sidebar.children[0].style.backgroundColor = "lightblue";
+                    // 隐藏子元素
+                    sidebar.children[0].style.display = "none";
+                });
+            });
+        </script>
+    </body>
+</html>

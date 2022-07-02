@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="jQuery.mini.js"></script>
+        <title>服饰切换案例</title>
+        <style>
+            * {
+                padding: 0;
+                margin: 0;
+            }
+
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+            }
+
+            .clothing-wrapper {
+                width: 450px;
+                height: 360px;
+                border: 1px solid tomato;
+            }
+
+            .clothing-wrapper .nav {
+                float: left;
+                width: 30%;
+                height: 100%;
+                list-style: none;
+            }
+
+            .clothing-wrapper .nav li {
+                width: 100%;
+                height: calc(10% - 1px);
+                border-bottom: 1px solid tomato;
+            }
+
+            .clothing-wrapper .nav li:last-child {
+                border: 0;
+            }
+
+            .clothing-wrapper .nav li a {
+                display: block;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(to bottom, rgb(255, 237, 240), rgb(247, 255, 255));
+                text-decoration: none;
+                text-align: center;
+                color: skyblue;
+                line-height: 35px;
+                font-weight: 700;
+                font-size: 18px;
+            }
+
+            .clothing-wrapper .nav li a:hover {
+                background: #fff;
+                color: tomato;
+                font-weight: 900;
+            }
+
+            .clothing-wrapper .clothing {
+                float: left;
+                width: calc(70% - 1px);
+                height: 100%;
+                border-left: 1px solid tomato;
+            }
+
+            .clothing-wrapper .clothing div {
+                display: none;
+                width: 100%;
+                height: 100%;
+            }
+
+            .clothing-wrapper .clothing div img {
+                width: 100%;
+                height: 100%;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="clothing-wrapper">
+            <ul class="nav">
+                <li><a href="javascript:void(0);">冬 裙</a></li>
+                <li><a href="javascript:void(0);">围 巾</a></li>
+                <li><a href="javascript:void(0);">女 包</a></li>
+                <li><a href="javascript:void(0);">女 裤</a></li>
+                <li><a href="javascript:void(0);">女 靴</a></li>
+                <li><a href="javascript:void(0);">棉 服</a></li>
+                <li><a href="javascript:void(0);">呢 大 衣</a></li>
+                <li><a href="javascript:void(0);">牛 仔 裤</a></li>
+                <li><a href="javascript:void(0);">男 包</a></li>
+                <li><a href="javascript:void(0);">雪 地 靴</a></li>
+            </ul>
+            <div class="clothing">
+                <div style="display: block"><img src="media/images/冬裙.jpg" alt="" /></div>
+                <div><img src="media/images/围巾.jpg" alt="" /></div>
+                <div><img src="media/images/女包.jpg" alt="" /></div>
+                <div><img src="media/images/女裤.jpg" alt="" /></div>
+                <div><img src="media/images/女靴.jpg" alt="" /></div>
+                <div><img src="media/images/棉服.jpg" alt="" /></div>
+                <div><img src="media/images/呢大衣.jpg" alt="" /></div>
+                <div><img src="media/images/牛仔裤.jpg" alt="" /></div>
+                <div><img src="media/images/男包.jpg" alt="" /></div>
+                <div><img src="media/images/雪地靴.jpg" alt="" /></div>
+            </div>
+        </div>
+
+        <script>
+            $(function () {
+                $('.nav li').mouseover(function () {
+                    var index = $(this).index();
+                    // $('.clothing div').eq(index).siblings().css('display', 'none');
+                    // $('.clothing div').eq(index).css('display', 'block');
+
+                    // 可用下列语句实现
+                    $('.clothing div').eq(index).siblings().hide();
+                    $('.clothing div').eq(index).show();
+                });
+            });
+        </script>
+    </body>
+</html>

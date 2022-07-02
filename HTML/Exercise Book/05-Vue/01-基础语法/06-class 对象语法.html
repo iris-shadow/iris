@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equv="X-UA-Compatible" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script src="../js/vue.js"></script>
+		<title>class 对象语法</title>
+		<style>
+			.color {
+				color: cornflowerblue;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="app">
+			<!-- 第一个 class 可放置不需要变动的类，第二个 class 动态绑定，传入对象 {类名1: Boolean, 类名2: Boolean} Boolean 为 true 时，对应的类会被添加。最后会将第一个 class 和动态绑定的 class 合并在一起-->
+			<!-- <h2 class="origin" :class="{color:isActive, size: isSize}">闻香识女人</h2> -->
+			<h2 class="origin" :class="getClasses()">闻香识女人</h2>
+
+			<!-- <button v-on:click="switchColor"></button> -->
+			<button @click="switchColor">换色</button>
+		</div>
+
+		<script>
+			const app = new Vue({
+				el: '#app',
+				data: {
+					message: 'Hello Vuejs!',
+					isActive: true,
+					isSize: true,
+				},
+				methods: {
+					switchColor: function () {
+						this.isActive = !this.isActive
+					},
+					getClasses: function () {
+						return { color: this.isActive, size: this.isSize }
+					},
+				},
+			})
+		</script>
+	</body>
+</html>

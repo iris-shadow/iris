@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>节点克隆</title>
+</head>
+
+<body>
+    <ul>
+        <li>妞妞</li>
+        <li>
+            <p>可乐</p>
+        </li>
+    </ul>
+</body>
+
+<script>
+    var ul = document.querySelector('ul');
+    // cloneNode() 或 cloneNode(false) 为浅拷贝，只拷贝本身，不会拷贝子节点
+    var shallowCloneNode = ul.children[0].cloneNode();
+    ul.appendChild(shallowCloneNode);
+
+    // cloneNode(true) 为深拷贝，会拷贝其内容及子节点
+    var deepCloneNode1 = ul.children[0].cloneNode(true);
+    ul.appendChild(deepCloneNode1);
+
+    var deepCloneNode2 = ul.children[1].cloneNode(true);
+    ul.appendChild(deepCloneNode2)
+</script>
+
+</html>

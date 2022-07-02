@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=0">
+    <title>简易评论案例</title>
+    <style>
+        body {
+            background-color: #f5f5f5;
+        }
+        
+        .remark_wrapper {
+            position: absolute;
+            top: 100px;
+            left: 50px;
+            width: 200px;
+        }
+        
+        .remark {
+            outline: none;
+            resize: none;
+            width: 100%;
+            height: 150px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+        
+        .publish {
+            text-align: right;
+        }
+        
+        .publish button {
+            border: 1px solid lavender;
+            background-color: #fff;
+            color: gold;
+            font-weight: 700;
+            font-size: 18px;
+            border-radius: 5px;
+            box-shadow: 2px 1px 5px rgba(0, 0, 0, .2);
+            cursor: pointer;
+        }
+        
+        .content {
+            padding: 0;
+            width: 100%;
+        }
+        
+        .content li {
+            width: 100%;
+            background-color: #fff;
+            border-bottom: 1px solid lavender;
+            margin-bottom: 2px;
+        }
+        
+        .content li:hover {
+            background-color: lavender;
+        }
+        
+        .content li p {
+            display: inline-block;
+            width: 80%;
+            margin: 0;
+            line-height: 20px;
+            font-size: 16px;
+        }
+        
+        .content li a {
+            float: right;
+            margin-right: 5px;
+            text-decoration: none;
+            color: coral;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="remark_wrapper">
+        <textarea name="" id="" cols="30" rows="10" class="remark"></textarea>
+        <div class="publish"><button>发布</button></div>
+        <ul class="content"></ul>
+    </div>
+
+    <script>
+        var textArea = document.querySelector('.remark'),
+            btnPublish = document.querySelector('button'),
+            content = document.querySelector('.content');
+
+
+        btnPublish.onclick = function() {
+            if (textArea.value === '') {
+                alert('请输入评论内容！');
+            } else {
+                // 创建一个 li 标签用于盛放 p（内容） 和 a（删除链接）
+                var comment = document.createElement('li');
+                var p = document.createElement('p');
+                // 将评论内容给 p 元素
+                p.innerHTML = textArea.value;
+                comment.appendChild(p);
+
+                // 在每个留言后加入一个删除链接
+                var deleteLink = document.createElement('a');
+                // 将 href 中的 内容写为 javascript:; 或 javascript:viod(0) 可阻止其跳转
+                deleteLink.href = 'javascript:;';
+                deleteLink.className = 'delete';
+                deleteLink.innerHTML = '删除';
+                comment.appendChild(deleteLink);
+
+                // 将 li 元素 给 content（ul元素）
+                content.appendChild(comment);
+            }
+
+            // 为每个删除链接注册事件
+            var btnsDelete = document.querySelectorAll('.delete')
+            for (var i = 0; i < btnsDelete.length; i++) {
+                btnsDelete[i].onclick = function() {
+                    content.removeChild(this.parentNode);
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

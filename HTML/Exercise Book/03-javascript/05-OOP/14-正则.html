@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta cahrset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+        <title>正则</title>
+    </head>
+
+    <body>
+        <script>
+            // 实例化一个正则对象
+            // var regexp = RegExp(/^[a-zA-Z-_][a-zA-Z\d-_]{5,7}$/);
+            var regexp = /^[a-zA-Z-_][a-zA-Z\d-_]{5,7}$/;
+
+            var result = regexp.test('simple');
+
+            console.log(result);
+        </script>
+    </body>
+</html>

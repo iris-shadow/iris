@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="jQuery.mini.js"></script>
+        <title>获取属性</title>
+    </head>
+
+    <body>
+        <a href="http://www.bilibili.com" title="哔哩哔哩" target="_blank" data-index="1" purpose="tost">干杯🍻</a>
+
+        <script>
+            // prop 获取元素自带的属性值
+            console.log($('a').prop('title'));
+            $('a').prop('title', ' bilibili');
+
+            // attr 获取自定义属性，相当于 getAttribute 和 setAttribute
+            console.log($('a').attr('purpose'));
+            $('a').attr('purpose', 'cheers');
+
+            // data 可以将数据存取到元素中，也可以获取 h5 中定义的属性（data- 开头，获取的值为 Number 类型），但在 DOM 中不显示
+            $('a').data('content', 'study_resource');
+            console.log($('a').data('content'));
+            console.log($('a').data('index'));
+        </script>
+    </body>
+</html>

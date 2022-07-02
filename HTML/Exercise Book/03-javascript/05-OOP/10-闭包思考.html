@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width" />
+        <title>闭包思考</title>
+    </head>
+
+    <body>
+        <script>
+            var name = 'global variable';
+
+            // var iris = {
+            //     name: 'iris',
+            //     identify: function () {
+            //         return function () {
+            //             console.log(this.name);
+            //         };
+            //     },
+            // };
+
+            // 此处的 identify 的 this 指向是 window，没有引用外部函数的局部变量
+            // iris.identify()();
+
+            var iris = {
+                name: 'iris',
+                identify: function () {
+                    var that = this;
+                    return function () {
+                        console.log(that.name);
+                    };
+                },
+            };
+
+            // 此处的 that（this） 指向是对象 iris ，引用了外部函数的局部变量
+            iris.identify()();
+        </script>
+    </body>
+</html>

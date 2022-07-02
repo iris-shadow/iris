@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>元素的显示与隐藏</title>
+    <style>
+        .dpy {
+            display: none;
+            width: 200px;
+            height: 20px;
+            background-color: coral;
+        }
+        
+        .dpy-r {
+            width: 200px;
+            height: 20px;
+            background-color: skyblue;
+        }
+        
+        .vsby {
+            visibility: hidden;
+            width: 200px;
+            height: 20px;
+            background-color: skyblue;
+        }
+        
+        .vsby-r {
+            width: 200px;
+            height: 20px;
+            background-color: coral;
+        }
+        
+        .ovflw {
+            overflow: auto;
+            width: 200px;
+            height: 180px;
+            background-color: rgba(3, 3, 3, .1);
+        }
+    </style>
+</head>
+
+<body>
+    <h3>display</h3>
+    <p>语法: display: none|block; <br /> none 会隐藏元素，且不再占有位置；block 除了将元素转化为块级盒子外，还会显示盒子</p>
+    <div class="dpy">呜呜～</div>
+    <div class="dpy-r"></div>
+
+    <h3>visibility</h3>
+    <p>语法： visibility: visible|hidden <br /> hidden 会隐藏元素，但任占有原来的位置</p>
+    <div class="vsby"></div>
+    <div class="vsby-r">123</div>
+
+    <h3>overflow</h3>
+    <p>语法： overflow: visible|hidden|scroll|auto； <br> auto 会按需来决定是否显示滚动条</p>
+    <div class="ovflw">什么是HTML： 1.HTML 指的是超文本标记语言 (Hyper Text Markup Language) ，它是用来描述网页的一种语言。 2.HTML 不是一种编程语言，而是一种标记语言 (markup language)。 标记语言是一套标记标签 (markup tag)。 网页的总结： 1.网页是图片、链接、文字、声音、视频等元素组成, 其实就是一个html文件(后缀名为html) 2.网页生成制作: 有前端人员书写 HTML 文件, 然后浏览器打开,就能看到了网页. 3.HTML:超文本标记语言,
+        用来制作网页的一门语言. 有标签组成的. 比如 图片标签 链接标签 视频标签等…</div>
+</body>
+
+</html>

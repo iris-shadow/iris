@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>表单</title>
+</head>
+
+<body>
+    <h3>表单</h3>
+    <h4>表单组成</h4>
+    <ul>
+        <li><strong>表单域</strong></li>
+        <li><em>表单控件（元素）</em></li>
+        <li><ins>提示信息</ins></li>
+    </ul>
+    <h4>一般每个表单控件都应该有 name 和 value，主要用于开发人员</h4>
+    <h4>单选框（radio）和复选框（checkbox）的 name 值<strong>必须相同</strong></h4>
+    <h4>在单选框和复选框中添加 checked 属性可使控件在加载时默认被选中</h4>
+    <h4>在输入框添加 maxlength 属性可约束用户输入的最大字符数</h4>
+    <br />
+    <form action="http://www.baidu.com" method="get">
+        <label for="username">用户名：</label> <input id="username" type="text" name="username" maxlength="6" />
+        <label for="password">密码：</label> <input id="password" type="password" name="password" /><br />
+        <br />
+        性别：<label for="male">男</label> <input id="male" type="radio" name="gender" value="男" checked="checked" />
+        <label for="female">女</label> <input id="female" type="radio" name="gender" value="女" /><br />
+        <br />
+        爱好：<label for="eat">吃</label> <input id="eat" type="checkbox" name="hobbies" value="吃" checked="checked" />
+        <label for="play">玩</label> <input id="play" type="checkbox" name="hobbies" value="玩" /> <label
+            for="game">打游戏</label> <input id="game" type="checkbox" name="hobbies" value="打游戏" /><br />
+        <br />
+        <label for="addr">籍贯</label>
+        <select id="addr">
+            <option>重庆</option>
+            <option>四川</option>
+            <option selected="selected">云南</option>
+            <option>贵州</option>
+            <option>上海</option>
+            <option>北京</option>
+        </select>
+        <input type="file" value="上传照骗" />
+        <br />
+        <br />
+        <label for="comment">自我评价</label> <br /> <textarea id="comment" cols="28" rows="6"></textarea>
+        <br />
+        <br />
+        <input type="button" value="获取短信验证码"/> <input type="text" maxlength="6"/>
+        <br />
+        <br />
+        <input type="reset" value="重置" />
+        <input type="submit" value="注册" />
+    </form>
+</body>
+
+</html>

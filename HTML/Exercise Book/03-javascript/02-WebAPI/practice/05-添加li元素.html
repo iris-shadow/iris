@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html alng="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, intial-scale=1.0" />
+        <title>添加li元素</title>
+        <style>
+            ul li {
+                width: 200px;
+                height: 22px;
+                border: 1px dashed #ccc;
+                margin-bottom: 5px;
+                text-align: center;
+                line-height: 20px;
+                color: tomato;
+                list-style: normal;
+            }
+        </style>
+    </head>
+
+    <body>
+        <ul>
+            <li>杜梓藤</li>
+            <li>范统</li>
+            <li>诸葛铁锤</li>
+            <li>妞妞</li>
+        </ul>
+        <button>添加姓名</button>
+
+        <script>
+            var add = document.querySelector("button");
+            var ul = document.querySelector("ul");
+            // 事件函数
+            function addElement() {
+                var li = document.createElement("li");
+                li.innerHTML = "贫僧法号尼姑";
+                ul.appendChild(li);
+            }
+            add.addEventListener("click", addElement);
+        </script>
+    </body>
+</html>

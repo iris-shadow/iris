@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>css3</title>
+    <style>
+        li[class="e02"] {
+            color: coral;
+        }
+        
+        li[class^="e00"] {
+            color: skyblue;
+        }
+        
+        li[class$="4"] {
+            color: tomato;
+        }
+        
+        li[class*="5"] {
+            color: aqua;
+        }
+        
+        .frame ul li:first-child {
+            color: aqua;
+        }
+        
+        .frame ul li:last-child {
+            color: greenyellow;
+        }
+        
+        .frame ul li:nth-child(2) {
+            color: skyblue;
+        }
+        
+        .frame ol li:nth-child(2n-1) {
+            background-color: skyblue;
+        }
+        
+        .frame ol li:nth-child(even) {
+            background-color: coral;
+        }
+        
+        .frame ol li:nth-child(-n+2) {
+            color: lightgreen;
+        }
+        
+        .frame section h4:nth-of-type(1) {
+            color: lightgreen;
+        }
+        
+        .frame section p:nth-child(3) {
+            color: skyblue;
+        }
+        
+        img {
+            width: 300px;
+            filter: blur(1px);
+            margin: 20px 0px 0px 150px;
+        }
+        
+        .func-description {
+            width: 600px;
+            height: 50px;
+            border-radius: 5px;
+            background-color: coral;
+        }
+        
+        .func-description .line {
+            width: calc(100% - 30px);
+            height: 5px;
+            margin: 10px auto;
+            border-radius: 2.5px;
+            background-color: skyblue;
+        }
+        
+        .perform {
+            width: 200px;
+            height: 200px;
+            border: 1px solid #ccc;
+            transition: border 0.5s ease 0.5s, border-radius 1s ease-in 0.3s, background-color 2s ease-in-out 1s;
+        }
+        
+        .perform:hover {
+            background-color: skyblue;
+            box-shadow: 2px 3px 5px 3px rgba(0, 0, 0, .1);
+            border: 2px dotted tomato;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <h4>类选择器、属性选择器、伪类选择器的权重均为 0</h4>
+    <h3>属性选择器</h3>
+    <ul>
+        <li class="e1">E[attr]：选择 E 标签中带有 attr 属性的元素</li>
+        <li class="e02">E[attr="val"]：选择 E 标签中带有 attr 属性且值为 val 的元素</li>
+        <li class="e003">E[attr^="val"]: 选择 E 标签中 attr 属性值开头含有 val 的元素</li>
+        <li class="e04">E[attr$="val"]: 选择 E 标签中 attr 属性值结尾含有 val 的元素</li>
+        <li class="e05">E[attr*="val"]: 选择 E 标签中 attr 属性值中含有 val 的元素</li>
+    </ul>
+
+    <h3>结构伪类选择器</h3>
+    <div class="frame">
+        <ul>
+            <li>父元素 子元素:first-child ：选择父元素里面第一个叫子元素的标签</li>
+            <li>父元素 子元素:last-child ：选择父元素里面最后一个叫子元素的标签</li>
+            <li>父元素 子元素:nth-child(n) ：选择父元素里面第 n 个叫子元素的标签</li>
+        </ul>
+
+        <ol>
+            <li>nth-child(n) 其中的 n 可以是数字、关键字、公式</li>
+            <li>数字：只能为字母 n ，n 从 0 开始每次自增 1 ，当遇到 0 和第 n+1 个子元素时自动忽略，表示选中父元素中的所有子元素</li>
+            <li>关键字：even ： 偶数子元素； odd 奇数子元素</li>
+            <li>公示：2n -&gt; 偶数； 2n+1 -&gt; 奇数； 5n -&gt; 5 的倍数； n+5-&gt;从第 5 个开始以后（含第 5 个）的子元素；-n+5-&gt;从第 5 个开始以前（含第 5 个）的子元素；</li>
+        </ol>
+
+        <section>
+            <h4>E:nth-child(n) 和 E:nth-of-type区别</h4>
+            <p>E:nth-child 先执行 nth-child(n) （给所有子元素排序）再匹配第 n 个子元素是否符合 E 元素</p>
+            <p>E:nth-of-type(n) 先执行 E （给指定的子元素 E 排序）再匹配 E 元素中是否有符合 n 的子元素</p>
+        </section>
+
+        <h3>伪元素</h3>
+        <p>代码：E::after|before 。before 在父元素内容的前面创建一个元素；after 在父元素内容的后面创建一个元素</p>
+        <p>其由 css 代码生成，在文档树中找不到该标签，故称之为伪元素</p>
+        <p>before 和 after 必须含有 contetn 属性。伪元素选择器的权重和标签选择器一样为 0</p>
+
+        <h3>盒子大小计算方式</h3>
+        <p>css 默认盒子大小计算方式为 box-sizing: content-box; 加入外边框、内外边距等都会撑大盒子。新增样式 box-sizing: border-box 则不会随外边框等的加大而加大（边距、边框之和小于盒子本身）</p>
+
+        <h3>css 函数</h3>
+        <div class="func-description">代码：filter: func();
+            <div class="line"></div>
+        </div>
+        <img src="./images/mi.jpg" />
+
+        <h3>过渡</h3>
+        <p>代码：transition: 变化属性 花费时间 运动曲线（默认 ease， 可省略） 触发时间（默认 0 ，可以省略</p>
+        <div class="perform"></div>
+
+    </div>
+</body>
+
+</html>

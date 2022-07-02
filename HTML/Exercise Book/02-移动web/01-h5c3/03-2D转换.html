@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2D转换</title>
+    <style>
+        .out-box {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            background-color: tomato;
+            transform: translate(200px, 100px);
+        }
+        
+        .in-box {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 80px;
+            height: 80px;
+            /* margin-top: -40px;
+            margin-left: -40px; */
+            transform: translate(-50%, -50%);
+            background-color: cornflowerblue;
+        }
+        
+        .avatar {
+            width: 100px;
+            transform: translate(500px, -100px);
+        }
+        
+        .avatar img {
+            width: 100%;
+            border: 5px solid pink;
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+        
+        .avatar img:hover {
+            transform: rotate(360deg);
+        }
+        
+        .triangel {
+            position: relative;
+            width: 150px;
+            height: 30px;
+            transform: translate(480px, -100px);
+            border: 1px solid #ddd;
+        }
+        
+        .triangel::after {
+            position: absolute;
+            top: 5px;
+            right: 15px;
+            width: 8px;
+            height: 8px;
+            content: "";
+            border-right: 3px solid tomato;
+            border-bottom: 3px solid tomato;
+            transform: rotate(45deg);
+            transition: all 0.3s;
+        }
+        
+        .triangel:hover::after {
+            transform: rotate(225deg);
+        }
+        
+        .square {
+            width: 100px;
+            height: 100px;
+            margin: 20px 0 0 100px;
+            background-color: cyan;
+            transform-origin: center bottom;
+            transition: all 2s;
+        }
+        
+        .square:hover {
+            transform: rotate(360deg);
+        }
+        
+        .summary {
+            width: 100px;
+            height: 100px;
+            transition: all 1s;
+            background-color: tomato;
+        }
+        
+        .summary:hover {
+            transform: translate(300px, 600px) rotate(360deg) scale(1.2);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- translate -->
+    <div class="out-box">
+        <div class="in-box"></div>
+    </div>
+
+    <!-- rotate -->
+    <div class="avatar">
+        <img src="./images/pic.jpg" alt="头像">
+    </div>
+
+    <!-- rotate 做三角 -->
+    <div class="triangel">
+        我是修狗狗🐶
+    </div>
+
+    <div class="square"></div>
+
+    <div class="summary"></div>
+
+</body>
+
+</html>

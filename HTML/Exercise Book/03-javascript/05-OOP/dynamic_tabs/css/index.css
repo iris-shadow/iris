@@ -1,0 +1,123 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+input {
+    outline: none;
+    border: 0;
+    background: none;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 900px;
+    height: 500px;
+    border: 1px dotted turquoise;
+    border-radius: 5px;
+}
+
+.caption {
+    flex: 1;
+    text-align: center;
+    color: turquoise;
+}
+
+.header {
+    flex: 0.8;
+    display: flex;
+    align-items: center;
+    border: 1px dotted turquoise;
+    margin: 0 8px;
+    border-radius: 19px;
+}
+
+.tabs {
+    list-style: none;
+    flex: 19;
+    display: flex;
+    justify-content: flex-start;
+    padding: 0 5px;
+}
+
+.tabs li {
+    padding: 2px 5px;
+    border: 1px dashed turquoise;
+    margin-right: 5px;
+    border-radius: 17px;
+    color: skyblue;
+}
+
+.tabs li.active {
+    color: turquoise;
+}
+
+.tabs li input {
+    font: inherit;
+    color: turquoise;
+}
+
+.tabs li i:hover {
+    display: inline-block;
+    transform: scale(1.2);
+}
+
+.new-tab {
+    flex: 1;
+    margin-right: 8px;
+    background-color: turquoise;
+    text-align: center;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 900;
+    cursor: pointer;
+    border-radius: 14px;
+}
+
+.new-tab:hover {
+    transform: scale(1.1);
+}
+
+.main {
+    flex: 10;
+    border: 1px dotted turquoise;
+    margin: 8px 8px 5px;
+    border-radius: 5px;
+}
+
+.content {
+    padding: 5px 8px;
+    list-style: none;
+}
+
+.content li {
+    display: none;
+    color: turquoise;
+}
+
+.content li.active {
+    display: block;
+}
+
+.content li div {
+    overflow: scroll;
+    height: 390px;
+}
+
+.content li textarea {
+    outline: none;
+    resize: none;
+    width: 100%;
+    height: 390px;
+    border: 0;
+    color: turquoise;
+    font: inherit;
+}

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="jQuery.mini.js"></script>
+        <title>王者手风琴案例</title>
+        <style>
+            * {
+                padding: 0;
+                margin: 0;
+            }
+
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+            }
+
+            .accordion {
+                list-style: none;
+                width: 772px;
+                height: 98px;
+                padding: 8px 20px 0;
+                background: url(media/images/bg.png) 0 0 no-repeat;
+            }
+
+            .accordion li {
+                position: relative;
+                float: left;
+                width: 69px;
+                height: 69px;
+                margin-right: 10px;
+            }
+
+            .small {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 69px;
+                height: 69px;
+                border-radius: 5px;
+            }
+
+            .large {
+                display: none;
+                width: 224px;
+            }
+
+            .accordion .active {
+                width: 224px;
+            }
+
+            .accordion .active .small {
+                display: none;
+            }
+            .accordion .active .large {
+                display: block;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="accordion-wrapper">
+            <ul class="accordion">
+                <li class="active">
+                    <a href="javascript:void(0);">
+                        <img src="media/images/1.jpg" alt="" class="small" />
+                        <img src="media/images/11.png" alt="" class="large" />
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);">
+                        <img src="media/images/2.jpg" alt="" class="small" />
+                        <img src="media/images/22.png" alt="" class="large" />
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);">
+                        <img src="media/images/3.jpg" alt="" class="small" />
+                        <img src="media/images/33.png" alt="" class="large" />
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);">
+                        <img src="media/images/4.jpg" alt="" class="small" />
+                        <img src="media/images/44.png" alt="" class="large" />
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);">
+                        <img src="media/images/5.jpg" alt="" class="small" />
+                        <img src="media/images/55.png" alt="" class="large" />
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);">
+                        <img src="media/images/6.jpg" alt="" class="small" />
+                        <img src="media/images/66.png" alt="" class="large" />
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);">
+                        <img src="media/images/7.jpg" alt="" class="small" />
+                        <img src="media/images/77.png" alt="" class="large" />
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <script>
+            // 1. 鼠标滑入时小图淡出，li 元素宽度变为 224
+            $(function () {
+                $('.accordion li').mouseenter(function () {
+                    // 自身宽度改为 224， 小图淡出，大图淡入
+                    $(this).stop().animate({ width: 224 }).find('.small').stop().fadeOut().siblings('.large').stop().fadeIn().slidle;
+                    // 其余兄弟元素宽度改为 69，大图淡出，小图淡入
+                    $(this).siblings('li').stop().animate({ width: 69 }).find('.large').stop().fadeOut().siblings('.small').stop().fadeIn();
+                });
+            });
+        </script>
+    </body>
+</html>

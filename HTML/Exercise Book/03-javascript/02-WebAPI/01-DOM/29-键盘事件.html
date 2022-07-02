@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=1.0" />
+        <title>键盘事件</title>
+    </head>
+
+    <body>
+        <script>
+            // keyup 和 keydown 事件不对字母大小写敏感
+            document.addEventListener("keyup", function (event) {
+                //event.key 可获取键盘值， event.keyCode 获取键盘值的 ASCCII
+                console.log("keyup -> ", event.code, event.keyCode);
+            });
+            document.addEventListener("keydown", function (event) {
+                //event.key 可获取键盘值， event.keyCode 获取键盘值的 ASCCII
+                console.log("keydown -> ", event.code, event.keyCode);
+            });
+
+            // keypress 对字母大小写敏感，当 keypress 和 keydown 事件同时存在时，先触发 keydown 事件
+            document.addEventListener("keypress", function (event) {
+                //event.key 可获取键盘值， event.keyCode 获取键盘值的 ASCCII
+                console.log("keypress -> ", event.code, event.keyCode);
+            });
+        </script>
+    </body>
+</html>
