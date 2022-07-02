@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script src="../js/vue.js"></script>
+		<title>v-for 绑定 key</title>
+	</head>
+
+	<body>
+		<div id="app">
+			<ul>
+				<!-- 在使用 v-for 循环时，可以在元素后绑定 key （v-bind:key/:key）以提高 Vue 的性能（注意 key 绑定的唯一性）。其内部的 diff 算法在元素增减时，会先对比绑定了 key 的元素的 key 值和 元素内容是否对应。对应时直接复用，不对应时会进行位移替换 -->
+				<li v-for="item in names" v-bind:key="item">{{item}}</li>
+			</ul>
+		</div>
+
+		<script>
+			const app = new Vue({
+				el: '#app',
+				data: {
+					message: 'Hello Vuejs!',
+					names: ['一叶秋', '李淳罡', '王仙芝', '邓太阿'],
+				},
+			})
+		</script>
+	</body>
+</html>

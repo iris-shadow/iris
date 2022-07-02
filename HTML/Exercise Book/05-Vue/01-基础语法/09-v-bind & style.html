@@ -11,6 +11,8 @@
 	<body>
 		<div id="app">
 			<!-- 对象语法 -->
+			<!-- 属性声明可使用 'font-size' 形式，记得使用 “ '' ” 包裹，也可使用驼峰形式（fontSize） -->
+			<h2 :style="{ textAlign: textAlign, color: color, 'font-size': fontSize + 'px' }" v-cloak>上课浪费时间</h2>
 			<h2 :style="getStyle()" v-cloak>上课浪费时间</h2>
 
 			<!-- 数组语法 -->

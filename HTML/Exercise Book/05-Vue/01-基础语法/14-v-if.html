@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+		<script src="../js/vue.js"></script>
+	</head>
+
+	<body>
+		<div id="app">
+			<!-- v-if v-else-if v-else -->
+			<h2 v-if="order == 0">今天天气好晴朗，</h2>
+			<h2 v-else-if="order == 1">处处好风光，</h2>
+			<h2 v-else="order == 2">呀！好风光</h2>
+			<button v-on:click="next">Next</button>
+		</div>
+
+		<script>
+			const app = new Vue({
+				el: '#app',
+				data: {
+					message: 'Hello Vuejs!',
+					order: 0,
+				},
+				methods: {
+					next() {
+						this.order = ++this.order % 3
+					},
+				},
+			})
+		</script>
+	</body>
+</html>

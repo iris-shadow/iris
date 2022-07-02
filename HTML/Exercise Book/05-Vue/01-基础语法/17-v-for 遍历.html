@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script src="../js/vue.js"></script>
+		<title>v-for 遍历</title>
+	</head>
+
+	<body>
+		<div id="app">
+			<!-- 数组遍历获取元素 -->
+			<ul>
+				<li v-for="item in names">{{item}}</li>
+			</ul>
+
+			<!-- 数组遍历获取元素、下标 -->
+			<ul>
+				<li v-for="(item, index) in names">{{item + '-' + index}}</li>
+			</ul>
+
+			<!-- 对象遍历获取值 -->
+			<ul>
+				<li v-for="value in dog">{{value}}</li>
+			</ul>
+
+			<!-- 对象遍历获取键、值 -->
+			<ul>
+				<li v-for="(value, key) in dog">{{value + '-' + key}}</li>
+			</ul>
+
+			<!-- 对象遍历获取键、值、下标 -->
+			<ul>
+				<li v-for="(value, key, index) in dog">{{value + '-' + key + '-' + index}}</li>
+			</ul>
+		</div>
+
+		<script>
+			const app = new Vue({
+				el: '#app',
+				data: {
+					message: 'Hello Vuejs!',
+					names: ['一叶秋', '李淳罡', '邓太阿', '王仙芝'],
+					dog: {
+						name: 'shadow',
+						age: 1,
+						gender: 'male',
+						addr: '云深不知处',
+					},
+				},
+			})
+		</script>
+	</body>
+</html>

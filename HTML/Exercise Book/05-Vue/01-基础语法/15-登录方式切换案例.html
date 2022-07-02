@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+		<script src="../js/vue.js"></script>
+		<title>登录方式切换案例</title>
+	</head>
+
+	<body>
+		<div id="app">
+			<!-- 此案例中会出现：当用户输入内容再点击切换按钮后会将原有内容一并带到切换后的输入框内 -->
+			<!-- 解释：在 Vue 进行渲染时，会生成虚拟 DOM （virtual dom），当有相同的 dom 时，出于对性能的考虑，会直接复用，而不是出现生成-->
+			<!-- 解决：加入 key 属性，value 不同则会认为是不同的 DOM -->
+
+			<!-- <span v-if="userMode">
+				<label for="userName">用户名：</label>
+				<input type="text" id="userName" />
+			</span>
+			<span v-else>
+				<label for="email">邮&nbsp;&nbsp;&nbsp;&nbsp;箱：</label>
+				<input type="text" id="email" />
+			</span> -->
+
+			<span v-if="userMode">
+				<label for="userName">用户名：</label>
+				<input type="text" id="userName" key="userMode" />
+			</span>
+			<span v-else>
+				<label for="email">邮&nbsp;&nbsp;&nbsp;&nbsp;箱：</label>
+				<input type="text" id="email" key="emailMode" />
+			</span>
+			<!-- <button v-on:click="change">切换方式</button> -->
+			<button v-on:click="userMode = !userMode">切换方式</button>
+		</div>
+
+		<script>
+			const app = new Vue({
+				el: '#app',
+				data: {
+					message: 'Hello Vuejs!',
+					userMode: true,
+				},
+				methods: {
+					change() {
+						this.userMode = !this.userMode
+					},
+				},
+			})
+		</script>
+	</body>
+</html>

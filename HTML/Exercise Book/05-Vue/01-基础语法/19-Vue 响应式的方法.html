@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script src="../js/vue.js"></script>
+		<title>Vue 响应式的方法</title>
+	</head>
+
+	<body>
+		<div id="app">
+			<ul>
+				<li v-for="item in names">{{item}}</li>
+				<button v-on:click="btnClick">点我一下</button>
+			</ul>
+		</div>
+
+		<script>
+			const app = new Vue({
+				el: '#app',
+				data: {
+					message: 'Hello Vuejs!',
+					names: ['一叶秋', '李淳罡', '王仙芝', '邓太阿'],
+				},
+				methods: {
+					btnClick() {
+						// 当数组使用下标更改元素时，Vue 不会发生响应
+						// this.names[1] = '秦笙笙'
+						// console.log(this.names)
+
+						// 可使用以下方法代替
+						// 1. arr.splice(起始位置，删除个数，新增元素1，新增元素2，...)
+						this.names.splice(1, 1, '秦笙笙')
+
+						// 2. 使用 Vue.set(操作对象，替换位置，替换内容)
+						// Vue.set(this.names, 1, '秦笙笙')
+					},
+				},
+			})
+		</script>
+	</body>
+</html>

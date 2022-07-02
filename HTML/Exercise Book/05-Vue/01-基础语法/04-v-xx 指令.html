@@ -26,6 +26,9 @@
 			<!-- v-text="attr": 类似于 mustache 语法，没有 mustache 灵活(会重写标签内容) -->
 			<h2 v-text="text"></h2>
 
+			<!-- v-pre 跳过元素及其子元素的编译过程，显示原始内容（不会解析 Mustache 语法） -->
+			<h2 v-pre>{{message}}</h2>
+
 			<!-- v-cloak: 防止加载 Vue 实例出现卡顿情况，显示出不友好的用户界面 -->
 			<h2 v-cloak>{{technic}}</h2>
 		</div>

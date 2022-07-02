@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script src="../js/vue.js"></script>
+		<title>v-if</title>
+	</head>
+	<body>
+		<div id="app">
+			<!-- v-if 是直接从 DOM 树中剔除或新增，当只进行一次切换时推荐使用 -->
+			<h2 v-if="isShow" data-description="v-if">闻香识女人</h2>
+
+			<!-- v-show 是在行内样式中修改显示模式 （display: block/line），当进行频繁切换时推荐使用 -->
+			<h2 v-show="isShow" data-description="v-show">闻香识女人</h2>
+		</div>
+
+		<script>
+			const app = new Vue({
+				el: '#app',
+				data: {
+					message: 'Hello Vuejs!',
+					isShow: true,
+				},
+			})
+		</script>
+	</body>
+</html>
