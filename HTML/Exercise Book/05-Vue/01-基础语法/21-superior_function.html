@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>superior_function</title>
+	</head>
+	<body>
+		<script>
+			// 需求：选出小于 88 的数字 乘以 2 后求和
+			let nums = [120, 66, 88, 68, 86, 36, 33, 22, 89, 180]
+
+			// // 1. filter 函数筛选
+			// let filteredNums = nums.filter(item => {
+			// 	return item < 88
+			// })
+
+			// console.log(nums)
+			// console.log(filteredNums)
+
+			// // 2. map 函数映射（*2）
+			// let mapedNums = filteredNums.map(item => {
+			// 	return item * 2
+			// })
+
+			// console.log(mapedNums)
+
+			// // 3. reduce 函数求和
+			// let total = mapedNums.reduce((preValue, item) => {
+			// 	return preValue + item
+			// }, 0)
+
+			// 链式编程
+			let total = nums
+				.filter(item => item < 88)
+				.map(item => item * 2)
+				.reduce((preValue, item) => preValue + item)
+
+			console.log(total)
+		</script>
+	</body>
+</html>

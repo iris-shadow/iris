@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+		<script src="../js/vue.js"></script>
+		<title>书籍购买案例</title>
+		<style>
+			table {
+				width: 600px;
+				border-collapse: collapse;
+				text-align: center;
+			}
+
+			th,
+			td {
+				border: 1px solid #ccc;
+			}
+
+			h5 {
+				color: coral;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="app">
+			<div v-if="books.length">
+				<table>
+					<caption>
+						上乘武功秘籍
+					</caption>
+					<thead>
+						<tr>
+							<th></th>
+							<th>书籍名称</th>
+							<th>出版日期</th>
+							<th>价格</th>
+							<th>购买数量</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr v-for="(item, index) in books">
+							<td>{{item.id}}</td>
+							<td>{{item.name}}</td>
+							<td>{{item.date}}</td>
+							<td>{{item.price | formatPrice}}</td>
+							<td>
+								<button v-on:click="decrement(index)" v-bind:disabled="item.count <= 1">-</button>
+								{{item.count}}
+								<button v-on:click="increment(index)">+</button>
+							</td>
+							<td>
+								<button v-on:click="remove(index)">移除</button>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<h5>总价格：{{Amount | formatPrice}}</h5>
+			</div>
+			<h5 v-else>购物车浪迹天涯咯。。。</h5>
+		</div>
+
+		<script>
+			const app = new Vue({
+				el: '#app',
+				data: {
+					message: 'Hello Vuejs!',
+					books: [
+						{
+							id: 1,
+							name: '《算法导论》',
+							date: '2006-9',
+							price: 85.0,
+							count: 1,
+						},
+						{
+							id: 2,
+							name: '《UNIX编程艺术》',
+							date: '2006-2',
+							price: 59.0,
+							count: 1,
+						},
+						{
+							id: 3,
+							name: '《编程珠玑》',
+							date: '2008-10',
+							price: 39.0,
+							count: 1,
+						},
+						{
+							id: 4,
+							name: '《代码大全》',
+							date: '2006-3',
+							price: 128.0,
+							count: 1,
+						},
+					],
+				},
+				computed: {
+					// 总价统计
+					Amount() {
+						// let totalPrice = 0
+						// this.books.forEach(item => {
+						// 	totalPrice += item.price * item.count
+						// })
+						// return totalPrice
+
+						// 使用 reduce 高阶函数
+						return this.books.reduce((preValue, item) => {
+							return preValue + item.price * item.count
+						}, 0)
+					},
+				},
+				methods: {
+					// 数量增加
+					increment(index) {
+						this.books[index].count++
+					},
+					// 数量减少
+					decrement(index) {
+						this.books[index].count--
+					},
+
+					// 移除
+					remove(index) {
+						this.books.splice(index, 1)
+					},
+				},
+				filters: {
+					// 格式化价格
+					formatPrice(price) {
+						return '¥' + price.toFixed(2)
+					},
+				},
+			})
+		</script>
+	</body>
+</html>

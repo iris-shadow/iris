@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html alng="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA=Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+		<script src="../js/vue.js"></script>
+		<title>radio & v-model</title>
+	</head>
+
+	<body>
+		<div id="app">
+			<div class="sex">
+				<input type="radio" id="male" value="男" name="sex" v-model="sex" />
+				<label for="male">男</label>
+				<input type="radio" id="female" value="女" name="sex" v-model="sex" />
+				<label for="female">女</label>
+			</div>
+
+			<!-- 在添加了 v-model 后，checked 属性会失效，可在 data 处赋默认值；可以省略 name 属性也能达到互斥效果 -->
+			<div class="sex">
+				<input type="radio" id="male" value="男" v-model="sex" />
+				<label for="male">男</label>
+				<input type="radio" id="female" value="女" v-model="sex" />
+				<label for="female">女</label>
+				<h5>您的性别为：{{sex}}</h5>
+			</div>
+		</div>
+
+		<script>
+			const app = new Vue({
+				el: '#app',
+				data: {
+					message: 'Hello Vuejs!',
+					sex: '男',
+				},
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script src="../js/vue.js"></script>
+		<title>v-model 基本使用及原理</title>
+	</head>
+
+	<body>
+		<div id="app">
+			<!-- <input type="text" v-model="message" />
+			<h5>{{message}}</h5> -->
+
+			<!-- 原理分析 1. 使用 v-bind 实现 DOM 中的数据跟随定义的数据（data 中的）变化 2. 使用 input 事件实现定义的数据跟随 DOM 中数据变化 -->
+			<!-- <input type="text" v-bind:value="message" v-on:input="textChange" /> -->
+			<input type="text" v-bind:value="message" v-on:input="message = $event.target.value" />
+			<h5>{{message}}</h5>
+		</div>
+
+		<script>
+			const app = new Vue({
+				el: '#app',
+				data: {
+					message: 'Hello Vuejs!',
+				},
+				methods: {
+					textChange() {
+						this.message = event.target.value
+					},
+				},
+			})
+		</script>
+	</body>
+</html>

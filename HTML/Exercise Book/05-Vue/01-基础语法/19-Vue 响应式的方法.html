@@ -12,6 +12,8 @@
 		<div id="app">
 			<ul>
 				<li v-for="item in names">{{item}}</li>
+				<br />
+				<li v-for="item in dog">{{item}}</li>
 				<button v-on:click="btnClick">点我一下</button>
 			</ul>
 		</div>
@@ -22,6 +24,12 @@
 				data: {
 					message: 'Hello Vuejs!',
 					names: ['一叶秋', '李淳罡', '王仙芝', '邓太阿'],
+					dog: {
+						name: 'shadow',
+						age: 1,
+						gender: 'male',
+						addr: '云深不知处',
+					},
 				},
 				methods: {
 					btnClick() {
@@ -35,6 +43,9 @@
 
 						// 2. 使用 Vue.set(操作对象，替换位置，替换内容)
 						// Vue.set(this.names, 1, '秦笙笙')
+
+						// 对象在通过 “key“ 修改时，能够响应式变化
+						this.dog['name'] = 'iris'
 					},
 				},
 			})
