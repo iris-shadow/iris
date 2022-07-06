@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+		<script src="../js/vue.js"></script>
+		<title>select & v-model</title>
+	</head>
+
+	<body>
+		<div id="app">
+			<!-- select 进行单选时，将 v-model 绑定到 select 即可，绑定的是 Boolean 类型 -->
+			<select name="province" id="" v-model="province">
+				<option value="云南">云南</option>
+				<option value="广东">广东</option>
+				<option value="四川">四川</option>
+				<option value="浙江">浙江</option>
+			</select>
+			<h5>您选择的省份是：{{province}}</h5>
+
+			<!-- select 进行多选时，将 v-model 绑定到 select ，同时加上 multiple 属性，绑定的是 Array 类型 -->
+			<select name="fruits" id="" v-model="fruits" multiple>
+				<option value="苹果">苹果</option>
+				<option value="香蕉">香蕉</option>
+				<option value="橘子">橘子</option>
+				<option value="大枣">大枣</option>
+				<option value="芒果">芒果</option>
+			</select>
+			<h5>您选择的水果是：{{fruits}}</h5>
+		</div>
+
+		<script>
+			const app = new Vue({
+				el: '#app',
+				data: {
+					message: 'Hello Vuejs!',
+					province: '广东',
+					fruits: [],
+				},
+			})
+		</script>
+	</body>
+</html>

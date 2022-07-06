@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script src="../js/vue.js"></script>
+		<title>值绑定</title>
+	</head>
+
+	<body>
+		<div id="app">
+			<!-- 值绑定：使用 “v-for="item in array"  v-bind:value="item"” 的形式进行数组中元素的绑定 -->
+			<label v-for="item in originFruits">
+				<input type="checkbox" :value="item" v-model="fruits" />
+				{{item}}
+			</label>
+			<h5>您选择的水果是：{{fruits}}</h5>
+		</div>
+
+		<script>
+			const app = new Vue({
+				el: '#app',
+				data: {
+					message: 'Hello Vuejs!',
+					originFruits: ['苹果', '香蕉', '橘子', '芒果'],
+					fruits: [],
+				},
+			})
+		</script>
+	</body>
+</html>

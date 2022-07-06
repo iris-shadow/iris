@@ -10,11 +10,11 @@
 
 	<body>
 		<div id="app">
-			<!-- 单选框在进行双向绑定时，v-model 后跟一个 Boolean 值 -->
+			<!-- 单个复选框在进行双向绑定时，v-model 后跟一个 Boolean 值 -->
 			<input type="checkbox" v-model="license" /><label for="">我同意协议</label>
 			<button :disabled="!license">Next</button>
 
-			<!-- 多选框在进行双向绑定时，v-model 后跟一个数组 -->
+			<!-- 多个复选框在进行双向绑定时，v-model 后跟一个数组 -->
 			<label for="">爱好：</label>
 			<input type="checkbox" value="吃饭" id="eating" v-model="hobbies" />
 			<label for="eating">吃饭</label>

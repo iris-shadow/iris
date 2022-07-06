@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0 ,user-scalable=0" />
+		<script src="../js//vue.js"></script>
+		<title>组件模版抽离写法</title>
+	</head>
+
+	<body>
+		<!-- 1. 使用 script 标签 -->
+		<script type="text/x-template" id="cpn1">
+			<div>
+			  <h2>我是标题</h2>
+			  <p>哈哈哈哈哈</p>
+			</div>
+		</script>
+
+		<!-- 2. 使用 template 标签 -->
+		<template id="cpn2">
+			<div>
+				<h2>我是标题</h2>
+				<p>嘿嘿嘿嘿嘿</p>
+			</div>
+		</template>
+
+		<div id="app">
+			<cpn1></cpn1>
+			<cpn2></cpn2>
+		</div>
+
+		<script>
+			// 注册全局组件
+			Vue.component('cpn1', {
+				template: '#cpn1',
+			})
+
+			const app = new Vue({
+				el: '#app',
+				data: {
+					message: 'Hello Vuejs!',
+				},
+				// 注册局部组件
+				components: {
+					cpn2: {
+						template: '#cpn2',
+					},
+				},
+			})
+		</script>
+	</body>
+</html>

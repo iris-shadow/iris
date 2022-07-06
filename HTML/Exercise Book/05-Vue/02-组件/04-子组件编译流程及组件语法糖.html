@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html alng="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+		<script src="../js/vue.js"></script>
+		<title>子组件编译流程及组件语法糖</title>
+	</head>
+
+	<body>
+		<div id="app">
+			<cpn2></cpn2>
+
+			<!-- 因为在注册子组件时，Vue 在进行编译时，会先将 <cpn1></cpn1> 替换为其对应的模板再进行注册添加，所以 Vue “不认识” <cpn1></cpn1>-->
+			<!-- <cpn1></cpn1> -->
+		</div>
+
+		<script>
+			// 子组件
+			// 创建组件构造器
+			const cpnC1 = Vue.extend({
+				template: `
+        <div>
+        <h2>我是子组件</h2>
+        <p>哈哈哈哈哈</P>
+        </div>
+        `,
+			})
+
+			// 父组件
+			// 创建组件构造器
+			// const cpnC2 = Vue.extend({
+			// 	template: `
+			//   <div>
+			//   <h2>我是父组件</h2>
+			//   <p>呵呵呵呵呵</p>
+			//   <cpn1></cpn1>
+			//   </div>
+			//   `,
+			// 	components: {
+			// 		cpn1: cpnC1,
+			// 	},
+			// })
+
+			// // 全局组件语法糖
+			// Vue.component('cpn2', {
+			// 	template: ` <div>
+			//   <h2>我是父组件</h2>
+			//   <p>呵呵呵呵呵</p>
+			//   <cpn1></cpn1>
+			//   </div>
+			//   `,
+			// 	components: {
+			// 		cpn1: cpnC1,
+			// 	},
+			// })
+
+			const app = new Vue({
+				el: '#app',
+				data: {
+					message: 'Hello Vuejs!',
+				},
+				// components: {
+				// 	cpn2: cpnC2,
+				// },
+
+				// 局部组件语法糖
+				components: {
+					cpn2: {
+						template: ` 
+            <div>
+            <h2>我是父组件</h2>
+            <p>呵呵呵呵呵</p>
+            <cpn1></cpn1>
+            </div>
+            `,
+						components: {
+							cpn1: cpnC1,
+						},
+					},
+				},
+			})
+		</script>
+	</body>
+</html>
