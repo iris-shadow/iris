@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script src="../js/vue.js"></script>
+		<title>父子组件通信与 v-model 案例</title>
+	</head>
+
+	<body>
+		<!-- 需求：
+    1. 当将父组件中的数据传输到子组件，使用 input 与传输过来的数据进行双向绑定
+    2. 第一个数据是第二个数据的 1/100，且能实现动态变化
+    -->
+
+		<!-- 子组件模版抽离 -->
+		<template id="cpn">
+			<div>
+				<h5>props --- {{cnum1}}</h5>
+				<h5>computed --- {{ectypeCnum1}}</h5>
+				<!-- 实现父组件传输过来的数据与 子组件的 input 双向绑定 -->
+				<!-- <input type="text" v-model="ectypeCnum1" /> -->
+
+				<!-- 实现双向父组件的数据也能与子组件的 input 双向绑定 -->
+				<input type="text" v-bind:value="ectypeCnum1" v-on:input="synNum1" />
+
+				<h5>props --- {{cnum2}}</h5>
+				<h5>computed --- {{ectypeCnum2}}</h5>
+				<!-- <input type="text" v-model="ectypeCnum2" /> -->
+				<input type="text" v-bind:value="ectypeCnum2" v-on:input="synNum2" />
+			</div>
+		</template>
+
+		<div id="app">
+			<cpn :cnum1="pnum1" :cnum2="pnum2" v-on:syn1="changeNum1" v-on:syn2="changeNum2"></cpn>
+		</div>
+
+		<script>
+			// 子组件绑定参数
+			const cpn = {
+				template: '#cpn',
+				props: {
+					cnum1: Number,
+					cnum2: Number,
+				},
+				// 因为 props 中的数据是从父组件中传输过来的，直接在子组件中的 props 中修改不合适，可使用 computed 或 data 复制一份后进行操作
+				data() {
+					return {
+						ectypeCnum1: this.cnum1,
+						ectypeCnum2: this.cnum2,
+					}
+				},
+				methods: {
+					synNum1() {
+						// 实现子组件中的数据与 input 输入数据双向绑定
+						this.ectypeCnum1 = parseFloat(event.target.value)
+						// 实现父组件中的数据与 input 输入数据同步
+						this.$emit('syn1', this.ectypeCnum1)
+						// cnum1 是 cnum2 的 100 倍
+						this.ectypeCnum2 = this.ectypeCnum1 * 100
+						// 实现父组件中的数据与 input 输入数据同步
+						this.$emit('syn2', this.ectypeCnum2)
+					},
+					synNum2() {
+						// 实现子组件中的数据与 input 输入数据双向绑定
+						this.ectypeCnum2 = parseFloat(event.target.value)
+						// 实现父组件中的数据与 input 输入数据同步
+						this.$emit('syn2', this.ectypeCnum2)
+						// cnum1 是 cnum2 的 100 倍
+						this.ectypeCnum1 = this.ectypeCnum2 / 100
+						// 实现父组件中的数据与 input 输入数据同步
+						this.$emit('syn1', this.ectypeCnum1)
+					},
+				},
+			}
+
+			const app = new Vue({
+				el: '#app',
+				data: {
+					pnum1: 0,
+					pnum2: 0,
+				},
+				// 注册子组件
+				components: {
+					cpn,
+				},
+				methods: {
+					changeNum1(value) {
+						this.pnum1 = value
+					},
+					changeNum2(value) {
+						this.pnum2 = value
+					},
+				},
+			})
+		</script>
+	</body>
+</html>

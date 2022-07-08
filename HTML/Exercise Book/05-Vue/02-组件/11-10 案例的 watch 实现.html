@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script src="../js/vue.js"></script>
+		<title>10 案例的 watch 实现</title>
+	</head>
+
+	<body>
+		<!-- 子组件模版抽离 -->
+		<template id="cpn">
+			<div>
+				<h5>props1 --- {{cnum1}}</h5>
+				<h5>data1 --- {{ectypeCnum1}}</h5>
+				<input type="text" v-model="ectypeCnum1" />
+
+				<h5>props2 --- {{cnum2}}</h5>
+				<h5>data2 --- {{ectypeCnum2}}</h5>
+				<input type="text" v-model="ectypeCnum2" />
+			</div>
+		</template>
+
+		<div id="app">
+			<cpn v-bind:cnum1="pnum1" :cnum2="pnum2" @syn1="synNum1" v-on:syn2="synNum2" />
+		</div>
+
+		<script>
+			// 子组件注册参数
+			const cpn = {
+				template: '#cpn',
+				props: {
+					cnum1: {
+						type: Number,
+					},
+					cnum2: {
+						type: Number,
+					},
+				},
+				data() {
+					return {
+						ectypeCnum1: this.cnum1,
+						ectypeCnum2: this.cnum2,
+					}
+				},
+				watch: {
+					ectypeCnum1() {
+						// 同步父组件中的数据
+						this.$emit('syn1', parseFloat(this.ectypeCnum1))
+						// ectypeCnum2 是 cnum1 的 100 倍
+						this.ectypeCnum2 = parseFloat(this.ectypeCnum1) * 100
+						this.$emit('syn2', this.ectypeCnum2)
+					},
+					ectypeCnum2() {
+						// 同步父组件中的数据
+						this.$emit('syn2', parseFloat(this.ectypeCnum2))
+						// ectypeCnum2 是 cnum1 的 100 倍
+						this.ectypeCnum1 = parseFloat(this.ectypeCnum2) / 100
+						this.$emit('syn1', this.ectypeCnum1)
+					},
+				},
+			}
+
+			const app = new Vue({
+				el: '#app',
+				data: {
+					pnum1: 0,
+					pnum2: 0,
+				},
+				components: {
+					cpn,
+				},
+				methods: {
+					synNum1(value) {
+						this.pnum1 = value
+					},
+					synNum2(value) {
+						this.pnum2 = value
+					},
+				},
+			})
+		</script>
+	</body>
+</html>

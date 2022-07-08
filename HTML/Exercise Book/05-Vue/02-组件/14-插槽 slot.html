@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+		<script src="../js/vue.js"></script>
+		<title>插槽 slot</title>
+	</head>
+
+	<body>
+		<template id="cpn">
+			<div>
+				<h5>买不起雪糕可以分期购买雪糕棍呀！</h5>
+				<!-- 预留插槽，当在使用组件时，向里面传入要插入的元素-->
+				<slot></slot>
+				<!-- 带默认值的插槽 -->
+				<slot><h3>我要一根小布条</h3></slot>
+				<!-- 具名插槽，需要指定插槽名字才能插入到对应插槽位置 -->
+				<slot name="rabbet1"><h2>小布条已经死了，你选的嘛，偶像！</h2></slot>
+				<slot name="rabbet2"></slot>
+			</div>
+		</template>
+
+		<div id="app">
+			<cpn>
+				<p>小布条我吃定了，</p>
+				<h2>耶稣也留不住，我说的</h2>
+			</cpn>
+			<cpn><p slot="rabbet1">给我个机会，</p></cpn>
+			<!-- 注意指定插入的插槽名称在要插入的元素内添加，而不是组件元素内。未指定插槽名称的元素会被插入到不具名插槽内 -->
+			<cpn>
+				<p slot="rabbet2">从前我没得选，现在我只想进大厂</p>
+				<h2>二叉树是什么？</h2>
+			</cpn>
+		</div>
+
+		<script>
+			const app = new Vue({
+				el: '#app',
+				data: {
+					message: 'Hello Vuejs!',
+				},
+				components: {
+					cpn: {
+						template: '#cpn',
+					},
+				},
+			})
+		</script>
+	</body>
+</html>

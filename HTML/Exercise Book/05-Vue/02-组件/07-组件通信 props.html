@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script src="../js/vue.js"></script>
+		<title>组件通信 props</title>
+	</head>
+
+	<body>
+		<!-- 子组件模版 -->
+		<template id="cpn">
+			<div>
+				<h2>我是子组件</h2>
+				<p>{{cgreeting}}</p>
+				<ul>
+					<li v-for="item in cnames">{{item}}</li>
+				</ul>
+			</div>
+		</template>
+
+		<div id="app">
+			<cpn v-bind:cgreeting="greeting" :cnames="names"></cpn>
+		</div>
+
+		<script>
+			// 创建组件构造器
+			const cpn = {
+				template: '#cpn',
+				// 数组类型
+				// props: ['cgreeting', 'cnames'],
+
+				// 对象类型
+				props: {
+					// key + type
+					// cgreeting: String,
+
+					// key + multiple-type
+					cgreeting: [String, Number],
+
+					// key + 对象
+					cnames: {
+						// 类型
+						type: Array,
+						// 默认值
+						default: [],
+						// 必须属性
+						required: true,
+					},
+
+					// cnames: {
+					// 	// 类型
+					// 	type: Array,
+					// 	// 默认值 在高版本的 Vue 中，object 或 Array 类型的默认值需要使用函数返回（当没有传入对应数据时才会使用默认值进而看到报错信息）
+					// 	default() {
+					// 		return []
+					// 	},
+				},
+			}
+
+			const app = new Vue({
+				el: '#app',
+				data: {
+					greeting: 'Hello Vuejs!',
+					names: ['李淳罡', '张天师', '邓太阿', '王仙芝'],
+				},
+				components: {
+					cpn,
+				},
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script src="../js/vue.js"></script>
+		<title>组件访问 parent、root</title>
+	</head>
+
+	<body>
+		<!-- 第一子模版 -->
+		<template id="cpn1">
+			<div>
+				<h2>我是一级子组件</h2>
+				<p>安倍晋三倍枪杀啦！</p>
+				<cpn2 />
+			</div>
+		</template>
+
+		<!-- 第二子模板 -->
+		<template id="cpn2">
+			<div>
+				<h2>我是二级子组件</h2>
+				<p>枪没事吧？</p>
+				<button v-on:click="getNews">按钮</button>
+			</div>
+		</template>
+
+		<div id="app">
+			<cpn1></cpn1>
+		</div>
+
+		<script>
+			// 第二子组件注册参数
+			const cpn2 = {
+				template: '#cpn2',
+				methods: {
+					getNews() {
+						// 访问父组件
+						this.$parent.showNews()
+						// 访问根组件（Vue 实例）
+						console.log(this.$root.comment)
+					},
+				},
+			}
+
+			// 第一子组件注册参数
+			const cpn1 = {
+				template: '#cpn1',
+				data() {
+					return {
+						news: '钟薛糕为了降低关注度派员工枪杀了安倍晋三？',
+					}
+				},
+				methods: {
+					showNews() {
+						console.log(this.news)
+					},
+				},
+				components: {
+					cpn2,
+				},
+			}
+
+			const app = new Vue({
+				el: '#app',
+				data: {
+					message: 'Hello Vuejs!',
+					comment: '谁说站在光里的才是英雄？',
+				},
+				components: {
+					cpn1,
+				},
+			})
+		</script>
+	</body>
+</html>

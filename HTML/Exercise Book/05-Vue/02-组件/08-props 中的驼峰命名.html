@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script src="../js//vue.js"></script>
+		<title>props 中的驼峰命名</title>
+	</head>
+
+	<body>
+		<!-- 组件模版 -->
+		<template id="cpn">
+			<div>
+				<h2>一剑开天门</h2>
+				<ul>
+					<li v-for="item in cNames">{{item}}</li>
+				</ul>
+			</div>
+		</template>
+
+		<div id="app">
+			<!-- html 中的属性不区分大小写，v-bind 绑定数据使用驼峰命名时，大小写字母间使用 “-” 连接 -->
+			<cpn :c-names="names"></cpn>
+		</div>
+
+		<script>
+			//注册组件的参数
+			const cpn = {
+				template: '#cpn',
+				props: {
+					cNames: {
+						type: Array,
+						default() {
+							return []
+						},
+					},
+				},
+			}
+
+			const app = new Vue({
+				el: '#app',
+				data: {
+					message: 'Hello Vuejs!',
+					names: ['李淳罡', '张天师', '邓太阿', '王仙芝'],
+				},
+				components: {
+					cpn,
+				},
+			})
+		</script>
+	</body>
+</html>

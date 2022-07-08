@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script src="../js/vue.js"></script>
+		<title>组件通信 $emit</title>
+	</head>
+
+	<body>
+		<!-- 子组件模版 -->
+		<template id="cpn">
+			<div>
+				<h2>当前计数为：{{counter}}</h2>
+				<!-- 注册事件，点击时将子组件中的数据传送到父组件 -->
+				<button v-on:click="btnIncrement">+</button>
+				<button v-on:click="btnDecrement">-</button>
+			</div>
+		</template>
+
+		<div id="app">
+			<!-- 通过自定义事件与父组件中的事件连接，可以省略参数，会自动进行传送 -->
+			<cpn @btn-increment="increment" @btn-decrement="decrement"></cpn>
+		</div>
+
+		<script>
+			const cpn = {
+				template: '#cpn',
+				data() {
+					return {
+						counter: 1,
+					}
+				},
+				methods: {
+					btnIncrement() {
+						// this.counter++
+						// 第一个参数是子组件的自定义事件，第二个是传送的参数
+						this.$emit('btn-increment', this.counter)
+					},
+					btnDecrement() {
+						this.counter--
+						this.$emit('btn-decrement', this.counter)
+					},
+				},
+			}
+
+			const app = new Vue({
+				el: '#app',
+				data: {
+					message: 'Hello Vuejs!',
+				},
+				components: {
+					cpn,
+				},
+				methods: {
+					increment(counter) {
+						counter++
+						console.log('counter ---> ', counter)
+					},
+					decrement(counter) {
+						console.log('counter ---> ', counter)
+					},
+				},
+			})
+		</script>
+	</body>
+</html>

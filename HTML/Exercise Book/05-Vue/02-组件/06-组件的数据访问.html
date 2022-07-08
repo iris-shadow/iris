@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+		<script src="../js/vue.js"></script>
+		<title>组件的数据访问</title>
+	</head>
+
+	<body>
+		<script type="text/x-template" id="cpn1">
+			<div>
+			  <h2>我是标题{{description}}</h2>
+			  <p>哈哈哈哈哈</p>
+			</div>
+		</script>
+
+		<template id="cpn2">
+			<div>
+				<h2>我是标题{{greeting}}</h2>
+				<p>嘿嘿嘿嘿嘿</p>
+			</div>
+		</template>
+
+		<div id="app">
+			<cpn1></cpn1>
+			<cpn1></cpn1>
+			<cpn2></cpn2>
+		</div>
+
+		<script>
+			let counter = 1
+			let info = {
+				description: '--我是第' + counter++ + '个组件',
+			}
+			Vue.component('cpn1', {
+				template: '#cpn1',
+				// 此处是方法而不是属性的原因是：当多个组件复用时，返回一个独立的空间存储数据
+				data() {
+					// return {
+					// 	description: '--我是第' + counter++ + '个组件',
+					// }
+
+					return info
+				},
+
+				// 若要共用一个空间，可在全局作用域的范围声明一个对象
+			})
+
+			const app = new Vue({
+				el: '#app',
+				data: {
+					message: 'Hello Vuejs!',
+				},
+				components: {
+					cpn2: {
+						template: '#cpn2',
+						data() {
+							return {
+								greeting: '嚯嚯嚯嚯',
+							}
+						},
+					},
+				},
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+		<script src="../js/vue.js"></script>
+		<title>组件 children、refs</title>
+	</head>
+
+	<body>
+		<template id="cpn">
+			<div>
+				<h5>我是子组件</h5>
+				<p>今天是个好日子</p>
+			</div>
+		</template>
+
+		<div id="app">
+			<cpn ref="cpn1"></cpn>
+			<button v-on:click="getNews">按钮</button>
+		</div>
+
+		<script>
+			const cpn = {
+				template: '#cpn',
+				data() {
+					return {
+						question: '死者安倍晋三伤势怎么样？',
+						answer: '墓前状况良好！',
+					}
+				},
+				methods: {
+					showNews() {
+						console.log(this.question)
+					},
+				},
+			}
+			const app = new Vue({
+				el: '#app',
+				data: {
+					message: 'Hello Vuejs!',
+				},
+				components: {
+					cpn,
+				},
+				methods: {
+					getNews() {
+						this.$children[0].showNews()
+						console.log(this.$children[0].answer)
+						// 使用 $children 访问子组件不利于后期维护，当有功能增减时，子组件的下标访问可能出现错误。可以使用 ref 为子组件标记唯一标识，使用 $refs 进行访问
+						this.$refs.cpn1.showNews()
+						console.log(this.$refs.cpn1.answer)
+					},
+				},
+			})
+		</script>
+	</body>
+</html>
